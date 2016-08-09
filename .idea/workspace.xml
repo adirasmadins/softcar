@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="185f7360-840e-4ed4-81dc-6a0e59c1b2b1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/assets/bootstrap-sweetalert.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/assets/thumbs-up.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/aero.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/aero@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/blue@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/flat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/flat@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/green@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/grey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/grey@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/orange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/orange@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/pink.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/pink@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/purple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/purple@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/red@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/yellow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/yellow@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/futurico/futurico.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/futurico/futurico@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/line.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/line@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/aero.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/aero@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/blue@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/green@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/grey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/grey@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/minimal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/minimal@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/orange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/orange@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/pink.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/pink@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/purple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/purple@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/red@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/yellow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/yellow@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/polaris/polaris.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/polaris/polaris@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/aero.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/aero@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/blue@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/green@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/grey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/grey@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/orange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/orange@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/pink.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/pink@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/purple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/purple@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/red@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/square.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/square@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/yellow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/yellow@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/spec/javascripts/fixtures/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Element/header.ctp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Element/menu.ctp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/AdminLTE.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/AdminLTE.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/_all-skins.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/_all-skins.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-black-light.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-black-light.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-black.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-black.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-blue-light.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-blue-light.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-blue.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-blue.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-green-light.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-green-light.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-green.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-green.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-purple-light.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-purple-light.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-purple.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-purple.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-red-light.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-red-light.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-red.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-red.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-yellow-light.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-yellow-light.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-yellow.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/css/skins/skin-yellow.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/admin-lte/js/app.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/.editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/Gruntfile.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/assets/docs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/bootstrap/mixins.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/bootstrap/variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/gulpfile-wrap-template.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/ie9.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/loader-animation.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/default-params.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/handle-click.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/handle-dom.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/handle-key.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/handle-swal-dom.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/injected-html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/set-params.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/modules/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dev/sweetalert.es6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dist/sweetalert.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dist/sweetalert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/dist/sweetalert.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/lib/sweet-alert-animations.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/lib/sweet-alert-combine.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/lib/sweet-alert.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/test/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap-sweetalert/test/tests.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/css/bootstrap.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/bootstrap/js/npm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/bootstrap-datepicker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/datepicker3.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.az.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.cy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.gl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ja.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ka.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.kk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.kr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.mk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ms.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.nb.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.nl-BE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.no.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.pt-BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.rs-latin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.rs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.sl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.sq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.sw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.ua.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.zh-CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datepicker/locales/bootstrap-datepicker.zh-TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/datetimepicker/js/bootstrap-datetimepicker.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/HELP-US-OUT.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/animated.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/bordered-pulled.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/core.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/fixed-width.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/font-awesome.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/icons.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/larger.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/list.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/mixins.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/path.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/rotated-flipped.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/stacked.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/less/variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_animated.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_bordered-pulled.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_core.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_fixed-width.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_icons.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_larger.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_path.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_rotated-flipped.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_stacked.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/_variables.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/font-awesome/scss/font-awesome.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/all.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/_all.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/aero.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/blue.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/flat.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/green.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/grey.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/orange.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/pink.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/purple.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/red.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/flat/yellow.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/futurico/futurico.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/icheck.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/icheck.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/_all.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/aero.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/blue.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/green.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/grey.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/line.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/orange.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/pink.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/purple.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/red.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/line/yellow.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/_all.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/aero.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/blue.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/green.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/grey.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/minimal.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/orange.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/pink.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/purple.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/red.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/minimal/yellow.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/polaris/polaris.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/_all.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/aero.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/blue.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/green.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/grey.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/orange.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/pink.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/purple.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/red.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/square.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/iCheck/square/yellow.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jQuery/jQuery-2.1.4.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/AUTHORS.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/LICENSE-MIT.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/dist/meiomask.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/dist/meiomask.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/docs/todo.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/libs/jquery/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/meiomask.jquery.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/spec/javascripts/meiomask_spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/spec/visual/meiomask.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/spec/visual/meiomask.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/spec/visual/meiomask.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-meiomask/src/meiomask.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/additional-methods.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/additional-methods.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/jquery.validate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/jquery.validate.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ar.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_bg.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_bn_BD.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_bn_BD.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ca.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_cs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_da.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_de.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_el.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_es.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_es_AR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_es_AR.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_es_PE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_es_PE.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_et.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_eu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_eu.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_fa.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_fi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_fr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ge.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_gl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_gl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_he.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_hr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_hu.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_hy_AM.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_hy_AM.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_id.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_is.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_it.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ja.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ja.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ka.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ka.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_kk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_kk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ko.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ko.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_lt.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_lv.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_my.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_my.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_nl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_no.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_no.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_pl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_pt_BR.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_pt_PT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_pt_PT.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ro.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_ru.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_si.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_si.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sr_lat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sr_lat.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_sv.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_th.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_tj.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_tj.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_tr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_uk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_uk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_vi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_zh.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_zh.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_zh_TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/messages_zh_TW.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_de.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_es_CL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_es_CL.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_fi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_nl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/dist/localization/methods_pt.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery-1.11.1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery-1.7.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery-1.8.3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery-1.9.1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery.form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery.mockjax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/jquery.simulate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/lib/require.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/accept.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/additional.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/alphanumeric.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/bankaccountNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/bankorgiroaccountNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/bic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/cifES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/cpfBR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/creditcardtypes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/currency.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/dateFA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/dateITA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/dateNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/extension.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/giroaccountNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/iban.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/integer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/ipv4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/ipv6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/lettersonly.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/letterswithbasicpunc.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/mobileNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/mobileUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/nieES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/nifES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/notEqualTo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/nowhitespace.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/pattern.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/phoneNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/phoneUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/phoneUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/phonesUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/postalCodeCA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/postalcodeBR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/postalcodeIT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/postalcodeNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/postcodeUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/require_from_group.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/skip_or_fill_minimum.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/statesUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/strippedminlength.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/time.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/time12h.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/url2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/vinUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/zipcodeUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/additional/ziprange.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/ajax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_bn_BD.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_es_AR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_es_PE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_eu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_gl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_hy_AM.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ja.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ka.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_kk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ko.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_my.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_no.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_pt_PT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_si.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_sl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_sr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_sr_lat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_tj.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_uk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_zh.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/messages_zh_TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/methods_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/methods_es_CL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/methods_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/methods_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/jquery-validation/src/localization/methods_pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react-dom-server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react-dom-server.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react-dom.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react-dom.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react-with-addons.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react-with-addons.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/build/react.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-click-counter/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-commonjs/.babelrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-commonjs/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-commonjs/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-commonjs/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-commonjs/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-jsx-external/example.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-jsx-external/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-jsx-harmony/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-jsx-precompile/example.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-jsx-precompile/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic-jsx/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/basic/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/fiber/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/jquery-bootstrap/css/example.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/jquery-bootstrap/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/jquery-bootstrap/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/jquery-mobile/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/jquery-mobile/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/jquery-mobile/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/quadratic/example.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/quadratic/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/shared/css/base.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/transitions/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/transitions/transition.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/react-15.2.1/examples/webcomponents/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/az.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/en.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/eu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/gl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/hi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/ko.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/mk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/nb.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/pt-BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/sr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/uk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/zh-CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/i18n/zh-TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/select2.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/select2.full.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/select2.full.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/select2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/select2.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/select2/select2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/timepicker/bootstrap-timepicker.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/timepicker/bootstrap-timepicker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/timepicker/bootstrap-timepicker.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/timepicker/bootstrap-timepicker.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/dist/vue/vue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/default.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Pages/home.ctp" afterPath="$PROJECT_DIR$/src/Template/Pages/home.ctp" />
+    </list>
+    <ignored path="softcar.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="softcar" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="default.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.0">
+              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.ctp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Template/Element/header.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.65569276">
+              <caret line="230" column="81" selection-start-line="230" selection-start-column="81" selection-end-line="230" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Desktop/AdminLTE-2.3.3/index2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.428571">
+              <caret line="321" column="6" selection-start-line="321" selection-start-column="6" selection-end-line="457" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/config/bootstrap.php" />
+        <option value="$PROJECT_DIR$/config/app_development.php" />
+        <option value="$PROJECT_DIR$/src/Template/Pages/home.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Element/menu.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Element/header.ctp" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1358" />
+    <option name="y" value="-8" />
+    <option name="width" value="1456" />
+    <option name="height" value="916" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="softcar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="softcar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="softcar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\softcar\src\Template\Element" />
+      <recent name="C:\xampp\htdocs\softcar\webroot" />
+      <recent name="C:\xampp\htdocs\softcar\config" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="185f7360-840e-4ed4-81dc-6a0e59c1b2b1" name="Default" comment="" />
+      <created>1470746724334</created>
+      <option name="number" value="Default" />
+      <updated>1470746724334</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1358" y="-8" width="1456" height="916" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25358167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908162" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48714286">
+          <caret line="118" column="33" selection-start-line="118" selection-start-column="33" selection-end-line="118" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app_development.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49382716">
+          <caret line="227" column="24" selection-start-line="227" selection-start-column="24" selection-end-line="227" selection-end-column="24" />
+          <folding>
+            <marker date="1470746888764" expanded="true" signature="13378:13487" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pages/home.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/dist/vue/vue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47619048">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/AdminLTE-2.3.3/index2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.428571">
+          <caret line="321" column="6" selection-start-line="321" selection-start-column="6" selection-end-line="457" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Element/menu.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19753087">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Element/header.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65569276">
+          <caret line="230" column="81" selection-start-line="230" selection-start-column="81" selection-end-line="230" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
