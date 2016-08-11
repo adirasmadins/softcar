@@ -3,109 +3,33 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
-/**
- * Home Controller
- *
- * @property \App\Model\Table\HomeTable $Home
- */
+
 class HomeController extends AppController
 {
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    public function index()
-    {
-        $home = $this->paginate($this->Home);
-
-        $this->set(compact('home'));
-        $this->set('_serialize', ['home']);
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Home id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $home = $this->Home->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('home', $home);
-        $this->set('_serialize', ['home']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $home = $this->Home->newEntity();
+    public function login() {
+        $this->viewBuilder()->layout(false);
+        $result = ['type' => 'error'];
         if ($this->request->is('post')) {
-            $home = $this->Home->patchEntity($home, $this->request->data);
-            if ($this->Home->save($home)) {
-                $this->Flash->success(__('The home has been saved.'));
+            $data = $this->request->data;
 
-                return $this->redirect(['action' => 'index']);
+            $user = $this->Auth->identify($data);
+            if ($user) {
+                if($user['status'] != 1){
+                    $result = ['type' => 'error'];
+                } else {
+                    $result = ['type' => 'success', 'data' => $user['first_name']];
+                    $this->Auth->setUser($user);
+                }
             } else {
-                $this->Flash->error(__('The home could not be saved. Please, try again.'));
+                $result = ['type' => 'error'];
             }
         }
-        $this->set(compact('home'));
-        $this->set('_serialize', ['home']);
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Home id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $home = $this->Home->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $home = $this->Home->patchEntity($home, $this->request->data);
-            if ($this->Home->save($home)) {
-                $this->Flash->success(__('The home has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The home could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('home'));
-        $this->set('_serialize', ['home']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Home id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $home = $this->Home->get($id);
-        if ($this->Home->delete($home)) {
-            $this->Flash->success(__('The home has been deleted.'));
-        } else {
-            $this->Flash->error(__('The home could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
+    public function logout() {
+        return $this->redirect($this->Auth->logout());
     }
 }
