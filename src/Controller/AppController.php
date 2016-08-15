@@ -33,7 +33,7 @@ class AppController extends Controller
                     'passwordHasher' => [
                         'className' => 'Sha512',
                     ],
-                    'fields' => ['username' => 'email'],
+                    'fields' => ['username' => 'login'],
                     // 'finder' => 'auth',
                     'userModel' => 'Users'
                 ],
