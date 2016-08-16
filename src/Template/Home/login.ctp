@@ -35,7 +35,7 @@
         </div>
         <div class="row" style="margin-top: 50px">
             <div class="col-md-6 pull-right">
-                <button type="button" id="logar" class="btn btn-block btn-success btn-flat pull-right">Entrar</button>
+                <button type="button" id="logar" class="btn btn-block btn-success pull-right">Entrar</button>
             </div>
             <div class="col-md-6" style="margin-top: 5px">
                 <a href="#" id="esqueci-senha">Esqueci minha senha</a><br>
