@@ -2,6 +2,6 @@
 /config/app.php
 /tmp/*
 /logs/*
-.idea
 nbproject
 composer.lock
+.idea
