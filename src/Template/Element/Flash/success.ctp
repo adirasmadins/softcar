@@ -1,1 +1,4 @@
-<div class="message success" onclick="this.classList.add('hidden')"><?= h($message) ?></div>
+<script>
+    var message = '<?= $message ?>';
+    swal(message, "", "success");
+</script>

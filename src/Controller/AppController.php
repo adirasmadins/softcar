@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 class AppController extends Controller
 {
@@ -39,6 +40,15 @@ class AppController extends Controller
                 ],
             ],
         ]);
+
+        /* Validações de Menus */
+        $Menus = TableRegistry::get('Menus');
+
+        $NavMenus = $Menus->find('threaded')
+            ->hydrate(false)
+            ->toArray();
+
+        $this->set(compact('NavMenus'));
     }
 
     public function beforeRender(Event $event)

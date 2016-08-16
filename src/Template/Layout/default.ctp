@@ -13,7 +13,7 @@
     ]));
     $this->append('css', $this->Html->css([
         '../dist/admin-lte/css/AdminLTE',
-        '../dist/admin-lte/css/skins/skin-blue.min',
+        '../dist/admin-lte/css/skins/skin-green',
         '../dist/select2/select2.min',
         '../dist/datepicker/datepicker3'
     ]));
@@ -46,7 +46,7 @@
 
 </head>
 <?= $this->element('header') ?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
     <?= $this->Flash->render() ?>
     <aside class="main-sidebar">

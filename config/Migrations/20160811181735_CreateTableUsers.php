@@ -17,12 +17,17 @@ class CreateTableUsers extends AbstractMigration
                   `neighborhood` VARCHAR(255),
                   `phone` VARCHAR(45),
                   `cel_phone` VARCHAR(45),
+                  `profile_id` INT,
                   `city_id` INT,
                   `state_id` INT,
                   `profile` VARCHAR(45),
                   `login` VARCHAR(45),
                   `password` VARCHAR(255),
+                  `status` int,
                   PRIMARY KEY (`id`),
+                  CONSTRAINT `profile_id_users`
+                    FOREIGN KEY (`profile_id`)
+                    REFERENCES `profiles` (`id`),
                   CONSTRAINT `city_id_users`
                     FOREIGN KEY (`city_id`)
                     REFERENCES `cities` (`id`),
