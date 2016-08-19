@@ -20,7 +20,6 @@ class CreateTableUsers extends AbstractMigration
                   `profile_id` INT,
                   `city_id` INT,
                   `state_id` INT,
-                  `profile` VARCHAR(45),
                   `login` VARCHAR(45),
                   `password` VARCHAR(255),
                   `status` int,

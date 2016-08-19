@@ -106,6 +106,7 @@
         <?= $this->Form->end() ?>
     </div>
 </div>
+
 <?php
 $this->append('script', $this->Html->script([
     'form',

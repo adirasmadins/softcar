@@ -40,6 +40,7 @@ class AppController extends Controller
                 ],
             ],
         ]);
+        $user_online =  $this->request->session()->read('Auth.User');
 
         /* Validações de Menus */
         $Menus = TableRegistry::get('Menus');
@@ -48,7 +49,7 @@ class AppController extends Controller
             ->hydrate(false)
             ->toArray();
 
-        $this->set(compact('NavMenus'));
+        $this->set(compact('NavMenus','user_online'));
     }
 
     public function beforeRender(Event $event)

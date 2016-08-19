@@ -27,8 +27,14 @@
                         <?php endif ?>
                     <?php endforeach; ?>
                     <td>
-                        <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-default']) ?>
-                        <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-default btn-deletar"><i class="fa fa-trash"></i></a>
+                        <div class="btn-group hidden-xs">
+                            <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-warning btn-flat']) ?>
+                            <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-danger btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
+                        </div>
+                        <div class="btn-group-vertical hidden-md hidden-lg hidden-sm">
+                            <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-default btn-flat']) ?>
+                            <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-default btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
+                        </div>
                     </td>
                 </tr>
                 </tbody>

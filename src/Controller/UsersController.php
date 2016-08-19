@@ -7,6 +7,10 @@ use Cake\ORM\TableRegistry;
 
 class UsersController extends AppController
 {
+    public $paginate = [
+        'limit' => 7,
+    ];
+
     public function initialize()
     {
         parent::initialize();
@@ -26,11 +30,11 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Usuário salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Usuário'));
             }
         }
         $situacao = 'Cadastrar Usuário';
@@ -50,11 +54,11 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Usuário salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Usuário'));
             }
         }
         $situacao = 'Editar Usuário';
@@ -69,13 +73,17 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
+        $data = $this->request->data;
+        $user = $this->Users->get($data['id']);
+        $result = ['type' => 'error'];
+
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $result = ['type' => 'success','data' => $user['name']];
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $result = ['type' => 'error'];
         }
 
-        return $this->redirect(['action' => 'index']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 }
