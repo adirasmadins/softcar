@@ -1,11 +1,14 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo" style="font-family: 'Source Sans Pro', sans-serif;">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>SC</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>SoftCar</b></span>
+        <span class="logo-lg">
+            <img src="<?= $this->Url->build('/img/logo-header.png', true); ?>" class="img-responsive center-block pull-left" width="40px" style="margin-top: 5px"/>
+            <b>SoftCar</b>
+        </span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->

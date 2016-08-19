@@ -13,9 +13,11 @@
     ]));
     $this->append('css', $this->Html->css([
         '../dist/admin-lte/css/AdminLTE',
-        '../dist/admin-lte/css/skins/skin-green',
+        '../dist/admin-lte/css/skins/skin-black',
         '../dist/select2/select2.min',
-        '../dist/datepicker/datepicker3'
+        '../dist/datepicker/datepicker3',
+        'style',
+        'form'
     ]));
     echo $this->fetch('css');
     ?>
@@ -46,7 +48,7 @@
 
 </head>
 <?= $this->element('header') ?>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
     <?= $this->Flash->render() ?>
     <aside class="main-sidebar">
@@ -54,7 +56,7 @@
             <?= $this->element('menu') ?>
         </section>
     </aside>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="min-height: 800px; !important;">
         <section class="content">
             <?= $this->fetch('content') ?>
         </section>

@@ -20,7 +20,7 @@
 <?= $this->Form->create(null,['id' => 'formLogin']) ?>
 <div class="login-box">
     <div class="login-logo">
-        <b>SoftCar</b>
+        <img src="../img/logo.png" class="img-responsive center-block" width="200px"/>
     </div>
 
     <div class="login-box-body">

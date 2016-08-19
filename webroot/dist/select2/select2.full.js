@@ -1430,7 +1430,7 @@ S2.define('select2/selection/single',[
     $selection.html(
       '<span class="select2-selection__rendered"></span>' +
       '<span class="select2-selection__arrow" role="presentation">' +
-        '<i class="fa fa-chevron-down" style="margin-top: 15px;"></i>' +
+        '<i class="fa fa-sort-down" style="margin-top: 11px;"></i>' +
       '</span>'
     );
 

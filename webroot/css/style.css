@@ -1,0 +1,9 @@
+input[type="email"],
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+select{
+    height: 40px !important;
+    margin-bottom: 20px;
+}
