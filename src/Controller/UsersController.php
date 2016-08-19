@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Database\Schema\Table;
+use Cake\ORM\TableRegistry;
 
 class UsersController extends AppController
 {
@@ -12,9 +14,6 @@ class UsersController extends AppController
 
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Cities', 'States']
-        ];
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -34,9 +33,11 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $cities = $this->Users->Cities->find('list');
+        $situacao = 'Cadastrar Usuário';
+        $Profiles = TableRegistry::get('Profiles');
+        $profiles = $Profiles->find('list');
         $states = $this->Users->States->find('list');
-        $this->set(compact('user', 'cities', 'states'));
+        $this->set(compact('user','situacao', 'states','profiles'));
         $this->set('_serialize', ['user']);
         $this->render('form');
     }
@@ -56,9 +57,11 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $cities = $this->Users->Cities->find('list');
+        $situacao = 'Editar Usuário';
+        $Profiles = TableRegistry::get('Profiles');
+        $profiles = $Profiles->find('list');
         $states = $this->Users->States->find('list');
-        $this->set(compact('user', 'cities', 'states'));
+        $this->set(compact('user','situacao','profiles','states'));
         $this->set('_serialize', ['user']);
         $this->render('form');
     }

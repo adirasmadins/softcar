@@ -1,3 +1,12 @@
+<?=
+$this->element('Form/header_index',[
+    'options' => [
+        'name' => 'Usuário',
+        'variavel' => 'users'
+    ]
+])
+?>
+
 <?= $this->element('table',['options' => [
     'column' => [
         'id' => '#ID',

@@ -64,15 +64,15 @@ class UsersTable extends Table
             ->allowEmpty('gender');
 
         $validator
-            ->date('birth_date')
+//            ->date('birth_date')
             ->allowEmpty('birth_date');
 
         $validator
-            ->integer('cpf')
+//            ->integer('cpf')
             ->allowEmpty('cpf');
 
         $validator
-            ->integer('rg')
+//            ->integer('rg')
             ->allowEmpty('rg');
 
         $validator

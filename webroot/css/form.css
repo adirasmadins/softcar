@@ -1,0 +1,100 @@
+.transparent {
+    background: transparent !important;
+}
+
+.select2-container--default .select2-selection--multiple{
+    border-radius: 0px !important;
+    min-height: 50px !important;
+    max-height: 100px;
+}
+.select2-selection__choice__remove{
+    color: white !important;
+}
+.select2-selection__choice{
+    background-color: #A50A11 !important;
+    border-color: #A50A11 !important;
+    color: #fff;
+}
+.select2-container{
+    width: 100% !important;
+    margin-bottom: 20px;
+}
+.select2.select2-container--disabled{
+    opacity: 0.5;
+}
+.select2.select2-container--disabled .select2-selection__rendered{
+    cursor: not-allowed;
+}
+
+/************************************************
+*  Select 2
+************************************************/
+
+.select2-selection--single .select2-selection__arrow > b {
+    border: none !important;
+    position: relative;
+}
+
+.select2-selection--single .select2-selection__arrow > b:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #EEEFF4;
+    position: absolute;
+    right: 2px;
+    top: -4px;
+    z-index: 2;
+}
+
+.select2-selection--single .select2-selection__arrow > b:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #A50A11;
+    position: absolute;
+    top: -2px;
+    right: 2px;
+    z-index: 1;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-selection .select2-selection--single {
+    height: 40px !important;
+    padding-left: 0px;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+.select2-selection--single .select2-selection__rendered {
+    color: #878c9f !important;
+}
+
+.select2-search__field {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #92969f !important;
+    padding-left: 0px;
+    font-size: 13px;
+    color: #878c9f;
+    background-color: transparent !important;
+}
+
+.select2-dropdown--below {
+    -webkit-box-shadow: inset 0px 0px 0px 2px #eeeeee;
+    -moz-box-shadow: inset 0px 0px 0px 2px #eeeeee;
+    box-shadow: inset 0px 0px 0px 2px #eeeeee;
+}
+
+.select2-results__option {
+    font-size: 13px;
+    color: #878c9f;
+}
+
