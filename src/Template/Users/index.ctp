@@ -11,7 +11,8 @@ $this->element('Form/header_index',[
     'column' => [
         'id' => '#ID',
         'name' => 'Nome',
-        'phone' => 'Telefone',
+        'login' => 'Login',
+        'cpf' => 'CPF',
         'status' => 'Status'
     ],
     'name' => 'O usuário',

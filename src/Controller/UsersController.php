@@ -2,8 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Lib\Utils;
 use Cake\Database\Schema\Table;
 use Cake\ORM\TableRegistry;
+use Phinx\Util\Util;
 
 class UsersController extends AppController
 {
@@ -29,6 +31,10 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+
+            /* Convertendo data para padrão americano antes de salvar */
+            $user->birth_date = Utils::brToDate($user->birth_date);
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Usuário salvo com sucesso'));
 
@@ -53,6 +59,10 @@ class UsersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+
+            /* Convertendo data para padrão americano antes de salvar */
+            $user->birth_date = Utils::brToDate($user->birth_date);
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Usuário salvo com sucesso'));
 
@@ -62,9 +72,15 @@ class UsersController extends AppController
             }
         }
         $situacao = 'Editar Usuário';
+
         $Profiles = TableRegistry::get('Profiles');
         $profiles = $Profiles->find('list');
+
         $states = $this->Users->States->find('list');
+
+        if($user->birth_date){
+            $user->birth_date = $user->birth_date->i18nFormat('dd/MM/YYYY');
+        }
         $this->set(compact('user','situacao','profiles','states'));
         $this->set('_serialize', ['user']);
         $this->render('form');

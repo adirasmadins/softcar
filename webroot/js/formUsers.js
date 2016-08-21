@@ -20,12 +20,17 @@ $(document).ready(function(){
      */
     $('#birth-date').datepicker({
         language: "pt-BR",
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        viewMode: 'years'
     });
 
+    /**
+     * Não deixando colocar letras em campos numéricos
+     */
     $('#number').keyup(function () {
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
+
     /**
      * Definindo máscaras
      * @type {Form}
