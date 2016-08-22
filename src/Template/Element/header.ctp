@@ -11,13 +11,12 @@
         </span>
     </a>
 
-    <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only hidden-md hidden-sm">Toggle navigation</span>
         </a>
-        <!-- Navbar Right Menu -->
+
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown notifications-menu">
@@ -138,13 +137,14 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="hidden-xs"><?= $user_online['name'] ?></span>
+                        <?php $user_first_name = (explode(" ",$user_online['name'])) ?>
+                        <i class="fa fa-user"></i><span class="hidden-xs"><?= $user_first_name[0] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
                             <p>
-                                User - Profile
+                                <?= $user_online['name'] ?> - Profile
                             </p>
                         </li>
                         <!-- Menu Footer-->
@@ -153,13 +153,15 @@
                                 <a href="#" class="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sair</a>
+                                <a href="#" class="btn btn-default btn-flat btn-sair">Sair</a>
                             </div>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
-
     </nav>
 </header>
+<script>
+    var user = '<?= $user_online['name'] ?>';
+</script>

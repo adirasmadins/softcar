@@ -13,6 +13,7 @@ class HomeController extends AppController
             $data = $this->request->data;
 
             $user = $this->Auth->identify($data);
+
             if ($user) {
                 $result = ['type' => 'success', 'data' => $user['name']];
                 $this->Auth->setUser($user);

@@ -32,7 +32,8 @@
         '../dist/jquery-validation/dist/jquery.validate.min',
         '../dist/bootstrap/js/bootstrap.min',
         '../dist/bootstrap-sweetalert/dist/sweetalert.min',
-        '../dist/jquery-meiomask/dist/meiomask'
+        '../dist/jquery-meiomask/dist/meiomask',
+        'default'
     ]));
     echo $this->append('script', $this->Html->script([
         '../dist/admin-lte/js/app.min',
