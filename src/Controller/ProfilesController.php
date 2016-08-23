@@ -2,12 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
-/**
- * Profiles Controller
- *
- * @property \App\Model\Table\ProfilesTable $Profiles
- */
+
 class ProfilesController extends AppController
 {
 
@@ -32,7 +29,12 @@ class ProfilesController extends AppController
                 $this->Flash->error(__('The profile could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('profile'));
+        $situacao = 'Cadastrar Perfil';
+
+        $Menus = TableRegistry::get('Menus');
+        $menus = $Menus->find('list')->where(['controller not is null']);
+
+        $this->set(compact('profile','situacao','menus'));
         $this->set('_serialize', ['profile']);
         $this->render('form');
     }

@@ -20,7 +20,14 @@ class UsersController extends AppController
 
     public function index()
     {
-        $users = $this->paginate($this->Users);
+        $data = $this->request->query;
+        $query = $this->Users->find();
+        if (isset($data['name']) && !empty($data['name'])) {
+            $query->where([
+                'name LIKE' => '%' . Utils::r_acc($data['name']) . '%'
+            ]);
+        };
+        $users = $this->paginate($query);
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
@@ -44,9 +51,12 @@ class UsersController extends AppController
             }
         }
         $situacao = 'Cadastrar Usuário';
+
         $Profiles = TableRegistry::get('Profiles');
         $profiles = $Profiles->find('list');
+
         $states = $this->Users->States->find('list');
+
         $this->set(compact('user','situacao', 'states','profiles'));
         $this->set('_serialize', ['user']);
         $this->render('form');

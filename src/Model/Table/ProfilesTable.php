@@ -39,6 +39,11 @@ class ProfilesTable extends Table
         $this->hasMany('Users', [
             'foreignKey' => 'profile_id'
         ]);
+
+        $this->belongsToMany('Menus', [
+            'foreignKey' => 'profile_id',
+            'joinTable' => 'profile_menus'
+        ]);
     }
 
     /**

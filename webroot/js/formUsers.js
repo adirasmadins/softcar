@@ -25,10 +25,13 @@ $(document).ready(function(){
     });
 
     /**
-     * Não deixando colocar letras em campos numéricos
+     * Expressões regulares
      */
-    $('#number').keyup(function () {
+    $('#number').keyup(function (){
         this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+    $('#name').keyup(function(){
+        this.value = this.value.replace(/[^a-zA-Z]+/g, '');
     });
 
     /**
@@ -54,7 +57,7 @@ $(document).ready(function(){
                 minlength: 3
             },
             gender: {
-                required: true,
+                required: true
             },
             cpf: {
                 required: true
