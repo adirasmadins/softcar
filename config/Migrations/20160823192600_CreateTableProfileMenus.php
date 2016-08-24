@@ -13,7 +13,7 @@ class CreateTableProfileMenus extends AbstractMigration
                 CONSTRAINT menu_id_menus FOREIGN KEY (menu_id) REFERENCES menus (id));
 
                 INSERT INTO profile_menus (id, profile_id, menu_id) values (null, 1, 1);
-                INSERT INTO profile_menus (id, profile_id, menu_id) values (null, 1, 2);
+                INSERT INTO profile_menus (id, profile_id, menu_id) values (null, 1, 3);
                 ";
 
         $this->execute($sql);

@@ -5,10 +5,11 @@ $(function(){
         var url = webroot + 'home/login';
 
         $.post(url,formData,function(e){
+            console.log(e.result);
             if(e.result.type == 'error'){
                 swal({
-                    title: "Que pena, deu errado!",
-                    text: "Login não foi realizado",
+                    title: e.result.title,
+                    text: e.result.text,
                     type: 'error',
                     confirmButtonClass: 'btn-danger'
                 });
@@ -18,8 +19,8 @@ $(function(){
                     window.location = webroot + 'dashboard/index';
                 }, 3000);
                 swal({
-                    title: "Bem vindo(a), " + e.result.data,
-                    text: "Você será redirecionado(a) em 3 segundos",
+                    title: e.result.title,
+                    text: e.result.text,
                     timer: 3000,
                     type: 'success',
                     showConfirmButton: false

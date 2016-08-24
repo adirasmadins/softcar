@@ -4,15 +4,15 @@
 
 .select2-container--default .select2-selection--multiple{
     border-radius: 0px !important;
-    min-height: 50px !important;
+    min-height: 40px !important;
     max-height: 100px;
 }
 .select2-selection__choice__remove{
     color: white !important;
 }
 .select2-selection__choice{
-    background-color: #A50A11 !important;
-    border-color: #A50A11 !important;
+    background-color: #005a87 !important;
+    border-color: #005a87 !important;
     color: #fff;
 }
 .select2-container{
