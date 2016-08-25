@@ -1302,7 +1302,7 @@ a:focus {
 }
 /* support Font Awesome icons in form-control */
 .form-control-feedback.fa {
-  line-height: 94px;
+  line-height: 85px;
   margin-right: 15px;
 }
 .input-lg + .form-control-feedback.fa,
