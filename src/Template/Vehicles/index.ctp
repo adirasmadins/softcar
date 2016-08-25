@@ -2,7 +2,8 @@
 $this->element('Form/header_index',[
     'options' => [
         'name' => 'Veículo',
-        'variavel' => 'vehicles'
+        'variavel' => 'vehicles',
+        'placeholder' => 'Digite a placa do veículo...'
     ]
 ])
 ?>
@@ -15,7 +16,7 @@ $this->element('Form/header_index',[
         'color' => 'Cor',
     ],
     'name' => 'O veículo',
-    'entity' => 'Veículos',
+    'entity' => 'Vehicles',
     'data' => $vehicles
 ]]); ?>
 

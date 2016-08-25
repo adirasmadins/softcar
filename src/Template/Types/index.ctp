@@ -2,7 +2,8 @@
 $this->element('Form/header_index',[
     'options' => [
         'name' => 'Tipos de veículo',
-        'variavel' => 'types'
+        'variavel' => 'types',
+        'placeholder' => 'Digite a descrição do tipo...'
     ]
 ])
 ?>
@@ -10,7 +11,7 @@ $this->element('Form/header_index',[
 <?= $this->element('table',['options' => [
     'column' => [
         'id' => '#ID',
-        'name' => 'Nome'
+        'name' => 'Descrição'
     ],
     'name' => 'O tipo',
     'entity' => 'Tipos',

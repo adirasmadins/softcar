@@ -18,7 +18,7 @@
                     <?= $this->Form->input('chassi',['label' => 'Chassi','placeholder' => 'Chassi','class' => 'form-control']) ?>
                 </div>
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('renavam',['label' => 'Renavam','placeholder' => 'Renavam','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('renavam',['label' => 'Renavam','placeholder' => 'Renavam','class' => 'form-control','type' => 'text','maxlength' => 11]) ?>
                 </div>
             </div>
             <div class="row">
@@ -37,7 +37,7 @@
                     <?= $this->Form->input('mark',['label' => 'Marca','placeholder' => 'Marca','class' => 'form-control']) ?>
                 </div>
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('modelo',['label' => 'Modelo','placeholder' => 'Modelo','class' => 'form-control']) ?>
+                    <?= $this->Form->input('model',['label' => 'Modelo','placeholder' => 'Modelo','class' => 'form-control']) ?>
                 </div>
                 <div class="col-md-4">
                     <?= $this->Form->input('date_model',['label' => 'Ano do Modelo','placeholder' => 'Data do Modelo','class' => 'form-control','type' => 'text']) ?>
@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('color',['label' => 'Cor','placeholder' => 'Cor','class' => 'form-control',' type' => 'color']) ?>
+                    <?= $this->Form->input('color',['label' => 'Cor Predominante','placeholder' => 'Cor','class' => 'form-control']) ?>
                 </div>
                 <div class="col-md-4">
                     <?= $this->Form->input('day_price',['label' => 'Valor Diária','placeholder' => 'Valor Diária','class' => 'form-control','type' => 'text']) ?>

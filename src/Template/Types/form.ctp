@@ -12,7 +12,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <?= $this->Form->input('name',['label' => 'Nome','placeholder' => 'Nome','class' => 'form-control']) ?>
+                    <?= $this->Form->input('name',['label' => 'Descrição','placeholder' => 'Descrição','class' => 'form-control']) ?>
                 </div>
             </div>
         </div>

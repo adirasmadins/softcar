@@ -33,12 +33,13 @@ class VehiclesController extends AppController
         $vehicle = $this->Vehicles->newEntity();
         if ($this->request->is('post')) {
             $vehicle = $this->Vehicles->patchEntity($vehicle, $this->request->data);
+
             if ($this->Vehicles->save($vehicle)) {
-                $this->Flash->success(__('The vehicle has been saved.'));
+                $this->Flash->success(__('Veículo salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
             }
         }
         $situacao = 'Cadastrar Veículo';
@@ -59,11 +60,11 @@ class VehiclesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $vehicle = $this->Vehicles->patchEntity($vehicle, $this->request->data);
             if ($this->Vehicles->save($vehicle)) {
-                $this->Flash->success(__('The vehicle has been saved.'));
+                $this->Flash->success(__('Veículo salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
             }
         }
         $situacao = 'Editar veículo';
@@ -79,13 +80,17 @@ class VehiclesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $vehicle = $this->Vehicles->get($id);
+        $data = $this->request->data;
+        $vehicle = $this->Vehicles->get($data['id']);
+        $result = ['type' => 'error'];
+
         if ($this->Vehicles->delete($vehicle)) {
-            $this->Flash->success(__('The vehicle has been deleted.'));
+            $result = ['type' => 'success','data' => $vehicle['model']];
         } else {
-            $this->Flash->error(__('The vehicle could not be deleted. Please, try again.'));
+            $result = ['type' => 'error'];
         }
 
-        return $this->redirect(['action' => 'index']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 }
