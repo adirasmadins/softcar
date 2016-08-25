@@ -72,7 +72,7 @@ class ProfilesController extends AppController
             }
         }
 
-        $situacao = 'Cadastrar Perfil';
+        $situacao = 'Editar Perfil';
 
         $Menus = TableRegistry::get('Menus');
         $Menus->displayField('text');

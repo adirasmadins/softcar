@@ -12,7 +12,7 @@ class CreateTableVehicles extends AbstractMigration
                   `chassi` VARCHAR(17) NOT NULL,
                   `renavam` FLOAT NOT NULL,
                   `type_id` INT NOT NULL,
-                  `fuel` VARCHAR(45) NOT NULL,
+                  `fuel_id` INT NOT NULL,
                   `mark` VARCHAR(45) NOT NULL,
                   `model` VARCHAR(255) NOT NULL,
                   `date_fabrication` INT NOT NULL,
@@ -22,7 +22,10 @@ class CreateTableVehicles extends AbstractMigration
                   PRIMARY KEY (`id`),
                   CONSTRAINT `type_id_vehicles`
                     FOREIGN KEY (`type_id`)
-                    REFERENCES `types` (`id`)
+                    REFERENCES `types` (`id`),
+                  CONSTRAINT `fuel_id_vehicles`
+                    FOREIGN KEY (`fuel_id`)
+                    REFERENCES `fuels` (`id`)
                     ON DELETE NO ACTION
                     ON UPDATE NO ACTION)";
 
