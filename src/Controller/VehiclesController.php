@@ -2,20 +2,21 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
-/**
- * Vehicles Controller
- *
- * @property \App\Model\Table\VehiclesTable $Vehicles
- */
+
 class VehiclesController extends AppController
 {
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
+    public $paginate = [
+        'limit' => 7,
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
         $this->paginate = [
@@ -27,28 +28,6 @@ class VehiclesController extends AppController
         $this->set('_serialize', ['vehicles']);
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $vehicle = $this->Vehicles->get($id, [
-            'contain' => ['Types', 'Fuels', 'Locations', 'Rates', 'Reserves', 'Services', 'Tickets']
-        ]);
-
-        $this->set('vehicle', $vehicle);
-        $this->set('_serialize', ['vehicle']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $vehicle = $this->Vehicles->newEntity();
@@ -62,19 +41,16 @@ class VehiclesController extends AppController
                 $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
             }
         }
-        $types = $this->Vehicles->Types->find('list', ['limit' => 200]);
-        $fuels = $this->Vehicles->Fuels->find('list', ['limit' => 200]);
-        $this->set(compact('vehicle', 'types', 'fuels'));
+        $situacao = 'Cadastrar Veículo';
+
+        $types = $this->Vehicles->Types->find('list');
+        $fuels = $this->Vehicles->Fuels->find('list');
+
+        $this->set(compact('vehicle', 'situacao','types','fuels'));
         $this->set('_serialize', ['vehicle']);
+        $this->render('form');
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $vehicle = $this->Vehicles->get($id, [
@@ -90,19 +66,16 @@ class VehiclesController extends AppController
                 $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
             }
         }
-        $types = $this->Vehicles->Types->find('list', ['limit' => 200]);
-        $fuels = $this->Vehicles->Fuels->find('list', ['limit' => 200]);
-        $this->set(compact('vehicle', 'types', 'fuels'));
+        $situacao = 'Editar veículo';
+
+        $types = $this->Vehicles->Types->find('list');
+        $fuels = $this->Vehicles->Fuels->find('list');
+
+        $this->set(compact('vehicle', 'situacao','types','fuels'));
         $this->set('_serialize', ['vehicle']);
+        $this->render('form');
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
