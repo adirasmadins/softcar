@@ -1,7 +1,8 @@
 <ul class="sidebar-menu">
+
     <?php foreach($NavMenus as $menu): ?>
         <?php if(empty($menu['children'])): ?>
-            <li>
+            <li class="<?= $this->request->controller == $menu['controller'] ? 'active' : '' ?>">
                 <a href="<?= $this->Url->build("/". $menu['route'] ."/" . $menu['action']); ?>">
                     <i class="fa fa-<?= $menu['icon'] ?>"></i>
                     <span><?= $menu['text']; ?></span>
@@ -20,7 +21,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <?php foreach($menu['children'] as $child): ?>
-                        <li>
+                        <li class="<?= $this->request->controller == $menu['controller'] ? 'active' : '' ?>">
                             <a href="<?= $this->Url->build("/". $child['route'] ."/" . $child['action']); ?>">
                                 <?= $child['text'] ?>
                             </a>
