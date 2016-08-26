@@ -3,7 +3,8 @@ $this->element('Form/header_index',[
     'options' => [
         'name' => 'Tipos de veículo',
         'variavel' => 'types',
-        'placeholder' => 'Digite a descrição do tipo...'
+        'placeholder' => 'Digite a descrição do tipo...',
+        'search' => 'name'
     ]
 ])
 ?>

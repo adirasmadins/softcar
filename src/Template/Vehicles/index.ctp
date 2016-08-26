@@ -3,7 +3,8 @@ $this->element('Form/header_index',[
     'options' => [
         'name' => 'Veículo',
         'variavel' => 'vehicles',
-        'placeholder' => 'Digite a placa do veículo...'
+        'placeholder' => 'Digite a placa do veículo...',
+        'search' => 'plate'
     ]
 ])
 ?>
@@ -31,6 +32,11 @@ $this->element('Form/header_index',[
 
 <?php
 $this->append('css', $this->Html->css([
+    'indexVehicles'
+]));
+
+$this->append('script', $this->Html->script([
+    'form',
     'indexVehicles'
 ]));
 ?>

@@ -3,7 +3,8 @@ $this->element('Form/header_index',[
     'options' => [
         'name' => 'Perfil',
         'variavel' => 'profiles',
-        'placeholder' => 'Digite o nome do perfil...'
+        'placeholder' => 'Digite o nome do perfil...',
+        'search' => 'name'
     ]
 ])
 ?>

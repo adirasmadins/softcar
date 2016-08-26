@@ -3,7 +3,8 @@ $this->element('Form/header_index',[
     'options' => [
         'name' => 'Combustível',
         'variavel' => 'fuels',
-        'placeholder' => 'Digite o nome do combustível...'
+        'placeholder' => 'Digite o nome do combustível...',
+        'search' => 'name'
     ]
 ])
 ?>

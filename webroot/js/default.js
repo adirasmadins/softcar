@@ -22,4 +22,9 @@ $(document).ready(function(){
                 }, 1000);
             });
     });
+
+    if($('.treeview-menu .active').length){
+        $('.treeview').addClass('active');
+        $('ul.treeview-menu ').addClass('menu-open');
+    }
 });

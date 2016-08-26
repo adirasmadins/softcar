@@ -11,6 +11,7 @@
         <?php endif ?>
 
         <?php if (count($menu['children']) && !empty($menu['children'])): ?>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-<?= $menu['icon'] ?>"></i>
@@ -21,7 +22,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <?php foreach($menu['children'] as $child): ?>
-                        <li class="<?= $this->request->controller == $menu['controller'] ? 'active' : '' ?>">
+                        <li class="<?= $this->request->controller == $child['controller'] ? 'active' : '' ?>">
                             <a href="<?= $this->Url->build("/". $child['route'] ."/" . $child['action']); ?>">
                                 <?= $child['text'] ?>
                             </a>

@@ -20,7 +20,14 @@ class VehiclesController extends AppController
 
     public function index()
     {
-        $vehicles = $this->paginate($this->Vehicles);
+        $data = $this->request->query;
+        $query = $this->Vehicles->find();
+        if (isset($data['plate']) && !empty($data['plate'])) {
+            $query->where([
+                'plate LIKE' => '%' . $data['plate'] . '%'
+            ]);
+        };
+        $vehicles = $this->paginate($query);
 
         $this->set(compact('vehicles'));
         $this->set('_serialize', ['vehicles']);
@@ -110,23 +117,6 @@ class VehiclesController extends AppController
             $result = ['type' => 'error'];
         }
 
-        $this->set(compact('result'));
-        $this->set('_serialize', ['result']);
-    }
-
-    public function getInfoVehicle(){
-        $result = ['type' => 'error'];
-
-        if($this->request->is('post')){
-            $data = $this->request->data;
-
-            $vehicle = $this->Vehicles->get($data['id']);
-            if(count($vehicle)){
-                $result = ['type' => 'success', 'data' => $vehicle];
-            } else {
-                $result = ['type' => 'error'];
-            }
-        }
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
     }
