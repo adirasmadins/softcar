@@ -1,4 +1,19 @@
 $(document).ready(function(){
+    var formVehicles = new Form;
+
+    $("#picture").change(function () {
+        formVehicles.imagePreview(this, $("#target"));
+    });
+
+    $("#url").change(function () {
+        if ($(this).val().match(/^http/)) {
+            $.noop();
+        }
+        else {
+            var cur_val = $(this).val();
+            $(this).val('http://' + cur_val);
+        }
+    });
     $('#type-id').select2();
     $('#fuel-id').select2();
 
@@ -14,9 +29,15 @@ $(document).ready(function(){
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
 
-    var formVehicles = new Form;
+    $("#day-price").maskMoney({
+        prefix:'R$ ',
+        allowNegative: true,
+        thousands:'.',
+        decimal:',',
+        affixesStay: false
+    });
+
     formVehicles.inputMasks({
-        '#day-price': 'decimal-7-2',
         '#plate': 'plate'
     });
 

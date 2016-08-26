@@ -14,6 +14,7 @@ $this->element('Form/header_index',[
         'plate' => 'Placa',
         'model' => 'Modelo',
         'color' => 'Cor',
+        'day_price' => 'Diária'
     ],
     'name' => 'O veículo',
     'entity' => 'Vehicles',

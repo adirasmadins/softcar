@@ -19,8 +19,8 @@
                         <?php elseif($key == 'created'): ?>
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>
                             <td><?= $item->$key ?></td>
-                        <?php elseif($key == 'type'): ?>
-                            <?php $item->$key = \App\Lib\Utils::getRealType($item->$key); ?>
+                        <?php elseif($key == 'day_price'): ?>
+                            <?php $item->$key = 'R$' . $item->$key ?>
                             <td><?= $item->$key ?></td>
                         <?php else: ?>
                             <td><?= $item->$key ?></td>

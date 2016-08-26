@@ -164,13 +164,7 @@ class Utils {
     static function getStatusReal($status){
         $status == 0 ? $status_real = '<span class="label label-danger">Inativo</span>' : '';
         $status == 1 ? $status_real = '<span class="label label-success">Ativo</span>' : '';
-        $status == 2 ? $status_real = '<span class="label label-warning">Pré Cadastro</span>' : '';
-        return $status_real;
-    }
 
-    static function getRealType($type){
-        $type == 'g' ? $type_real = 'Grupo' : '';
-        $type == 'd' ? $type_real = 'Discipulado' : '';
-        return $type_real;
+        return $status_real;
     }
 }
