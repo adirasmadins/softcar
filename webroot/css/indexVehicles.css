@@ -1,0 +1,10 @@
+.view-vehicle{
+    border-radius: 5px;
+    border: 2px solid #222d32;
+    background-color: #ecf0f5;
+    position: absolute;
+    right: 30px;
+    width: 300px;
+    height: auto;
+    display:none;
+}

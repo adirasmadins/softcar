@@ -1,6 +1,6 @@
 <div class="col-md-10">
     <div class="panel panel-default">
-        <?= $this->Form->create($vehicle,['id' => 'formVehicles']) ?>
+        <?= $this->Form->create($vehicle,['id' => 'formVehicles','type' => 'file']) ?>
         <div class="box-header hidden-sm hidden-xs">
             <h4 class="panel-head"><?= $situacao ?></h4>
             <hr/>

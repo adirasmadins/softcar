@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use App\Lib\Utils;
 
 
 class VehiclesController extends AppController
@@ -19,9 +20,6 @@ class VehiclesController extends AppController
 
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Types', 'Fuels']
-        ];
         $vehicles = $this->paginate($this->Vehicles);
 
         $this->set(compact('vehicles'));
@@ -32,7 +30,16 @@ class VehiclesController extends AppController
     {
         $vehicle = $this->Vehicles->newEntity();
         if ($this->request->is('post')) {
-            $vehicle = $this->Vehicles->patchEntity($vehicle, $this->request->data);
+
+            $data = $this->request->data;
+
+            $file = Utils::fazerUpload($data, 'vehicles');
+
+            $vehicle = $this->Vehicles->patchEntity($vehicle, $data);
+
+            if ($file) {
+                $vehicle->picture = '/' . $file;
+            }
 
             if ($this->Vehicles->save($vehicle)) {
                 $this->Flash->success(__('Veículo salvo com sucesso'));
@@ -58,7 +65,20 @@ class VehiclesController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $vehicle = $this->Vehicles->patchEntity($vehicle, $this->request->data);
+            $data = $this->request->data;
+
+            $file = Utils::fazerUpload($data, 'vehicles');
+
+            $vehicle = $this->Vehicles->patchEntity($vehicle, $data);
+
+            if ($file) {
+                $vehicle->picture = '/' . $file;
+            }
+
+            if(empty($vehicle->picture) && !empty($vehicle->current_picture)){
+                $vehicle->picture = $vehicle->current_picture;
+            }
+
             if ($this->Vehicles->save($vehicle)) {
                 $this->Flash->success(__('Veículo salvo com sucesso'));
 
@@ -90,6 +110,23 @@ class VehiclesController extends AppController
             $result = ['type' => 'error'];
         }
 
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
+
+    public function getInfoVehicle(){
+        $result = ['type' => 'error'];
+
+        if($this->request->is('post')){
+            $data = $this->request->data;
+
+            $vehicle = $this->Vehicles->get($data['id']);
+            if(count($vehicle)){
+                $result = ['type' => 'success', 'data' => $vehicle];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        }
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
     }
