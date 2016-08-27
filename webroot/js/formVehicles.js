@@ -44,13 +44,15 @@ $(document).ready(function(){
     $('#date-fabrication').datepicker({
         language: "pt-BR",
         format: 'yyyy',
-        minViewMode: "years"
+        minViewMode: "years",
+        autoclose: true
     });
 
     $('#date-model').datepicker({
         language: "pt-BR",
         format: 'yyyy',
-        minViewMode: "years"
+        minViewMode: "years",
+        autoclose: true
     });
 
     /**

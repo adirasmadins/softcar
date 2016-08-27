@@ -75,7 +75,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('profile_id', ['label' => 'Perfil','placeholder' => 'Perfil','class' => 'form-control','options' => '','empty' => 'Selecione o perfil']) ?>
+                    <?= $this->Form->input('profile_id', ['label' => 'Perfil','placeholder' => 'Perfil','class' => 'form-control','options' => $profiles,'empty' => 'Selecione o perfil']) ?>
                 </div>
                 <div class="col-md-4 form-group">
                     <?= $this->Form->input('login', ['label' => 'Login','placeholder' => 'Login','class' => 'form-control']) ?>

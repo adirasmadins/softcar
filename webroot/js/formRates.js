@@ -20,22 +20,26 @@ $(document).ready(function(){
     $('#referent-year').datepicker({
         language: "pt-BR",
         format: 'yyyy',
-        minViewMode: "years"
+        minViewMode: "years",
+        autoclose: true
     })
 
     $('#ipva-expiration').datepicker({
         language: "pt-BR",
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        autoclose: true
     });
 
     $('#depvat-expiration').datepicker({
         language: "pt-BR",
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        autoclose: true
     });
 
     $('#licensing-expiration').datepicker({
         language: "pt-BR",
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        autoclose: true
     });
 
     $("#ipva-value").maskMoney({

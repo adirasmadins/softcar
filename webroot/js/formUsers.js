@@ -20,8 +20,7 @@ $(document).ready(function(){
      */
     $('#birth-date').datepicker({
         language: "pt-BR",
-        format: 'dd/mm/yyyy',
-        viewMode: 'years'
+        format: 'dd/mm/yyyy'
     });
 
     /**

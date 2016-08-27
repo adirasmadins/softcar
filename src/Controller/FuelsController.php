@@ -2,13 +2,21 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Lib\Utils;
 
 class FuelsController extends AppController
 {
 
     public function index()
     {
-        $fuels = $this->paginate($this->Fuels);
+        $data = $this->request->query;
+        $query = $this->Fuels->find();
+        if (isset($data['name']) && !empty($data['name'])) {
+            $query->where([
+                'name LIKE' => '%' . Utils::r_acc($data['name']) . '%'
+            ]);
+        };
+        $fuels = $this->paginate($query);
 
         $this->set(compact('fuels'));
         $this->set('_serialize', ['fuels']);
