@@ -34,11 +34,11 @@ class RatesController extends AppController
             $rate->licensing_expiration = Utils::brToDate($rate->licensing_expiration);
 
             if ($this->Rates->save($rate)) {
-                $this->Flash->success(__('The rate has been saved.'));
+                $this->Flash->success(__('Tarifa salva com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The rate could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar a Tarifa'));
             }
         }
 
@@ -64,11 +64,11 @@ class RatesController extends AppController
             $rate->licensing_expiration = Utils::brToDate($rate->licensing_expiration);
 
             if ($this->Rates->save($rate)) {
-                $this->Flash->success(__('The rate has been saved.'));
+                $this->Flash->success(__('Tarifa salva com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The rate could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar a Tarifa'));
             }
         }
 
