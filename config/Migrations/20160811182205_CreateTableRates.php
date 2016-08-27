@@ -9,13 +9,13 @@ class CreateTableRates extends AbstractMigration
                 CREATE TABLE `rates` (
                   `id` INT NOT NULL AUTO_INCREMENT,
                   `vehicle_id` INT NOT NULL,
-                  `referent_year` DATE NOT NULL,
-                  `ipva_value` FLOAT NOT NULL,
-                  `ipva_expiration` DATE NOT NULL,
-                  `depvat_value` FLOAT NOT NULL,
-                  `depvar_vencimento` DATE NOT NULL,
-                  `licensing_value` FLOAT NOT NULL,
-                  `licensing_expiration` DATE NOT NULL,
+                  `referent_year` INT,
+                  `ipva_value` FLOAT,
+                  `ipva_expiration` DATE,
+                  `depvat_value` FLOAT,
+                  `depvat_expiration` DATE,
+                  `licensing_value` FLOAT,
+                  `licensing_expiration` DATE,
                   PRIMARY KEY (`id`),
                   CONSTRAINT `vehicle_id_rates`
                     FOREIGN KEY (`vehicle_id`)

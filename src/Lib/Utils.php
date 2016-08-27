@@ -2,6 +2,7 @@
 
 namespace App\Lib;
 use Cake\I18n\Time;
+use Cake\ORM\TableRegistry;
 
 class Utils {
 
@@ -166,5 +167,19 @@ class Utils {
         $status == 1 ? $status_real = '<span class="label label-success">Ativo</span>' : '';
 
         return $status_real;
+    }
+
+    static function getVehicle($vehicleId){
+        $Vehicle = TableRegistry::get('Vehicles');
+        $vehicle = $Vehicle->get($vehicleId);
+
+        return $vehicle->model;
+    }
+
+    static function getVehicleId($plate){
+        $Vehicle = TableRegistry::get('Vehicles');
+        $vehicle = $Vehicle->find()->where(['plate like' => '%' . $plate . '%'])->first();
+
+        return $vehicle['id'];
     }
 }

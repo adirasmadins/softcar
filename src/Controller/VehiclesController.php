@@ -120,4 +120,17 @@ class VehiclesController extends AppController
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
     }
+
+    public function getVehicleInformation(){
+        $result = ['type' => 'error'];
+
+        if($this->request->is('post')){
+            $data = $this->request->data;
+
+            $vehicle = $this->Vehicles->get($data['id']);
+            $result = ['type' => 'success','data' => $vehicle];
+        }
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
 }
