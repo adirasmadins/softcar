@@ -14,14 +14,9 @@ $(document).ready(function(){
             $(this).val('http://' + cur_val);
         }
     });
-    $('#type-id').select2();
-    $('#fuel-id').select2();
+    $('#type-id, #fuel-id').select2();
 
-    $('#plate').keyup(function(){
-        this.value = this.value.toUpperCase();
-    });
-
-    $('#chassi').keyup(function(){
+    $('#plate, #chassi').keyup(function(){
         this.value = this.value.toUpperCase();
     });
 
@@ -41,14 +36,7 @@ $(document).ready(function(){
         '#plate': 'plate'
     });
 
-    $('#date-fabrication').datepicker({
-        language: "pt-BR",
-        format: 'yyyy',
-        minViewMode: "years",
-        autoclose: true
-    });
-
-    $('#date-model').datepicker({
+    $('#date-model, #date-fabrication').datepicker({
         language: "pt-BR",
         format: 'yyyy',
         minViewMode: "years",

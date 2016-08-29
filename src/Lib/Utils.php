@@ -182,4 +182,15 @@ class Utils {
 
         return $vehicle['id'];
     }
+
+    static function getServiceReal($inicial){
+        $services = [
+            't' => 'Troca de Óleo',
+            'r' => 'Revisão',
+            'o' => 'Outro'
+        ];
+        if($inicial){
+            return $services[$inicial];
+        }
+    }
 }

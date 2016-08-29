@@ -19,11 +19,14 @@
                         <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration')): ?>
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>
                             <td><?= $item->$key ?></td>
-                        <?php elseif($key == 'day_price'): ?>
+                        <?php elseif(($key == 'day_price') || $key == 'value'): ?>
                             <?php $item->$key = 'R$' . $item->$key ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif($key == 'vehicle_id'): ?>
                             <?php $item->$key = \App\Lib\Utils::getVehicle($item->$key); ?>
+                            <td><?= $item->$key ?></td>
+                        <?php elseif($key == 'service_type'): ?>
+                            <?php $item->$key = \App\Lib\Utils::getServiceReal($item->$key); ?>
                             <td><?= $item->$key ?></td>
                         <?php else: ?>
                             <td><?= $item->$key ?></td>

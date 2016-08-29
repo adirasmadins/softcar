@@ -14,7 +14,8 @@ $this->element('Form/header_index',[
     'column' => [
         'id' => '#ID',
         'vehicle_id' => 'Veículo',
-        'service_type' => 'Serviço'
+        'service_type' => 'Serviço',
+        'value' => 'Valor'
     ],
     'name' => 'O Serviço',
     'entity' => 'Services',

@@ -11,7 +11,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 form-group">
                     <?= $this->Form->input('vehicle_id',['label' => 'Veículo','placeholder' =>'Veículo', 'class' => 'form-control','options' => $vehicles,'empty' => 'Selecione um veículo']); ?>
                 </div>
                 <div class="col-md-2 text-center" id="plate">
@@ -43,30 +43,30 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="ipva">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 form-group">
                                         <?= $this->Form->input('ipva_value',['label' => 'Valor IPVA','placeholder' => 'Valor IPVA','class' => 'form-control','type' => 'text']) ?>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 form-group">
                                         <?= $this->Form->input('ipva_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="dpvat">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 form-group">
                                         <?= $this->Form->input('depvat_value',['label' => 'Valor DPVAT','placeholder' => 'Valor DPVAT','class' => 'form-control','type' => 'text']) ?>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 form-group">
                                         <?= $this->Form->input('depvat_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="licenciamento">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 form-group">
                                         <?= $this->Form->input('licensing_value',['label' => 'Valor Licenciamento','placeholder' => 'Valor Licenciamento','class' => 'form-control','type' => 'text']) ?>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 form-group">
                                         <?= $this->Form->input('licensing_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
                                     </div>
                                 </div>

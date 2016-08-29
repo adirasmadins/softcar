@@ -1,9 +1,10 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="#" class="logo" style="font-family: 'Source Sans Pro', sans-serif;">
+    <a href="#" class="logo" style="font-family: 'Source Sans Pro Bold', sans-serif;">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>SC</b></span>
+        <span class="logo-mini"><img src="<?= $this->Url->build('/img/logo-header.png', true); ?>" class="img-responsive center-block pull-left" width="40px" style="margin-top: 5px;margin-left: 5px"/>
+</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
             <img src="<?= $this->Url->build('/img/logo-header.png', true); ?>" class="img-responsive center-block pull-left" width="40px" style="margin-top: 5px"/>
@@ -144,7 +145,7 @@
                         <!-- User image -->
                         <li class="user-header">
                             <p>
-                                <?= $user_online['name'] ?> - Profile
+                                <?= $user_online['name'] ?> - <?= $user_online['profile_name'] ?>
                             </p>
                         </li>
                         <!-- Menu Footer-->

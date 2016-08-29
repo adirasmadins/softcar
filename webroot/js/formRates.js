@@ -22,43 +22,15 @@ $(document).ready(function(){
         format: 'yyyy',
         minViewMode: "years",
         autoclose: true
-    })
+    });
 
-    $('#ipva-expiration').datepicker({
+    $('#depvat-expiration, #licensing-expiration, #ipva-expiration').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy',
         autoclose: true
     });
 
-    $('#depvat-expiration').datepicker({
-        language: "pt-BR",
-        format: 'dd/mm/yyyy',
-        autoclose: true
-    });
-
-    $('#licensing-expiration').datepicker({
-        language: "pt-BR",
-        format: 'dd/mm/yyyy',
-        autoclose: true
-    });
-
-    $("#ipva-value").maskMoney({
-        prefix:'R$ ',
-        allowNegative: true,
-        thousands:',',
-        decimal:'.',
-        affixesStay: false
-    });
-
-    $("#depvat-value").maskMoney({
-        prefix:'R$ ',
-        allowNegative: true,
-        thousands:'.',
-        decimal:',',
-        affixesStay: false
-    });
-
-    $("#licensing-value").maskMoney({
+    $("#ipva-value, #depvat-value, #licensing-value").maskMoney({
         prefix:'R$ ',
         allowNegative: true,
         thousands:',',
@@ -83,5 +55,37 @@ $(document).ready(function(){
                 $('#renavam h4').text(vehicle.renavam);
             }
         },'json');
+    });
+
+    $('#formRates').validate({
+        rules: {
+            referent_year: {
+                required: true
+            },
+            ipva_expiration: {
+                required: true
+            },
+            depvat_expiration: {
+                required: true
+            },
+            licensing_expiration: {
+                required: true
+            },
+            ipva_value: {
+                required: true
+            },
+            depvat_value: {
+                required: true
+            },
+            licensing_value: {
+                required: true
+            },
+            vehicle_id: {
+                required: true
+            }
+        },
+        errorPlacement: function(error,element) {
+            return true;
+        }
     });
 });
