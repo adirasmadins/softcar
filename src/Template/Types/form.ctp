@@ -1,6 +1,6 @@
 <div class="col-md-10">
     <div class="panel panel-default">
-        <?= $this->Form->create($type,['id' => 'formProfiles']) ?>
+        <?= $this->Form->create($type,['id' => 'formTypes']) ?>
         <div class="box-header hidden-sm hidden-xs">
             <h4 class="panel-head"><?= $situacao ?></h4>
             <hr/>
@@ -12,7 +12,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <?= $this->Form->input('name',['label' => 'Nome','placeholder' => 'Nome','class' => 'form-control']) ?>
+                    <?= $this->Form->input('name',['label' => 'Descrição','placeholder' => 'Descrição','class' => 'form-control']) ?>
                 </div>
             </div>
         </div>
@@ -40,7 +40,6 @@
 
 <?php
 $this->append('script', $this->Html->script([
-    'form',
-    'formProfiles'
+    'form'
 ]));
 ?>

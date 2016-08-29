@@ -115,7 +115,6 @@ class VehiclesTable extends Table
             ->notEmpty('color');
 
         $validator
-            ->numeric('day_price')
             ->requirePresence('day_price', 'create')
             ->notEmpty('day_price');
 

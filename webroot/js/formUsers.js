@@ -9,19 +9,14 @@ $(document).ready(function(){
     /**
      * Bloco definindo campos que serão select2 (selecão com consulta)
      */
-    $('#gender').select2();
-    $('#status').select2();
-    $('#profile-id').select2();
-    $('#state-id').select2();
-    $('#city-id').select2();
+    $('#gender, #city-id, #state-id, #profile-id, #status').select2();
 
     /**
      * Colocando Calendário
      */
     $('#birth-date').datepicker({
         language: "pt-BR",
-        format: 'dd/mm/yyyy',
-        viewMode: 'years'
+        format: 'dd/mm/yyyy'
     });
 
     /**

@@ -6,21 +6,27 @@
                 <?php foreach($options['column'] as $key => $coluna): ?>
                     <th><?= $coluna ?></th>
                 <?php endforeach; ?>
-                <th class="text-center" style="width: 100px;">Ações</th>
+                <th class="text-center" style="width: <?= $this->request->controller == 'Vehicles' ? '130px' : '100px' ?>">Ações</th>
             </tr>
             </thead>
+            <tbody>
             <?php foreach($options['data'] as $item): ?>
-                <tbody>
                 <tr>
                     <?php foreach($options['column'] as $key => $info): ?>
                         <?php if($key == 'status'): ?>
                             <?php $item->$key = \App\Lib\Utils::getStatusReal($item->$key) ?>
                             <td><?= $item->$key ?></td>
-                        <?php elseif($key == 'created'): ?>
+                        <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration')): ?>
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>
                             <td><?= $item->$key ?></td>
-                        <?php elseif($key == 'type'): ?>
-                            <?php $item->$key = \App\Lib\Utils::getRealType($item->$key); ?>
+                        <?php elseif(($key == 'day_price') || $key == 'value'): ?>
+                            <?php $item->$key = 'R$' . $item->$key ?>
+                            <td><?= $item->$key ?></td>
+                        <?php elseif($key == 'vehicle_id'): ?>
+                            <?php $item->$key = \App\Lib\Utils::getVehicle($item->$key); ?>
+                            <td><?= $item->$key ?></td>
+                        <?php elseif($key == 'service_type'): ?>
+                            <?php $item->$key = \App\Lib\Utils::getServiceReal($item->$key); ?>
                             <td><?= $item->$key ?></td>
                         <?php else: ?>
                             <td><?= $item->$key ?></td>
@@ -28,6 +34,9 @@
                     <?php endforeach; ?>
                     <td>
                         <div class="btn-group hidden-xs">
+                            <?php if($this->request->controller == 'Vehicles'): ?>
+                                <a href="#" data-url="<?= $item->picture ?>" data-model="<?= $item->model ?>" class="btn btn-info btn-flat btn-flash"><i class="fa fa-bolt"></i></a>
+                            <?php endif; ?>
                             <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-warning btn-flat']) ?>
                             <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-danger btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
                         </div>
@@ -37,8 +46,8 @@
                         </div>
                     </td>
                 </tr>
-                </tbody>
             <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </div>
@@ -84,5 +93,26 @@
                 }
             },'json');
         });
+    });
+
+    $('.btn-flash').mouseover(function(){
+        var url = $(this).data('url');
+        var model = $(this).data('model');
+        var position = $(this).offset();
+
+        var heightDiv = $('.view-vehicle').height();
+        var heightTela = window.innerHeight;
+
+        if((position.top + heightDiv) > heightTela){
+            $('.view-vehicle').css('top', position.top - heightDiv - 80);
+        } else {
+            $('.view-vehicle').css('top', position.top);
+        }
+
+        $('.view-vehicle > h4').html(model);
+        $('.view-vehicle > img').attr('src', webroot + url);
+        $('.view-vehicle').show();
+    }).mouseout(function(){
+        $('.view-vehicle').hide();
     });
 </script>

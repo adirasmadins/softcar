@@ -1,0 +1,5 @@
+@media(max-width: 768px){
+    .nav-tabs > li > a{
+        font-size: 10px !important;
+    }
+}

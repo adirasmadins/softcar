@@ -2,117 +2,135 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+use App\Lib\Utils;
 
-/**
- * Vehicles Controller
- *
- * @property \App\Model\Table\VehiclesTable $Vehicles
- */
+
 class VehiclesController extends AppController
 {
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
+    public $paginate = [
+        'limit' => 7,
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Types', 'Fuels']
-        ];
-        $vehicles = $this->paginate($this->Vehicles);
+        $data = $this->request->query;
+        $query = $this->Vehicles->find();
+        if (isset($data['plate']) && !empty($data['plate'])) {
+            $query->where([
+                'plate LIKE' => '%' . $data['plate'] . '%'
+            ]);
+        };
+        $vehicles = $this->paginate($query);
 
         $this->set(compact('vehicles'));
         $this->set('_serialize', ['vehicles']);
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $vehicle = $this->Vehicles->get($id, [
-            'contain' => ['Types', 'Fuels', 'Locations', 'Rates', 'Reserves', 'Services', 'Tickets']
-        ]);
-
-        $this->set('vehicle', $vehicle);
-        $this->set('_serialize', ['vehicle']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $vehicle = $this->Vehicles->newEntity();
         if ($this->request->is('post')) {
-            $vehicle = $this->Vehicles->patchEntity($vehicle, $this->request->data);
+
+            $data = $this->request->data;
+
+            $file = Utils::fazerUpload($data, 'vehicles');
+
+            $vehicle = $this->Vehicles->patchEntity($vehicle, $data);
+
+            if ($file) {
+                $vehicle->picture = '/' . $file;
+            }
+
             if ($this->Vehicles->save($vehicle)) {
-                $this->Flash->success(__('The vehicle has been saved.'));
+                $this->Flash->success(__('Veículo salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
             }
         }
-        $types = $this->Vehicles->Types->find('list', ['limit' => 200]);
-        $fuels = $this->Vehicles->Fuels->find('list', ['limit' => 200]);
-        $this->set(compact('vehicle', 'types', 'fuels'));
+        $situacao = 'Cadastrar Veículo';
+
+        $types = $this->Vehicles->Types->find('list');
+        $fuels = $this->Vehicles->Fuels->find('list');
+
+        $this->set(compact('vehicle', 'situacao','types','fuels'));
         $this->set('_serialize', ['vehicle']);
+        $this->render('form');
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $vehicle = $this->Vehicles->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $vehicle = $this->Vehicles->patchEntity($vehicle, $this->request->data);
+            $data = $this->request->data;
+
+            $file = Utils::fazerUpload($data, 'vehicles');
+
+            $vehicle = $this->Vehicles->patchEntity($vehicle, $data);
+
+            if ($file) {
+                $vehicle->picture = '/' . $file;
+            }
+
+            if(empty($vehicle->picture) && !empty($vehicle->current_picture)){
+                $vehicle->picture = $vehicle->current_picture;
+            }
+
             if ($this->Vehicles->save($vehicle)) {
-                $this->Flash->success(__('The vehicle has been saved.'));
+                $this->Flash->success(__('Veículo salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
             }
         }
-        $types = $this->Vehicles->Types->find('list', ['limit' => 200]);
-        $fuels = $this->Vehicles->Fuels->find('list', ['limit' => 200]);
-        $this->set(compact('vehicle', 'types', 'fuels'));
+        $situacao = 'Editar veículo';
+
+        $types = $this->Vehicles->Types->find('list');
+        $fuels = $this->Vehicles->Fuels->find('list');
+
+        $this->set(compact('vehicle', 'situacao','types','fuels'));
         $this->set('_serialize', ['vehicle']);
+        $this->render('form');
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $vehicle = $this->Vehicles->get($id);
+        $data = $this->request->data;
+        $vehicle = $this->Vehicles->get($data['id']);
+        $result = ['type' => 'error'];
+
         if ($this->Vehicles->delete($vehicle)) {
-            $this->Flash->success(__('The vehicle has been deleted.'));
+            $result = ['type' => 'success','data' => $vehicle['model']];
         } else {
-            $this->Flash->error(__('The vehicle could not be deleted. Please, try again.'));
+            $result = ['type' => 'error'];
         }
 
-        return $this->redirect(['action' => 'index']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
+
+    public function getVehicleInformation(){
+        $result = ['type' => 'error'];
+
+        if($this->request->is('post')){
+            $data = $this->request->data;
+
+            $vehicle = $this->Vehicles->get($data['id']);
+            $result = ['type' => 'success','data' => $vehicle];
+        }
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 }

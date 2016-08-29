@@ -2,6 +2,7 @@
 
 namespace App\Lib;
 use Cake\I18n\Time;
+use Cake\ORM\TableRegistry;
 
 class Utils {
 
@@ -164,13 +165,32 @@ class Utils {
     static function getStatusReal($status){
         $status == 0 ? $status_real = '<span class="label label-danger">Inativo</span>' : '';
         $status == 1 ? $status_real = '<span class="label label-success">Ativo</span>' : '';
-        $status == 2 ? $status_real = '<span class="label label-warning">Pré Cadastro</span>' : '';
+
         return $status_real;
     }
 
-    static function getRealType($type){
-        $type == 'g' ? $type_real = 'Grupo' : '';
-        $type == 'd' ? $type_real = 'Discipulado' : '';
-        return $type_real;
+    static function getVehicle($vehicleId){
+        $Vehicle = TableRegistry::get('Vehicles');
+        $vehicle = $Vehicle->get($vehicleId);
+
+        return $vehicle->model;
+    }
+
+    static function getVehicleId($plate){
+        $Vehicle = TableRegistry::get('Vehicles');
+        $vehicle = $Vehicle->find()->where(['plate like' => '%' . $plate . '%'])->first();
+
+        return $vehicle['id'];
+    }
+
+    static function getServiceReal($inicial){
+        $services = [
+            't' => 'Troca de Óleo',
+            'r' => 'Revisão',
+            'o' => 'Outro'
+        ];
+        if($inicial){
+            return $services[$inicial];
+        }
     }
 }

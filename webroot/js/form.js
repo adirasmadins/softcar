@@ -54,6 +54,9 @@ function Form() {
                 case 'cep':
                     $(el).setMask({mask: '99999-999', autoTab: false});
                     break;
+                case 'plate':
+                    $(el).setMask({mask: 'aaa-9999', autoTab: false});
+                    break;
                 case 'date':
                     $(el).setMask({mask: '39/19/9999', autoTab: false});
                     break;

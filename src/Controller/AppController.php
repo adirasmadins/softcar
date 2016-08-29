@@ -44,6 +44,21 @@ class AppController extends Controller
         $user_online =  $this->request->session()->read('Auth.User');
 
         if($user_online) {
+            $UsersEntity = TableRegistry::get('Users');
+            $user_online = $UsersEntity->find()
+                ->hydrate(false)
+                ->select([
+                    'id' => 'Users.id',
+                    'name' => 'Users.name',
+                    'profile_id' => 'profile_id',
+                    'profile_name' => 'p.name',
+                ])
+                ->where([
+                    'Users.id' => $user_online['id']
+                ])
+                ->innerJoin(['p' => 'profiles'],['Users.profile_id = p.id'])
+                ->first();
+
             $ProfileMenus = TableRegistry::get('ProfileMenus');
 
             $profile = $ProfileMenus->find()

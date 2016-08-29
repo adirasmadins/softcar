@@ -7,6 +7,7 @@
 
     <?php
     echo $this->Html->css([
+        '_fonts/stylesheet',
         '../dist/bootstrap/css/bootstrap.min',
         '../dist/font-awesome/css/font-awesome.min',
         '../dist/bootstrap-sweetalert/dist/sweetalert',
