@@ -10,7 +10,8 @@
         '_fonts/stylesheet',
         '../dist/bootstrap/css/bootstrap.min',
         '../dist/font-awesome/css/font-awesome.min',
-        '../dist/bootstrap-sweetalert/dist/sweetalert'
+        '../dist/bootstrap-sweetalert/dist/sweetalert',
+        '../dist/nprogress-master/nprogress'
     ]));
     $this->append('css', $this->Html->css([
         '../dist/admin-lte/css/AdminLTE',
@@ -32,6 +33,7 @@
         '../dist/jQuery/jQuery-2.1.4.min',
         '../dist/jquery-validation/dist/jquery.validate.min',
         '../dist/bootstrap/js/bootstrap.min',
+        '../dist/nprogress-master/nprogress',
         '../dist/bootstrap-sweetalert/dist/sweetalert.min',
         '../dist/jquery-meiomask/dist/meiomask',
         'default'
@@ -44,9 +46,9 @@
     ]));
     echo $this->fetch('script');
     ?>
-<!--    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
-<!--    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">-->
+    <!--    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
+    <!--    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">-->
 
 </head>
 <?= $this->element('header') ?>

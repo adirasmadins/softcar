@@ -1,4 +1,8 @@
+$(function(){
+    NProgress.start();
+});
 $(document).ready(function(){
+    NProgress.done();
     $('.btn-sair').click(function(){
         swal({
                 title: "Deseja sair realmente?",
