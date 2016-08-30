@@ -29,7 +29,7 @@ class ServicesController extends AppController
 
             $service->make_date = Utils::brToDate($service->make_date);
             if ($this->Services->save($service)) {
-                $this->Flash->success(__('Serviço salva com sucesso'));
+                $this->Flash->success(__('Serviço salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -55,7 +55,7 @@ class ServicesController extends AppController
             $service = $this->Services->patchEntity($service, $this->request->data);
             $service->make_date = Utils::brToDate($service->make_date);
             if ($this->Services->save($service)) {
-                $this->Flash->success(__('Serviço salva com sucesso'));
+                $this->Flash->success(__('Serviço salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -80,13 +80,21 @@ class ServicesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $service = $this->Services->get($id);
-        if ($this->Services->delete($service)) {
-            $this->Flash->success(__('The service has been deleted.'));
-        } else {
-            $this->Flash->error(__('The service could not be deleted. Please, try again.'));
+        $data = $this->request->data;
+        $service = $this->Services->get($data['id']);
+        $result = ['type' => 'error'];
+
+        try{
+            if ($this->Services->delete($service)) {
+                $result = ['type' => 'success','data' => ''];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
-        return $this->redirect(['action' => 'index']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 }

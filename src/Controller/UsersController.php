@@ -6,6 +6,9 @@ use App\Lib\Utils;
 use Cake\Database\Schema\Table;
 use Cake\ORM\TableRegistry;
 use Phinx\Util\Util;
+use Aura\Intl\Exception;
+use Cake\Core\Configure;
+use Cake\Mailer\Email;
 
 class UsersController extends AppController
 {
@@ -16,6 +19,8 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
+        $this->Auth->allow('recoverPassword');
+        $this->Auth->allow('changePassword');
     }
 
     public function index()
@@ -103,13 +108,98 @@ class UsersController extends AppController
         $user = $this->Users->get($data['id']);
         $result = ['type' => 'error'];
 
-        if ($this->Users->delete($user)) {
-            $result = ['type' => 'success','data' => $user['name']];
-        } else {
-            $result = ['type' => 'error'];
+        try{
+            if ($this->Users->delete($user)) {
+                $result = ['type' => 'success','data' => $user['name']];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
+    }
+
+    public function recoverPassword(){
+        $result = ['type' => 'error'];
+        if($this->request->is('post')){
+            $data = $this->request->data;
+
+            $user = $this->Users->find()
+                ->where([
+                    'email' => $data['email']
+                ])
+                ->first();
+
+            if(count($user)){
+                $user->token = $this->Token->generate(64);
+                if($this->Users->save($user)){
+                    $this->set('send', true);
+                    $this->set('email', $user->email);
+                    try {
+                        $emailSend = new Email('default');
+                        $emailSend
+                            ->template('recover_password')
+                            ->emailFormat('html')
+                            ->to($user->email)
+                            ->from(Configure::read('EmailFrom'))
+                            ->subject('Recuperação de Senha')
+                            ->viewVars(['token' => $user->token,'data' => $user])
+                            ->send();
+                    } catch (Exception $exc) {
+                        die($exc->getMessage());
+                    }
+
+                    $result = ['type' => 'success'];
+                }
+            } else {
+                $result = ['type' => 'not_user'];
+            }
+        }
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
+
+    public function changePassword(){
+        $this->viewBuilder()->layout(false);
+        if($this->request->is('get')){
+            $query = $this->request->query;
+            $token = $query['token'];
+
+            $user = $this->Users->find()
+                ->where([
+                    'token' => $token
+                ])
+                ->first();
+
+            if($user){
+                $this->set(compact('user'));
+            } else {
+                $this->redirect(['controller' => 'Home','action' => 'login']);
+            }
+        }
+
+        if($this->request->is('post')){
+            $this->RequestHandler->renderAs($this, 'json');
+            $data = $this->request->data;
+
+            $user_save = $this->Users->get($data['id'], [
+                'contain' => []
+            ]);
+
+            $user_save->token = $this->Token->generate(64);
+            $user_save = $this->Users->patchEntity($user_save, $data);
+            if ($this->Users->save($user_save)) {
+                $result = ['type' => 'success'];
+            } else {
+                $result = ['type' => 'error'];
+            }
+
+            $this->set(compact('result'));
+            $this->set('_serialize', ['result']);
+        }
     }
 }

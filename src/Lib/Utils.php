@@ -193,4 +193,11 @@ class Utils {
             return $services[$inicial];
         }
     }
+
+    static function getStatusTicket($status){
+        $status == 0 ? $status_real = '<span class="label label-warning">Não</span>' : '';
+        $status == 1 ? $status_real = '<span class="label label-success">Sim</span>' : '';
+
+        return $status_real;
+    }
 }

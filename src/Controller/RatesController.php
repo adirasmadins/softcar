@@ -92,10 +92,14 @@ class RatesController extends AppController
         $rate = $this->Rates->get($data['id']);
         $result = ['type' => 'error'];
 
-        if ($this->Rates->delete($rate)) {
-            $result = ['type' => 'success','data' => ''];
-        } else {
-            $result = ['type' => 'error'];
+        try{
+            if ($this->Rates->delete($rate)) {
+                $result = ['type' => 'success','data' => ''];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
         $this->set(compact('result'));

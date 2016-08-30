@@ -16,11 +16,11 @@
                 </div>
                 <div class="col-md-2 text-center" id="plate">
                     <label>Placa</label>
-                    <h4><small>aguardando escolha do veículo...</small></h4>
+                    <h5><small>aguardando escolha do veículo...</small></h5>
                 </div>
                 <div class="col-md-2 text-center" id="model">
                     <label>Modelo</label>
-                    <h4><small>aguardando escolha do veículo...</small></h4>
+                    <h5><small>aguardando escolha do veículo...</small></h5>
                 </div>
                 <div class="col-md-2 text-center" id="renavam">
                     <label>Renavam</label>

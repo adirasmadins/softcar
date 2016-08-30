@@ -1,19 +1,26 @@
 <header class="main-header">
 
-    <!-- Logo -->
-    <a href="#" class="logo" style="font-family: 'Source Sans Pro Bold', sans-serif;">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><img src="<?= $this->Url->build('/img/logo-header.png', true); ?>" class="img-responsive center-block pull-left" width="40px" style="margin-top: 5px;margin-left: 5px"/>
-</span>
-        <!-- logo for regular state and mobile devices -->
+    <a href="<?= $this->Url->build('/dashboard', true); ?>" class="logo" style="font-family: 'Source Sans Pro Bold', sans-serif;">
+        <span class="logo-mini">
+            <img
+                src="<?= $this->Url->build('/img/logo-header.png', true); ?>"
+                class="img-responsive center-block pull-left"
+                width="40px"
+                style="margin-top: 5px;margin-left: 5px"
+            />
+        </span>
         <span class="logo-lg">
-            <img src="<?= $this->Url->build('/img/logo-header.png', true); ?>" class="img-responsive center-block pull-left" width="40px" style="margin-top: 5px"/>
+            <img
+                src="<?= $this->Url->build('/img/logo-header.png', true); ?>"
+                class="img-responsive center-block pull-left"
+                width="40px"
+                style="margin-top: 5px"
+            />
             <b>SoftCar</b>
         </span>
     </a>
 
     <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only hidden-md hidden-sm">Toggle navigation</span>
         </a>
@@ -28,7 +35,6 @@
                     <ul class="dropdown-menu">
                         <li class="header">You have 10 notifications</li>
                         <li>
-                            <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li>
                                     <a href="#">

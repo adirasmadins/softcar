@@ -24,7 +24,8 @@ class HomeController extends AppController
                 if($user['status'] == 1){
                     $ProfileMenus = TableRegistry::get('ProfileMenus');
                     $permissions = $ProfileMenus->find()
-                        ->where(['profile_id' => $user['profile_id']
+                        ->where([
+                            'profile_id' => $user['profile_id']
                         ])
                         ->first();
 

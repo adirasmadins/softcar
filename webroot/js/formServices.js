@@ -5,23 +5,20 @@ $(document).ready(function(){
         $('#description').val($('#value-description').val());
     }
 
-    if($('#service-type').val() == 'o'){
-        $('.make-km').val('').attr('disabled', true).hide();
-        $('.description').attr('disabled', false).show();
-    } else {
-        $('.make-km').attr('disabled', false).show();
-        $('.description').val('').attr('disabled', true).hide();
-    }
-
-    $('#service-type').change(function(){
-        if($(this).val() == 'o'){
+    var changeServiceType = function(){
+        if($('#service-type').val() == 'o'){
             $('.make-km').val('').attr('disabled', true).hide();
             $('.description').attr('disabled', false).show();
         } else {
             $('.make-km').attr('disabled', false).show();
             $('.description').val('').attr('disabled', true).hide();
         }
-    });
+    };
+
+    if($('#service-type').val().length > 0){
+        changeServiceType();
+    }
+    $(document).on('change', '#service-type', changeServiceType);
 
     $('#make-date').datepicker({
         language: "pt-BR",

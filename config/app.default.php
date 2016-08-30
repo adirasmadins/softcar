@@ -177,16 +177,16 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => 'Mail',
+            'className' => 'Smtp',
             // The following keys are used in SMTP transports
-            'host' => 'localhost',
-            'port' => 25,
+            'host' => 'smtp.sendgrid.net',
+            'port' => 587,
             'timeout' => 30,
-            'username' => 'user',
-            'password' => 'secret',
+            'username' => 'somaproject',
+            'password' => 'pro14907',
             'client' => null,
             'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+            //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
         ],
     ],
 
@@ -340,4 +340,5 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
+    'EmailFrom' => 'projsomanoreply@gmail.com'
 ];
