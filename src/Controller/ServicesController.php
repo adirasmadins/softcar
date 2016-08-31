@@ -7,6 +7,15 @@ use App\Lib\Utils;
 class ServicesController extends AppController
 {
 
+    public $paginate = [
+        'limit' => 7,
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
         $data = $this->request->query;

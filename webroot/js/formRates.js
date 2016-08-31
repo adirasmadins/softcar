@@ -24,7 +24,7 @@ $(document).ready(function(){
     }
     $(document).on('change','#vehicle-id', infoCar);
 
-    $('#vehicle-id').select2();
+    $('#vehicle-id, #ipva-status, #licensing-status, #depvat-status').select2();
 
     $('#referent-year').datepicker({
         language: "pt-BR",

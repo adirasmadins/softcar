@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-2 text-center" id="renavam">
                     <label>Renavam</label>
-                    <h4><small>aguardando escolha do veículo...</small></h4>
+                    <h5><small>aguardando escolha do veículo...</small></h5>
                 </div>
             </div>
             <div class="row">
@@ -49,6 +49,9 @@
                                     <div class="col-md-4 form-group">
                                         <?= $this->Form->input('ipva_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
                                     </div>
+                                    <div class="col-md-4">
+                                        <?= $this->Form->input('ipva_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="dpvat">
@@ -59,6 +62,9 @@
                                     <div class="col-md-4 form-group">
                                         <?= $this->Form->input('depvat_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
                                     </div>
+                                    <div class="col-md-4">
+                                        <?= $this->Form->input('depvat_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="licenciamento">
@@ -68,6 +74,9 @@
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <?= $this->Form->input('licensing_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <?= $this->Form->input('licensing_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
                                     </div>
                                 </div>
                             </div>
