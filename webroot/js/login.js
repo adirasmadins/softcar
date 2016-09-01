@@ -34,7 +34,7 @@ $(function(){
     $('#esqueci-senha').click(function(){
         swal({
             title: "Esqueceu sua senha?",
-            text: "Digite seu login",
+            text: "Digite seu email",
             type: "input",
             showCancelButton: true,
             closeOnCancel: true,
