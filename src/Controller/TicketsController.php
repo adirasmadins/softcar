@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Lib\Utils;
+use Cake\Core\Configure;
 
 
 class TicketsController extends AppController
@@ -119,6 +120,82 @@ class TicketsController extends AppController
                 $result = ['type' => 'success','message' => 'Pagamento efetuado com sucesso', 'data' => $ticket];
             } else {
                 $result = ['type' => 'error','message' => 'Ocorreu um problema ao efetuar o pagamento'];
+            }
+        }
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
+
+    public function generateExport($exportConfig = 'default') {
+        $result = ['status' => 'error', 'message' => 'Não foi possível gerar o arquivo xls.', 'url' => ''];
+        if ($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $config = Configure::read('EntityOptions.Tickets.export.' . $exportConfig);
+
+            if (!empty($data['vehicle_id'])) {
+                $config['config']['conditions'][] = ['where' => ['Tickets.vehicle_id =' => $data['vehicle_id']]];
+            }
+
+            if (!empty($data['from_date'])) {
+                list($d, $m, $y) = explode('/', $data['from_date']);
+                $config['config']['conditions'][] = ['where' => ['Tickets.due_date >=' => $y . '-' . $m . '-' . $d]];
+            }
+
+            if (!empty($data['to_date'])) {
+                list($d, $m, $y) = explode('/', $data['to_date']);
+                $config['config']['conditions'][] = ['where' => ['Tickets.due_date <=' => $y . '-' . $m . '-' . $d]];
+            }
+
+            $url = $this->XLSXExporter->buildExport('Tickets', $config, 'multas.xlsx', 'Tickets');
+
+            if ($url) {
+                $result = ['status' => 'success', 'message' => 'Arquivo de exportação gerado.', 'url' => $url];
+            } else {
+                $result = ['status' => 'error', 'message' => 'Erro ao exportar o arquivo.'];
+            }
+        }
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
+
+    public function export(){
+        $this->Tickets->Vehicles->displayField('model');
+        $vehicles = $this->Tickets->Vehicles->find('list');
+
+        $this->set(compact('vehicles','tickets_list'));
+        $this->set('_serialize', ['vehicles','tickets_list']);
+    }
+
+    public function populateGraph(){
+        $result = ['type' => 'error', 'data' => ''];
+        if($this->request->is('post')){
+            $data = $this->request->data;
+            $entity = $this->Tickets->find()->hydrate(false);
+
+            if (!empty($data['vehicle_id'])) {
+                $tickets_list = $entity->where([
+                    'Tickets.vehicle_id =' => $data['vehicle_id']
+                ]);
+            }
+
+            $tickets_list = $entity
+                ->select([
+                    'id' => 'Tickets.id',
+                    'model' => 'v.model',
+                    'qtd_tickets' => 'count(vehicle_id)'
+                ])
+                ->innerJoin(['v' => 'vehicles'],['Tickets.vehicle_id = v.id'])
+                ->group('Tickets.vehicle_id');
+
+            if(count($tickets_list)){
+                $tickets_list = $tickets_list->toArray();
+                $result = ['type' => 'success', 'data' => $tickets_list];
+            } else {
+                $tickets_list = false;
+                $result = ['type' => 'error', 'data' => ''];
             }
         }
 

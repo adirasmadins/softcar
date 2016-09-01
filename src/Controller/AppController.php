@@ -15,6 +15,7 @@ class AppController extends Controller
 
         $this->loadComponent('Token');
         $this->loadComponent('RequestHandler');
+        $this->loadComponent('XLSXExporter');
         $this->loadComponent('Flash');
 
         $this->loadComponent('Auth', [

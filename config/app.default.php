@@ -340,5 +340,35 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
-    'EmailFrom' => 'projsomanoreply@gmail.com'
+    'EmailFrom' => 'projsomanoreply@gmail.com',
+    'EntityOptions' => [
+        'Tickets' => [
+            'export' => [
+                'default' => [
+                    'config' => [
+                        'contain' => ['Vehicles'],
+                    ],
+                    'fields' => [
+                        'ID' => 'id',
+                        'Veículo' => 'vehicle.model',
+                        'Placa' => 'vehicle.plate',
+                        'Cliente' => 'client_id',
+                        'Cliente Não Registrado' => 'name_not_registered',
+                        'RG Não Registrado' => 'rg_not_registered',
+                        'CPF Não Registrado' => 'cpf_not_registered',
+                        'Data de Vencimento' => [
+                            'field' => 'due_date',
+                            'type' => 'date'
+                        ],
+                        'Descrição' => 'description',
+                        'Valor' => 'value',
+                        'Pago?' => [
+                            'field' => 'status',
+                            'replaces' => [0 => 'Não', 1 => 'Sim'],
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
 ];
