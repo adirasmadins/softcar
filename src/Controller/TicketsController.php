@@ -134,8 +134,12 @@ class TicketsController extends AppController
 
             $config = Configure::read('EntityOptions.Tickets.export.' . $exportConfig);
 
-            if (!empty($data['vehicle_id'])) {
-                $config['config']['conditions'][] = ['where' => ['Tickets.vehicle_id =' => $data['vehicle_id']]];
+            if (!empty($data['status']) || isset($data['status'])) {
+                $config['config']['conditions'][] = ['where' => ['Tickets.status =' => $data['status']]];
+            }
+
+            if (!empty($data['vehicle']['_ids'])) {
+                $config['config']['conditions'][] = ['where' => ['Tickets.vehicle_id =' => $data['vehicle']['_ids']]];
             }
 
             if (!empty($data['from_date'])) {
@@ -176,10 +180,9 @@ class TicketsController extends AppController
 
             $entity = $this->Tickets->find()->hydrate(false);
 
-            if (!empty($data['vehicle'])) {
-                /* fazer foreach para popular where */
+            if (!empty($data['vehicle']['_ids'])) {
                 $tickets_list = $entity->where([
-                    'Tickets.vehicle_id in' => $data['vehicle']['ids']
+                    'Tickets.vehicle_id in' => $data['vehicle']['_ids']
                 ]);
             }
 
@@ -205,7 +208,7 @@ class TicketsController extends AppController
                 ])
                 ->innerJoin(['v' => 'vehicles'],['Tickets.vehicle_id = v.id'])
                 ->group('Tickets.vehicle_id');
-//debug($tickets_list);die();
+
             if(count($tickets_list)){
                 $tickets_list = $tickets_list->toArray();
                 $result = ['type' => 'success', 'data' => $tickets_list];

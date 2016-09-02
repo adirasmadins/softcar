@@ -15,6 +15,7 @@ $this->element('Form/header_index',[
         'id' => '#ID',
         'vehicle_id' => 'Veículo',
         'value' => 'Valor',
+        'ticket_date' => 'Data da Multa',
         'due_date' => 'Data de Vencimento',
         'status' => 'Pago?',
     ],

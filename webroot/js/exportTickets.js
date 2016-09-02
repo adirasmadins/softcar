@@ -14,7 +14,7 @@ $(document).ready(function(){
             $.each(e.result.data, function(key, value){
                 labels.push(value.model);
                 data.push(value.qtd_tickets);
-                color += 35;
+                color += 30;
                 backgrounds.push('rgb(0,' + color + ',145)');
             });
 
@@ -41,35 +41,38 @@ $(document).ready(function(){
             NProgress.done();
         },'json');
     };
-    populateGrafh();
 
-    $('#vehicle-ids').select2();
+    $('#vehicle-ids, #status').select2();
     $('#from-date, #to-date').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy'
     });
 
-    var generateTicketsFile = function () {
+    $('#from-date, #to-date, #vehicle-ids, #status').change(function(){
+        $('#download').hide();
+    });
+
+    $('#generateFile').click(function(e){
+        e.preventDefault();
         $('#generateFile').html('<i class="fa fa-cog fa-spin"></i> gerando relatório...');
         var url = webroot + 'tickets/generate-export';
         var data = {
             from_date: $('#from-date').val(),
             to_date: $('#to-date').val(),
-            vehicle_ids: $('#vehicle-ids').val()
+            vehicle_ids: $('#vehicle-ids').val(),
+            status: $('#status').val()
         };
-        $.post(url, data, function (r) {
-                if (r.result.status == 'success') {
-                    $('#download').attr('href', webroot + r.result.url).show('100');
-                    $('#generateFile').html('<i class="fa fa-file-excel-o"></i> Gerar Relatorio');
-                } else {
-                    alert(r.result.message);
-                }
-            }, 'json')
-            .fail(function () {
-                alert("Erro ao enviar requisição.");
-            });
-    };
 
-    $(document).on('click', '#generateFile', generateTicketsFile);
+        $.post(url, data, function (r) {
+            if (r.result.status == 'success') {
+                $('#download').attr('href', webroot + r.result.url).show('100');
+                $('#generateFile').html('<i class="fa fa-file-excel-o"></i> Gerar Relatorio');
+            } else {
+                alert(r.result.message);
+            }
+        }, 'json')
+    });
+
     $(document).on('change', '#vehicle-ids', populateGrafh);
+    $(window).load(populateGrafh);
 });

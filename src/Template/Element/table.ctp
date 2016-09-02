@@ -20,7 +20,7 @@
                         <?php elseif(($key == 'status') && ($this->request->controller == 'Tickets')): ?>
                             <?php $item->$key = \App\Lib\Utils::getStatusTicket($item->$key); ?>
                             <td><?= $item->$key ?></td>
-                        <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration') || ($key == 'due_date')): ?>
+                        <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration') || ($key == 'due_date') || ($key == 'ticket_date')): ?>
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif(($key == 'day_price') || $key == 'value'): ?>
