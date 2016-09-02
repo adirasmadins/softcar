@@ -94,6 +94,9 @@
                     <?= $this->Form->input('value',['label' => 'Valor Multa','placeholder' => 'Valor Multa','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
+                    <?= $this->Form->input('ticket_date',['label' => 'Data da Multa','placeholder' => 'Data da Multa','class' => 'form-control','type' => 'text']) ?>
+                </div>
+                <div class="col-md-4 form-group">
                     <?= $this->Form->input('due_date',['label' => 'Data de Vencimento','placeholder' => 'Data de Vencimento','class' => 'form-control','type' => 'text']) ?>
                 </div>
             </div>

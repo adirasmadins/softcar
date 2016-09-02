@@ -356,6 +356,10 @@ return [
                         'Cliente Não Registrado' => 'name_not_registered',
                         'RG Não Registrado' => 'rg_not_registered',
                         'CPF Não Registrado' => 'cpf_not_registered',
+                        'Data da Multa' => [
+                            'field' => 'ticket_date',
+                            'type' => 'date'
+                        ],
                         'Data de Vencimento' => [
                             'field' => 'due_date',
                             'type' => 'date'

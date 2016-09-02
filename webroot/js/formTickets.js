@@ -49,7 +49,7 @@ $(document).ready(function(){
         '#rg-not-registered': 'rg'
     });
 
-    $('#due-date').datepicker({
+    $('#due-date, #ticket-date').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy'
     });
@@ -125,6 +125,9 @@ $(document).ready(function(){
                 required: true
             },
             due_date: {
+                required: true
+            },
+            ticket_date: {
                 required: true
             }
         },

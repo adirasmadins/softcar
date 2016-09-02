@@ -6,8 +6,9 @@
     <div class="col-md-6">
         <h4 class="text-center">Relatório de Multas por Veículo</h4>
         <hr/>
+        <?= $this->Form->create(null,['id' => 'formExport']) ?>
         <div class="col-md-12">
-            <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','options' => $vehicles,'empty' => 'Todos os veículos']); ?>
+            <?= $this->Form->input('vehicle._ids',['label' => 'Veículo', 'class' => 'form-control','options' => $vehicles,'empty' => 'Todos os veículos']); ?>
         </div>
         <div class="col-md-6">
             <?= $this->Form->input('from_date',['label' => 'Data Inicial','class' => 'form-control','type' => 'text']) ?>
@@ -16,9 +17,16 @@
             <?= $this->Form->input('to_date',['label' => 'Data Final','class' => 'form-control','type' => 'text']) ?>
         </div>
         <div class="col-md-12">
-            <a href="#" id="download" class="btn btn-success" style="display: none"><i class="fa fa-download"></i> Baixar Relatório</a>
-            <button class="btn btn-info pull-right" id="generateFile"><i class="fa fa-file-excel-o"></i> Gerar Relatorio</button>
+            <a href="#" id="download" class="btn btn-success" style="display: none">
+                <i class="fa fa-download"></i>
+                Baixar Relatório
+            </a>
+            <button class="btn btn-info pull-right" id="generateFile">
+                <i class="fa fa-file-excel-o"></i>
+                Gerar Relatorio
+            </button>
         </div>
+        <?= $this->Form->end(); ?>
     </div>
 </div>
 

@@ -1,12 +1,9 @@
 $(document).ready(function(){
     var populateGrafh = function(){
+        NProgress.start();
         var canvas = '<canvas id="myChart" width="200" height="200"></canvas>';
         var url = webroot + 'tickets/populate-graph';
-        var formData = {
-            from_date: $('#from-date').val(),
-            to_date: $('#to-date').val(),
-            vehicle_id: $('#vehicle-id').val()
-        };
+        var formData = $('#formExport').serializeArray();
 
         $.post(url, formData, function(e){
             var labels = [];
@@ -41,13 +38,12 @@ $(document).ready(function(){
 
                 }
             });
-
+            NProgress.done();
         },'json');
-        $('#download').hide('100');
     };
     populateGrafh();
 
-    $('#vehicle-id').select2();
+    $('#vehicle-ids').select2();
     $('#from-date, #to-date').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy'
@@ -59,7 +55,7 @@ $(document).ready(function(){
         var data = {
             from_date: $('#from-date').val(),
             to_date: $('#to-date').val(),
-            vehicle_id: $('#vehicle-id').val()
+            vehicle_ids: $('#vehicle-ids').val()
         };
         $.post(url, data, function (r) {
                 if (r.result.status == 'success') {
@@ -75,5 +71,5 @@ $(document).ready(function(){
     };
 
     $(document).on('click', '#generateFile', generateTicketsFile);
-    $(document).on('change', '#vehicle-id', populateGrafh);
+    $(document).on('change', '#vehicle-ids', populateGrafh);
 });

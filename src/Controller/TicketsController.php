@@ -140,12 +140,12 @@ class TicketsController extends AppController
 
             if (!empty($data['from_date'])) {
                 list($d, $m, $y) = explode('/', $data['from_date']);
-                $config['config']['conditions'][] = ['where' => ['Tickets.due_date >=' => $y . '-' . $m . '-' . $d]];
+                $config['config']['conditions'][] = ['where' => ['Tickets.ticket_date >=' => $y . '-' . $m . '-' . $d]];
             }
 
             if (!empty($data['to_date'])) {
                 list($d, $m, $y) = explode('/', $data['to_date']);
-                $config['config']['conditions'][] = ['where' => ['Tickets.due_date <=' => $y . '-' . $m . '-' . $d]];
+                $config['config']['conditions'][] = ['where' => ['Tickets.ticket_date <=' => $y . '-' . $m . '-' . $d]];
             }
 
             $url = $this->XLSXExporter->buildExport('Tickets', $config, 'multas.xlsx', 'Tickets');
@@ -173,11 +173,27 @@ class TicketsController extends AppController
         $result = ['type' => 'error', 'data' => ''];
         if($this->request->is('post')){
             $data = $this->request->data;
+
             $entity = $this->Tickets->find()->hydrate(false);
 
-            if (!empty($data['vehicle_id'])) {
+            if (!empty($data['vehicle'])) {
+                /* fazer foreach para popular where */
                 $tickets_list = $entity->where([
-                    'Tickets.vehicle_id =' => $data['vehicle_id']
+                    'Tickets.vehicle_id in' => $data['vehicle']['ids']
+                ]);
+            }
+
+            if (!empty($data['from_date'])) {
+                list($d, $m, $y) = explode('/', $data['from_date']);
+                $tickets_list = $entity->where([
+                    'Tickets.ticket_date >=' => $y . '-' . $m . '-' . $d
+                ]);
+            }
+
+            if (!empty($data['to_date'])) {
+                list($d, $m, $y) = explode('/', $data['to_date']);
+                $tickets_list = $entity->where([
+                    'Tickets.ticket_date <=' => $y . '-' . $m . '-' . $d
                 ]);
             }
 
@@ -189,7 +205,7 @@ class TicketsController extends AppController
                 ])
                 ->innerJoin(['v' => 'vehicles'],['Tickets.vehicle_id = v.id'])
                 ->group('Tickets.vehicle_id');
-
+//debug($tickets_list);die();
             if(count($tickets_list)){
                 $tickets_list = $tickets_list->toArray();
                 $result = ['type' => 'success', 'data' => $tickets_list];
