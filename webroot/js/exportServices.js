@@ -2,7 +2,7 @@ $(document).ready(function(){
     var populateGrafh = function(){
         NProgress.start();
         var canvas = '<canvas id="myChart" width="200" height="200"></canvas>';
-        var url = webroot + 'tickets/populate-graph';
+        var url = webroot + 'services/populate-graph';
         var formData = $('#formExport').serializeArray();
 
         $.post(url, formData, function(e){
@@ -13,7 +13,7 @@ $(document).ready(function(){
 
             $.each(e.result.data, function(key, value){
                 labels.push(value.model + ' (' + value.plate + ')');
-                data.push(value.qtdTickets);
+                data.push(value.qtdService);
                 color += 30;
                 backgrounds.push('rgb(0,' + color + ',145)');
             });
@@ -42,7 +42,7 @@ $(document).ready(function(){
         },'json');
     };
 
-    $('#vehicle-ids, #status').select2();
+    $('#vehicle-ids').select2();
     $('#from-date, #to-date').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy'
@@ -55,12 +55,11 @@ $(document).ready(function(){
     $('#generateFile').click(function(e){
         e.preventDefault();
         $('#generateFile').html('<i class="fa fa-cog fa-spin"></i> gerando relatório...');
-        var url = webroot + 'tickets/generate-export';
+        var url = webroot + 'services/generate-export';
         var data = {
             from_date: $('#from-date').val(),
             to_date: $('#to-date').val(),
-            vehicle_ids: $('#vehicle-ids').val(),
-            status: $('#status').val()
+            vehicle_ids: $('#vehicle-ids').val()
         };
 
         $.post(url, data, function (r) {

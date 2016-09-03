@@ -204,7 +204,8 @@ class TicketsController extends AppController
                 ->select([
                     'id' => 'Tickets.id',
                     'model' => 'v.model',
-                    'qtd_tickets' => 'count(vehicle_id)'
+                    'plate' => 'v.plate',
+                    'qtdTickets' => 'count(vehicle_id)'
                 ])
                 ->innerJoin(['v' => 'vehicles'],['Tickets.vehicle_id = v.id'])
                 ->group('Tickets.vehicle_id');

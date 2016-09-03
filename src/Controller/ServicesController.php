@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Lib\Utils;
+use Cake\Core\Configure;
 
 class ServicesController extends AppController
 {
@@ -105,5 +106,97 @@ class ServicesController extends AppController
 
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
+    }
+
+    public function export(){
+        $this->Services->Vehicles->displayField('model');
+        $vehicles = $this->Services->Vehicles->find('list');
+
+        $this->set(compact('vehicles'));
+        $this->set('_serialize', ['vehicles']);
+    }
+
+    public function generateExport($exportConfig = 'default') {
+        $result = ['status' => 'error', 'message' => 'Não foi possível gerar o arquivo xls.', 'url' => ''];
+        if ($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $config = Configure::read('EntityOptions.Services.export.' . $exportConfig);
+
+            if (!empty($data['vehicle']['_ids'])) {
+                $config['config']['conditions'][] = ['where' => ['Services.vehicle_id =' => $data['vehicle']['_ids']]];
+            }
+
+            if (!empty($data['from_date'])) {
+                list($d, $m, $y) = explode('/', $data['from_date']);
+                $config['config']['conditions'][] = ['where' => ['Services.make_date >=' => $y . '-' . $m . '-' . $d]];
+            }
+
+            if (!empty($data['to_date'])) {
+                list($d, $m, $y) = explode('/', $data['to_date']);
+                $config['config']['conditions'][] = ['where' => ['Services.make_date <=' => $y . '-' . $m . '-' . $d]];
+            }
+
+            $url = $this->XLSXExporter->buildExport('Services', $config, 'servicos.xlsx', 'Services');
+
+            if ($url) {
+                $result = ['status' => 'success', 'message' => 'Arquivo de exportação gerado.', 'url' => $url];
+            } else {
+                $result = ['status' => 'error', 'message' => 'Erro ao exportar o arquivo.'];
+            }
+        }
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
+
+    public function populateGraph(){
+        $result = ['type' => 'error', 'data' => ''];
+        if($this->request->is('post')){
+            $data = $this->request->data;
+
+            $entity = $this->Services->find()->hydrate(false);
+
+            if (!empty($data['vehicle']['_ids'])) {
+                $services_list = $entity->where([
+                    'Services.vehicle_id in' => $data['vehicle']['_ids']
+                ]);
+            }
+
+            if (!empty($data['from_date'])) {
+                list($d, $m, $y) = explode('/', $data['from_date']);
+                $services_list = $entity->where([
+                    'Services.make_date >=' => $y . '-' . $m . '-' . $d
+                ]);
+            }
+
+            if (!empty($data['to_date'])) {
+                list($d, $m, $y) = explode('/', $data['to_date']);
+                $services_list = $entity->where([
+                    'Services.make_date <=' => $y . '-' . $m . '-' . $d
+                ]);
+            }
+
+            $tickets_list = $entity
+                ->select([
+                    'id' => 'Services.id',
+                    'model' => 'v.model',
+                    'plate' => 'v.plate',
+                    'qtdService' => 'count(vehicle_id)'
+                ])
+                ->innerJoin(['v' => 'vehicles'],['Services.vehicle_id = v.id'])
+                ->group('Services.vehicle_id');
+
+            if(count($tickets_list)){
+                $services_list = $services_list->toArray();
+                $result = ['type' => 'success', 'data' => $services_list];
+            } else {
+                $services_list = false;
+                $result = ['type' => 'error', 'data' => ''];
+            }
+        }
+
+        $this->set(compact('result','services_list'));
+        $this->set('_serialize', ['result','services_list']);
     }
 }

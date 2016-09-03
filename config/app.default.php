@@ -373,6 +373,31 @@ return [
                     ]
                 ]
             ]
+        ],
+        'Services' => [
+            'export' => [
+                'default' => [
+                    'config' => [
+                        'contain' => ['Vehicles'],
+                    ],
+                    'fields' => [
+                        'ID' => 'id',
+                        'Veículo' => 'vehicle.model',
+                        'Placa' => 'vehicle.plate',
+                        'Tipo' => [
+                            'field' => 'service_type',
+                            'replaces' => ['t' => 'Troca de Óleo', 'r' => 'Revisão', 'o' => 'Outro'],
+                        ],
+                        'Descrição' => 'description',
+                        'Km Efetuado' => 'make_km',
+                        'Data do Serviço' => [
+                            'field' => 'make_date',
+                            'type' => 'date'
+                        ],
+                        'Valor' => 'value',
+                    ]
+                ]
+            ]
         ]
     ]
 ];
