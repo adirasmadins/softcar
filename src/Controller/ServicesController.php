@@ -127,6 +127,10 @@ class ServicesController extends AppController
                 $config['config']['conditions'][] = ['where' => ['Services.vehicle_id =' => $data['vehicle']['_ids']]];
             }
 
+            if (!empty($data['service_type'])) {
+                $config['config']['conditions'][] = ['where' => ['Services.service_type =' => $data['service_type']]];
+            }
+
             if (!empty($data['from_date'])) {
                 list($d, $m, $y) = explode('/', $data['from_date']);
                 $config['config']['conditions'][] = ['where' => ['Services.make_date >=' => $y . '-' . $m . '-' . $d]];

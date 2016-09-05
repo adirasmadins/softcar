@@ -1,9 +1,14 @@
 $(document).ready(function(){
+    $('input[type="radio"]').iCheck({
+        radioClass: 'iradio_square-blue'
+    });
+
     var populateGrafh = function(){
         NProgress.start();
         var canvas = '<canvas id="myChart" width="200" height="200"></canvas>';
         var url = webroot + 'services/populate-graph';
         var formData = $('#formExport').serializeArray();
+        var type = $('input[type="radio"]:checked').val();
 
         $.post(url, formData, function(e){
             var labels = [];
@@ -11,44 +16,33 @@ $(document).ready(function(){
             var backgrounds = [];
             var color = 90;
 
-            $.each(e.result.data, function(key, value){
-                labels.push(value.model + ' (' + value.plate + ')');
-                data.push(value.qtdService);
-                color += 30;
-                backgrounds.push('rgb(0,' + color + ',145)');
-            });
+            if(e.result.type === 'success'){
+                $.each(e.result.data, function(key, value){
+                    labels.push(value.model + ' (' + value.plate + ')');
+                    data.push(value.qtdService);
+                    color += 30;
+                    backgrounds.push('rgb(0,' + color + ',145)');
+                });
 
 
-            $('.col-md-6 > iframe').remove();
-            $('#myChart').remove();
-            $('.col-md-6.graph').append(canvas);
-            var ctx = document.getElementById("myChart").getContext("2d");
-            var myChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        data: data,
-                        backgroundColor: backgrounds,
-                        borderWidth: 1,
-                        options: {
-                            responsive: true
-                        }
-                    }]
-
-                }
-            });
+                $('.col-md-6 > iframe').remove();
+                $('#myChart').remove();
+                $('.col-md-6.graph').append(canvas);
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var chart = new Charts();
+                chart.getChart(type, labels, data, backgrounds, ctx);
+            }
             NProgress.done();
         },'json');
     };
 
-    $('#vehicle-ids').select2();
+    $('#vehicle-ids, #service-type').select2();
     $('#from-date, #to-date').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy'
     });
 
-    $('#from-date, #to-date, #vehicle-ids, #status').change(function(){
+    $('#from-date, #to-date, #vehicle-ids, #service-type').change(function(){
         $('#download').hide();
     });
 
@@ -59,7 +53,8 @@ $(document).ready(function(){
         var data = {
             from_date: $('#from-date').val(),
             to_date: $('#to-date').val(),
-            vehicle_ids: $('#vehicle-ids').val()
+            vehicle_ids: $('#vehicle-ids').val(),
+            service_type: $('#service-type').val()
         };
 
         $.post(url, data, function (r) {
@@ -70,6 +65,10 @@ $(document).ready(function(){
                 alert(r.result.message);
             }
         }, 'json')
+    });
+
+    $('input[type="radio"]').on('ifChecked', function(){
+        populateGrafh();
     });
 
     $(document).on('change', '#vehicle-ids', populateGrafh);

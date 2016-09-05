@@ -25,7 +25,7 @@ $this->element('Form/header_index',[
 ]]); ?>
 
     <div class="tooltip-ticket">
-        <p>Clique aqui para marcar como pago essa multa!</p>
+        <p>Clique aqui para marcar essa multa como paga!</p>
     </div>
 
 <?= $this->element('paginate') ?>
