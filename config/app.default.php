@@ -177,16 +177,16 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => 'Mail',
+            'className' => 'Smtp',
             // The following keys are used in SMTP transports
-            'host' => 'localhost',
-            'port' => 25,
+            'host' => 'smtp.sendgrid.net',
+            'port' => 587,
             'timeout' => 30,
-            'username' => 'user',
-            'password' => 'secret',
+            'username' => 'somaproject',
+            'password' => 'pro14907',
             'client' => null,
             'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+            //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
         ],
     ],
 
@@ -340,4 +340,64 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
+    'EmailFrom' => 'projsomanoreply@gmail.com',
+    'EntityOptions' => [
+        'Tickets' => [
+            'export' => [
+                'default' => [
+                    'config' => [
+                        'contain' => ['Vehicles'],
+                    ],
+                    'fields' => [
+                        'ID' => 'id',
+                        'Veículo' => 'vehicle.model',
+                        'Placa' => 'vehicle.plate',
+                        'Cliente' => 'client_id',
+                        'Cliente Não Registrado' => 'name_not_registered',
+                        'RG Não Registrado' => 'rg_not_registered',
+                        'CPF Não Registrado' => 'cpf_not_registered',
+                        'Data da Multa' => [
+                            'field' => 'ticket_date',
+                            'type' => 'date'
+                        ],
+                        'Data de Vencimento' => [
+                            'field' => 'due_date',
+                            'type' => 'date'
+                        ],
+                        'Descrição' => 'description',
+                        'Valor' => 'value',
+                        'Pago?' => [
+                            'field' => 'status',
+                            'replaces' => [0 => 'Não', 1 => 'Sim'],
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        'Services' => [
+            'export' => [
+                'default' => [
+                    'config' => [
+                        'contain' => ['Vehicles'],
+                    ],
+                    'fields' => [
+                        'ID' => 'id',
+                        'Veículo' => 'vehicle.model',
+                        'Placa' => 'vehicle.plate',
+                        'Tipo' => [
+                            'field' => 'service_type',
+                            'replaces' => ['t' => 'Troca de Óleo', 'r' => 'Revisão', 'o' => 'Outro'],
+                        ],
+                        'Descrição' => 'description',
+                        'Km Efetuado' => 'make_km',
+                        'Data do Serviço' => [
+                            'field' => 'make_date',
+                            'type' => 'date'
+                        ],
+                        'Valor' => 'value',
+                    ]
+                ]
+            ]
+        ]
+    ]
 ];

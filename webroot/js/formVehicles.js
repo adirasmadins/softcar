@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var formVehicles = new Form;
 
+    /* Realizando preview da imagem */
     $("#picture").change(function () {
         formVehicles.imagePreview(this, $("#target"));
     });
@@ -14,6 +15,8 @@ $(document).ready(function(){
             $(this).val('http://' + cur_val);
         }
     });
+
+
     $('#type-id, #fuel-id').select2();
 
     $('#plate, #chassi').keyup(function(){

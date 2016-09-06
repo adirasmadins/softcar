@@ -90,10 +90,14 @@ class ProfilesController extends AppController
         $profile = $this->Profiles->get($data['id']);
         $result = ['type' => 'error'];
 
-        if ($this->Profiles->delete($profile)) {
-            $result = ['type' => 'success','data' => $profile['name']];
-        } else {
-            $result = ['type' => 'error'];
+        try{
+            if ($this->Profiles->delete($profile)) {
+                $result = ['type' => 'success','data' => $profile['name']];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
         $this->set(compact('result'));

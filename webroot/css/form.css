@@ -1,3 +1,8 @@
+label,
+table > thead{
+    font-family: "Source Sans Pro Bold";
+}
+
 .transparent {
     background: transparent !important;
 }
@@ -6,6 +11,7 @@
     border-radius: 0px !important;
     min-height: 40px !important;
     max-height: 100px;
+    border-color: #d2d6de !important;
 }
 .select2-selection__choice__remove{
     color: white !important;
@@ -69,7 +75,7 @@
 .select2-selection .select2-selection--single {
     height: 40px !important;
     padding-left: 0px;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-family: 'Source Sans Pro Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 .select2-selection--single .select2-selection__rendered {

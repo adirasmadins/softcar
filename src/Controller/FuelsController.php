@@ -7,6 +7,15 @@ use App\Lib\Utils;
 class FuelsController extends AppController
 {
 
+    public $paginate = [
+        'limit' => 7,
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
         $data = $this->request->query;
@@ -71,10 +80,14 @@ class FuelsController extends AppController
         $fuel = $this->Fuels->get($data['id']);
         $result = ['type' => 'error'];
 
-        if ($this->Fuels->delete($fuel)) {
-            $result = ['type' => 'success','data' => $fuel['name']];
-        } else {
-            $result = ['type' => 'error'];
+        try{
+            if ($this->Fuels->delete($fuel)) {
+                $result = ['type' => 'success','data' => $fuel['name']];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
         $this->set(compact('result'));

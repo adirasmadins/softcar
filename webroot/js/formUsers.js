@@ -26,7 +26,7 @@ $(document).ready(function(){
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
     $('#name').keyup(function(){
-        this.value = this.value.replace(/[^a-zA-Z]+/g, '');
+        this.value = this.value.replace(/[^a-zA-Záàâãéèêíïóôõöúçñ ]+/g, '');
     });
 
     /**
@@ -85,6 +85,9 @@ $(document).ready(function(){
                 required: true
             },
             city_id: {
+                required: true
+            },
+            email: {
                 required: true
             }
         },

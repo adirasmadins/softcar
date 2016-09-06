@@ -1,0 +1,21 @@
+h5{
+    font-size: 12px !important;
+}
+
+.infrator{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-content{
+    border-radius: 5px !important;
+}
+
+@media(max-width: 768px){
+    h5{
+        font-size: 11px !important;
+    }
+    .view-not-registered{
+        margin-bottom: 20px;
+    }
+}
