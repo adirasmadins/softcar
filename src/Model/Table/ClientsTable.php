@@ -86,7 +86,7 @@ class ClientsTable extends Table
             ->notEmpty('rg_ie');
 
         $validator
-            ->numeric('cpf_cnpj')
+//            ->numeric('cpf_cnpj')
             ->requirePresence('cpf_cnpj', 'create')
             ->notEmpty('cpf_cnpj');
 
@@ -95,7 +95,7 @@ class ClientsTable extends Table
             ->notEmpty('gender');
 
         $validator
-            ->date('birth_date')
+//            ->date('birth_date')
             ->requirePresence('birth_date', 'create')
             ->notEmpty('birth_date');
 
@@ -118,12 +118,12 @@ class ClientsTable extends Table
             ->notEmpty('cnh');
 
         $validator
-            ->date('validity_cnh')
+//            ->date('validity_cnh')
             ->requirePresence('validity_cnh', 'create')
             ->notEmpty('validity_cnh');
 
         $validator
-            ->date('first_license')
+//            ->date('first_license')
             ->requirePresence('first_license', 'create')
             ->notEmpty('first_license');
 

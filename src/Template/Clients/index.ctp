@@ -2,7 +2,9 @@
 $this->element('Form/header_index',[
     'options' => [
         'name' => 'Cliente',
-        'variavel' => 'clients'
+        'variavel' => 'clients',
+        'search' => 'name',
+        'placeholder' => 'Digite o nome do Cliente...'
     ]
 ])
 ?>

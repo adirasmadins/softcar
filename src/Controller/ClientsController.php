@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Lib\Utils;
 
 /**
  * Clients Controller
@@ -54,6 +55,12 @@ class ClientsController extends AppController
         $client = $this->Clients->newEntity();
         if ($this->request->is('post')) {
             $client = $this->Clients->patchEntity($client, $this->request->data);
+
+            /* Convertendo data para padrão americano antes de salvar */
+            $client->birth_date = Utils::brToDate($client->birth_date);
+            $client->validity_cnh = Utils::brToDate($client->validity_cnh);
+            $client->first_license = Utils::brToDate($client->first_license);
+
             if ($this->Clients->save($client)) {
                 $this->Flash->success(__('The client has been saved.'));
 
@@ -62,10 +69,11 @@ class ClientsController extends AppController
                 $this->Flash->error(__('The client could not be saved. Please, try again.'));
             }
         }
-        $situacao = 'Cadastrar Clientes';
+        $situacao = 'Cadastrar Cliente';
 
+        $states = $this->Clients->States->find('list');
 
-        $this->set(compact('client','situacao'));
+        $this->set(compact('client','situacao','states'));
         $this->set('_serialize', ['client']);
         $this->render('form');
     }
@@ -84,6 +92,12 @@ class ClientsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $client = $this->Clients->patchEntity($client, $this->request->data);
+
+            /* Convertendo data para padrão americano antes de salvar */
+            $client->birth_date = Utils::brToDate($client->birth_date);
+            $client->validity_cnh = Utils::brToDate($client->validity_cnh);
+            $client->first_license = Utils::brToDate($client->first_license);
+
             if ($this->Clients->save($client)) {
                 $this->Flash->success(__('The client has been saved.'));
 
@@ -92,10 +106,18 @@ class ClientsController extends AppController
                 $this->Flash->error(__('The client could not be saved. Please, try again.'));
             }
         }
-        $cities = $this->Clients->Cities->find('list', ['limit' => 200]);
-        $states = $this->Clients->States->find('list', ['limit' => 200]);
-        $this->set(compact('client', 'cities', 'states'));
+
+        $situacao = 'Editar Cliente';
+        $states = $this->Clients->States->find('list');
+
+        /*Convertendo as datas do modelo americano para o brasileiro */
+        $client->birth_date=$client->birth_date->i18nFormat('dd/MM/yyyy');
+        $client->validity_cnh=$client->validity_cnh->i18nFormat('dd/MM/yyyy');
+        $client->first_license=$client->first_license->i18nFormat('dd/MM/yyyy');
+
+        $this->set(compact('client','situacao','states'));
         $this->set('_serialize', ['client']);
+        $this->render('form');
     }
 
     /**
