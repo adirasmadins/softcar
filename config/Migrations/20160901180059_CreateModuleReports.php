@@ -5,9 +5,9 @@ class CreateModuleReports extends AbstractMigration
 {
     public function up(){
         $sql = "INSERT INTO Menus (id, text, controller, action, icon, route, parent_id, type) values
-                              (11, 'Relatórios', null,null,'file-pdf-o', null, null, 'parent');
+                              (12, 'Relatórios', null,null,'file-pdf-o', null, null, 'parent');
                 INSERT INTO Menus (id, text, controller, action, icon, route, parent_id, type) values
-                              (null, 'Multas','Tickets','export', null, 'tickets', 11,'default');";
+                              (null, 'Multas','Tickets','export', null, 'tickets', 12,'default');";
         $this->execute($sql);
     }
 
