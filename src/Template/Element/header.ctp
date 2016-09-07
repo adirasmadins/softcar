@@ -48,33 +48,42 @@
                                         </li>
                                         <div class="text-center rate-days-<?= $rate['id'] ?>" style="display: none;margin-bottom: 10px;padding-left: 10px">
                                             <?php
+                                            $rates_days ['IPVA'] = 0;
+                                            $rates_days ['DPVAT'] = 0;
+                                            $rates_days ['Licenciamento'] = 0;
                                             if(isset($rate['ipva'])){
                                                 $rates_days ['IPVA'] = $rate['ipva'];
-                                                if($rate['ipva_status'] == 1){
-                                                    unset($rates_days['IPVA']);
-                                                }
                                             } else {
                                                 unset($rates_days['IPVA']);
                                             }
+
                                             if(isset($rate['dpvat'])){
                                                 $rates_days ['DPVAT'] = $rate['dpvat'];
-                                                if($rate['dpvat_status'] == 1){
-                                                    unset($rates_days['DPVAT']);
-                                                }
                                             } else {
                                                 unset($rates_days['DPVAT']);
                                             }
+
                                             if(isset($rate['licensing'])){
                                                 $rates_days ['Licenciamento'] = $rate['licensing'];
-                                                if($rate['licensing_status'] == 1){
-                                                    unset($rates_days['Licenciamento']);
-                                                }
                                             } else {
                                                 unset($rates_days['Licenciamento']);
                                             }
                                             ?>
                                             <?php foreach($rates_days as $name => $days):?>
-                                                <span class="label label-<?= $days == 1 ? 'danger' : 'warning' ?>" style="margin-bottom: 5px"><?= $name ?>: <?= $days == 1 ? 'Falta' : 'Faltam' ?> <?= $days == 1 ? $days . ' dia' : $days . ' dias'?></span>
+                                                <span
+                                                    class="label label-<?= $days == 1 || $days == 0 ? 'danger' : 'warning' ?>"
+                                                    style="margin: 5px">
+                                                    <?= $name ?>:
+                                                    <?php
+                                                    if($days == 0){
+                                                        echo ' Hoje!';
+                                                    } else if ($days == 1) {
+                                                        echo ' Amanhã!';
+                                                    } else {
+                                                        echo ' Faltam ' . $days . ' dias';
+                                                    }
+                                                    ?>
+                                                </span>
                                             <?php endforeach; ?>
                                         </div>
                                     <?php endforeach; ?>

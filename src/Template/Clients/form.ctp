@@ -39,6 +39,7 @@
                 <div class="col-md-3">
                     <?= $this->Form->input('first_license',['label' => 'Primeira Licença','placeholder' => 'Primeira Licença','class' => 'form-control','type' => 'text']) ?>
                 </div>
+                <div class="validate-date"></div>
                 <div class="col-md-3 form-group">
                     <?= $this->Form->input('phone',['label' => 'Telefone','placeholder' => 'Telefone','class' => 'form-control']) ?>
                 </div>
@@ -104,8 +105,12 @@
 </div>
 
 <?php
+$this->append('css', $this->Html->css([
+    'formClients'
+]));
 $this->append('script', $this->Html->script([
     'form',
+    '../dist/moment/moment.js',
     'formClients'
 ]));
 ?>

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 graph">
-        <h4 class="text-center">Gráfico de Serviços/Manutenção</h4>
+        <h4 class="text-center">Gráfico de Serviços/Manutenção por Veículo</h4>
         <hr/>
     </div>
     <div class="col-md-6">
@@ -20,9 +20,10 @@
                 <?= $this->Form->input('to_date',['label' => 'Data Final','class' => 'form-control','type' => 'text']) ?>
             </div>
             <div class="col-md-4">
-                <?= $this->Form->input('service_type',['label' => 'Tipo de Serviço','class' => 'form-control','options' => ['r' => 'Revisão', 't' => 'Troca de Óleo', 'o' => 'Outros']]) ?>
+                <?= $this->Form->input('service_type',['label' => 'Tipo de Serviço','class' => 'form-control','options' => ['r' => 'Revisão', 't' => 'Troca de Óleo', 'o' => 'Outros', 'todos' => 'Todos']]) ?>
             </div>
         </div>
+        <hr/>
         <div class="row">
             <div class="col-md-12">
                 <a href="#" id="download" class="btn btn-success" style="display: none">
@@ -45,7 +46,7 @@
                 </label>
 
                 <label for="polarArea">
-                    <input type="radio" value="polarArea" name="type" id="bar" class="form-control">
+                    <input type="radio" value="polarArea" name="type" id="polarArea" class="form-control">
                     Em Polos
                 </label>
 

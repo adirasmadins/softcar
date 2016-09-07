@@ -44,7 +44,7 @@
                     <div class="col-md-6 form-group" style="padding-left: 0px;">
                         <?= $this->Form->input('color',['label' => 'Cor Predominante','placeholder' => 'Cor','class' => 'form-control']) ?>
                     </div>
-                    <div class="col-md-6" style="padding-right: 0px;">
+                    <div class="col-md-6 form-group" style="padding-right: 0px;">
                         <?= $this->Form->input('day_price',['label' => 'Valor Diária','placeholder' => 'Valor Diária','class' => 'form-control','type' => 'text']) ?>
                     </div>
                 </div>

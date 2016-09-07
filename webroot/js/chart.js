@@ -1,5 +1,5 @@
 function Charts(){
-    this.getChart = function(type, labels, data, backgrounds, ctx){
+    this.getChart = function(type, labels, data, backgrounds, ctx, label){
 
         switch (type) {
             case 'bar':
@@ -8,7 +8,7 @@ function Charts(){
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Quantidade de Multas',
+                            label: label,
                             data: data,
                             backgroundColor: backgrounds,
                             borderWidth: 1,

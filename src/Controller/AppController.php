@@ -137,15 +137,14 @@ class AppController extends Controller
                     'licensing' => 'DATEDIFF(Rates.licensing_expiration, CURDATE())'
                 ])
                 ->where([
-                    'depvat_expiration >=' => date('Y-m-d')
+                    'Rates.depvat_expiration >=' => date('Y-m-d')
                 ])
                 ->orWhere([
-                    'ipva_expiration >=' => date('Y-m-d')
+                    'Rates.ipva_expiration >=' => date('Y-m-d')
                 ])
                 ->orWhere([
-                    'licensing_expiration >=' => date('Y-m-d')
+                    'Rates.licensing_expiration >=' => date('Y-m-d')
                 ])
-                ->innerJoin(['v' => 'vehicles'],['Rates.vehicle_id = v.id'])
                 ->where([
                     'Rates.ipva_status' => 0
                 ])
@@ -154,7 +153,8 @@ class AppController extends Controller
                 ])
                 ->orWhere([
                     'Rates.licensing_status' => 0
-                ]);
+                ])
+                ->innerJoin(['v' => 'vehicles'],['Rates.vehicle_id = v.id']);
 
             if(count($rates_list)){
                 $rates_list = $rates_list->toArray();
@@ -162,9 +162,16 @@ class AppController extends Controller
                 $rates_list = false;
             }
 
-
             foreach($rates_list as $key1 => $rate){
                 foreach($rate as $key2 => $value){
+                    if(strpos($key2, 'status')){
+                        $type = explode("_", $key2);
+                        if($value != 0){
+                            unset($rates_list[$key1][$type[0]]);
+                            unset($rates_list[$key1][$type[0] . '_status']);
+                            unset($rates_list[$key1][$key2]);
+                        }
+                    }
                     if($value < 0 || $value > 30){
                         unset($rates_list[$key1][$key2]);
                     }

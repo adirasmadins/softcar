@@ -123,12 +123,14 @@ class ServicesController extends AppController
 
             $config = Configure::read('EntityOptions.Services.export.' . $exportConfig);
 
-            if (!empty($data['vehicle']['_ids'])) {
-                $config['config']['conditions'][] = ['where' => ['Services.vehicle_id =' => $data['vehicle']['_ids']]];
+            if (!empty($data['vehicle_ids'])) {
+                $config['config']['conditions'][] = ['where' => ['Services.vehicle_id in' => $data['vehicle_ids']]];
             }
 
             if (!empty($data['service_type'])) {
-                $config['config']['conditions'][] = ['where' => ['Services.service_type =' => $data['service_type']]];
+                if($data['service_type'] != 'todos'){
+                    $config['config']['conditions'][] = ['where' => ['Services.service_type =' => $data['service_type']]];
+                }
             }
 
             if (!empty($data['from_date'])) {
@@ -141,7 +143,9 @@ class ServicesController extends AppController
                 $config['config']['conditions'][] = ['where' => ['Services.make_date <=' => $y . '-' . $m . '-' . $d]];
             }
 
-            $url = $this->XLSXExporter->buildExport('Services', $config, 'servicos.xlsx', 'Services');
+            $config['config']['order'] = 'Services.make_date DESC';
+
+            $url = $this->XLSXExporter->buildExport('Services', $config, 'Relatorio_de_Servicos.xlsx', 'Services');
 
             if ($url) {
                 $result = ['status' => 'success', 'message' => 'Arquivo de exportação gerado.', 'url' => $url];

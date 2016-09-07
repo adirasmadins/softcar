@@ -147,7 +147,24 @@ $(document).ready(function(){
     }
 
     $('#first-license').change(function(){
-        var firstLicense = $(this).val();
+        $(this).datepicker('hide');
+        moment.locale('pt-br');
+        var data1 = moment($(this).val(),'DD/MM/YYYY');
+        var data2 = moment(moment().format('DD/MM/YYYY'),'DD/MM/YYYY');
+        var diff  = data2.diff(data1, 'days');
+
+        if(diff <= 731){
+            $('button[type="submit"]').attr('disabled', true);
+            swal({
+                title: 'Cliente não possui data mínima',
+                text: 'É necessário ter pelo menos 2 anos de CNH',
+                type: 'info',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
+        } else {
+            $('button[type="submit"]').attr('disabled', false);
+        }
     });
 
 });

@@ -1,0 +1,9 @@
+.validate-date{
+    display: none;
+    position: absolute;
+    background-color: #ecf0f5;
+    border: 2px solid #222d32;
+    border-radius: 5px;
+    height: 50px;
+    padding: 13px;
+}

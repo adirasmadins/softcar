@@ -51,9 +51,13 @@ $(document).ready(function(){
         } else {
             $('.view-vehicle').css('top', position.top);
         }
-
-        $('.view-vehicle > h4').html(model);
-        $('.view-vehicle > img').attr('src', webroot + url);
+        if(url != ''){
+            $('.view-vehicle > h4').html(model);
+            $('.view-vehicle > img').attr('src', webroot + url);
+        } else {
+            $('.view-vehicle > h4').html('Cadastro sem imagem!');
+            $('.view-vehicle > img').attr('src', webroot + 'img/no_image.jpg');
+        }
         $('.view-vehicle').show();
     }).mouseout(function(){
         $('.view-vehicle').hide();

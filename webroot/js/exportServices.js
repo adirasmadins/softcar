@@ -30,7 +30,8 @@ $(document).ready(function(){
                 $('.col-md-6.graph').append(canvas);
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var chart = new Charts();
-                chart.getChart(type, labels, data, backgrounds, ctx);
+                var label = 'Quantidade de Manutenções';
+                chart.getChart(type, labels, data, backgrounds, ctx, label);
             }
             NProgress.done();
         },'json');

@@ -135,11 +135,13 @@ class TicketsController extends AppController
             $config = Configure::read('EntityOptions.Tickets.export.' . $exportConfig);
 
             if (!empty($data['status']) || isset($data['status'])) {
-                $config['config']['conditions'][] = ['where' => ['Tickets.status =' => $data['status']]];
+                if($data['status'] != 'todos'){
+                    $config['config']['conditions'][] = ['where' => ['Tickets.status =' => $data['status']]];
+                }
             }
 
-            if (!empty($data['vehicle']['_ids'])) {
-                $config['config']['conditions'][] = ['where' => ['Tickets.vehicle_id =' => $data['vehicle']['_ids']]];
+            if (!empty($data['vehicle_ids'])) {
+                $config['config']['conditions'][] = ['where' => ['Tickets.vehicle_id in' => $data['vehicle_ids']]];
             }
 
             if (!empty($data['from_date'])) {
@@ -152,7 +154,9 @@ class TicketsController extends AppController
                 $config['config']['conditions'][] = ['where' => ['Tickets.ticket_date <=' => $y . '-' . $m . '-' . $d]];
             }
 
-            $url = $this->XLSXExporter->buildExport('Tickets', $config, 'multas.xlsx', 'Tickets');
+            $config['config']['order'] = 'Tickets.ticket_date DESC';
+
+            $url = $this->XLSXExporter->buildExport('Tickets', $config, 'Relatorio_de_Multas.xlsx', 'Tickets');
 
             if ($url) {
                 $result = ['status' => 'success', 'message' => 'Arquivo de exportação gerado.', 'url' => $url];

@@ -20,8 +20,8 @@ $(document).ready(function(){
                 $.each(e.result.data, function(key, value){
                     labels.push(value.model + ' (' + value.plate + ')');
                     data.push(value.qtdTickets);
-                    color += 30;
-                    backgrounds.push('rgb(0,' + color + ',145)');
+                    color += 20;
+                    backgrounds.push('rgb(0,' + color + ', 145)');
                 });
 
                 $('.col-md-6 > iframe').remove();
@@ -29,7 +29,8 @@ $(document).ready(function(){
                 $('.col-md-6.graph').append(canvas);
                 var ctx = document.getElementById("myChart").getContext("2d");
                 var chart = new Charts();
-                chart.getChart(type, labels, data, backgrounds, ctx);
+                var label = 'Quantidade de Multas';
+                chart.getChart(type, labels, data, backgrounds, ctx, label);
             }
             NProgress.done();
         },'json');
