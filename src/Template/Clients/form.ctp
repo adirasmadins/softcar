@@ -22,8 +22,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 form-group">
-                    <?= $this->Form->input('cpf_cnpj',['label' => 'CPF','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
+                <div class="col-md-4">
+                    <?= $this->Form->input('cpf_cnpj',['label' => 'CPF/CNPJ','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
                     <?= $this->Form->input('rg_ie',['label' => 'RG','placeholder' => 'RG','class' => 'form-control','type' => 'text']) ?>
