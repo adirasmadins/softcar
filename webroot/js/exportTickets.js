@@ -71,6 +71,15 @@ $(document).ready(function(){
         populateGrafh();
     });
 
+    $('#teste').click(function(){
+        var url_base64 = document.getElementById('myChart').toDataURL('image/png');
+        $('#link').attr('href', url_base64);
+
+        $.post(webroot + 'charts/getPdf', function(e){
+            console.log(e);
+        });
+    });
+
     $(document).on('change', '#vehicle-ids', populateGrafh);
     $(window).load(populateGrafh);
 });

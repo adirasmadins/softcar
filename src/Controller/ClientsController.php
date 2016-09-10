@@ -60,13 +60,16 @@ class ClientsController extends AppController
             $client->birth_date = Utils::brToDate($client->birth_date);
             $client->validity_cnh = Utils::brToDate($client->validity_cnh);
             $client->first_license = Utils::brToDate($client->first_license);
+            if(strlen($client->cpf_cnpj) < 14){
+                $this->Flash->error(__('O CPF/CNPJ está incorreto!'));
+            }
 
             if ($this->Clients->save($client)) {
-                $this->Flash->success(__('The client has been saved.'));
+                $this->Flash->success(__('Cliente salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The client could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Cliente'));
             }
         }
         $situacao = 'Cadastrar Cliente';
@@ -93,17 +96,20 @@ class ClientsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $client = $this->Clients->patchEntity($client, $this->request->data);
 
+            if(strlen($client->cpf_cnpj) < 14){
+                $this->Flash->error(__('O CPF/CNPJ está incorreto!'));
+            }
             /* Convertendo data para padrão americano antes de salvar */
             $client->birth_date = Utils::brToDate($client->birth_date);
             $client->validity_cnh = Utils::brToDate($client->validity_cnh);
             $client->first_license = Utils::brToDate($client->first_license);
 
             if ($this->Clients->save($client)) {
-                $this->Flash->success(__('The client has been saved.'));
+                $this->Flash->success(__('Cliente salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The client could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Cliente'));
             }
         }
 
@@ -138,5 +144,31 @@ class ClientsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function getClientInformation(){
+        $result = ['type' => 'error'];
+
+        if($this->request->is('post')){
+            $data = $this->request->data;
+
+            $client = $this->Clients->find()
+                ->select([
+                    'cpf' => 'Clients.cpf_cnpj',
+                    'cnh' => 'Clients.cnh',
+                    'city_name' => 'c.name',
+                    'state_name' => 's.state_cod'
+                ])
+                ->innerJoin(['c' => 'cities'],['Clients.city_id = c.id'])
+                ->innerJoin(['s' => 'states'],['Clients.state_id = s.id'])
+                ->where([
+                    'Clients.id' => $data['id']
+                ])
+                ->first();
+
+            $result = ['type' => 'success','data' => $client];
+        }
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 }

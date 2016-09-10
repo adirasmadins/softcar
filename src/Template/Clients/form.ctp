@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 form-group">
                     <?= $this->Form->input('cpf_cnpj',['label' => 'CPF/CNPJ','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">

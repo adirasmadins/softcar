@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use App\Lib\Utils;
 use Cake\Core\Configure;
+use Cake\ORM\TableRegistry;
 
 
 class TicketsController extends AppController
@@ -52,8 +53,9 @@ class TicketsController extends AppController
         $situacao = 'Cadastrar Multa';
         $this->Tickets->Vehicles->displayField('model');
         $vehicles = $this->Tickets->Vehicles->find('list');
+        $clients = $this->Tickets->Clients->find('list');
 
-        $this->set(compact('ticket','situacao','vehicles'));
+        $this->set(compact('ticket','situacao','vehicles','clients'));
         $this->set('_serialize', ['ticket']);
         $this->render('form');
     }
@@ -76,12 +78,13 @@ class TicketsController extends AppController
         $situacao = 'Editar Multa';
         $this->Tickets->Vehicles->displayField('model');
         $vehicles = $this->Tickets->Vehicles->find('list');
+        $clients = $this->Tickets->Clients->find('list');
 
         if($ticket->due_date){
             $ticket->due_date = $ticket->due_date->i18nFormat('dd/MM/YYYY');
         }
 
-        $this->set(compact('ticket','situacao','vehicles'));
+        $this->set(compact('ticket','situacao','vehicles','clients'));
         $this->set('_serialize', ['ticket']);
         $this->render('form');
     }

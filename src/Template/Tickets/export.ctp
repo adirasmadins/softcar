@@ -34,6 +34,10 @@
                     <i class="fa fa-file-excel-o"></i>
                     Gerar Relatorio
                 </button>
+                <a href="#" class="btn btn-info" id="teste">
+                    teste
+                </a>
+                <a href="#" id="link" download>Save as Image</a>
             </div>
         </div>
         <?= $this->Form->end(); ?>

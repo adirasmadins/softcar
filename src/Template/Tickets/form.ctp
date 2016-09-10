@@ -29,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <?= $this->Form->input('client_id',['label' => 'Cliente (Infrator)','empty' => 'Selecione o Cliente','class' => 'form-control','options' => ['1' => 'José da Silva','2' => 'Gabriel']]) ?>
+                    <?= $this->Form->input('client_id',['label' => 'Cliente (Infrator)','empty' => 'Selecione o Cliente','class' => 'form-control','options' => $clients]) ?>
                 </div>
                 <div class="col-md-2 col-xs-4 text-center dados-client" id="cnh">
                     <label>CNH</label>

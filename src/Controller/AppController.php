@@ -104,7 +104,7 @@ class AppController extends Controller
                 }
             }
 
-            if ($this->request->action == 'logout' || $this->request->controller == 'Utils') {
+            if ($this->request->action == 'logout' || $this->request->controller == 'Utils' || $this->request->controller == 'Charts') {
                 $hasPermission = true;
             }
 

@@ -95,7 +95,7 @@ $(document).ready(function(){
 
                 $('#cnh h5').text(client.cnh);
                 $('#cpf h5').text(client.cpf);
-                $('#city h5').text(client.city);
+                $('#city h5').text(client.city_name + '/' + client.state_name);
             }
         },'json');
     };
