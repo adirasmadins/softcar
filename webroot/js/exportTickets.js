@@ -44,6 +44,8 @@ $(document).ready(function(){
 
     $('#from-date, #to-date, #vehicle-ids, #status').change(function(){
         $('#download').hide();
+        $('#generatePdf').html('<i class="fa fa-file-pdf-o"></i> Exportar Gráfico').show();
+        $('#abrir').hide();
     });
 
     $('#generateFile').click(function(e){
@@ -82,8 +84,11 @@ $(document).ready(function(){
         };
         $.post(webroot + 'charts/getPdf', data, function(e){
             if(e){
-                button.attr('href', e.arquivo);
-                button.attr('disabled', false);
+                var btnAbrir = $('#abrir');
+                button.hide();
+                btnAbrir.attr('href', webroot + e.arquivo);
+                btnAbrir.attr('target', '_blank');
+                btnAbrir.show();
             }
         },'json');
     });

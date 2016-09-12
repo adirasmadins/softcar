@@ -34,7 +34,7 @@ class ChartsController extends AppController
             $dompdf->render();
 
             $pdf = $dompdf->output();
-            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . ' .pdf';
+            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
             file_put_contents($arquivo,$pdf);
             $result = ['type' => 'success', 'data' => $arquivo];
         }

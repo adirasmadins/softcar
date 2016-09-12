@@ -36,6 +36,10 @@
                     <i class="fa fa-file-pdf-o"></i>
                     Exportar Gráfico
                 </a>
+                <a href="#" class="btn btn-success pull-right" id="abrir" style="display:none">
+                    <i class="fa fa-file-pdf-o"></i>
+                    Abrir PDF
+                </a>
             </div>
             <div class="col-md-4">
                 <button class="btn btn-info pull-right" id="generateFile">
