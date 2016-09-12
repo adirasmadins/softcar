@@ -44,7 +44,7 @@ $(document).ready(function(){
 
     $('#from-date, #to-date, #vehicle-ids, #status').change(function(){
         $('#download').hide();
-        $('#generatePdf').html('<i class="fa fa-file-pdf-o"></i> Exportar Gráfico').show();
+        $('#generatePdf').html('<i class="fa fa-file-pdf-o"></i> Exportar Gráfico').attr('disabled', false).show();
         $('#abrir').hide();
     });
 
@@ -61,7 +61,7 @@ $(document).ready(function(){
 
         $.post(url, data, function (r) {
             if (r.result.status == 'success') {
-                $('#download').attr('href', webroot + r.result.url).show('100');
+                $('#abrir').attr('href', webroot + r.result.url).show('100');
                 $('#generateFile').html('<i class="fa fa-file-excel-o"></i> Gerar Relatorio');
             } else {
                 alert(r.result.message);
@@ -70,10 +70,13 @@ $(document).ready(function(){
     });
 
     $('input[type="radio"]').on('ifChecked', function(){
+        $('#download').hide();
+        $('#generatePdf').html('<i class="fa fa-file-pdf-o"></i> Exportar Gráfico').attr('disabled', false).show();
         populateGrafh();
     });
 
-    $('#generatePdf').click(function(){
+    $('#generatePdf').click(function(e){
+        e.preventDefault();
         var button = $('#generatePdf');
         $(this).html('<i class="fa fa-cog fa-spin"></i> gerando PDF...').attr('disabled', true);
         var url_base64 = document.getElementById('myChart').toDataURL('image/png');
