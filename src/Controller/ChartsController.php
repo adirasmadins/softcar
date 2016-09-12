@@ -8,16 +8,37 @@ use Dompdf\Options;
 class ChartsController extends AppController
 {
     public function getPdf(){
-        $dompdf = new DOMPDF();
-        $dompdf->loadHtml('hello world');
+        $result = ['type' => 'error'];
+        if($this->request->is('post')){
+            $data = $this->request->data;
 
-// (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
+            $dompdf = new DOMPDF();
+            $dompdf->set_option('defaultFont', 'Helvetica');
+            $html = "
+                    <!DOCTYPE html>
+                    <html>
+                    <body>
 
-// Render the HTML as PDF
-        $dompdf->render();
+                    <center>
+                        <h1>{$data['title']}</h1>
+                        <img src='{$data['url']}'/>
+                    </center>
 
-// Output the generated PDF to Browser
-        $dompdf->stream();
+                    </body>
+                    </html>
+                    ";
+
+
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'landscape');
+            $dompdf->render();
+
+            $pdf = $dompdf->output();
+            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . ' .pdf';
+            file_put_contents($arquivo,$pdf);
+            $result = ['type' => 'success', 'data' => $arquivo];
+        }
+        $this->set(compact('arquivo'));
+        $this->set('_serialize', ['arquivo']);
     }
 }

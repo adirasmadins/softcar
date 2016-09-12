@@ -40,6 +40,7 @@ class TicketsController extends AppController
             $ticket = $this->Tickets->patchEntity($ticket, $this->request->data);
 
             $ticket->due_date = Utils::brToDate($ticket->due_date);
+            $ticket->ticket_date = Utils::brToDate($ticket->ticket_date);
             $ticket->status = 0;
             if ($this->Tickets->save($ticket)) {
                 $this->Flash->success(__('Multa salva com sucesso'));
@@ -82,6 +83,9 @@ class TicketsController extends AppController
 
         if($ticket->due_date){
             $ticket->due_date = $ticket->due_date->i18nFormat('dd/MM/YYYY');
+        }
+        if($ticket->ticket_date){
+            $ticket->ticket_date = $ticket->ticket_date->i18nFormat('dd/MM/YYYY');
         }
 
         $this->set(compact('ticket','situacao','vehicles','clients'));

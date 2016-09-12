@@ -25,19 +25,23 @@
         </div>
         <hr/>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <a href="#" id="download" class="btn btn-success" style="display: none">
                     <i class="fa fa-download"></i>
                     Baixar Relatório
                 </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="btn btn-info pull-right" id="generatePdf">
+                    <i class="fa fa-file-pdf-o"></i>
+                    Exportar Gráfico
+                </a>
+            </div>
+            <div class="col-md-4">
                 <button class="btn btn-info pull-right" id="generateFile">
                     <i class="fa fa-file-excel-o"></i>
                     Gerar Relatorio
                 </button>
-                <a href="#" class="btn btn-info" id="teste">
-                    teste
-                </a>
-                <a href="#" id="link" download>Save as Image</a>
             </div>
         </div>
         <?= $this->Form->end(); ?>
@@ -45,7 +49,7 @@
             <div class="col-md-12 text-center">
                 <h4>Tipo de exibição do gráfico</h4>
                 <label for="bar">
-                <input type="radio" value="bar" id="bar" name="type" class="form-control" checked>
+                    <input type="radio" value="bar" id="bar" name="type" class="form-control" checked>
                     Em Barras
                 </label>
 

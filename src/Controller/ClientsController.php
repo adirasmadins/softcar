@@ -4,19 +4,9 @@ namespace App\Controller;
 use App\Controller\AppController;
 use App\Lib\Utils;
 
-/**
- * Clients Controller
- *
- * @property \App\Model\Table\ClientsTable $Clients
- */
 class ClientsController extends AppController
 {
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
     public function index()
     {
         $this->paginate = [
@@ -28,28 +18,6 @@ class ClientsController extends AppController
         $this->set('_serialize', ['clients']);
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Client id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $client = $this->Clients->get($id, [
-            'contain' => ['Cities', 'States', 'Locations', 'Reserves', 'Tickets']
-        ]);
-
-        $this->set('client', $client);
-        $this->set('_serialize', ['client']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $client = $this->Clients->newEntity();
@@ -81,13 +49,6 @@ class ClientsController extends AppController
         $this->render('form');
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Client id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $client = $this->Clients->get($id, [
@@ -126,24 +87,25 @@ class ClientsController extends AppController
         $this->render('form');
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Client id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $client = $this->Clients->get($id);
-        if ($this->Clients->delete($client)) {
-            $this->Flash->success(__('The client has been deleted.'));
-        } else {
-            $this->Flash->error(__('The client could not be deleted. Please, try again.'));
+        $data = $this->request->data;
+        $client = $this->Clients->get($data['id']);
+        $result = ['type' => 'error'];
+
+        try{
+            if ($this->Clients->delete($client)) {
+                $result = ['type' => 'success','data' => $client['name']];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
-        return $this->redirect(['action' => 'index']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 
     public function getClientInformation(){

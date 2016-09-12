@@ -30,3 +30,7 @@ span.label{
     border-radius: 5px;
     right: 30px;
 }
+
+h1{
+    font-size: 50px !important;
+}

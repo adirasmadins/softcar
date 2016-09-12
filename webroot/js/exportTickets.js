@@ -71,13 +71,21 @@ $(document).ready(function(){
         populateGrafh();
     });
 
-    $('#teste').click(function(){
+    $('#generatePdf').click(function(){
+        var button = $('#generatePdf');
+        $(this).html('<i class="fa fa-cog fa-spin"></i> gerando PDF...').attr('disabled', true);
         var url_base64 = document.getElementById('myChart').toDataURL('image/png');
-        $('#link').attr('href', url_base64);
-
-        $.post(webroot + 'charts/getPdf', function(e){
-            console.log(e);
-        });
+        var data = {
+            url: url_base64,
+            title: 'Gráfico de Multas por Veículo',
+            file_name: 'relatorio_de_multas'
+        };
+        $.post(webroot + 'charts/getPdf', data, function(e){
+            if(e){
+                button.attr('href', e.arquivo);
+                button.attr('disabled', false);
+            }
+        },'json');
     });
 
     $(document).on('change', '#vehicle-ids', populateGrafh);
