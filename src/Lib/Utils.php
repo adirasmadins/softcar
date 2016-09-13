@@ -194,6 +194,14 @@ class Utils {
         }
     }
 
+    static function getStateName($id){
+        $States = TableRegistry::get('States');
+
+        $state = $States->find()->where(['id' => $id])->first();
+
+        return $state['name'];
+    }
+
     static function getStatusTicket($status){
         $status == 0 ? $status_real = '<span class="label label-warning">Não</span>' : '';
         $status == 1 ? $status_real = '<span class="label label-success">Sim</span>' : '';

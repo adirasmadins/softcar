@@ -14,14 +14,18 @@ $(document).ready(function(){
             var labels = [];
             var data = [];
             var backgrounds = [];
-            var color = 90;
+            var color1 = 0;
+            var color2 = 50;
+            var color3 = 145;
 
             if(e.result.type === 'success'){
                 $.each(e.result.data, function(key, value){
                     labels.push(value.model + ' (' + value.plate + ')');
                     data.push(value.qtdTickets);
-                    color += 20;
-                    backgrounds.push('rgb(0,' + color + ', 145)');
+                    color1 += 10;
+                    color2 += 40;
+                    color3 += 30;
+                    backgrounds.push('rgb(' + color1 + ',' + color2 + ', ' + color3 + ')');
                 });
 
                 $('.col-md-6 > iframe').remove();

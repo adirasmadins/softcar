@@ -8,6 +8,9 @@ use Dompdf\Options;
 class ChartsController extends AppController
 {
     public function getPdf(){
+        ini_set('memory_limit', '-1');
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
         $result = ['type' => 'error'];
         if($this->request->is('post')){
             $data = $this->request->data;

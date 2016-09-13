@@ -26,6 +26,9 @@
                         <?php elseif(($key == 'day_price') || $key == 'value'): ?>
                             <?php $item->$key = 'R$ ' . $item->$key ?>
                             <td><?= $item->$key ?></td>
+                        <?php elseif($key == 'state_id'): ?>
+                            <?php $item->$key = \App\Lib\Utils::getStateName($item->$key) ?>
+                            <td><?= $item->$key ?></td>
                         <?php elseif($key == 'vehicle_id'): ?>
                             <?php $item->$key = \App\Lib\Utils::getVehicle($item->$key); ?>
                             <td><?= $item->$key ?></td>
