@@ -27,8 +27,8 @@ $(document).ready(function(){
             });
     });
 
-    if($('.treeview-menu .active').length){
-        $('.treeview').addClass('active');
-        $('ul.treeview-menu ').addClass('menu-open');
-    }
+    //if($('.treeview-menu .active').length){
+    //    $('.treeview').addClass('active');
+    //    $('ul.treeview-menu ').addClass('menu-open');
+    //}
 });

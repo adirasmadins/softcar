@@ -27,7 +27,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">Identifique-se para utilizar o sistema</p>
         <div class="form-group has-feedback">
-            <input type="email" class="form-control" id="login" name="login" placeholder="Usuário">
+            <input type="text" class="form-control" id="login" name="login" placeholder="Usuário">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback" style="margin-top: 10px">
@@ -57,6 +57,15 @@ echo $this->Html->script([
 ?>
 </body>
 </html>
+<style>
+    .sa-button-container{
+        margin-top: 20px;
+    }
+    .form-control{
+        border-radius: 4px !important;
+        height: 40px !important;
+    }
+</style>
 <script>
     var webroot = '<?= $this->request->webroot ?>';
 </script>

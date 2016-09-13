@@ -1,6 +1,35 @@
 $(document).ready(function(){
     var formUsers = new Form;
 
+    $('#cpf').change(function(){
+        var val = $(this).val();
+
+        value = $.trim(val);
+        value = value.replace('.', '');
+        value = value.replace('.', '');
+        value = value.replace('-', '');
+
+        var parent = $(this).parent();
+        var label = parent.parent('label');
+        if(value.length === 11){
+            var valid = formUsers.validarCpf(val);
+            parent.children('span').remove();
+
+            if(!valid){
+                parent.after(label).prepend('<span class="label label-danger pull-right"><i class="fa fa-ban"></i> Inválido</span>');
+                $(this).css("border-left","2px solid #dd4b39");
+                $('button[type="submit"]').attr('disabled', true);
+            } else {
+                parent.after(label).prepend('<span class="label label-success pull-right"><i class="fa fa-check"></i> Válido</span>');
+                $(this).css("border-left","2px solid #00a65a");
+                $('button[type="submit"]').attr('disabled', false);
+            }
+        } else if ($(this).val() === ''){
+            $(this).css("border-left","");
+            parent.children('span').remove();
+        }
+    });
+
     $('#state-id').change(popularCityInAdd);
     if($('#state-id').val() > 0){
         popularCityInEdit();
@@ -26,7 +55,7 @@ $(document).ready(function(){
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
     $('#name').keyup(function(){
-        this.value = this.value.replace(/[^a-zA-Z]+/g, '');
+        this.value = this.value.replace(/[^a-zA-Záàâãéèêíïóôõöúçñ ]+/g, '');
     });
 
     /**
@@ -52,9 +81,6 @@ $(document).ready(function(){
                 minlength: 3
             },
             gender: {
-                required: true
-            },
-            cpf: {
                 required: true
             },
             rg: {
@@ -85,6 +111,9 @@ $(document).ready(function(){
                 required: true
             },
             city_id: {
+                required: true
+            },
+            email: {
                 required: true
             }
         },

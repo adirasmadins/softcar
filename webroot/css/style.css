@@ -8,6 +8,25 @@ select{
     margin-bottom: 20px;
 }
 
+textarea{
+    margin-bottom: 20px;
+}
+
 body{
     overflow: visible !important;
+}
+
+span.label{
+    font-family: 'Source Sans Pro Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.tooltip-ticket{
+    z-index: 999;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    background-color: #ecf0f5;
+    border: 2px solid #222d32;
+    border-radius: 5px;
+    right: 30px;
 }

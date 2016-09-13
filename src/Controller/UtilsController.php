@@ -12,8 +12,8 @@ class UtilsController extends AppController
         if($this->request->is('post')){
             $data = $this->request->data;
 
-            $cities = TableRegistry::get('Cities');
-            $filterCity = $cities->find()
+            $Cities = TableRegistry::get('Cities');
+            $filterCity = $Cities->find()
                 ->where(['state_id' => $data['id']]);
 
             if($filterCity){

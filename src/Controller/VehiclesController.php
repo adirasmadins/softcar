@@ -111,10 +111,14 @@ class VehiclesController extends AppController
         $vehicle = $this->Vehicles->get($data['id']);
         $result = ['type' => 'error'];
 
-        if ($this->Vehicles->delete($vehicle)) {
-            $result = ['type' => 'success','data' => $vehicle['model']];
-        } else {
-            $result = ['type' => 'error'];
+        try{
+            if ($this->Vehicles->delete($vehicle)) {
+                $result = ['type' => 'success','data' => $vehicle['model']];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
         $this->set(compact('result'));

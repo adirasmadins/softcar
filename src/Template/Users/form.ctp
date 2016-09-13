@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 form-group">
+                <div class="col-md-4">
                     <?= $this->Form->input('cpf',['label' => 'CPF','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
@@ -30,14 +30,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <?= $this->Form->input('status',['label' => 'Status','placeholder' => 'Status','class' => 'form-control','options' => ['1' => 'Ativo','0' => 'Inativo']]) ?>
                 </div>
-                <div class="col-md-4 form-group">
+                <div class="col-md-3 form-group">
                     <?= $this->Form->input('phone',['label' => 'Telefone','placeholder' => 'Telefone','class' => 'form-control']) ?>
                 </div>
-                <div class="col-md-4 form-group">
+                <div class="col-md-3 form-group">
                     <?= $this->Form->input('cel_phone',['label' => 'Celular','placeholder' => 'Celular','class' => 'form-control']) ?>
+                </div>
+                <div class="col-md-4 form-group">
+                    <?= $this->Form->input('email',['label' => 'Email','placeholder' => 'Email','class' => 'form-control','type' => 'text']) ?>
                 </div>
             </div>
             <div class="row">

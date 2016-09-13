@@ -1,21 +1,30 @@
 $(document).ready(function(){
 
-    if($('#vehicle-id').val().length >= 1){
+    var infoCar = function(){
         var vehicleId = {id: $('#vehicle-id').val()};
         var url = webroot + 'vehicles/getVehicleInformation';
+        var refresh = '<i class="fa fa-refresh fa-spin"></i>';
 
+        $('#plate h5').html(refresh);
+        $('#model h5').html(refresh);
+        $('#renavam h5').html(refresh);
         $.post(url,vehicleId, function(event){
             if(event.result.type === 'success'){
                 var vehicle = event.result.data;
 
-                $('#plate h4').text(vehicle.plate);
-                $('#model h4').text(vehicle.model);
-                $('#renavam h4').text(vehicle.renavam);
+                $('#plate h5').text(vehicle.plate);
+                $('#model h5').text(vehicle.model);
+                $('#renavam h5').text(vehicle.renavam);
             }
         },'json');
-    }
+    };
 
-    $('#vehicle-id').select2();
+    if($('#vehicle-id').val().length > 0){
+        infoCar();
+    }
+    $(document).on('change','#vehicle-id', infoCar);
+
+    $('#vehicle-id, #ipva-status, #licensing-status, #depvat-status').select2();
 
     $('#referent-year').datepicker({
         language: "pt-BR",
@@ -36,25 +45,6 @@ $(document).ready(function(){
         thousands:',',
         decimal:'.',
         affixesStay: false
-    });
-
-    $('#vehicle-id').change(function(){
-        var vehicleId = {id: $(this).val()};
-        var url = webroot + 'vehicles/getVehicleInformation';
-        var refresh = '<i class="fa fa-refresh fa-spin"></i>';
-
-        $('#plate h4').html(refresh);
-        $('#model h4').html(refresh);
-        $('#renavam h4').html(refresh);
-        $.post(url,vehicleId, function(event){
-            if(event.result.type === 'success'){
-                var vehicle = event.result.data;
-
-                $('#plate h4').text(vehicle.plate);
-                $('#model h4').text(vehicle.model);
-                $('#renavam h4').text(vehicle.renavam);
-            }
-        },'json');
     });
 
     $('#formRates').validate({

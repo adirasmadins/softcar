@@ -36,11 +36,11 @@ class TypesController extends AppController
         if ($this->request->is('post')) {
             $type = $this->Types->patchEntity($type, $this->request->data);
             if ($this->Types->save($type)) {
-                $this->Flash->success(__('The type has been saved.'));
+                $this->Flash->success(__('Tipo salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The type could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Tipo'));
             }
         }
         $situacao = 'Cadastrar Tipos de veículo';
@@ -57,11 +57,11 @@ class TypesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $type = $this->Types->patchEntity($type, $this->request->data);
             if ($this->Types->save($type)) {
-                $this->Flash->success(__('The type has been saved.'));
+                $this->Flash->success(__('Tipo salvo com sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The type could not be saved. Please, try again.'));
+                $this->Flash->error(__('Ocorreu um problema ao salvar o Tipo'));
             }
         }
         $situacao = 'Editar Tipos de veículo';
@@ -78,10 +78,14 @@ class TypesController extends AppController
         $type = $this->Types->get($data['id']);
         $result = ['type' => 'error'];
 
-        if ($this->Types->delete($type)) {
-            $result = ['type' => 'success','data' => $type['name']];
-        } else {
-            $result = ['type' => 'error'];
+        try{
+            if ($this->Types->delete($type)) {
+                $result = ['type' => 'success','data' => $type['name']];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
         $this->set(compact('result'));

@@ -9,6 +9,15 @@ use Cake\ORM\TableRegistry;
 class RatesController extends AppController
 {
 
+    public $paginate = [
+        'limit' => 7,
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
         $data = $this->request->query;
@@ -92,10 +101,14 @@ class RatesController extends AppController
         $rate = $this->Rates->get($data['id']);
         $result = ['type' => 'error'];
 
-        if ($this->Rates->delete($rate)) {
-            $result = ['type' => 'success','data' => ''];
-        } else {
-            $result = ['type' => 'error'];
+        try{
+            if ($this->Rates->delete($rate)) {
+                $result = ['type' => 'success','data' => ''];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
         $this->set(compact('result'));
