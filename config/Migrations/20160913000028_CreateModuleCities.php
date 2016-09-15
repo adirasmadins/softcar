@@ -4,7 +4,7 @@ use Migrations\AbstractMigration;
 class CreateModuleCities extends AbstractMigration
 {
     public function up(){
-        $sql = "INSERT INTO Menus (id, text, controller, action, icon, route, parent_id, type) values
+        $sql = "INSERT INTO menus (id, text, controller, action, icon, route, parent_id, type) values
                               (null, 'Cidades','Cities','index', null, 'cities', 2,'default');";
         $this->execute($sql);
     }

@@ -4,10 +4,10 @@ use Migrations\AbstractMigration;
 class CreateModuleReports extends AbstractMigration
 {
     public function up(){
-        $sql = "INSERT INTO Menus (id, text, controller, action, icon, route, parent_id, type) values
-                              (12, 'Relatórios', null,null,'file-pdf-o', null, null, 'parent');
-                INSERT INTO Menus (id, text, controller, action, icon, route, parent_id, type) values
-                              (null, 'Multas','Tickets','export', null, 'tickets', 12,'default');";
+        $sql = "INSERT INTO menus (id, text, controller, action, icon, route, parent_id, type) values
+                              (13, 'Relatórios', null,null,'file-pdf-o', null, null, 'parent');
+                INSERT INTO menus (id, text, controller, action, icon, route, parent_id, type) values
+                              (null, 'Multas','Tickets','export', null, 'tickets', 13,'default');";
         $this->execute($sql);
     }
 

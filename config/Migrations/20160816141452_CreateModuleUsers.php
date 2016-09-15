@@ -4,7 +4,7 @@ use Migrations\AbstractMigration;
 class CreateModuleUsers extends AbstractMigration
 {
     public function up(){
-        $sql = "INSERT INTO Menus (id, text, controller, action, icon, route, parent_id, type) values
+        $sql = "INSERT INTO menus (id, text, controller, action, icon, route, parent_id, type) values
                               (1, 'Usuários','Users','index','users', 'users',null, 'default');";
         $this->execute($sql);
     }

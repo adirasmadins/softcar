@@ -4,7 +4,7 @@ use Migrations\AbstractMigration;
 class CreateModuleTypes extends AbstractMigration
 {
     public function up(){
-        $sql = "INSERT INTO Menus (id, text, controller, action, icon, route, parent_id, type) values
+        $sql = "INSERT INTO menus (id, text, controller, action, icon, route, parent_id, type) values
                               (null, 'Tipos de Veículos','Types','index', null, 'types', 2,'default');
 
                 INSERT INTO types (id, name) values (null, 'Carro Comum');
