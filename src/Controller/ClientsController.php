@@ -7,6 +7,9 @@ use App\Lib\Utils;
 class ClientsController extends AppController
 {
 
+    /**
+     * Método para listagem
+     */
     public function index()
     {
         $data = $this->request->query;
