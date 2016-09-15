@@ -25,11 +25,23 @@
         </div>
         <hr/>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <a href="#" id="download" class="btn btn-success" style="display: none">
                     <i class="fa fa-download"></i>
                     Baixar Relatório
                 </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="btn btn-info pull-right" id="generatePdf">
+                    <i class="fa fa-file-pdf-o"></i>
+                    Exportar Gráfico
+                </a>
+                <a href="#" class="btn btn-success pull-right" id="abrir" style="display:none">
+                    <i class="fa fa-file-pdf-o"></i>
+                    Abrir PDF
+                </a>
+            </div>
+            <div class="col-md-4">
                 <button class="btn btn-info pull-right" id="generateFile">
                     <i class="fa fa-file-excel-o"></i>
                     Gerar Relatorio
@@ -74,6 +86,7 @@ $this->append('script', $this->Html->script([
     '../dist/iCheck/icheck',
     '../dist/chartjs/Chart.bundle.min',
     '../dist/chartjs/Chart.min',
+    'colorLib',
     'chart',
     'exportServices'
 ]));

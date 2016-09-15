@@ -347,12 +347,23 @@ return [
                 'default' => [
                     'config' => [
                         'contain' => ['Vehicles'],
+                        'order' => ['ticket_date DESC']
                     ],
                     'fields' => [
                         'ID' => 'id',
                         'Veículo' => 'vehicle.model',
                         'Placa' => 'vehicle.plate',
-                        'Cliente' => 'client_id',
+                        'Cliente' => [
+                            'field' => 'client_id',
+                            'find_in_entity' => 'Clients',
+                            'conditions' => [
+                                [
+                                    'field' => 'client_id',
+                                    'equals_to' => 'id'
+                                ]
+                            ],
+                            'return' => 'name'
+                        ],
                         'Cliente Não Registrado' => 'name_not_registered',
                         'RG Não Registrado' => 'rg_not_registered',
                         'CPF Não Registrado' => 'cpf_not_registered',

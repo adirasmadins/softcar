@@ -110,7 +110,27 @@ class ServicesController extends AppController
 
     public function export(){
         $this->Services->Vehicles->displayField('model');
-        $vehicles = $this->Services->Vehicles->find('list');
+        $cars = $this->Services->find()
+            ->hydrate(false)
+            ->select([
+                'ids' => 'DISTINCT vehicle_id'
+            ]);
+
+        if(count($cars)){
+            $cars = $cars->toArray();
+        } else {
+            $cars = false;
+        }
+
+        $vehicles_ids = [];
+        foreach($cars as $item){
+            array_push($vehicles_ids, $item['ids']);
+        }
+
+        $vehicles = $this->Services->Vehicles->find('list')
+            ->where([
+                'id in' => $vehicles_ids
+            ]);
 
         $this->set(compact('vehicles'));
         $this->set('_serialize', ['vehicles']);

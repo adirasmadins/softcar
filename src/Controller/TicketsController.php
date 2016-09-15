@@ -178,7 +178,27 @@ class TicketsController extends AppController
 
     public function export(){
         $this->Tickets->Vehicles->displayField('model');
-        $vehicles = $this->Tickets->Vehicles->find('list');
+        $cars = $this->Tickets->find()
+            ->hydrate(false)
+            ->select([
+                'ids' => 'DISTINCT vehicle_id'
+            ]);
+
+        if(count($cars)){
+            $cars = $cars->toArray();
+        } else {
+            $cars = false;
+        }
+
+        $vehicles_ids = [];
+        foreach($cars as $item){
+            array_push($vehicles_ids, $item['ids']);
+        }
+
+        $vehicles = $this->Tickets->Vehicles->find('list')
+            ->where([
+                'id in' => $vehicles_ids
+            ]);
 
         $this->set(compact('vehicles','tickets_list'));
         $this->set('_serialize', ['vehicles','tickets_list']);

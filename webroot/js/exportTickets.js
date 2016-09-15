@@ -14,18 +14,12 @@ $(document).ready(function(){
             var labels = [];
             var data = [];
             var backgrounds = [];
-            var color1 = 0;
-            var color2 = 50;
-            var color3 = 145;
 
             if(e.result.type === 'success'){
                 $.each(e.result.data, function(key, value){
                     labels.push(value.model + ' (' + value.plate + ')');
                     data.push(value.qtdTickets);
-                    color1 += 10;
-                    color2 += 40;
-                    color3 += 30;
-                    backgrounds.push('rgb(' + color1 + ',' + color2 + ', ' + color3 + ')');
+                    backgrounds.push(Please.make_color());
                 });
 
                 $('.col-md-6 > iframe').remove();
@@ -65,7 +59,7 @@ $(document).ready(function(){
 
         $.post(url, data, function (r) {
             if (r.result.status == 'success') {
-                $('#abrir').attr('href', webroot + r.result.url).show('100');
+                $('#download').attr('href', webroot + r.result.url).show('100');
                 $('#generateFile').html('<i class="fa fa-file-excel-o"></i> Gerar Relatorio');
             } else {
                 alert(r.result.message);
@@ -74,12 +68,13 @@ $(document).ready(function(){
     });
 
     $('input[type="radio"]').on('ifChecked', function(){
-        $('#download').hide();
+        $('#abrir').hide();
         $('#generatePdf').html('<i class="fa fa-file-pdf-o"></i> Exportar Gráfico').attr('disabled', false).show();
         populateGrafh();
     });
 
     $('#generatePdf').click(function(e){
+        NProgress.start();
         e.preventDefault();
         var button = $('#generatePdf');
         $(this).html('<i class="fa fa-cog fa-spin"></i> gerando PDF...').attr('disabled', true);
@@ -87,7 +82,7 @@ $(document).ready(function(){
         var data = {
             url: url_base64,
             title: 'Gráfico de Multas por Veículo',
-            file_name: 'relatorio_de_multas'
+            file_name: 'grafico_de_multas'
         };
         $.post(webroot + 'charts/getPdf', data, function(e){
             if(e){
@@ -96,6 +91,7 @@ $(document).ready(function(){
                 btnAbrir.attr('href', webroot + e.arquivo);
                 btnAbrir.attr('target', '_blank');
                 btnAbrir.show();
+                NProgress.done();
             }
         },'json');
     });

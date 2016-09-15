@@ -183,7 +183,7 @@ class XLSXExporterComponent extends Component {
                                         $findResult->where([$findCond['equals_to'] => $findValue]);
                                     }
                                 } else {
-                                    
+
                                 }
                             }
 

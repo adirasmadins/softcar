@@ -14,14 +14,12 @@ $(document).ready(function(){
             var labels = [];
             var data = [];
             var backgrounds = [];
-            var color = 90;
 
             if(e.result.type === 'success'){
                 $.each(e.result.data, function(key, value){
                     labels.push(value.model + ' (' + value.plate + ')');
                     data.push(value.qtdService);
-                    color += 30;
-                    backgrounds.push('rgb(0,' + color + ',145)');
+                    backgrounds.push(Please.make_color());
                 });
 
 
@@ -45,6 +43,8 @@ $(document).ready(function(){
 
     $('#from-date, #to-date, #vehicle-ids, #service-type').change(function(){
         $('#download').hide();
+        $('#generatePdf').html('<i class="fa fa-file-pdf-o"></i> Exportar Gráfico').attr('disabled', false).show();
+        $('#abrir').hide();
     });
 
     $('#generateFile').click(function(e){
@@ -70,6 +70,29 @@ $(document).ready(function(){
 
     $('input[type="radio"]').on('ifChecked', function(){
         populateGrafh();
+    });
+
+    $('#generatePdf').click(function(e){
+        NProgress.start();
+        e.preventDefault();
+        var button = $('#generatePdf');
+        $(this).html('<i class="fa fa-cog fa-spin"></i> gerando PDF...').attr('disabled', true);
+        var url_base64 = document.getElementById('myChart').toDataURL('image/png');
+        var data = {
+            url: url_base64,
+            title: 'Quantidade de Manutenções',
+            file_name: 'grafico_de_manutencoes'
+        };
+        $.post(webroot + 'charts/getPdf', data, function(e){
+            if(e){
+                var btnAbrir = $('#abrir');
+                button.hide();
+                btnAbrir.attr('href', webroot + e.arquivo);
+                btnAbrir.attr('target', '_blank');
+                btnAbrir.show();
+                NProgress.done();
+            }
+        },'json');
     });
 
     $(document).on('change', '#vehicle-ids', populateGrafh);

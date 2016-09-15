@@ -86,6 +86,7 @@ $this->append('script', $this->Html->script([
     '../dist/iCheck/icheck',
     '../dist/chartjs/Chart.bundle.min',
     '../dist/chartjs/Chart.min',
+    'colorLib',
     'chart',
     'exportTickets'
 ]));

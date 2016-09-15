@@ -9,10 +9,14 @@ class ClientsController extends AppController
 
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Cities', 'States']
-        ];
-        $clients = $this->paginate($this->Clients);
+        $data = $this->request->query;
+        $query = $this->Clients->find();
+        if (isset($data['name']) && !empty($data['name'])) {
+            $query->where([
+                'name LIKE' => '%' . Utils::r_acc($data['name']) . '%'
+            ]);
+        };
+        $clients = $this->paginate($query);
 
         $this->set(compact('clients'));
         $this->set('_serialize', ['clients']);
