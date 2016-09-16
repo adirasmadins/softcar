@@ -1,3 +1,4 @@
+<title>SoftCar - Login</title>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
