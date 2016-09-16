@@ -181,8 +181,8 @@ class TicketsController extends AppController
             ->select([
                 'ids' => 'DISTINCT vehicle_id'
             ]);
-var_dump($cars->toArray());die();
-        if(count($cars) > 1){
+            
+        if(count($cars->toArray())){
             $cars = $cars->toArray();
             
             $vehicles_ids = [];
@@ -195,12 +195,12 @@ var_dump($cars->toArray());die();
                 ->where([
                     'id in' => $vehicles_ids
                 ]);
-            count($vehicles) ? $vehicles->toArray() : '';
+            $vehicles = $vehicles->toArray();
         } else {
             $cars = false;
-            $vehicles = ['0' => 'Não há carros com multa'];
+            $vehicles = ['0' => 'Não há veículos com multa'];
         }
-
+        
         $this->set(compact('vehicles','tickets_list'));
         $this->set('_serialize', ['vehicles','tickets_list']);
     }

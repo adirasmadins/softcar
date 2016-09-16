@@ -116,13 +116,10 @@ class ServicesController extends AppController
                 'ids' => 'DISTINCT vehicle_id'
             ]);
 
-        if(count($cars)){
+        if(count($cars->toArray())){
             $cars = $cars->toArray();
-        } else {
-            $cars = false;
-        }
-
-        $vehicles_ids = [];
+        
+            $vehicles_ids = [];
         foreach($cars as $item){
             array_push($vehicles_ids, $item['ids']);
         }
@@ -131,6 +128,12 @@ class ServicesController extends AppController
             ->where([
                 'id in' => $vehicles_ids
             ]);
+            
+            $vehicles = $vehicles->toArray();
+        } else {
+            $cars = false;
+            $vehicles = ['0' => 'Não há veículo com manutenção'];
+        }
 
         $this->set(compact('vehicles'));
         $this->set('_serialize', ['vehicles']);

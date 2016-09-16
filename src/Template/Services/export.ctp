@@ -9,7 +9,7 @@
         <?= $this->Form->create(null,['id' => 'formExport']) ?>
         <div class="row">
             <div class="col-md-12">
-                <?= $this->Form->input('vehicle._ids',['label' => 'Veículo', 'class' => 'form-control','options' => $vehicles,'default' => array_keys($vehicles->toArray())]); ?>
+                <?= $this->Form->input('vehicle._ids',['label' => 'Veículo', 'class' => 'form-control','options' => $vehicles,'default' => array_keys($vehicles)]); ?>
             </div>
         </div>
         <div class="row">

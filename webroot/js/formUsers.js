@@ -128,7 +128,7 @@ $(document).ready(function(){
     function popularCityInAdd(){
         var options = "";
 
-        var url = webroot + '/utils/cities-list';
+        var url = webroot + 'utils/cities-list';
         var data = {
             id: $('#state-id').val()
         };
@@ -153,7 +153,7 @@ $(document).ready(function(){
     function popularCityInEdit(){
         var options = "";
 
-        var url = webroot + '/utils/cities-list';
+        var url = webroot + 'utils/cities-list';
         var data = {
             id: $('#state-id').val()
         };

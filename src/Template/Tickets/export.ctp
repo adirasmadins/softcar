@@ -9,7 +9,7 @@
         <?= $this->Form->create(null,['id' => 'formExport']) ?>
         <div class="row">
             <div class="col-md-12">
-                <?= $this->Form->input('vehicle._ids',['label' => 'Veículo', 'class' => 'form-control','options' => $vehicles,'default' => !empty($vehicles) ? array_keys($vehicles) : '']); ?>
+                <?= $this->Form->input('vehicle._ids',['label' => 'Veículo', 'class' => 'form-control','options' => $vehicles, 'default' => array_keys($vehicles)]); ?>
             </div>
         </div>
         <div class="row">
@@ -25,13 +25,13 @@
         </div>
         <hr/>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-6">
                 <a href="#" id="download" class="btn btn-success" style="display: none">
                     <i class="fa fa-download"></i>
                     Baixar Relatório
                 </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-6">
                 <a href="#" class="btn btn-info pull-right" id="generatePdf">
                     <i class="fa fa-file-pdf-o"></i>
                     Exportar Gráfico
@@ -41,7 +41,7 @@
                     Abrir PDF
                 </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-6">
                 <button class="btn btn-info pull-right" id="generateFile">
                     <i class="fa fa-file-excel-o"></i>
                     Gerar Relatorio
