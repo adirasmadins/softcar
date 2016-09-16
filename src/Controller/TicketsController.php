@@ -177,28 +177,29 @@ class TicketsController extends AppController
     }
 
     public function export(){
-        $this->Tickets->Vehicles->displayField('model');
         $cars = $this->Tickets->find()
-            ->hydrate(false)
             ->select([
                 'ids' => 'DISTINCT vehicle_id'
             ]);
-
-        if(count($cars)){
+var_dump($cars->toArray());die();
+        if(count($cars) > 1){
             $cars = $cars->toArray();
+            
+            $vehicles_ids = [];
+            foreach($cars as $item){
+                array_push($vehicles_ids, $item['ids']);
+            }
+
+            $this->Tickets->Vehicles->displayField('model');
+            $vehicles = $this->Tickets->Vehicles->find('list')
+                ->where([
+                    'id in' => $vehicles_ids
+                ]);
+            count($vehicles) ? $vehicles->toArray() : '';
         } else {
             $cars = false;
+            $vehicles = ['0' => 'Não há carros com multa'];
         }
-
-        $vehicles_ids = [];
-        foreach($cars as $item){
-            array_push($vehicles_ids, $item['ids']);
-        }
-
-        $vehicles = $this->Tickets->Vehicles->find('list')
-            ->where([
-                'id in' => $vehicles_ids
-            ]);
 
         $this->set(compact('vehicles','tickets_list'));
         $this->set('_serialize', ['vehicles','tickets_list']);

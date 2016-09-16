@@ -53,7 +53,7 @@ $(document).ready(function(){
         }
         if(url != ''){
             $('.view-vehicle > h4').html(model);
-            $('.view-vehicle > img').attr('src', webroot + url);
+            $('.view-vehicle > img').attr('src', (webroot + url).replace('//','/'));
         } else {
             $('.view-vehicle > h4').html('Cadastro sem imagem!');
             $('.view-vehicle > img').attr('src', webroot + 'img/no_image.jpg');

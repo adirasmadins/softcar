@@ -188,7 +188,7 @@ class AppController extends Controller
                     'id' => 'Tickets.id',
                     'vehicle' => 'v.model',
                     'plate' => 'v.plate',
-                    'days' => 'DATEDIFF(Tickets.ticket_date, CURDATE())',
+                    'days' => 'DATEDIFF(Tickets.due_date, CURDATE())',
                 ])
                 ->innerJoin(['v' => 'vehicles'],['Tickets.vehicle_id = v.id'])
                 ->where([
