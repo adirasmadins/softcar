@@ -62,4 +62,9 @@ $(document).ready(function(){
             return true;
         }
     });
+    
+    var formServices = new Form();
+    formServices.inputMasks({
+        '#make-date': 'date'
+    });
 });

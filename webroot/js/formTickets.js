@@ -46,7 +46,9 @@ $(document).ready(function(){
     var formTickets = new Form();
     formTickets.inputMasks({
         '#cpf-not-registered': 'cpf',
-        '#rg-not-registered': 'rg'
+        '#rg-not-registered': 'rg',
+        '#due-date': 'date',
+        '#ticket-date': 'date'
     });
 
     $('#due-date, #ticket-date').datepicker({
@@ -133,6 +135,35 @@ $(document).ready(function(){
         },
         errorPlacement: function(error,element) {
             return true;
+        }
+    });
+    
+    $('#cpf-not-registered').change(function(){
+        var val = $(this).val();
+
+        value = $.trim(val);
+        value = value.replace('.', '');
+        value = value.replace('.', '');
+        value = value.replace('-', '');
+
+        var parent = $(this).parent();
+        var label = parent.parent('label');
+        if(value.length === 11){
+            var valid = formTickets.validarCpf(val);
+            parent.children('span').remove();
+
+            if(!valid){
+                parent.after(label).prepend('<span class="label label-danger pull-right"><i class="fa fa-ban"></i> Inválido</span>');
+                $(this).css("border-left","2px solid #dd4b39");
+                $('button[type="submit"]').attr('disabled', true);
+            } else {
+                parent.after(label).prepend('<span class="label label-success pull-right"><i class="fa fa-check"></i> Válido</span>');
+                $(this).css("border-left","2px solid #00a65a");
+                $('button[type="submit"]').attr('disabled', false);
+            }
+        } else if ($(this).val() === ''){
+            $(this).css("border-left","");
+            parent.children('span').remove();
         }
     });
 });

@@ -78,4 +78,11 @@ $(document).ready(function(){
             return true;
         }
     });
+    var formRates = new Form();
+    
+    formRates.inputMasks({
+        '#ipva-expiration': 'date',
+        '#depvat-expiration': 'date',
+        '#licensing-expiration': 'date'
+    });
 });

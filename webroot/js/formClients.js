@@ -75,7 +75,9 @@ $(document).ready(function(){
         '#cel-phone': 'phone',
         '#cpf-cnpj': 'cpf_cnpj',
         '#rg-ie': 'rg',
-        '#cep': 'cep'
+        '#cep': 'cep',
+        '#validity-cnh': 'date',
+        '#first-license': 'date'
     });
 
 

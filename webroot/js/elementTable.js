@@ -42,14 +42,14 @@ $(document).ready(function(){
         var url = $(this).data('url');
         var model = $(this).data('model');
         var position = $(this).offset();
-
+        var div = $('.view-vehicle');
         var heightDiv = $('.view-vehicle').height();
         var heightTela = window.innerHeight;
 
         if((position.top + heightDiv) > heightTela){
-            $('.view-vehicle').css('top', position.top - heightDiv - 80);
+            div.css('top', position.top - heightDiv - 80);
         } else {
-            $('.view-vehicle').css('top', position.top);
+            div.css('top', position.top);
         }
         if(url != ''){
             $('.view-vehicle > h4').html(model);
@@ -58,9 +58,9 @@ $(document).ready(function(){
             $('.view-vehicle > h4').html('Cadastro sem imagem!');
             $('.view-vehicle > img').attr('src', webroot + 'img/no_image.jpg');
         }
-        $('.view-vehicle').show();
+        div.show();
     }).mouseout(function(){
-        $('.view-vehicle').hide();
+        div.hide();
     });
 
     $('.btn-pay').mouseover(function(){

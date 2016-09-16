@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 form-group">
+                                        <div class="col-md-6">
                                             <?= $this->Form->input('cpf_not_registered',['label' => 'CPF','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
                                         </div>
                                         <div class="col-md-6 form-group">

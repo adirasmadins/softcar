@@ -67,7 +67,8 @@ $(document).ready(function(){
         '#cel-phone': 'phone',
         '#cpf': 'cpf',
         '#rg': 'rg',
-        '#cep': 'cep'
+        '#cep': 'cep',
+        '#birth-date': 'date'
     });
 
 
