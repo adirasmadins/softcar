@@ -178,7 +178,7 @@ class AppController extends Controller
                 }
             }
 
-            /* Fim verificação Tarifas sdfg */
+            /* Fim verificação Tarifas*/
 
             /* Inicio Verificação Multas */
             $TicketsEntity = TableRegistry::get('Tickets');
