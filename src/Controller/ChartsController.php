@@ -33,7 +33,7 @@ class ChartsController extends AppController
 
 
             $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4', 'landscape');
+            $dompdf->setPaper('A4', 'portrait');
             $dompdf->render();
 
             $pdf = $dompdf->output();
