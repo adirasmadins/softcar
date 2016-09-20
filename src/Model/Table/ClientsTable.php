@@ -56,6 +56,10 @@ class ClientsTable extends Table
         $this->hasMany('Tickets', [
             'foreignKey' => 'client_id'
         ]);
+        $this->belongsToMany('Files', [
+            'foreignKey' => 'client_id',
+            'joinTable' => 'client_files'
+        ]);
     }
 
     /**

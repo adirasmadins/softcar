@@ -1,6 +1,6 @@
 <div class="col-md-10">
     <div class="panel panel-default">
-        <?= $this->Form->create($client,['id' => 'formClients']) ?>
+        <?= $this->Form->create($client,['id' => 'formClients', 'type' => 'file']) ?>
         <div class="box-header hidden-sm hidden-xs">
             <h4 class="panel-head"><?= $situacao ?></h4>
             <hr/>
@@ -79,6 +79,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <hr/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input data-device="desktop" type="file" id="files" name="files[]" multiple>
+                      <div id="selectedFilesD"></div>
+                      <br/>
                 </div>
             </div>
         </div>
