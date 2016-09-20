@@ -1,0 +1,95 @@
+<div class="col-md-10">
+    <div class="panel panel-default">
+        <?= $this->Form->create($reserve,['id' => 'formFuels']) ?>
+        <div class="box-header hidden-sm hidden-xs">
+            <h4 class="panel-head"><?= $situacao ?></h4>
+            <hr/>
+        </div>
+        <div class="box-header hidden-md hidden-lg text-center">
+            <h4><?= $situacao ?></h4>
+            <hr/>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                 <div class="col-md-3 form-group">
+                    <?= $this->Form->input('date_start',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text']) ?>
+                 </div>
+                 <div class="col-md-3 form-group">
+                    <?= $this->Form->input('date_end',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text']) ?>
+                 </div>
+                 <div class="col-md-3 form-group">
+                    <label>Horário de Saída</label>
+                    <div class="bootstrap-timepicker">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <input type="text" name="remove_schedule" value="<?= $reserve->remove_schedule ?>" id="remove_schedule" class="form-control timepicker">
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3 form-group">
+                     <label>Horário de Devolução</label>
+                    <div class="bootstrap-timepicker">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <input type="text" name="devolution_schedule" value="<?= $reserve->devolution_schedule ?>" id="devolution_schedule" class="form-control timepicker">
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pull-right">
+                    <button type="button" class="btn btn-primary" id="disp"><i class="fa fa-search"></i> Verificar disponibilidades</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+            </div>
+            <div class="row clients" style="display: none">
+                <div class="col-md-6 form-group">
+                    <?= $this->Form->input('client_id',['label' => 'Cliente','placeholder' =>'Cliente', 'class' => 'form-control','options' => $clients,'empty' => 'Selecione um cliente']); ?>
+                </div>
+            </div>
+            <div class="row vehicles" style="display: none">
+                <div class="col-md-6 form-group">
+                    <?= $this->Form->input('vehicle_id',['label' => 'Veículo','placeholder' =>'Veículo', 'class' => 'form-control','options' => $vehicles,'empty' => 'Selecione um veículo']); ?>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <?= $this->element('Form/button',['options' =>[
+                'text' => 'Salvar',
+                'action' => 'add',
+                'class' => 'btn btn-success',
+                'type' => 'submit',
+                'icon' => 'check'
+            ]]) ?>
+            <?= $this->Html->Link('<i class="fa fa-undo"></i> Voltar',
+                [
+                    'action' => 'index'
+                ],
+                [
+                    'class' => 'btn btn-warning',
+                    'escape' => false
+                ])
+            ?>
+        </div>
+        <?= $this->Form->end() ?>
+    </div>
+</div>
+
+<?php
+$this->append('css', $this->Html->css([
+    '../dist/timepicker/bootstrap-timepicker.min'
+]));
+$this->append('script', $this->Html->script([
+    'form',
+    '../dist/timepicker/bootstrap-timepicker.min',
+    'formReserves'
+]));
+?>
