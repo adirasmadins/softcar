@@ -7,3 +7,22 @@
     height: 50px;
     padding: 13px;
 }
+
+#selectedFilesD img,
+#selectFilesM img {
+  max-width: 100px;
+  max-height: 100px;
+  float: left;
+  margin: 10px;
+}
+#userActions input {
+  width: auto;
+  margin: auto;
+}
+#selectFiles img,
+#selectedFilesM img {
+  max-width: 100px;
+  max-height: 100px;
+  float: left;
+  margin-bottom: 10px;
+}
