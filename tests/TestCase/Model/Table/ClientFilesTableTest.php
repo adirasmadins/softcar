@@ -32,13 +32,13 @@ class ClientFilesTableTest extends TestCase
         'app.locations',
         'app.users',
         'app.reserves',
-        'app.tickets',
         'app.vehicles',
         'app.types',
         'app.fuels',
         'app.rates',
         'app.rate_payments',
         'app.services',
+        'app.tickets',
         'app.files'
     ];
 

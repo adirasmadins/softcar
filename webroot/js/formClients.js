@@ -97,9 +97,6 @@ $(document).ready(function(){
             birth: {
                 require: true
             },
-            cpf_cnpj:{
-                require: true,
-            },
             rg: {
                 required: true
             },
@@ -211,7 +208,7 @@ $(document).ready(function(){
 $(document).ready(function() {
   /*multiple image preview first input*/
 
-  $("#files").on("change", handleFileSelect);
+  $("#client_files").on("change", handleFileSelect);
 
   selDiv = $("#selectedFilesD");
   $("#myForm").on("submit", handleForm);

@@ -8,10 +8,9 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $client_id
- * @property int $file_id
+ * @property string $url_file
  *
  * @property \App\Model\Entity\Client $client
- * @property \App\Model\Entity\File $file
  */
 class ClientFile extends Entity
 {

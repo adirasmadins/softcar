@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 form-group">
+                <div class="col-md-4">
                     <?= $this->Form->input('cpf_cnpj',['label' => 'CPF/CNPJ','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
@@ -83,7 +83,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input data-device="desktop" type="file" id="files" name="files[]" multiple>
+                    <input data-device="desktop" type="file" id="client_files" name="client_files[]" multiple>
                       <div id="selectedFilesD"></div>
                       <br/>
                 </div>

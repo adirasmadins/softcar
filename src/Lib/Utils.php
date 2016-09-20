@@ -155,8 +155,21 @@ class Utils {
         if (!empty($data['picture']['name'])) {
             $partes = explode('.', $data['picture']['name']);
             $ext = array_pop($partes);
-            $file = 'files/' . $nome_pasta .'/' . md5(date('Ymdhis')) . '.' . $ext;
+            $file = 'files/' . $nome_pasta .'/' . md5(date('Ymdhisu')) . '.' . $ext;
             move_uploaded_file($data['picture']['tmp_name'], WWW_ROOT . $file);
+        }
+
+        return $file;
+    }
+    
+    static function fazerUploadClients($data, $nome_pasta, $key){
+        $file = false;
+        
+        if (!empty($data['name'])) {
+            $partes = explode('.', $data['name']);
+            $ext = array_pop($partes);
+            $file = 'files/' . $nome_pasta .'/' . $key .  md5(date('Ymdhis')) . '.' . $ext;
+            move_uploaded_file($data['tmp_name'], WWW_ROOT . $file);
         }
 
         return $file;

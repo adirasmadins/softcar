@@ -10,7 +10,6 @@ use Cake\Validation\Validator;
  * ClientFiles Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Clients
- * @property \Cake\ORM\Association\BelongsTo $Files
  *
  * @method \App\Model\Entity\ClientFile get($primaryKey, $options = [])
  * @method \App\Model\Entity\ClientFile newEntity($data = null, array $options = [])
@@ -38,12 +37,7 @@ class ClientFilesTable extends Table
         $this->primaryKey('id');
 
         $this->belongsTo('Clients', [
-            'foreignKey' => 'client_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Files', [
-            'foreignKey' => 'file_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'client_id'
         ]);
     }
 
@@ -59,6 +53,9 @@ class ClientFilesTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
+        $validator
+            ->allowEmpty('url_file');
+
         return $validator;
     }
 
@@ -72,7 +69,6 @@ class ClientFilesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['client_id'], 'Clients'));
-        $rules->add($rules->existsIn(['file_id'], 'Files'));
 
         return $rules;
     }

@@ -60,6 +60,11 @@ class ClientsTable extends Table
             'foreignKey' => 'client_id',
             'joinTable' => 'client_files'
         ]);
+        $this->hasMany('ClientFiles', [
+            'foreignKey' => 'client_id',
+            'dependent' => true,
+            'cascadeCallbacks' => true
+        ]);
     }
 
     /**
