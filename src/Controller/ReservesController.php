@@ -84,7 +84,7 @@ class ReservesController extends AppController
                 ->where([
                     'date_start BETWEEN :date_start1 AND :date_end1'
                 ])
-                ->where([
+                ->orWhere([
                     'date_end BETWEEN :date_start2 AND :date_end2'
                 ])
                 ->bind(':date_start1', Utils::brToDate($data['date_start']), 'date')
@@ -92,7 +92,7 @@ class ReservesController extends AppController
                 ->bind(':date_end1', Utils::brToDate($data['date_end']),'date')
                 ->bind(':date_end2', Utils::brToDate($data['date_end']),'date');
 
-            
+
         }
     }
 }
