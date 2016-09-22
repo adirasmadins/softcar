@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Lib\Utils;
+use Cake\ORM\TableRegistry;
 
 class ReservesController extends AppController
 {
@@ -75,6 +76,7 @@ class ReservesController extends AppController
     }
 
     public function getVehiclesByDateAndSchedule(){
+        $result = ['type' => 'error', 'data' => false];
         if($this->request->is('post')){
             $data = $this->request->data;
             $result = $this->Reserves->find()
@@ -82,17 +84,38 @@ class ReservesController extends AppController
                     'vehicle' => 'vehicle_id'
                 ])
                 ->where([
-                    'date_start BETWEEN :date_start1 AND :date_end1'
+                    'date_start BETWEEN :date_start AND :date_end'
                 ])
                 ->orWhere([
-                    'date_end BETWEEN :date_start2 AND :date_end2'
+                    'date_end BETWEEN :date_start AND :date_end'
                 ])
-                ->bind(':date_start1', Utils::brToDate($data['date_start']), 'date')
-                ->bind(':date_start2', Utils::brToDate($data['date_start']), 'date')
-                ->bind(':date_end1', Utils::brToDate($data['date_end']),'date')
-                ->bind(':date_end2', Utils::brToDate($data['date_end']),'date');
-
-
+                ->bind(':date_start', Utils::brToDate($data['date_start']), 'date')
+                ->bind(':date_end', Utils::brToDate($data['date_end']),'date');
+                
+                if(count($result->toArray())){
+                    $result = $result->toArray();
+                    $Vehicles = TableRegistry::get('Vehicles');
+                    $vehicles_list = $Vehicles->find()
+                        ->where([
+                            'id NOT IN' => $result
+                        ]);
+                    if(count($vehicles_list->toArray())){
+                        $result = $vehicles_list->toArray();
+                    } else {
+                        $result = false;
+                    }
+                } else {
+                    $Vehicles = TableRegistry::get('Vehicles');
+                    $vehicles_list = $Vehicles->find();
+                    if(count($vehicles_list->toArray())){
+                        $result = $vehicles_list->toArray();
+                    } else {
+                        $result = false;
+                    }
+                }
+                $result = ['type' => 'success', 'data' => $result];
         }
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 }

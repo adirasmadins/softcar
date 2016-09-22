@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#client-id').select2();
+    $('#vehicle-id').select2();
 
     $('#date-start, #date-end').datepicker({
         language: "pt-BR",
@@ -38,7 +39,33 @@ $(document).ready(function() {
     var populateVehicles = function(formData){
         var url = webroot + 'reserves/get-vehicles-by-date-and-schedule';
         $.post(url, formData, function(e){
-            console.log(e);
+            var options = "";
+             $('#select2-vehicle-id-container').text('buscando veículo...');
+            if(e.result.type === 'success'){
+                $.each(e.result.data, function(key, value){
+                    options += "<option value=" + value.id + ">" + value.model + "</option>";
+                });
+                $('#select2-vehicle-id-container').text('Selecione o Veículo');
+                $("#vehicle-id").html(null);
+                $("#vehicle-id").html(options);
+            }
+        },'json');
+    };
+
+    var infoCar = function(){
+        var vehicleId = {id: $('#vehicle-id').val()};
+        var url = webroot + 'vehicles/getVehicleInformation';
+        var refresh = '<i class="fa fa-refresh fa-spin"></i>';
+
+        $('#plate h5').html(refresh);
+        $('#renavam h5').html(refresh);
+        $.post(url,vehicleId, function(event){
+            if(event.result.type === 'success'){
+                var vehicle = event.result.data;
+
+                $('#plate h5').text(vehicle.plate);
+                $('#renavam h5').text(vehicle.renavam);
+            }
         },'json');
     };
 
@@ -62,4 +89,5 @@ $(document).ready(function() {
     };
 
     $(document).on('change', '#client-id', infoClient);
+    $(document).on('change', '#vehicle-id', infoCar);
 });
