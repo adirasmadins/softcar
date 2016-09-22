@@ -41,8 +41,8 @@
                  </div>
             </div>
             <div class="row">
-                <div class="col-md-12 pull-right">
-                    <button type="button" class="btn btn-primary" id="disp"><i class="fa fa-search"></i> Verificar disponibilidades</button>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" id="disp"><i class="fa fa-search"></i> Verificar disponibilidade</button>
                 </div>
             </div>
             <div class="row">
@@ -52,12 +52,32 @@
             </div>
             <div class="row clients" style="display: none">
                 <div class="col-md-6 form-group">
-                    <?= $this->Form->input('client_id',['label' => 'Cliente','placeholder' =>'Cliente', 'class' => 'form-control','options' => $clients,'empty' => 'Selecione um cliente']); ?>
+                    <?= $this->Form->input('client_id',['label' => 'Cliente', 'class' => 'form-control','options' => $clients,'empty' => 'Selecione um cliente']); ?>
+                </div>
+                <div class="col-md-2 col-xs-4 text-center dados-client" id="cnh">
+                    <label>CNH</label>
+                    <h5>aguardando escolha do cliente...</h5>
+                </div>
+                <div class="col-md-2 col-xs-4 text-center dados-client" id="cpf">
+                    <label>CPF</label>
+                    <h5>aguardando escolha do cliente...</h5>
+                </div>
+                <div class="col-md-2 col-xs-4 text-center dados-client" id="city">
+                    <label>Cidade</label>
+                    <h5>aguardando escolha do cliente...</h5>
                 </div>
             </div>
             <div class="row vehicles" style="display: none">
                 <div class="col-md-6 form-group">
-                    <?= $this->Form->input('vehicle_id',['label' => 'Veículo','placeholder' =>'Veículo', 'class' => 'form-control','options' => $vehicles,'empty' => 'Selecione um veículo']); ?>
+                    <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
+                </div>
+                <div class="col-md-2 col-xs-4 text-center" id="plate">
+                    <label>Placa</label>
+                    <h5>aguardando escolha do veículo...</h5>
+                </div>
+                <div class="col-md-2 col-xs-4 text-center" id="renavam">
+                    <label>Renavam</label>
+                    <h5>aguardando escolha do veículo...</h5>
                 </div>
             </div>
         </div>
