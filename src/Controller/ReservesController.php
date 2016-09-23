@@ -65,14 +65,22 @@ class ReservesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $reserve = $this->Reserves->get($id);
-        if ($this->Reserves->delete($reserve)) {
-            $this->Flash->success(__('The reserve has been deleted.'));
-        } else {
-            $this->Flash->error(__('The reserve could not be deleted. Please, try again.'));
+        $data = $this->request->data;
+        $reserve = $this->Reserves->get($data['id']);
+        $result = ['type' => 'error'];
+
+        try{
+            if ($this->Reserves->delete($reserve)) {
+                $result = ['type' => 'success','data' => ''];
+            } else {
+                $result = ['type' => 'error'];
+            }
+        } catch(\PDOException $e){
+            $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
         }
 
-        return $this->redirect(['action' => 'index']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 
     public function getVehiclesByDateAndSchedule(){
