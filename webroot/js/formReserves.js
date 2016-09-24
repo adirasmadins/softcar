@@ -34,9 +34,12 @@ $(document).ready(function() {
             var ban = '<i class="fa fa-exclamation-circle"></i>';
             $(this).after('<p>'+ ban +'Preencha todas as informações</p>');
         }
+        $('#disp').fadeOut('fast');
     });
 
     var populateVehicles = function(formData){
+        var select = $('#vehicle-id');
+        select.attr('disabled', true);
         var url = webroot + 'reserves/get-vehicles-by-date-and-schedule';
         $.post(url, formData, function(e){
             var options = "";
@@ -46,14 +49,22 @@ $(document).ready(function() {
                     options += "<option value=" + value.id + ">" + value.model + "</option>";
                 });
                 $('#select2-vehicle-id-container').text('Selecione o Veículo');
-                $("#vehicle-id").html(null);
-                $("#vehicle-id").html(options);
+                select.html(null);
+                select.html(options);
+                select.attr('disabled', false);
             }
         },'json');
     };
 
     var infoCar = function(){
-        var vehicleId = {id: $('#vehicle-id').val()};
+        var divVehicle = $('figure img');
+        var span = $('figure span');
+
+        $('figure').css('transition', '1s').css('opacity', '0.1');
+
+        var vehicleId = {
+            id: $('#vehicle-id').val()
+        };
         var url = webroot + 'vehicles/getVehicleInformation';
         var refresh = '<i class="fa fa-refresh fa-spin"></i>';
 
@@ -62,9 +73,19 @@ $(document).ready(function() {
         $.post(url,vehicleId, function(event){
             if(event.result.type === 'success'){
                 var vehicle = event.result.data;
-
+                divVehicle.attr('src', webroot + vehicle.picture);
+                span.html('<h3>' + 'R$ '  + vehicle.day_price + ' <small>(diária)</small></h3>');
                 $('#plate h5').text(vehicle.plate);
                 $('#renavam h5').text(vehicle.renavam);
+                $('#img').fadeIn('fast');
+                $('figure').css('transition', '1s').css('opacity', '1');
+
+                /* Calculando TOTAL */
+                var date_start = moment($('#date-start').val(),'DD/MM/YYYY');
+                var date_end = moment($('#date-end').val(),'DD/MM/YYYY');
+                var diff  = date_end.diff(date_start, 'days');
+                var total = ('TOTAL R$ ' + diff * parseFloat(vehicle.day_price));
+                $('.total').html(total);
             }
         },'json');
     };
@@ -88,6 +109,13 @@ $(document).ready(function() {
         },'json');
     };
 
+    var hide = function(){
+        $('.vehicles').fadeOut('fast');
+        $('#disp').fadeIn('fast');
+    };
+
     $(document).on('change', '#client-id', infoClient);
     $(document).on('change', '#vehicle-id', infoCar);
+    $(document).on('change', '#date-start', hide);
+    $(document).on('change', '#date-end', hide);
 });

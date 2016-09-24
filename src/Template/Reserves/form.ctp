@@ -70,14 +70,13 @@
             <div class="row vehicles" style="display: none">
                 <div class="col-md-6 form-group">
                     <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
+                    <h2 class="pull-right total"></h2>
                 </div>
-                <div class="col-md-2 col-xs-4 text-center" id="plate">
-                    <label>Placa</label>
-                    <h5>aguardando escolha do veículo...</h5>
-                </div>
-                <div class="col-md-2 col-xs-4 text-center" id="renavam">
-                    <label>Renavam</label>
-                    <h5>aguardando escolha do veículo...</h5>
+                <div class="col-md-6" id="img" style="display: none">
+                    <figure>
+                        <img src="" class="thumbnail img-responsive"/>
+                        <span class="sub-img"></span>
+                    </figure>
                 </div>
             </div>
         </div>
@@ -105,10 +104,12 @@
 
 <?php
 $this->append('css', $this->Html->css([
-    '../dist/timepicker/bootstrap-timepicker.min'
+    '../dist/timepicker/bootstrap-timepicker.min',
+    'formReserves'
 ]));
 $this->append('script', $this->Html->script([
     'form',
+    '../dist/moment/moment.js',
     '../dist/timepicker/bootstrap-timepicker.min',
     'formReserves'
 ]));
