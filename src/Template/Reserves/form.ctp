@@ -73,7 +73,13 @@
                     <div class="div-total">
                         <h2 class="pull-left">TOTAL</h2>
                         <h2 class="pull-right total">R$ 0,00</h2>
+                        <input id="total" name="total" type="hidden">
                         <button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>
+                    </div>
+                    <div class="acrescimo-desconto text-center" style="display: none">
+                        <h5>Acréscimo / Desconto</h5>
+                        <input type="text" id="valor">
+                        <button class="btn btn-success btn-calcular btn-xs btn-flat"><i class="fa fa-check-circle"></i> Calcular</button>
                     </div>
                 </div>
                 <div class="col-md-6" id="img" style="display: none">

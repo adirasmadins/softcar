@@ -80,8 +80,6 @@ $(document).ready(function() {
                 var vehicle = event.result.data;
                 divVehicle.attr('src', (webroot + vehicle.picture).replace('//', '/'));
                 span.html('<h3>' + 'R$ ' + vehicle.day_price + ' <small>(diária)</small></h3>');
-                $('#plate h5').text(vehicle.plate);
-                $('#renavam h5').text(vehicle.renavam);
                 $('#img').fadeIn('fast');
                 $('figure span').show();
                 figure.css('transition', '1s').css('opacity', '1');
@@ -92,6 +90,7 @@ $(document).ready(function() {
                 var diff  = date_end.diff(date_start, 'days');
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
                 $('.total').html(total.replace('.',','));
+                $('#total').val(total.replace('.',','));
             }
         },'json');
     };
@@ -122,8 +121,36 @@ $(document).ready(function() {
         $('#disp').fadeIn('fast');
     };
 
+    var acresDesc = function(e){
+        e.preventDefault();
+        var div = $('.acrescimo-desconto');
+
+        if(div.is(':visible')){
+            div.hide(100);
+        } else {
+            div.show(100);
+        }
+    };
+
+    var calcular = function(e){
+        e.preventDefault();
+        $('.acrescimo-desconto').hide(100);
+        var valor = $('#valor').val();
+
+        if(valor != ''){
+            var total = $('.total').text().replace('R$ ','');
+            var totalNew = parseFloat(total.replace('.',',')) + (parseFloat(valor));
+            var finishTotal = totalNew.toFixed(2);
+            console.log(finishTotal);
+            $('.total').text('R$ ' + finishTotal);
+            $('#total').val(totalNew);
+        }
+    };
+
     $(document).on('change', '#client-id', infoClient);
     $(document).on('change', '#vehicle-id', infoCar);
     $(document).on('change', '#date-start', hide);
     $(document).on('change', '#date-end', hide);
+    $(document).on('click', '.acres-desc', acresDesc);
+    $(document).on('click', '.btn-calcular', calcular);
 });

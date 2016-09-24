@@ -49,3 +49,28 @@ h2{
     color: white !important;
     border: none !important;
 }
+
+.acrescimo-desconto{
+    height: 140px;
+    width: 200px;
+    position: absolute;
+    border: 2px solid #222d32;
+    background-color: #ecf0f5;
+    right: 15px;
+    bottom: 60px;
+    margin-bottom: 10px;
+}
+
+.btn-calcular{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#valor{
+    margin-top: 15px;
+    margin-bottom: 10px !important;
+    height: 35px !important;
+    text-align: center;
+}
