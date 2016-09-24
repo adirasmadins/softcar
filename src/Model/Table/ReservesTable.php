@@ -65,7 +65,7 @@ class ReservesTable extends Table
             ->notEmpty('date_start');
 
         $validator
-            ->date('date_end')
+            //->date('date_end')
             ->requirePresence('date_end', 'create')
             ->notEmpty('date_end');
 
@@ -80,7 +80,7 @@ class ReservesTable extends Table
             ->notEmpty('devolution_schedule');
 
         $validator
-            ->date('reserve_date')
+            //->date('reserve_date')
             ->requirePresence('reserve_date', 'create')
             ->notEmpty('reserve_date');
 

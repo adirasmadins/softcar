@@ -1,6 +1,7 @@
 figure{
     position: relative;
 }
+
 .sub-img{
     position: absolute;
     background-color: #333;
@@ -22,4 +23,29 @@ figure{
 
 img{
     margin-top: 25px;
+}
+
+.div-total{
+    position: relative;
+    border: 2px solid black;
+    height: 60px;
+    padding: 7px;
+}
+
+.total{
+    margin-right: 45px;
+}
+
+h2{
+    margin: 4px;
+}
+
+.acres-desc{
+    position: absolute;
+    height: 100%;
+    margin-top: -7px;
+    right: 0;
+    background-color: #606060 !important;
+    color: white !important;
+    border: none !important;
 }

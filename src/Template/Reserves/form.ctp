@@ -70,7 +70,11 @@
             <div class="row vehicles" style="display: none">
                 <div class="col-md-6 form-group">
                     <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
-                    <h2 class="pull-right total"></h2>
+                    <div class="div-total">
+                        <h2 class="pull-left">TOTAL</h2>
+                        <h2 class="pull-right total">R$ 0,00</h2>
+                        <button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>
+                    </div>
                 </div>
                 <div class="col-md-6" id="img" style="display: none">
                     <figure>

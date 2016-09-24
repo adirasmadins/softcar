@@ -35,15 +35,19 @@ $(document).ready(function() {
             $(this).after('<p>'+ ban +'Preencha todas as informações</p>');
         }
         $('#disp').fadeOut('fast');
+        $('figure img').attr('src', '');
+        $('figure span').hide();
+        $('.total').html('R$ 0,00');
     });
 
     var populateVehicles = function(formData){
         var select = $('#vehicle-id');
         select.attr('disabled', true);
         var url = webroot + 'reserves/get-vehicles-by-date-and-schedule';
+        $('#select2-vehicle-id-container').text('buscando veículos...');
+        
         $.post(url, formData, function(e){
             var options = "";
-             $('#select2-vehicle-id-container').text('buscando veículo...');
             if(e.result.type === 'success'){
                 $.each(e.result.data, function(key, value){
                     options += "<option value=" + value.id + ">" + value.model + "</option>";
@@ -59,8 +63,9 @@ $(document).ready(function() {
     var infoCar = function(){
         var divVehicle = $('figure img');
         var span = $('figure span');
+        var figure = $('figure');
 
-        $('figure').css('transition', '1s').css('opacity', '0.1');
+       figure.css('transition', '1s').css('opacity', '0.1');
 
         var vehicleId = {
             id: $('#vehicle-id').val()
@@ -73,25 +78,28 @@ $(document).ready(function() {
         $.post(url,vehicleId, function(event){
             if(event.result.type === 'success'){
                 var vehicle = event.result.data;
-                divVehicle.attr('src', webroot + vehicle.picture);
-                span.html('<h3>' + 'R$ '  + vehicle.day_price + ' <small>(diária)</small></h3>');
+                divVehicle.attr('src', (webroot + vehicle.picture).replace('//', '/'));
+                span.html('<h3>' + 'R$ ' + vehicle.day_price + ' <small>(diária)</small></h3>');
                 $('#plate h5').text(vehicle.plate);
                 $('#renavam h5').text(vehicle.renavam);
                 $('#img').fadeIn('fast');
-                $('figure').css('transition', '1s').css('opacity', '1');
+                $('figure span').show();
+                figure.css('transition', '1s').css('opacity', '1');
 
                 /* Calculando TOTAL */
-                var date_start = moment($('#date-start').val(),'DD/MM/YYYY');
-                var date_end = moment($('#date-end').val(),'DD/MM/YYYY');
+                var date_start = moment($('#date-start').val(), 'DD/MM/YYYY');
+                var date_end = moment($('#date-end').val(), 'DD/MM/YYYY');
                 var diff  = date_end.diff(date_start, 'days');
-                var total = ('TOTAL R$ ' + diff * parseFloat(vehicle.day_price));
-                $('.total').html(total);
+                var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
+                $('.total').html(total.replace('.',','));
             }
         },'json');
     };
 
     var infoClient = function(){
-        var clientId = {id: $('#client-id').val()};
+        var clientId = {
+            id: $('#client-id').val()
+        };
         var url = webroot + 'clients/getClientInformation';
         var refresh = '<i class="fa fa-refresh fa-spin"></i>';
 
