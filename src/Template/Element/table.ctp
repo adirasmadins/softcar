@@ -23,7 +23,7 @@
                         <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration') || ($key == 'due_date') || ($key == 'ticket_date') || ($key == 'date_start') || ($key == 'date_end')): ?>
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>
                             <td><?= $item->$key ?></td>
-                        <?php elseif(($key == 'day_price') || $key == 'value'): ?>
+                        <?php elseif(($key == 'day_price') || $key == 'value' || $key == 'total'): ?>
                             <?php $item->$key = 'R$ ' . $item->$key ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif($key == 'client_id'): ?>

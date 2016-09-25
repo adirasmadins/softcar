@@ -59,8 +59,8 @@ $(document).ready(function(){
     $("#value").maskMoney({
         prefix:'R$ ',
         allowNegative: true,
-        thousands:'.',
-        decimal:',',
+        thousands:',',
+        decimal:'.',
         affixesStay: false
     });
 

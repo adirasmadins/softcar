@@ -81,6 +81,7 @@ class AppController extends Controller
                 ->hydrate(false)
                 ->where(['controller in' => $modules])
                 ->orWhere('controller is null')
+                ->order('sequence')
                 ->toArray();
 
             $hasPermission = false;

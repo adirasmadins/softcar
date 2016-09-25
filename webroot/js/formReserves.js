@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    if($('#date-start').val() != '' && $('#date-end').val() != ''){
+        $('#disp').hide();
+    } else {
+        $('#disp').show();
+    }
+
     $('#client-id').select2();
     $('#vehicle-id').select2();
 
@@ -28,6 +34,7 @@ $(document).ready(function() {
                 remove_schedule: remove_schedule,
                 devolution_schedule: devolution_schedule
             };
+
             populateVehicles(formData);
         } else {
             $('p').remove();
@@ -40,12 +47,46 @@ $(document).ready(function() {
         $('.total').html('R$ 0,00');
     });
 
+    function populateVehicleInEdit(date_start, date_end){
+        var options = "";
+
+        var formData = {
+            date_start: date_start,
+            date_end: date_end,
+            idVehicleAllow: $('#vehicle-id-hidden').val() || $('#client-id').val()
+        };
+
+        var url = webroot + 'reserves/get-vehicles-by-date-and-schedule';
+
+        $('#select2-vehicle-id-container').text('buscando veículos...');
+
+        $.post(url,formData, function(e){
+            if(e.result.type === 'success'){
+                var selected = 'selected="selected"';
+                $.each(e.result.data, function(key, value){
+                    if(value.id == $('#vehicle-id-hidden').val()){
+                        $('#select2-vehicle-id-container').text(value.model);
+                        options += "<option value=" + value.id + " selected>" + value.model + "</option>";
+                    } else {
+                        options += "<option value=" + value.id + ">" + value.model + "</option>";
+                    }
+                });
+
+                $("#vehicle-id").html(null);
+                $("#vehicle-id").html(options);
+                $('#vehicle-id').attr('disabled', false);
+            }
+        },'json');
+    }
+
     var populateVehicles = function(formData){
         var select = $('#vehicle-id');
         select.attr('disabled', true);
         var url = webroot + 'reserves/get-vehicles-by-date-and-schedule';
         $('#select2-vehicle-id-container').text('buscando veículos...');
-        
+
+        formData.idVehicleAllow =  $('#vehicle-id-hidden').val() || $('#client-id').val();
+
         $.post(url, formData, function(e){
             var options = "";
             if(e.result.type === 'success'){
@@ -155,4 +196,13 @@ $(document).ready(function() {
     $(document).on('change', '#date-end', hide);
     $(document).on('click', '.acres-desc', acresDesc);
     $(document).on('click', '.btn-calcular', calcular);
+    if($('#vehicle-id-hidden').val() > 0){
+        var date_start = $('#date-start').val();
+        var date_end = $('#date-end').val();
+        populateVehicleInEdit(date_start, date_end);
+    }
+
+    if($('#client-id').val().length > 0){
+        infoClient();
+    }
 });

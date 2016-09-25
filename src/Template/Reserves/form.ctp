@@ -11,13 +11,13 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                 <div class="col-md-3 form-group">
+                <div class="col-md-3 form-group">
                     <?= $this->Form->input('date_start',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text']) ?>
-                 </div>
-                 <div class="col-md-3 form-group">
+                </div>
+                <div class="col-md-3 form-group">
                     <?= $this->Form->input('date_end',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text']) ?>
-                 </div>
-                 <div class="col-md-3 form-group">
+                </div>
+                <div class="col-md-3 form-group">
                     <label>Horário de Saída</label>
                     <div class="bootstrap-timepicker">
                         <div class="input-group">
@@ -28,8 +28,8 @@
                         </div>
                     </div>
                 </div>
-                 <div class="col-md-3 form-group">
-                     <label>Horário de Devolução</label>
+                <div class="col-md-3 form-group">
+                    <label>Horário de Devolução</label>
                     <div class="bootstrap-timepicker">
                         <div class="input-group">
                             <div class="input-group-addon">
@@ -38,7 +38,7 @@
                             <input type="text" name="devolution_schedule" value="<?= $reserve->devolution_schedule ?>" id="devolution_schedule" class="form-control timepicker">
                         </div>
                     </div>
-                 </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -50,7 +50,7 @@
                     <hr/>
                 </div>
             </div>
-            <div class="row clients" style="display: none">
+            <div class="row clients" style="display: <?= $reserve->id ? 'block' : 'none' ?>">
                 <div class="col-md-6 form-group">
                     <?= $this->Form->input('client_id',['label' => 'Cliente', 'class' => 'form-control','options' => $clients,'empty' => 'Selecione um cliente']); ?>
                 </div>
@@ -67,12 +67,13 @@
                     <h5>aguardando escolha do cliente...</h5>
                 </div>
             </div>
-            <div class="row vehicles" style="display: none">
+            <div class="row vehicles" style="display: <?= $reserve->id ? 'block' : 'none' ?>">
+                <input type="hidden" value="<?= $reserve->vehicle_id ?>" id="vehicle-id-hidden" name="vehicle-id-hidden">
                 <div class="col-md-6 form-group">
                     <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
                     <div class="div-total">
                         <h2 class="pull-left">TOTAL</h2>
-                        <h2 class="pull-right total">R$ 0,00</h2>
+                        <h2 class="pull-right total"><?= $reserve->id ? 'R$ ' . number_format((float)$reserve->total,2, ',','.') : 'R$ 0,00' ?></h2>
                         <input id="total" name="total" type="hidden">
                         <button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>
                     </div>
@@ -82,9 +83,9 @@
                         <button class="btn btn-success btn-calcular btn-xs btn-flat"><i class="fa fa-check-circle"></i> Calcular</button>
                     </div>
                 </div>
-                <div class="col-md-6" id="img" style="display: none">
+                <div class="col-md-6" id="img" style="display: <?= $reserve->id ? 'block' : 'none' ?>">
                     <figure>
-                        <img src="" class="thumbnail img-responsive"/>
+                        <img src="<?= $reserve->id ? $reserve->vehicle_picture : '' ?>" class="thumbnail img-responsive"/>
                         <span class="sub-img"></span>
                     </figure>
                 </div>

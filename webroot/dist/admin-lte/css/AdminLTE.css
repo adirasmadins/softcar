@@ -1076,7 +1076,7 @@ a:focus {
   border-bottom-left-radius: 4px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
-  height: 125px;
+  height: 70px;
   padding: 10px;
   text-align: center;
 }
@@ -1122,7 +1122,7 @@ a:focus {
   }
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer {
-  background-color: #f9f9f9;
+  background-color: #222;
   padding: 10px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer:before,

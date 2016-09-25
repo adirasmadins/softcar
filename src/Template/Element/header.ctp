@@ -159,11 +159,8 @@
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                            </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat btn-sair">Sair</a>
+                                <a href="#" class="btn btn-default btn-sair"><i class="fa fa-sign-out"></i> Sair</a>
                             </div>
                         </li>
                     </ul>

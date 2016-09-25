@@ -16,7 +16,8 @@ $this->element('Form/header_index',[
         'vehicle_id' => 'Veículo',
         'client_id' => 'Cliente',
         'date_start' => 'Data Inicial',
-        'date_end' => 'Data Final'
+        'date_end' => 'Data Final',
+        'total' => 'Total'
     ],
     'name' => 'A Reserva',
     'entity' => 'Reserves',

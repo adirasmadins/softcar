@@ -236,6 +236,6 @@ class Utils {
             ])
             ->first();
 
-        return $result['name'] . ' (' . $result['cpf_cnpj'] . ')';
+        return $result['name'] . ' - ' . $result['cpf_cnpj'];
     }
 }
