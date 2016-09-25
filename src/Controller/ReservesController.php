@@ -24,6 +24,12 @@ class ReservesController extends AppController
         $reserve = $this->Reserves->newEntity();
         if ($this->request->is('post')) {
             $reserve = $this->Reserves->patchEntity($reserve, $this->request->data);
+
+            $reserve->date_start = Utils::brToDate($reserve->date_start);
+            $reserve->date_end = Utils::brToDate($reserve->date_end);
+            $reserve->reserve_date = date('Y-m-d');
+            $reserve->total = str_replace('.', '', number_format(str_replace('R$ ', '', (float) $reserve->total), 2, ',','.'));
+
             if ($this->Reserves->save($reserve)) {
                 $this->Flash->success(__('The reserve has been saved.'));
 
@@ -56,8 +62,12 @@ class ReservesController extends AppController
             }
         }
         $situacao = 'Editar Reserva';
-        
-        $this->set(compact('reserve', 'situacao'));
+        $clients = $this->Reserves->Clients->find('list');
+
+        $reserve->date_start = $reserve->date_start->i18nFormat('dd/MM/yyyy');
+        $reserve->date_end = $reserve->date_end->i18nFormat('dd/MM/yyyy');
+
+        $this->set(compact('reserve', 'situacao','clients'));
         $this->set('_serialize', ['reserve']);
         $this->render('form');
     }

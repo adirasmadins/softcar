@@ -221,4 +221,21 @@ class Utils {
 
         return $status_real;
     }
+
+    static function getClientName($id){
+        $Clients = TableRegistry::get('Clients');
+
+        $result = $Clients->find()
+            ->hydrate(false)
+            ->select([
+                'name',
+                'cpf_cnpj'
+            ])
+            ->where([
+                'id' => $id
+            ])
+            ->first();
+
+        return $result['name'] . ' (' . $result['cpf_cnpj'] . ')';
+    }
 }

@@ -60,7 +60,7 @@ class ReservesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->date('date_start')
+            //->date('date_start')
             ->requirePresence('date_start', 'create')
             ->notEmpty('date_start');
 

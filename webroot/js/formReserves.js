@@ -139,13 +139,15 @@ $(document).ready(function() {
 
         if(valor != ''){
             var total = $('.total').text().replace('R$ ','');
-            var totalNew = (parseFloat(total.replace('.',',')) + (parseFloat(valor))).toFixed(2);
-            var finishTotal = totalNew.toFixed(2);
-            console.log(finishTotal);
-            $('.total').text('R$ ' + finishTotal);
+            var totalNew = (parseFloat(total.replace('.',',')) + (parseFloat(valor)));
+            $('.total').text('R$ ' + currencyFormat(totalNew));
             $('#total').val(totalNew);
         }
     };
+
+    function currencyFormat (num) {
+        return num.toFixed(2).replace(",", ".").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
 
     $(document).on('change', '#client-id', infoClient);
     $(document).on('change', '#vehicle-id', infoCar);
