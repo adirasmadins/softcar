@@ -27,7 +27,7 @@ class ChartsController extends AppController
                         <img src='img/logo.png' width='100px' style='float: left'/>
                         <h1>{$data['title']}</h1>
                         <hr/>
-                        <img src='{$data['url']}'/>
+                        <img src='{$data['url']}' style='margin-top: 40px'/>
                     </center>
 
                     </body>
