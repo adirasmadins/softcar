@@ -139,7 +139,7 @@ $(document).ready(function() {
 
         if(valor != ''){
             var total = $('.total').text().replace('R$ ','');
-            var totalNew = parseFloat(total.replace('.',',')) + (parseFloat(valor));
+            var totalNew = (parseFloat(total.replace('.',',')) + (parseFloat(valor))).toFixed(2);
             var finishTotal = totalNew.toFixed(2);
             console.log(finishTotal);
             $('.total').text('R$ ' + finishTotal);
