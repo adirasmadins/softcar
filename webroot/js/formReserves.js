@@ -130,7 +130,7 @@ $(document).ready(function() {
                 var date_end = moment($('#date-end').val(), 'DD/MM/YYYY');
                 var diff  = date_end.diff(date_start, 'days');
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
-                $('.total').html(total.replace('.',','));
+                $('.total').html('<small class="min-small">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
                 $('#total').val(total.replace('.',','));
             }
         },'json');
