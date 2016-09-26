@@ -51,7 +51,7 @@ $(document).ready(function(){
     /**
      * Colocando Calendário
      */
-    $('#birth-date, #validity-cnh, #first-license').datepicker({
+    $('#validity-cnh').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy'
     });
@@ -184,7 +184,6 @@ $(document).ready(function(){
     }
 
     $('#first-license').change(function(){
-        $(this).datepicker('hide');
         moment.locale('pt-br');
         var data1 = moment($(this).val(),'DD/MM/YYYY');
         var data2 = moment(moment().format('DD/MM/YYYY'),'DD/MM/YYYY');
