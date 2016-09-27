@@ -51,7 +51,7 @@ $(document).ready(function(){
     /**
      * Colocando Calendário
      */
-    $('#birth-date, #validity-cnh, #first-license').datepicker({
+    $('#validity-cnh').datepicker({
         language: "pt-BR",
         format: 'dd/mm/yyyy'
     });
@@ -182,9 +182,28 @@ $(document).ready(function(){
             }
         },'json');
     }
+    
+    $('#birth-date').change(function(){
+        moment.locale('pt-br');
+        var data1 = moment($(this).val(),'DD/MM/YYYY');
+        var data2 = moment(moment().format('DD/MM/YYYY'),'DD/MM/YYYY');
+        var diff  = data2.diff(data1, 'days');
+
+        if(diff <= 7300){
+            $('button[type="submit"]').attr('disabled', true);
+            swal({
+                title: 'Cliente não possui idade mínima',
+                text: 'É necessário ter pelo menos 20 anos de idade',
+                type: 'info',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
+        } else {
+            $('button[type="submit"]').attr('disabled', false);
+        }
+    });
 
     $('#first-license').change(function(){
-        $(this).datepicker('hide');
         moment.locale('pt-br');
         var data1 = moment($(this).val(),'DD/MM/YYYY');
         var data2 = moment(moment().format('DD/MM/YYYY'),'DD/MM/YYYY');

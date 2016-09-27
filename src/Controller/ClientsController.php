@@ -74,14 +74,16 @@ class ClientsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->data;
-            
+        debug($data);die();
             if(!empty($data['client_files'][0]['name'])){
                 foreach($data['client_files'] as $key => $item){
                     $file = Utils::fazerUploadClients($item, 'clients', $key);   
                     $data['client_files'][$key]['url_file'] = $file;
                 }   
             } else {
+            
                 unset($data['client_files'][0]);
+                
             }
             
             $client = $this->Clients->patchEntity($client, $this->request->data);
