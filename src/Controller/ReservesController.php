@@ -69,14 +69,18 @@ class ReservesController extends AppController
         $clients = $this->Reserves->Clients->find('list');
 
         $Vehicles = TableRegistry::get('Vehicles');
-        $url = $Vehicles->find()
-            ->select('picture')
+        $urlAndDayPrice = $Vehicles->find()
+            ->select([
+                'picture',
+                'day_price'
+            ])
             ->where([
                 'id' => $reserve->vehicle_id
             ])
             ->first();
 
-        $reserve->vehicle_picture = $this->request->webroot . $url->picture;
+        $reserve->vehicle_picture = str_replace('//','/', $this->request->webroot . $urlAndDayPrice->picture);
+        $reserve->day_price_vehicle = $urlAndDayPrice->day_price;
         $reserve->date_start = $reserve->date_start->i18nFormat('dd/MM/yyyy');
         $reserve->date_end = $reserve->date_end->i18nFormat('dd/MM/yyyy');
         $reserve->remove_schedule = $reserve->remove_schedule->i18nFormat('H:i');

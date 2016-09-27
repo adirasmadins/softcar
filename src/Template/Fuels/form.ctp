@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer text-center">
             <?= $this->element('Form/button',['options' =>[
                 'text' => 'Salvar',
                 'action' => 'add',

@@ -49,6 +49,15 @@ $(function(){
                 var url = webroot + 'users/recover-password';
                 var data = {email: inputValue};
 
+                $.ajaxSetup({
+                    type: 'POST',
+                    timeout: 30000,
+                        error: function(xhr) {
+                            $('#display_error')
+                            .html('Error: ' + xhr.status + ' ' + xhr.statusText);
+                        }
+                })
+
                 $.post(url, data, function(e){
                     if(e.result.type === 'success'){
                         swal({

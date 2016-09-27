@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 form-group">
+                <div class="col-md-3 form-group hour">
                     <label>Horário de Devolução</label>
                     <div class="bootstrap-timepicker">
                         <div class="input-group">
@@ -75,7 +75,7 @@
                         <h2 class="pull-left">TOTAL</h2>
                         <h2 class="pull-right total"><?= $reserve->id ? 'R$ ' . number_format((float)$reserve->total,2, ',','.') : 'R$ 0,00' ?></h2>
                         <input id="total" name="total" type="hidden">
-                        <button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>
+                        <!--<button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>-->
                     </div>
                     <div class="acrescimo-desconto text-center" style="display: none">
                         <h5>Acréscimo / Desconto</h5>
@@ -86,12 +86,12 @@
                 <div class="col-md-6" id="img" style="display: <?= $reserve->id ? 'block' : 'none' ?>">
                     <figure>
                         <img src="<?= $reserve->id ? $reserve->vehicle_picture : '' ?>" class="thumbnail img-responsive"/>
-                        <span class="sub-img"></span>
+                        <span class="sub-img"><?= isset($reserve->day_price_vehicle) ? '<h3>R$ ' . $reserve->day_price_vehicle . '<small>(diária)</small></h3>': '' ?></span>
                     </figure>
                 </div>
             </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer text-center">
             <?= $this->element('Form/button',['options' =>[
                 'text' => 'Salvar',
                 'action' => 'add',

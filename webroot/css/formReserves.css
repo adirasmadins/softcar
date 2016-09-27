@@ -27,13 +27,9 @@ img{
 
 .div-total{
     position: relative;
-    border: 2px solid black;
+    border: 2px solid #444;
     height: 60px;
     padding: 7px;
-}
-
-.total{
-    margin-right: 45px;
 }
 
 h2{
@@ -78,4 +74,21 @@ h2{
 .min-small{
     margin: 20px;
     font-size: 12px;
+}
+
+@media(max-width: 768px){
+    h5{
+        font-size: 11px !important;
+    }
+    .div-total > h2.pull-left{
+        margin-top: 13px !important;
+        font-size: 15px !important;
+    }
+    .div-total > h2.pull-right{
+        font-size: 23px;
+        margin-top: 8px;
+    }
+    .hour{
+        margin-top: 20px;
+    }
 }
