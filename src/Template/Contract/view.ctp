@@ -11,7 +11,8 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-12" id="summernote">
+                <div class="col-md-12">
+                     <?= $this->Form->input('texto',['label' => false,'id' => 'summernote']) ?>
                 </div>
             </div>
         </div>
@@ -31,7 +32,9 @@
                         'class' => 'btn btn-warning',
                     'escape' => false
                 ]);
-            ?>
+                ?>
+                <a href="#" id="visualizar" class="btn btn-info"><i class="fa fa-eye"></i> Visualizar</a>
+                <a href="#" id="abrir" class="btn btn-success" style="display: none">Abrir PDF</a>
         </div>
         <?= $this->Form->end() ?>
     </div>
