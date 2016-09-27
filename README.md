@@ -20,13 +20,13 @@ the setup traffic lights.
 
 ## Developers
 
-*Celso Fernando Paes - 
-	** LinkedIn - https://br.linkedin.com/in/fernando-paes-3b639b40
-	** GitHub - https://github.com/ceferdo
-*Gabriel Ferreira - 
-	** LinkedIn - https://br.linkedin.com/in/gabrielferreira 
-	** GitHub - https://github.com/gabrielferreiraa
-*Renan Rorato - 
-	** LinkedIn - https://br.linkedin.com/in/renan-rorato-70a3b562
-	** GitHub - https://github.com/renanrorato
+### Celso Fernando Paes - 
+	* LinkedIn - https://br.linkedin.com/in/fernando-paes-3b639b40
+	* GitHub - https://github.com/ceferdo
+### Gabriel Ferreira - 
+	* LinkedIn - https://br.linkedin.com/in/gabrielferreira 
+	* GitHub - https://github.com/gabrielferreiraa
+### Renan Rorato - 
+	* LinkedIn - https://br.linkedin.com/in/renan-rorato-70a3b562
+	* GitHub - https://github.com/renanrorato
 
