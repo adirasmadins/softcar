@@ -7,7 +7,7 @@ class Contract extends AbstractMigration
         $sql = "
             CREATE TABLE contract (
             id int NOT NULL AUTO_INCREMENT,
-            text text NOT NULL,
+            texto text NOT NULL,
             update_at date NOT NULL,
             PRIMARY KEY(id));
         ";

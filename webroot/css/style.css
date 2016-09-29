@@ -30,3 +30,9 @@ span.label{
     border-radius: 5px;
     right: 30px;
 }
+
+@media(max-width: 768px){
+    .panel-footer{
+        text-align: center;
+    }
+}

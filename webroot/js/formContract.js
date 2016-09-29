@@ -3,6 +3,7 @@ $(document).ready(function() {
   
     $('#visualizar').click(function(e){
         $(this).attr('disabled', true);
+        $(this).after('<span class="span-msg"><i class="fa fa-cog fa-spin"></i> gerando pré visualização ...</span>');
         NProgress.start();
         e.preventDefault();
         var data = {
@@ -15,7 +16,8 @@ $(document).ready(function() {
             if(e){
                 window.open(webroot + e.arquivo,'_blank');
                 NProgress.done();
-                $(this).attr('disabled', false);
+                $('#visualizar').attr('disabled', false);
+                $('.span-msg').fadeOut('fast');
             }
         },'json');
     });

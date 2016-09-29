@@ -18,8 +18,11 @@ class DomPdfController extends AppController
 
             $dompdf = new DOMPDF();
             $dompdf->set_option('defaultFont', 'Helvetica');
-            $html = str_replace('%CLIENTE%', 'José da Silva', $data['texto']);
-            $html .= "<img src='img/logo.png' width='100px' style='float: left'/><hr/>";
+            $html = "
+                        <img src='img/logo.png' width='100px' style='float: left'/>
+                        <hr/>
+                    ";
+            $html .= str_replace('%CLIENTE%', 'José da Silva', $data['texto']);
 
 
             $dompdf->loadHtml($html);

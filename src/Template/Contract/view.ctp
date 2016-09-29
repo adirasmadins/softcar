@@ -24,17 +24,7 @@
                     'type' => 'submit',
                     'icon' => 'check'
                 ]]) ?>
-                <?= $this->Html->Link('<i class="fa fa-undo"></i> Voltar',
-                [
-                    'action' => 'index'
-                ],
-                [
-                        'class' => 'btn btn-warning',
-                    'escape' => false
-                ]);
-                ?>
-                <a href="#" id="visualizar" class="btn btn-info"><i class="fa fa-eye"></i> Visualizar</a>
-                <a href="#" id="abrir" class="btn btn-success" style="display: none">Abrir PDF</a>
+                <button id="visualizar" class="btn btn-info"><i class="fa fa-eye"></i> Visualizar</button>
         </div>
         <?= $this->Form->end() ?>
     </div>
