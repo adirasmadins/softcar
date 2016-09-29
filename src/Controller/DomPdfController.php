@@ -7,8 +7,7 @@ use Dompdf\Options;
 
 class DomPdfController extends AppController
 {
-    public function getPdf(){
-        die('dsd');
+    public function preVisualizar(){
         ini_set('memory_limit', '-1');
         set_time_limit(0);
         ini_set('max_execution_time', 0);
@@ -19,7 +18,8 @@ class DomPdfController extends AppController
 
             $dompdf = new DOMPDF();
             $dompdf->set_option('defaultFont', 'Helvetica');
-            $html = $data['text'];
+            $html = str_replace('%CLIENTE%', 'José da Silva', $data['texto']);
+            $html .= "<img src='img/logo.png' width='100px' style='float: left'/><hr/>";
 
 
             $dompdf->loadHtml($html);

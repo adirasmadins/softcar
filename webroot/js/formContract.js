@@ -6,17 +6,14 @@ $(document).ready(function() {
         NProgress.start();
         e.preventDefault();
         var data = {
-                text: $('#summernote').summernote('code')
-            };
-        var url = webroot + 'domPdf/getPdf';
-        
+            texto: $('#summernote').summernote('code'),
+            file_name: 'pre-visualizacao-pdf'
+        };
+        var url = webroot + 'domPdf/preVisualizar';
+
         $.post(url, data, function(e){
             if(e){
-                var btnAbrir = $('#abrir');
-                
-                btnAbrir.attr('href', webroot + e.arquivo);
-                btnAbrir.attr('target', '_blank');
-                btnAbrir.show();
+                window.open(webroot + e.arquivo,'_blank');
                 NProgress.done();
                 $(this).attr('disabled', false);
             }
