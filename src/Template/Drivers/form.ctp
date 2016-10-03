@@ -23,10 +23,10 @@
                     <?= $this->Form->input('cnh',['label' => 'CNH','placeholder' => 'CNH','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('birth_date',['label' => 'Data 1º Habilitação','placeholder' => 'Data 1º Habilitação','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('first_license',['label' => 'Data 1º Habilitação','placeholder' => 'Data 1º Habilitação','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('birth_date',['label' => 'Validade CNH','placeholder' => 'Validade CNH','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('validity_cnh',['label' => 'Validade CNH','placeholder' => 'Validade CNH','class' => 'form-control','type' => 'text']) ?>
                 </div>
             </div>
             <div class="row">
@@ -99,6 +99,7 @@
 <?php
 $this->append('script', $this->Html->script([
     'form',
+    '../dist/moment/moment.js',
     'formDrivers'
 ]));
 ?>
