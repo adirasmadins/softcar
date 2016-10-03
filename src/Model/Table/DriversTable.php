@@ -80,7 +80,7 @@ class DriversTable extends Table
             ->notEmpty('gender');
 
         $validator
-            ->date('birth_date')
+            //->date('birth_date')
             ->requirePresence('birth_date', 'create')
             ->notEmpty('birth_date');
 
@@ -101,12 +101,12 @@ class DriversTable extends Table
             ->notEmpty('cnh');
 
         $validator
-            ->date('first_license')
+            //->date('first_license')
             ->requirePresence('first_license', 'create')
             ->notEmpty('first_license');
 
         $validator
-            ->date('validity_cnh')
+           // ->date('validity_cnh')
             ->requirePresence('validity_cnh', 'create')
             ->notEmpty('validity_cnh');
 

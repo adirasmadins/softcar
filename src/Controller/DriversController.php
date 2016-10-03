@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Lib\Utils;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -55,6 +56,9 @@ class DriversController extends AppController
         $driver = $this->Drivers->newEntity();
         if ($this->request->is('post')) {
             $driver = $this->Drivers->patchEntity($driver, $this->request->data);
+            $driver->birth_date=Utils::brToDate($driver->birth_date);
+            $driver->first_license=Utils::brToDate($driver->first_license);
+            $driver->validity_cnh=Utils::brToDate($driver->validity_cnh);
             if ($this->Drivers->save($driver)) {
                 $this->Flash->success(__('The driver has been saved.'));
 
@@ -96,10 +100,21 @@ class DriversController extends AppController
                 $this->Flash->error(__('The driver could not be saved. Please, try again.'));
             }
         }
-        $cities = $this->Drivers->Cities->find('list', ['limit' => 200]);
-        $states = $this->Drivers->States->find('list', ['limit' => 200]);
-        $this->set(compact('driver', 'cities', 'states'));
+        $cities = $this->Drivers->Cities->find('list');
+        $states = $this->Drivers->States->find('list');
+        $situacao = 'Editar Motorista';
+        if($driver->birth_date){
+            $driver->birth_date = $driver->birth_date->i18nFormat('dd/MM/yyyy');
+        }
+        if($driver->validity_cnh){
+            $driver->validity_cnh = $driver->validity_cnh->i18nFormat('dd/MM/yyyy');
+        }
+        if($driver->first_license){
+            $driver->first_license = $driver->first_license->i18nFormat('dd/MM/yyyy');
+        }
+        $this->set(compact('driver', 'cities', 'states', 'situacao'));
         $this->set('_serialize', ['driver']);
+        $this->render('form');
     }
 
     /**
