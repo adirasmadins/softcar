@@ -238,4 +238,20 @@ class Utils {
 
         return $result['name'] . ' - ' . $result['cpf_cnpj'];
     }
+    
+    static function getClientOnlyName($id){
+        $Clients = TableRegistry::get('Clients');
+
+        $result = $Clients->find()
+            ->hydrate(false)
+            ->select([
+                'name'
+            ])
+            ->where([
+                'id' => $id
+            ])
+            ->first();
+
+        return $result['name'];
+    }
 }
