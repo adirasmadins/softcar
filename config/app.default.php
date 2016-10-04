@@ -409,6 +409,52 @@ return [
                     ]
                 ]
             ]
+        ],
+        'Reserves' => [
+            'export' => [
+                'default' => [
+                    'config' => [
+                        'contain' => ['Vehicles'],
+                    ],
+                    'fields' => [
+                        'ID' => 'id',
+                        'Cliente' => [
+                            'field' => 'client_id',
+                            'find_in_entity' => 'Clients',
+                            'conditions' => [
+                                [
+                                    'field' => 'client_id',
+                                    'equals_to' => 'id'
+                                ]
+                            ],
+                            'return' => 'name'
+                        ],
+                        'Veículo' => 'vehicle.model',
+                        'Placa' => 'vehicle.plate',
+                        'Data de Saída' => [
+                            'field' => 'date_start',
+                            'type' => 'date'
+                        ],
+                        'Data de Devolução' => [
+                            'field' => 'date_end',
+                            'type' => 'date'
+                        ],
+                        'Data da Reserva' => [
+                            'field' => 'reserve_date',
+                            'type' => 'date'
+                        ],
+                        'Horário de Saída' => [
+                            'field' => 'remove_schedule',
+                            'type' => 'varchar'
+                        ],
+                        'Horário de Devolução' => [
+                            'field' => 'devolution_schedule',
+                            'type' => 'varchar'
+                        ],
+                        'Total' => 'total',
+                    ]
+                ]
+            ]
         ]
     ]
 ];
