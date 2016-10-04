@@ -1,5 +1,7 @@
 $(document).ready(function() {
-    $('#summernote').summernote();
+    $('#summernote').summernote({
+        height: 300        
+    });
   
     $('#visualizar').click(function(e){
         $(this).attr('disabled', true);
