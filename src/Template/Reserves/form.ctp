@@ -1,6 +1,6 @@
 <div class="col-md-10">
     <div class="panel panel-default">
-        <?= $this->Form->create($reserve,['id' => 'formFuels']) ?>
+        <?= $this->Form->create($reserve,['id' => 'formReserves']) ?>
         <div class="box-header hidden-sm hidden-xs">
             <h4 class="panel-head"><?= $situacao ?></h4>
             <hr/>

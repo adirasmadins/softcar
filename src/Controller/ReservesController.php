@@ -9,12 +9,24 @@ use Cake\Core\Configure;
 class ReservesController extends AppController
 {
 
+    public $paginate = [
+        'limit' => 7,
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients', 'Vehicles']
-        ];
-        $reserves = $this->paginate($this->Reserves);
+        $data = $this->request->query;
+        $query = $this->Reserves->find();
+        if (isset($data['plate']) && !empty($data['plate'])) {
+            $id =  Utils::getVehicleId($data['plate']);
+            $query->where(['vehicle_id' => $id]);
+        };
+        $reserves = $this->paginate($query);
 
         $this->set(compact('reserves'));
         $this->set('_serialize', ['reserves']);
@@ -200,7 +212,7 @@ class ReservesController extends AppController
             $vehicles = $vehicles->toArray();
         } else {
             $cars = false;
-            $vehicles = ['0' => 'Não há veículos com multa'];
+            $vehicles = ['0' => 'Não há reservas'];
         }
         
         $this->set(compact('vehicles','reserves_list'));

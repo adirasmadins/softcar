@@ -37,16 +37,11 @@
 
 <?php
 $this->append('css', $this->Html->css([
-    'exportReserves',
+    //'exportReserves',
     '../dist/iCheck/square/blue'
 ]));
 $this->append('script', $this->Html->script([
     'form',
-    '../dist/iCheck/icheck',
-    '../dist/chartjs/Chart.bundle.min',
-    '../dist/chartjs/Chart.min',
-    'colorLib',
-    'chart',
     'exportReserves'
 ]));
 ?>

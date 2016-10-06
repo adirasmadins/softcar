@@ -56,7 +56,7 @@ $(function(){
                             $('#display_error')
                             .html('Error: ' + xhr.status + ' ' + xhr.statusText);
                         }
-                })
+                });
 
                 $.post(url, data, function(e){
                     if(e.result.type === 'success'){
