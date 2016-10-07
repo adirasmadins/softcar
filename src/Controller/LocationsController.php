@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Lib\Utils;
+use Cake\ORM\TableRegistry;
 
 class LocationsController extends AppController
 {
@@ -43,9 +44,24 @@ class LocationsController extends AppController
             }
         }
         $situacao = 'Cadastrar Locação';
+        $clients = $this->Locations->Clients->find('list');
 
-        $this->set(compact('location','situacao'));
-        $this->set('_serialize', ['location']);
+        $Reserves = TableRegistry::get('Reserves');
+        $reserves = $Reserves->find()
+            ->hydrate(false)
+            ->where([
+                'date_start >=' => date('Y-m-d'),
+                'status' => 1
+            ]);
+
+        if(count($reserves)){
+            $reserves = $reserves->toArray();
+        } else {
+            $reserves = false;
+        }
+
+        $this->set(compact('location','situacao','reserves','clients'));
+        $this->set('_serialize', ['location','reserves','clients']);
         $this->render('form');
     }
 

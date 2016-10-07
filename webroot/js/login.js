@@ -1,4 +1,10 @@
 $(function(){
+    $(document).keypress(function(e) {
+        if(e.which == 13){
+            $('#logar').trigger('click');
+        }
+    });
+
     $('#logar').click(function(){
         if($('#login').val() != '' && $('#password').val() != ''){
             $(this).html('<i class="fa fa-refresh fa-spin"></i> Entrando').attr('disabled',true);

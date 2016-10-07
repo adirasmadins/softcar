@@ -254,4 +254,23 @@ class ReservesController extends AppController
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
     }
+
+    public function getInformations(){
+        $result = ['status' => 'error'];
+        if($this->request->is('post')){
+            $data = $this->request->data;
+            $reserve = $this->Reserves->get($data['id']);
+
+            $reserve->client_name = Utils::getClientOnlyName($reserve->client_id);
+            $reserve->date_start = $reserve->date_start->i18nFormat('dd/MM/yyyy');
+            $reserve->date_end = $reserve->date_end->i18nFormat('dd/MM/yyyy');
+            $reserve->remove_schedule = $reserve->remove_schedule->i18nFormat('H:mm');
+            $reserve->devolution_schedule = $reserve->devolution_schedule->i18nFormat('H:mm');
+
+            $result = ['status' => 'success', 'data' => $reserve];
+        }
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
 }

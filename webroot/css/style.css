@@ -8,6 +8,10 @@ select{
     margin-bottom: 20px;
 }
 
+.modal-header{
+    background-color: #e6e6e6 !important;
+}
+
 textarea{
     margin-bottom: 20px;
 }
