@@ -45,7 +45,7 @@
                     <hr/>
                 </div>
             </div>
-            <div class="row"">
+            <div class="row">
                 <div class="col-md-6 form-group">
                     <?= $this->Form->input('client_id',['label' => 'Cliente', 'class' => 'form-control','options' => $clients,'empty' => 'Selecione um cliente']); ?>
                 </div>
@@ -60,6 +60,33 @@
                 <div class="col-md-2 col-xs-4 text-center dados-client" id="city">
                     <label>Cidade</label>
                     <h5>aguardando escolha do cliente...</h5>
+                </div>
+            </div>
+            <div class="row vehicles">
+                <div class="col-md-6 form-group">
+                    <input type="hidden" id="vehicle-id-hidden" value="">
+                    <h3 class="text-center vehicle-reserve"></h3>
+                    <div class="vehicle-input">
+                        <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
+                    </div>
+                    <div class="div-total">
+                        <h2 class="pull-left">TOTAL</h2>
+                        <h2 class="pull-right total">R$ 0,00</h2>
+                        <input id="total" name="total" type="hidden">
+                        <!--<button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>-->
+                    </div>
+                    <div class="acrescimo-desconto text-center" style="display: none">
+                        <h5>Acréscimo / Desconto</h5>
+                        <input type="text" id="valor">
+                        <button class="btn btn-success btn-calcular btn-xs btn-flat"><i class="fa fa-check-circle"></i> Calcular</button>
+                    </div>
+                </div>
+                <div class="col-md-6" id="img">
+                    <figure>
+                        <a href="#" data-toggle="lightbox" class="btn btn-visualizacao"><i class="fa fa-eye"></i></a>
+                        <img src="<?= $location->id ? $location->vehicle_picture : '' ?>" class="thumbnail img-responsive"/>
+                        <span class="sub-img"><?= isset($reserve->day_price_vehicle) ? '<h3>R$ ' . $reserve->day_price_vehicle . '<small>(diária)</small></h3>': '' ?></span>
+                    </figure>
                 </div>
             </div>
         </div>
@@ -83,62 +110,79 @@
         </div>
         <?= $this->Form->end() ?>
     </div>
-</div>
 
-<div class="modal fade" id="reserves" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-center" id="myModalLabel">Deseja carregar alguma reserva pré cadastrada?</h4>
-            </div>
-            <div class="modal-body">
-                <?php if($reserves): ?>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Cliente</th>
-                                <th>Veículo</th>
-                                <th>Data de Saída</th>
-                                <th>Data de Devolução</th>
-                                <th>Total</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach($reserves as $reserve): ?>
+    <!-- Modal de Reservas -->
+    <div class="modal fade" id="reserves" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">Deseja carregar alguma reserva pré cadastrada?</h4>
+                </div>
+                <div class="modal-body">
+                    <?php if($reserves): ?>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
                                 <tr>
-                                    <td><input type="radio" name="reserve" value="<?= $reserve['id'] ?>" class="form-control"></td>
-                                    <td><?= \App\Lib\Utils::getClientOnlyName($reserve['client_id']) ?></td>
-                                    <td><?= \App\Lib\Utils::getVehicle($reserve['vehicle_id']) ?></td>
-                                    <td><?= $reserve['date_start']->i18nFormat('dd/MM/yyyy') ?></td>
-                                    <td><?= $reserve['date_end']->i18nFormat('dd/MM/yyyy') ?></td>
-                                    <td>R$ <?= $reserve['total'] ?></td>
+                                    <th></th>
+                                    <th>Cliente</th>
+                                    <th>Veículo</th>
+                                    <th>Data de Saída</th>
+                                    <th>Data de Devolução</th>
+                                    <th>Total</th>
                                 </tr>
-                            <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php else: ?>
-                    <h5>Não há reservas pré cadastradas</h5>
-                <?php endif; ?>
-            </div>
-            <div class="modal-footer">
-                <span class="pull-left" style="display: none">buscando informações da reserva ...</span>
-                <button type="button" class="btn btn-success" id="carregar"><i class="fa fa-check-circle"></i> Carregar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                                </thead>
+                                <tbody>
+                                <?php foreach($reserves as $reserve): ?>
+                                    <tr>
+                                        <td><input type="radio" name="reserve" value="<?= $reserve['id'] ?>" class="form-control"></td>
+                                        <td><?= \App\Lib\Utils::getClientOnlyName($reserve['client_id']) ?></td>
+                                        <td><?= \App\Lib\Utils::getVehicle($reserve['vehicle_id']) ?></td>
+                                        <td><?= $reserve['date_start']->i18nFormat('dd/MM/yyyy') ?></td>
+                                        <td><?= $reserve['date_end']->i18nFormat('dd/MM/yyyy') ?></td>
+                                        <td>R$ <?= $reserve['total'] ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php else: ?>
+                        <h5>Não há reservas pré cadastradas</h5>
+                    <?php endif; ?>
+                </div>
+                <div class="modal-footer">
+                    <span class="pull-left" style="display: none">buscando informações da reserva ...</span>
+                    <button type="button" class="btn btn-success" id="carregar"><i class="fa fa-check-circle"></i> Carregar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Modal Imagem -->
+    <div class="modal fade bs-example-modal-lg" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="" class="image-responsive thumbnail" style="width: 100%" id="imagem-modal">
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-info" data-dismiss="modal">Fechar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php
 $this->append('css', $this->Html->css([
+    '../dist/lightbox/src/css/lightbox',
     '../dist/timepicker/bootstrap-timepicker.min',
-    '../dist/iCheck/square/blue'
+    '../dist/iCheck/square/blue',
+    'formLocations'
 ]));
 $this->append('script', $this->Html->script([
     'form',
+    '../dist/lightbox/src/js/lightbox',
     '../dist/moment/moment.js',
     '../dist/timepicker/bootstrap-timepicker.min',
     '../dist/iCheck/icheck',

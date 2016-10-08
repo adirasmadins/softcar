@@ -16,10 +16,6 @@ textarea{
     margin-bottom: 20px;
 }
 
-body{
-    overflow: visible !important;
-}
-
 span.label{
     font-family: 'Source Sans Pro Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
