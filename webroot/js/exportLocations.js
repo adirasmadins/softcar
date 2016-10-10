@@ -80,8 +80,8 @@ $(document).ready(function(){
         var url_base64 = document.getElementById('myChart').toDataURL('image/png');
         var data = {
             url: url_base64,
-            title: 'Gráfico de Multas por Veículo',
-            file_name: 'grafico_de_multas'
+            title: 'Gráfico de Locações por Veículo',
+            file_name: 'grafico_de_locacoes'
         };
         $.post(webroot + 'charts/getPdf', data, function(e){
             if(e){

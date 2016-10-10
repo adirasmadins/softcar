@@ -42,6 +42,7 @@ class ReservesController extends AppController
             $reserve->date_end = Utils::brToDate($reserve->date_end);
             $reserve->reserve_date = date('Y-m-d');
             $reserve->total = str_replace('.', '', number_format(str_replace('R$ ', '', (float) $reserve->total), 2, ',','.'));
+            $reserve->status = 1;
 
             if ($this->Reserves->save($reserve)) {
                 $this->Flash->success(__('Reserva salva com sucesso'));

@@ -23,7 +23,7 @@ $(document).ready(function(){
         this.value = this.value.toUpperCase();
     });
 
-    $('#renavam').keyup(function (){
+    $('#renavam, #last-km').keyup(function (){
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
 

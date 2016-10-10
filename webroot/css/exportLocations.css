@@ -2,7 +2,10 @@
     margin: 20px;
 }
 
-a,button{
+#download,
+#generatePdf,
+#abrir,
+#generateFile{
     width: 100%;
 }
 

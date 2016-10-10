@@ -47,6 +47,9 @@
                     <div class="col-md-6 form-group" style="padding-right: 0px;">
                         <?= $this->Form->input('day_price',['label' => 'Valor Diária','placeholder' => 'Valor Diária','class' => 'form-control','type' => 'text']) ?>
                     </div>
+                     <div class="col-md-6 form-group" style="padding-left: 0px;">
+                        <?= $this->Form->input('last_km',['label' => 'Quilometragem','placeholder' => 'Quilometragem','class' => 'form-control','type' => 'text']) ?>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <label>Imagem do Veículo</label>
