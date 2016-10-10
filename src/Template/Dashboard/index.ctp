@@ -45,4 +45,3 @@
         </div>
     </div>
 </div>
-          <h1>Trabalhar com status em RESERVES e LOCATIONS</h1>

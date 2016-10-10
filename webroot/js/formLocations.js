@@ -193,12 +193,12 @@ $(document).ready(function(){
         }
     });
 
-    $('#free-km').on('ifChecked', function(){
+    $('#free_km').on('ifChecked', function(){
         $('#allowed_km').val('').attr('disabled', true);
         $('.km-final span').text(' ILIMITADO');
     });
 
-    $('#free-km').on('ifUnchecked', function(){
+    $('#free_km').on('ifUnchecked', function(){
         $('#allowed_km').attr('disabled', false);
         $('.km-final span').empty();
     });

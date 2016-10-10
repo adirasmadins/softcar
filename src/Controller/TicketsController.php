@@ -68,6 +68,8 @@ class TicketsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $ticket = $this->Tickets->patchEntity($ticket, $this->request->data);
+            $ticket->due_date = Utils::brToDate($ticket->due_date);
+            $ticket->ticket_date = Utils::brToDate($ticket->ticket_date);
             if ($this->Tickets->save($ticket)) {
                 $this->Flash->success(__('Multa salva com sucesso'));
 
