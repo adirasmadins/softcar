@@ -14,13 +14,16 @@
             <?php foreach($options['data'] as $item): ?>
                 <tr>
                     <?php foreach($options['column'] as $key => $info): ?>
-                        <?php if(($key == 'status') && ($this->request->controller != 'Tickets')): ?>
+                        <?php if(($key == 'status') && (($this->request->controller != 'Tickets') && ($this->request->controller != 'Reserves'))): ?>
                             <?php $item->$key = \App\Lib\Utils::getStatusReal($item->$key) ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif(($key == 'status') && ($this->request->controller == 'Tickets')): ?>
                             <?php $item->$key = \App\Lib\Utils::getStatusTicket($item->$key); ?>
                             <td><?= $item->$key ?></td>
-                        <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration') || ($key == 'due_date') || ($key == 'ticket_date') || ($key == 'date_start') || ($key == 'date_end')): ?>
+                        <?php elseif(($key == 'status') && ($this->request->controller == 'Reserves')): ?>
+                            <?php $item->$key = \App\Lib\Utils::getStatusReserves($item->$key); ?>
+                            <td><?= $item->$key ?></td>
+                        <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration') || ($key == 'due_date') || ($key == 'ticket_date') || ($key == 'date_start') || ($key == 'date_end') || ($key == 'out_date') || ($key == 'return_date')): ?>
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif(($key == 'day_price') || $key == 'value' || $key == 'total'): ?>
@@ -51,14 +54,21 @@
                                 <button type="button" data-id="<?= $item->id ?>" class="btn btn-success btn-pay btn-flat" <?= strpos($item->status, 'Sim') ? 'disabled' : '' ?>><i class="fa fa-check"></i></button>
                             <?php endif; ?>
                             <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-warning btn-flat']) ?>
-                            <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-danger btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
+                            <?php if($this->request->controller != 'Locations'){ ?>
+                                <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-danger btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
+                            <?php } else { ?>
+                                <a href="#" data-id="<?= $item->id ?>" class="btn btn-success btn-flat btn-contrato"><i class="fa fa-file-pdf-o"></i></a>
+                            <?php } ?>
                         </div>
                         <div class="btn-group-vertical hidden-md hidden-lg hidden-sm">
                             <?php if($this->request->controller == 'Tickets'): ?>
                                 <button type="button" data-id="<?= $item->id ?>" class="btn btn-default btn-pay fa-xs btn-flat" <?= strpos($item->status, 'Sim') ? 'disabled' : '' ?>><i class="fa fa-check"></i></button>
                             <?php endif; ?>
                             <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-default btn-flat fa-xs']) ?>
-                            <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-default btn-flat fa-xs btn-deletar"><i class="fa fa-trash"></i></a>
+                            <?php if($this->request->controller != 'Locations'){ ?>
+                                <?php } else { ?>
+                            <a href="#" data-id="<?= $item->id ?>" class="btn btn-success btn-flat btn-contrato"><i class="fa fa-file-pdf-o"></i></a>
+                            <?php } ?>
                         </div>
                     </td>
                 </tr>

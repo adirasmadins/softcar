@@ -68,7 +68,7 @@ class LocationsTable extends Table
             ->notEmpty('status');
 
         $validator
-            ->numeric('start_value')
+//            ->numeric('start_value')
             ->requirePresence('start_value', 'create')
             ->notEmpty('start_value');
 
@@ -80,15 +80,15 @@ class LocationsTable extends Table
             ->allowEmpty('form_payment');
 
         $validator
-            ->date('out_date')
+//            ->date('out_date')
             ->allowEmpty('out_date');
 
         $validator
-            ->date('return_date')
+//            ->date('return_date')
             ->allowEmpty('return_date');
 
         $validator
-            ->numeric('start_km')
+//            ->numeric('start_km')
             ->requirePresence('start_km', 'create')
             ->notEmpty('start_km');
 
@@ -107,7 +107,7 @@ class LocationsTable extends Table
             ->notEmpty('tank_check');
 
         $validator
-            ->date('location_date')
+//            ->date('location_date')
             ->requirePresence('location_date', 'create')
             ->notEmpty('location_date');
 

@@ -273,4 +273,25 @@ class ReservesController extends AppController
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
     }
+
+    public function updateStatus(){
+        $result = ['type' => 'error'];
+
+        if($this->request->is('post')){
+            $data = $this->request->data;
+            $reserve = $this->Reserves->get($data['id']);
+
+            $reserve = $this->Reserves->patchEntity($reserve, $data);
+            $reserve->status = 0;
+            if ($this->Reserves->save($reserve)) {
+                die('deu');
+                $result = ['type' => 'success','message' => 'Pagamento efetuado com sucesso', 'data' => $reserve];
+            } else {
+                $result = ['type' => 'error','message' => 'Ocorreu um problema ao efetuar o pagamento'];
+            }
+        }
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
+    }
 }

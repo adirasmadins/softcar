@@ -10,16 +10,17 @@ class DashboardController extends AppController
     {
         $Reserves = TableRegistry::get('Reserves');
         $reservados = $Reserves->find()
-                     ->hydrate(false)
-					 ->where([
-						'date_start >=' => date('Y-m-d'),
-					 ]);
-		if (count($reservados)){
-		    $reservados=$reservados->toArray();
-		
-		} else{
-		    $reservados=false;
-		}
+            ->hydrate(false)
+            ->where([
+                'date_start >=' => date('Y-m-d'),
+                'status' => 1
+            ]);
+        if (count($reservados)){
+            $reservados=$reservados->toArray();
+
+        } else{
+            $reservados=false;
+        }
         $this->set(compact('dashboard', 'reservados'));
         $this->set('_serialize', ['dashboard', 'reservados']);
     }

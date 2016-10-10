@@ -1,16 +1,50 @@
 $(document).ready(function(){
-    $('#client-id, #vehicle-id').select2();
+    $('#client-id, #vehicle-id, #driver-id, #form-payment').select2();
 
     $('input[type="radio"]').iCheck({
         radioClass: 'iradio_square-blue'
     });
 
+    $('input[type="checkbox"]').iCheck({
+        checkboxClass: 'iradio_square-blue'
+    });
+
     $('#carregar').attr('disabled', true);
-    $('#reserves').modal('show');
+    if($('#id-location').val() == ''){
+        $('#reserves').modal('show');
+    }
 
     $('input[type="radio"]').on('ifChecked', function(){
         $('#carregar').attr('disabled', false);
     });
+
+    var acresDesc = function(e){
+        e.preventDefault();
+        var div = $('.acrescimo-desconto');
+
+        if(div.is(':visible')){
+            div.hide(100);
+        } else {
+            div.show(100);
+        }
+    };
+
+    var calcular = function(e){
+        e.preventDefault();
+        $('.acrescimo-desconto').hide(100);
+        var valor = $('#valor').val();
+
+        if(valor != ''){
+            var total = $('.total').text().replace('R$ ','');
+            var totalNew = (parseFloat(total.replace('.',',')) + (parseFloat(valor)));
+            $('.total').text('R$ ' + currencyFormat(totalNew));
+            $('#total').val(totalNew);
+        }
+    };
+
+    function currencyFormat (num) {
+        return num.toFixed(2).replace(",", ".").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
 
     var vehicleInformations = function(id){
         var url = webroot + 'vehicles/get-vehicle-information';
@@ -18,9 +52,10 @@ $(document).ready(function(){
             id: id
         };
         $.post(url, data, function(json){
-            console.log(json);
             if(json.result.type == 'success'){
-                $('.vehicle-reserve').text(json.result.data.model + ' (' + json.result.data.plate + ')');
+                $('#car-name-modal').text(json.result.data.model + ' (' + json.result.data.plate + ')');
+                $('.km-inicial span').text(json.result.data.last_km);
+                $('.km_inicial').val(json.result.data.last_km);
             }
         },'json');
     };
@@ -80,6 +115,22 @@ $(document).ready(function(){
         },'json');
     };
 
+    var updateReserveStatus = function(id){
+        var url = webroot + 'reserves/update-status';
+        var data = {
+            id: id
+        };
+
+        console.log(url);
+        $.post(url, data, function(e){
+            if(e.result.type != 'success'){
+                console.log('ERRO AO MUDAR STATUS DA RESERVA');
+            }
+        },'json');
+    };
+
+    $(document).on('click', '.btn-calcular', calcular);
+    $(document).on('click', '.acres-desc', acresDesc);
     $(document).on('click', '.btn-visualizacao', function(e){
         e.preventDefault();
         $('#modal-image').modal('show');
@@ -104,20 +155,55 @@ $(document).ready(function(){
         $.post(url, data, function(e){
             if(e.result.status === 'success'){
                 var event = e.result.data;
-
                 $('#out-date').val(event.date_start);
                 $('#return-date').val(event.date_end);
                 $('#remove_schedule').val(event.remove_schedule);
                 $('#devolution_schedule').val(event.devolution_schedule);
                 $('#select2-client-id-container').text(event.client_name);
                 $('#client-id').val(event.client_id);
+                $('#client_id_hidden').val(event.client_id);
+
+                $('#start_value').val(event.total);
                 infoClient();
                 $('#vehicle-id-hidden').val(event.vehicle_id);
                 infoCar();
+                $('#car-name-modal').text();
                 vehicleInformations(event.vehicle_id);
+                $('#vehicle-id').val(event.vehicle_id);
                 $('.vehicle-input').fadeOut('fast');
                 $('#reserves').modal('hide');
             }
         },'json');
+    });
+
+    $('#allowed_km').keyup(function(){
+        if($(this).val()){
+            var val = parseFloat($('.km-inicial span').text()) + parseFloat($(this).val());
+            $('.km-final span').text(val);
+            $('.km_final').val(val);
+        } else {
+            $('.km-final span').text($('.km-inicial span').text());
+        }
+    });
+
+    $("#allowed_km").on("keypress keyup blur",function (event) {
+        $(this).val($(this).val().replace(/[^0-9\.]/g,''));
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+    $('#free-km').on('ifChecked', function(){
+        $('#allowed_km').val('').attr('disabled', true);
+        $('.km-final span').text(' ILIMITADO');
+    });
+
+    $('#free-km').on('ifUnchecked', function(){
+        $('#allowed_km').attr('disabled', false);
+        $('.km-final span').empty();
+    });
+
+    $(document).on('submit', function(e){
+        updateReserveStatus($('input[name="reserve"]:checked').val());
     });
 });

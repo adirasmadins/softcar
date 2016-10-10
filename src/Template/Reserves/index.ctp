@@ -17,6 +17,7 @@ $this->element('Form/header_index',[
         'client_id' => 'Cliente',
         'date_start' => 'Data Inicial',
         'date_end' => 'Data Final',
+        'status' => 'Já utilizada?',
         'total' => 'Total'
     ],
     'name' => 'A Reserva',

@@ -8,6 +8,14 @@ select{
     margin-bottom: 20px;
 }
 
+button,
+a,
+input,
+button,
+textarea{
+    outline: none !important;
+}
+
 .modal-header{
     background-color: #e6e6e6 !important;
 }
@@ -20,7 +28,8 @@ span.label{
     font-family: 'Source Sans Pro Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.tooltip-ticket{
+.tooltip-ticket,
+.tooltip-contract{
     z-index: 999;
     position: absolute;
     display: none;

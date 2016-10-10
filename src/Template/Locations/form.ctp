@@ -10,6 +10,7 @@
             <hr/>
         </div>
         <div class="panel-body">
+            <input type="hidden" id="id-location" value="<?= $location->id ?>">
             <div class="row">
                 <div class="col-md-3 form-group">
                     <?= $this->Form->input('out_date',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text']) ?>
@@ -47,6 +48,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
+                    <input type="hidden" name="client_id_hidden" id="client_id_hidden">
                     <?= $this->Form->input('client_id',['label' => 'Cliente', 'class' => 'form-control','options' => $clients,'empty' => 'Selecione um cliente']); ?>
                 </div>
                 <div class="col-md-2 col-xs-4 text-center dados-client" id="cnh">
@@ -62,28 +64,61 @@
                     <h5>aguardando escolha do cliente...</h5>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <?= $this->Form->input('driver_id',['label' => 'Motorista', 'class' => 'form-control','options' => $drivers,'empty' => 'Sem motorista']); ?>
+                </div>
+                <div class="col-md-6 form-group">
+                    <textarea placeholder="Verificação de Tanque" name="tank_check" id="tank_check"></textarea>
+                </div>
+            </div>
             <div class="row vehicles">
                 <div class="col-md-6 form-group">
-                    <input type="hidden" id="vehicle-id-hidden" value="">
-                    <h3 class="text-center vehicle-reserve"></h3>
+                    <input type="hidden" name="vehicle_id_hidden" id="vehicle-id-hidden" value="">
                     <div class="vehicle-input">
                         <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
                     </div>
                     <div class="div-total">
                         <h2 class="pull-left">TOTAL</h2>
-                        <h2 class="pull-right total">R$ 0,00</h2>
+                        <h3 class="pull-right total">R$ 0,00</h3>
+                        <input type="hidden" id="start_value" name="start_value" value="">
                         <input id="total" name="total" type="hidden">
-                        <!--<button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>-->
+                        <button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>
                     </div>
                     <div class="acrescimo-desconto text-center" style="display: none">
                         <h5>Acréscimo / Desconto</h5>
                         <input type="text" id="valor">
                         <button class="btn btn-success btn-calcular btn-xs btn-flat"><i class="fa fa-check-circle"></i> Calcular</button>
                     </div>
+                    <input type="hidden" class="km_inicial" name="start_km" value="">
+                    <input type="hidden" class="km_final" name="km_final" value="">
+                    <h5 class="km-inicial">KM Inicial: <span></span></h5>
+                    <h5 class="km-final">KM Final: <span></span></h5>
+                    <div class="row">
+                        <div class="col-md-9" style="margin-top: 10px">
+                            <div class="input-group">
+                                <input type="text" name="allowed_km" value="" id="allowed_km" class="form-control" placeholder="Quilometragem permitida">
+                                <div class="input-group-addon">
+                                    km
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="margin-top: 17px;">
+                                <input type="checkbox" id="free_km" name="free_km" class="form-control">
+                                Livre?
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="margin-top: 10px">
+                            <?= $this->Form->input('form_payment',['label' => 'Forma de Pagamento', 'class' => 'form-control','options' => ['dinheiro' => 'Dinheiro', 'cartao' => 'Cartão', 'cheque' => 'Cheque']]); ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6" id="img">
                     <figure>
-                        <a href="#" data-toggle="lightbox" class="btn btn-visualizacao"><i class="fa fa-eye"></i></a>
+                        <a href="#" class="btn btn-visualizacao btn-info btn-xs"><i class="fa fa-info-circle"></i> info</a>
                         <img src="<?= $location->id ? $location->vehicle_picture : '' ?>" class="thumbnail img-responsive"/>
                         <span class="sub-img"><?= isset($reserve->day_price_vehicle) ? '<h3>R$ ' . $reserve->day_price_vehicle . '<small>(diária)</small></h3>': '' ?></span>
                     </figure>
@@ -163,6 +198,9 @@
     <div class="modal fade bs-example-modal-lg" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="car-name-modal"></h4>
+                </div>
                 <div class="modal-body">
                     <img src="" class="image-responsive thumbnail" style="width: 100%" id="imagem-modal">
                 </div>

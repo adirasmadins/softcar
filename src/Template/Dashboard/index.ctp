@@ -1,4 +1,4 @@
-<div class="col-md-6" style="margin-top: 20px;">
+<div class="col-md-12" style="margin-top: 20px;">
     <div class="box box-primary">
         <div class="box-header with-border">
             <h3 class="box-title"> Reservas Pendentes</h3>
@@ -45,4 +45,4 @@
         </div>
     </div>
 </div>
-          
+          <h1>Trabalhar com status em RESERVES e LOCATIONS</h1>

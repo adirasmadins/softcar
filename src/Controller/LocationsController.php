@@ -3,7 +3,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Lib\Utils;
+use Cake\Database\Schema\Table;
 use Cake\ORM\TableRegistry;
+use Phinx\Util\Util;
 
 class LocationsController extends AppController
 {
@@ -34,7 +36,25 @@ class LocationsController extends AppController
     {
         $location = $this->Locations->newEntity();
         if ($this->request->is('post')) {
-            $location = $this->Locations->patchEntity($location, $this->request->data);
+            $data = $this->request->data;
+
+            $location = $this->Locations->patchEntity($location, $data);
+
+            $location->out_date = Utils::brToDate($location->out_date);
+            $location->return_date = Utils::brToDate($location->return_date);
+            $location->location_date = date('Y-m-d');
+            $location->status = 0;
+            $location->free_km = $location->free_km == 'on' ? 1 : 0;
+            $location->start_value = (float) $location->start_value;
+            $location->payment_date = null;
+            $location->client_id = $location->client_id_hidden;
+            $location->vehicle_id = $location->vehicle_id_hidden;
+            if($location->free_km != 1){
+                $this->updateLastKmVehicle($location->vehicle_id, $location->start_km + $location->allowed_km);
+            }
+            unset($location->client_id_hidden);
+            unset($location->vehicle_id_hidden);
+
             if ($this->Locations->save($location)) {
                 $this->Flash->success(__('Locação salva com sucesso'));
 
@@ -45,6 +65,7 @@ class LocationsController extends AppController
         }
         $situacao = 'Cadastrar Locação';
         $clients = $this->Locations->Clients->find('list');
+        $drivers = $this->Locations->Drivers->find('list');
 
         $Reserves = TableRegistry::get('Reserves');
         $reserves = $Reserves->find()
@@ -60,8 +81,8 @@ class LocationsController extends AppController
             $reserves = false;
         }
 
-        $this->set(compact('location','situacao','reserves','clients'));
-        $this->set('_serialize', ['location','reserves','clients']);
+        $this->set(compact('location','situacao','reserves','clients','drivers'));
+        $this->set('_serialize', ['location','reserves','clients','drivers']);
         $this->render('form');
     }
 
@@ -185,5 +206,18 @@ class LocationsController extends AppController
 
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
+    }
+
+    public function updateLastKmVehicle($vehicle, $last_km){
+        $Vehicles = TableRegistry::get('Vehicles');
+        $vehicle = $Vehicles->get($vehicle);
+
+        $vehicle_registry = [
+            'id' => $vehicle->id
+        ];
+
+        $vehicle = $Vehicles->patchEntity($vehicle, $vehicle_registry);
+        $vehicle->last_km = $last_km;
+        $Vehicles->save($vehicle);
     }
 }

@@ -22,24 +22,24 @@
         </div>
         <hr/>
         <div class="row">
-            <div class="col-md-4 col-xs-6">
+            <div class="col-md-4 col-xs-12">
                 <a href="#" id="download" class="btn btn-success" style="display: none">
                     <i class="fa fa-download"></i>
                     Baixar Relatório
                 </a>
             </div>
-            <div class="col-md-4 col-xs-6">
-                <a href="#" class="btn btn-info pull-right" id="generatePdf">
+            <div class="col-md-4 col-xs-12">
+                <a href="#" class="btn btn-info" id="generatePdf">
                     <i class="fa fa-file-pdf-o"></i>
                     Exportar Gráfico
                 </a>
-                <a href="#" class="btn btn-success pull-right" id="abrir" style="display:none">
+                <a href="#" class="btn btn-success" id="abrir" style="display:none">
                     <i class="fa fa-file-pdf-o"></i>
                     Abrir PDF
                 </a>
             </div>
-            <div class="col-md-4 col-xs-6">
-                <button class="btn btn-info pull-right" id="generateFile">
+            <div class="col-md-4 col-xs-12">
+                <button class="btn btn-info" id="generateFile">
                     <i class="fa fa-file-excel-o"></i>
                     Gerar Relatorio
                 </button>

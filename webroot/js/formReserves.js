@@ -162,40 +162,10 @@ $(document).ready(function() {
         $('#disp').fadeIn('fast');
     };
 
-    var acresDesc = function(e){
-        e.preventDefault();
-        var div = $('.acrescimo-desconto');
-
-        if(div.is(':visible')){
-            div.hide(100);
-        } else {
-            div.show(100);
-        }
-    };
-
-    var calcular = function(e){
-        e.preventDefault();
-        $('.acrescimo-desconto').hide(100);
-        var valor = $('#valor').val();
-
-        if(valor != ''){
-            var total = $('.total').text().replace('R$ ','');
-            var totalNew = (parseFloat(total.replace('.',',')) + (parseFloat(valor)));
-            $('.total').text('R$ ' + currencyFormat(totalNew));
-            $('#total').val(totalNew);
-        }
-    };
-
-    function currencyFormat (num) {
-        return num.toFixed(2).replace(",", ".").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-    }
-
     $(document).on('change', '#client-id', infoClient);
     $(document).on('change', '#vehicle-id', infoCar);
     $(document).on('change', '#date-start', hide);
     $(document).on('change', '#date-end', hide);
-    // $(document).on('click', '.acres-desc', acresDesc);
-    $(document).on('click', '.btn-calcular', calcular);
     if($('#vehicle-id-hidden').val() > 0){
         var date_start = $('#date-start').val();
         var date_end = $('#date-end').val();
