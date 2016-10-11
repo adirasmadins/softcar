@@ -222,6 +222,25 @@ $(document).ready(function(){
             $('button[type="submit"]').attr('disabled', false);
         }
     });
+    
+    $('#validity-cnh').change(function(){
+        moment.locale('pt-br');
+        var data1 = moment($(this).val(),'DD/MM/YYYY');
+        var data2 = moment(moment().format('DD/MM/YYYY'),'DD/MM/YYYY');
+        var diff  = data2.diff(data1, 'days');
+        if(diff >= 0){
+            $('button[type="submit"]').attr('disabled', true);
+            swal({
+                title: 'Validade da Carteira de Motorista',
+                text: 'A carteira do cliente está vencida',
+                type: 'info',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
+        } else {
+            $('button[type="submit"]').attr('disabled', false);
+        }
+    });
 });
 
 $(document).ready(function() {

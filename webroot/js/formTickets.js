@@ -166,4 +166,24 @@ $(document).ready(function(){
             parent.children('span').remove();
         }
     });
+    
+    $('#due-date').change(function(){
+        moment.locale('pt-br');
+        var data1 = moment($("#ticket-date").val(),'DD/MM/YYYY');
+        var data2 = moment($(this).val(),'DD/MM/YYYY');
+        var diff  = data2.diff(data1, 'days');
+        console.log(diff);
+        if(diff <= 0){
+            $('button[type="submit"]').attr('disabled', true);
+            swal({
+                title: 'Data incorreta',
+                text: 'A Data de Vencimento não pode ser menor que a Data da Multa',
+                type: 'info',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
+        } else {
+            $('button[type="submit"]').attr('disabled', false);
+        }
+    });
 });

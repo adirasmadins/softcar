@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 disp">
                     <button type="button" class="btn btn-primary" id="disp"><i class="fa fa-search"></i> Verificar disponibilidade</button>
                 </div>
             </div>
@@ -122,6 +122,7 @@ $this->append('script', $this->Html->script([
     'form',
     '../dist/moment/moment.js',
     '../dist/timepicker/bootstrap-timepicker.min',
+    '../dist/moment/moment.js',
     'formReserves'
 ]));
 ?>
