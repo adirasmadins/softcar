@@ -238,4 +238,24 @@ class Utils {
 
         return $result['name'] . ' - ' . $result['cpf_cnpj'];
     }
+    
+    static function getClientOnlyName($id){
+        $Clients = TableRegistry::get('Clients');
+
+        $result = $Clients->find()
+            ->hydrate(false)
+            ->select([
+                'name'
+            ])
+            ->where([
+                'id' => $id
+            ])
+            ->first();
+
+        return $result['name'];
+    }
+
+    static function getStatusReserves($status){
+        return $status == 0 ? '<span class="label label-success">Sim</span>' : '<span class="label label-danger">Não</span>';
+    }
 }

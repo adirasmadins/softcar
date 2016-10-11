@@ -6,10 +6,15 @@ use App\Lib\Utils;
 
 class ClientsController extends AppController
 {
+    public $paginate = [
+        'limit' => 7,
+    ];
 
-    /**
-     * Método para listagem
-     */
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
         $data = $this->request->query;
@@ -30,16 +35,16 @@ class ClientsController extends AppController
         $client = $this->Clients->newEntity();
         if ($this->request->is('post')) {
             $data = $this->request->data;
-            
+
             if(!empty($data['client_files'][0]['name'])){
                 foreach($data['client_files'] as $key => $item){
-                    $file = Utils::fazerUploadClients($item, 'clients', $key);   
+                    $file = Utils::fazerUploadClients($item, 'clients', $key);
                     $data['client_files'][$key]['url_file'] = $file;
-                }   
+                }
             } else {
                 unset($data['client_files'][0]);
             }
-            
+
             $client = $this->Clients->patchEntity($client, $data);
 
             /* Convertendo data para padrão americano antes de salvar */
@@ -74,18 +79,18 @@ class ClientsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->data;
-        debug($data);die();
+            debug($data);die();
             if(!empty($data['client_files'][0]['name'])){
                 foreach($data['client_files'] as $key => $item){
-                    $file = Utils::fazerUploadClients($item, 'clients', $key);   
+                    $file = Utils::fazerUploadClients($item, 'clients', $key);
                     $data['client_files'][$key]['url_file'] = $file;
-                }   
+                }
             } else {
-            
+
                 unset($data['client_files'][0]);
-                
+
             }
-            
+
             $client = $this->Clients->patchEntity($client, $this->request->data);
 
             if(strlen($client->cpf_cnpj) < 14){
@@ -104,7 +109,7 @@ class ClientsController extends AppController
                 $this->Flash->error(__('Ocorreu um problema ao salvar o Cliente'));
             }
         }
-        
+
         $situacao = 'Editar Cliente';
         $states = $this->Clients->States->find('list');
 

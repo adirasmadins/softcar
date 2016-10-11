@@ -79,6 +79,15 @@ $(document).ready(function() {
         $('.tooltip-ticket').hide();
     });
 
+    $('.btn-contrato').mouseover(function() {
+        var position = $(this).offset();
+        var div = $('.tooltip-contract');
+        div.css('top', position.top);
+        div.show();
+    }).mouseout(function() {
+        $('.tooltip-contract').hide();
+    });
+
     $('.btn-pay').click(function() {
         var id = {
             id: $(this).data('id')

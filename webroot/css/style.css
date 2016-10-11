@@ -8,19 +8,28 @@ select{
     margin-bottom: 20px;
 }
 
+button,
+a,
+input,
+button,
 textarea{
-    margin-bottom: 20px;
+    outline: none !important;
 }
 
-body{
-    overflow: visible !important;
+.modal-header{
+    background-color: #e6e6e6 !important;
+}
+
+textarea{
+    margin-bottom: 20px;
 }
 
 span.label{
     font-family: 'Source Sans Pro Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.tooltip-ticket{
+.tooltip-ticket,
+.tooltip-contract{
     z-index: 999;
     position: absolute;
     display: none;

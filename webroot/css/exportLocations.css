@@ -1,0 +1,20 @@
+.col-md-12 > label{
+    margin: 20px;
+}
+
+#download,
+#generatePdf,
+#abrir,
+#generateFile{
+    width: 100%;
+}
+
+@media(max-width: 768px){
+    #generatePdf,
+    #download,
+    #abrir,
+    button{
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
