@@ -2,7 +2,7 @@ $(document).ready(function () {
     var formDrivers=new Form();
     formDrivers.inputMasks({
         '#phone': 'phone',
-        '#cel-phone': 'phone',
+        '#cel-pgir statuhone': 'phone',
         '#cpf': 'cpf',
         '#rg': 'rg',
         '#cep': 'cep',
@@ -72,7 +72,7 @@ $(document).ready(function () {
         this.value = this.value.replace(/[^a-zA-Záàâãéèêíïóôõöúçñ ]+/g, '');
     });
 
-    $('#formUsers').validate({
+    $('#formDrivers').validate({
         rules: {
             name: {
                 required: true,
@@ -81,10 +81,10 @@ $(document).ready(function () {
             gender: {
                 required: true
             },
-            cpf: {
+            cpf_cnpj: {
                 required: true
             },
-            rg: {
+            rg_ie: {
                 required: true
             },
             phone: {
@@ -100,12 +100,6 @@ $(document).ready(function () {
                 required: true
             },
             street: {
-                required: true
-            },
-            login: {
-                required: true
-            },
-            password: {
                 required: true
             },
             state_id: {
@@ -140,6 +134,27 @@ $(document).ready(function () {
             $('button[type="submit"]').attr('disabled', false);
         }
     });
+
+    $('#birth-date').change(function(){
+        moment.locale('pt-br');
+        var data1 = moment($(this).val(),'DD/MM/YYYY');
+        var data2 = moment(moment().format('DD/MM/YYYY'),'DD/MM/YYYY');
+        var diff  = data2.diff(data1, 'days');
+
+        if(diff <= 7300){
+            $('button[type="submit"]').attr('disabled', true);
+            swal({
+                title: 'Cliente não possui idade mínima',
+                text: 'É necessário ter pelo menos 20 anos de idade',
+                type: 'info',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
+        } else {
+            $('button[type="submit"]').attr('disabled', false);
+        }
+    });
+
     $('#cpf').change(function(){
         var val = $(this).val();
 
