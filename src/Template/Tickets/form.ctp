@@ -132,6 +132,7 @@ $this->append('script', $this->Html->script([
     'form',
     '../dist/maskMoney/jquery.maskMoney',
     '../dist/iCheck/icheck',
+    '../dist/moment/moment.js',
     'formTickets'
 ]));
 ?>

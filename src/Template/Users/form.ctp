@@ -62,7 +62,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <?= $this->Form->input('street',['label' => 'Rua','placeholder' => 'Rua','class' => 'form-control']) ?>
+                    <?= $this->Form->input('street',['label' => 'Endereço','placeholder' => 'Endereço','class' => 'form-control']) ?>
                 </div>
                 <div class="col-md-4">
                     <?= $this->Form->input('neighborhood',['label' => 'Bairro','placeholder' => 'Bairro','class' => 'form-control']) ?>

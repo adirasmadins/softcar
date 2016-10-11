@@ -66,7 +66,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <?= $this->Form->input('street',['label' => 'Rua','placeholder' => 'Rua','class' => 'form-control']) ?>
+                    <?= $this->Form->input('street',['label' => 'Endereço','placeholder' => 'Endereço','class' => 'form-control']) ?>
                 </div>
                 <div class="col-md-2 form-group">
                     <?= $this->Form->input('number',['label' => 'Número','placeholder' => 'Número','class' => 'form-control','type' => 'text']) ?>
