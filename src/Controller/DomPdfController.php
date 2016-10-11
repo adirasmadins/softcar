@@ -51,7 +51,8 @@ class DomPdfController extends AppController
 
             $Locations = TableRegistry::get('Locations');
             $Contract = TableRegistry::get('Contract');
-            $contract = $Contract->find('list');
+            $contract = $Contract->find()->first();
+           
             $location = $Locations->get($data['id']);
             
             $client = Utils::getClientOnlyName($location->client_id);
@@ -59,13 +60,13 @@ class DomPdfController extends AppController
             $dompdf = new DOMPDF();
             $dompdf->set_option('defaultFont', 'Helvetica');
             $html = "
-                        <img src='img/logo.png' width='100px' style='float: left'/>
                         <hr/>
                     ";
-            $html .= str_replace('%CLIENTE%', $client, $contract);
+            $html .= str_replace('%CLIENTE%', $client, $contract->texto);
+            $texto = str_replace('LOCADORA', 'Val Locadora de Veículos', $html);
 
 
-            $dompdf->loadHtml($html);
+            $dompdf->loadHtml($texto);
             $dompdf->setPaper('A4', 'portrait');
             $dompdf->render();
 
@@ -74,7 +75,7 @@ class DomPdfController extends AppController
             file_put_contents($arquivo,$pdf);
             $result = ['type' => 'success', 'data' => $arquivo];
         }
-        $this->set(compact('arquivo'));
-        $this->set('_serialize', ['arquivo']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 }

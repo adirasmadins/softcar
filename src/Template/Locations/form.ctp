@@ -69,6 +69,7 @@
                     <?= $this->Form->input('driver_id',['label' => 'Motorista', 'class' => 'form-control','options' => $drivers,'empty' => 'Sem motorista']); ?>
                 </div>
                 <div class="col-md-6 form-group">
+                    <input type="hidden" value="<?= $location->tank_check ?>" id="tank_check_">
                     <textarea placeholder="Verificação de Tanque" name="tank_check" id="tank_check"></textarea>
                 </div>
             </div>
@@ -80,7 +81,7 @@
                     </div>
                     <div class="div-total">
                         <h2 class="pull-left">TOTAL</h2>
-                        <h3 class="pull-right total">R$ 0,00</h3>
+                        <h3 class="pull-right total"><?= $location->total ? 'R$ ' . $location->total : 'R$ 0,00'?></h3>
                         <input type="hidden" id="start_value" name="start_value" value="">
                         <input id="total" name="total" type="hidden">
                         <button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>
@@ -92,12 +93,12 @@
                     </div>
                     <input type="hidden" class="km_inicial" name="start_km" value="">
                     <input type="hidden" class="km_final" name="km_final" value="">
-                    <h5 class="km-inicial">KM Inicial: <span></span></h5>
-                    <h5 class="km-final">KM Final: <span></span></h5>
+                    <h5 class="km-inicial">KM Inicial: <span><?= $location->km_inicial ? $location->km_inicial : '' ?></span></h5>
+                    <h5 class="km-final">KM Final: <span><?= $location->free_km == 1 ? ' ILIMITADO' : '' ?></span></h5>
                     <div class="row">
                         <div class="col-md-9" style="margin-top: 10px">
                             <div class="input-group">
-                                <input type="text" name="allowed_km" value="" id="allowed_km" class="form-control" placeholder="Quilometragem permitida">
+                                <input type="text" name="allowed_km" value="<?= $location->allowed_km ?>" id="allowed_km" class="form-control" placeholder="Quilometragem permitida">
                                 <div class="input-group-addon">
                                     km
                                 </div>
@@ -105,7 +106,7 @@
                         </div>
                         <div class="col-md-3">
                             <label style="margin-top: 17px;">
-                                <input type="checkbox" id="free_km" name="free_km" class="form-control">
+                                <input type="checkbox" id="free_km" name="free_km" class="form-control" <?= $location->free_km == 1 ? 'checked' : '' ?>>
                                 Livre?
                             </label>
                         </div>
@@ -120,7 +121,7 @@
                     <figure>
                         <a href="#" class="btn btn-visualizacao btn-info btn-xs"><i class="fa fa-info-circle"></i> info</a>
                         <img src="<?= $location->id ? $location->vehicle_picture : '' ?>" class="thumbnail img-responsive"/>
-                        <span class="sub-img"><?= isset($reserve->day_price_vehicle) ? '<h3>R$ ' . $reserve->day_price_vehicle . '<small>(diária)</small></h3>': '' ?></span>
+                        <span class="sub-img"><?= isset($location->day_price_vehicle) ? '<h3>R$ ' . $location->day_price_vehicle . '<small>(diária)</small></h3>': '' ?></span>
                     </figure>
                 </div>
             </div>

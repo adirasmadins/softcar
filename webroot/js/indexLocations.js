@@ -9,6 +9,7 @@ $(document).ready(function(){
     });
     
     $('.btn-contrato').click(function(){
+        $(this).html('<i class="fa fa-refresh fa-spin"></i>').attr('disabled', true);
         var id = $(this).data('id');
         var url = webroot + 'domPdf/generate-contract';
         var data = {
@@ -18,11 +19,8 @@ $(document).ready(function(){
         
         $.post(url, data, function(json){
             if(json.result.type === 'success'){
-                swal({   
-                    title: "HTML <small>Title</small>!",   
-                    text: "A custom <span style="color:#F8BB86">html<span> message.",   
-                    html: true 
-                });
+                window.open(webroot + json.result.data, '_blank'); 
+                $('.btn-contrato').html('<i class="fa fa-file-pdf-o"></i>');
             }
         },'json');
     });

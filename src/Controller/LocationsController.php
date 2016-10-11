@@ -93,6 +93,11 @@ class LocationsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $location = $this->Locations->patchEntity($location, $this->request->data);
+            
+            $location->out_date = Utils::brToDate($location->out_date);
+            $location->return_date = Utils::brToDate($location->return_date);
+            $location->free_km = $location->free_km == 'on' ? 1 : 0;
+            
             if ($this->Locations->save($location)) {
                 $this->Flash->success(__('Locação salva com sucesso'));
 
@@ -102,9 +107,36 @@ class LocationsController extends AppController
             }
         }
         $situacao = 'Editar Locação';
-
-        $this->set(compact('location','situacao'));
-        $this->set('_serialize', ['location']);
+    
+        $this->Locations->Vehicles->displayField('model');
+        $vehicles = $this->Locations->Vehicles->find('list');
+        $clients = $this->Locations->Clients->find('list');
+        $drivers = $this->Locations->Drivers->find('list');
+        
+        $urlAndDayPrice = $this->Locations->Vehicles->find()
+            ->select([
+                'picture',
+                'day_price'
+            ])
+            ->where([
+                'id' => $location->vehicle_id
+            ])
+            ->first();
+        $km_inicial = $this->Locations->Vehicles
+            ->find()
+            ->select('last_km')
+            ->where([
+                'id' => $location->vehicle_id
+            ])
+            ->first();    
+            
+        $location->km_inicial = $km_inicial['last_km'];    
+        $location->vehicle_picture = str_replace('//','/', $this->request->webroot . $urlAndDayPrice->picture);
+        $location->day_price_vehicle = $urlAndDayPrice->day_price;
+        
+        
+        $this->set(compact('location','situacao','clients','drivers','vehicles'));
+        $this->set('_serialize', ['location','clients','drivers','vehicles']);
         $this->render('form');
     }
 

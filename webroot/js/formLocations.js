@@ -1,4 +1,25 @@
 $(document).ready(function(){
+    var infoClient = function(){
+        var clientId = {
+            id: $('#client-id').val()
+        };
+        var url = webroot + 'clients/getClientInformation';
+        var refresh = '<i class="fa fa-refresh fa-spin"></i>';
+
+        $('#cnh h5').html(refresh);
+        $('#cpf h5').html(refresh);
+        $('#city h5').html(refresh);
+        $.post(url,clientId, function(event){
+            if(event.result.type === 'success'){
+                var client = event.result.data;
+
+                $('#cnh h5').text(client.cnh);
+                $('#cpf h5').text(client.cpf);
+                $('#city h5').text(client.city_name + '/' + client.state_name);
+            }
+        },'json');
+    };
+    
     $('#client-id, #vehicle-id, #driver-id, #form-payment').select2();
 
     $('input[type="radio"]').iCheck({
@@ -12,6 +33,14 @@ $(document).ready(function(){
     $('#carregar').attr('disabled', true);
     if($('#id-location').val() == ''){
         $('#reserves').modal('show');
+    } else {
+        infoClient();
+        var veri = $('#tank_check_').val();
+        $('#tank_check').text(veri);
+        if($('#free_km').is(':checked')){
+            $('#allowed_km').val('');
+            $('#allowed_km').attr('disabled', true);
+        }
     }
 
     $('input[type="radio"]').on('ifChecked', function(){
@@ -90,27 +119,6 @@ $(document).ready(function(){
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
                 $('.total').html('<small class="min-small">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
                 $('#total').val(total.replace('R$ ',''));
-            }
-        },'json');
-    };
-
-    var infoClient = function(){
-        var clientId = {
-            id: $('#client-id').val()
-        };
-        var url = webroot + 'clients/getClientInformation';
-        var refresh = '<i class="fa fa-refresh fa-spin"></i>';
-
-        $('#cnh h5').html(refresh);
-        $('#cpf h5').html(refresh);
-        $('#city h5').html(refresh);
-        $.post(url,clientId, function(event){
-            if(event.result.type === 'success'){
-                var client = event.result.data;
-
-                $('#cnh h5').text(client.cnh);
-                $('#cpf h5').text(client.cpf);
-                $('#city h5').text(client.city_name + '/' + client.state_name);
             }
         },'json');
     };
