@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use mPDF\mPDF;
 use Dompdf\Options;
 use Cake\ORM\TableRegistry;
 use App\Lib\Utils;
@@ -18,11 +17,14 @@ class DomPdfController extends AppController
         if($this->request->is('post')){
             $data = $this->request->data;
 
-            $mpdf = new mPDF();
-
-            $mpdf->WriteHTML('Hallo World');
-            
-            $mpdf->Output('files/exports');
+            $mpdf=new \mPDF('c','A4','','' , 0 , 0 , 0 , 0 , 0 , 0); 
+ 
+            $mpdf->SetDisplayMode('fullpage');
+             
+            $mpdf->WriteHTML("dsadasdasdaa");
+                     
+            $mpdf->Output();
+            exit;
             
 //            $dompdf = new DOMPDF();
 //            $dompdf->set_option('defaultFont', 'Helvetica');
@@ -40,10 +42,10 @@ class DomPdfController extends AppController
 //            $pdf = $dompdf->output();
 //            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
 //            file_put_contents($arquivo,$pdf);
-            $result = ['type' => 'success', 'data' => $pdf];
+            $result = ['type' => 'success', 'data' => ''];
         }
-        $this->set(compact('arquivo'));
-        $this->set('_serialize', ['arquivo']);
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
     
     public function generateContract(){
