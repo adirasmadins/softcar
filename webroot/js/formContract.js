@@ -15,6 +15,7 @@ $(document).ready(function() {
         var url = webroot + 'domPdf/preVisualizar';
 
         $.post(url, data, function(e){
+            console.log(e);
             if(e){
                 window.open(webroot + e.arquivo,'_blank');
                 NProgress.done();

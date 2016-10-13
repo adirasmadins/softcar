@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Dompdf\Dompdf;
+use mPDF\mPDF;
 use Dompdf\Options;
 use Cake\ORM\TableRegistry;
 use App\Lib\Utils;
@@ -18,17 +18,12 @@ class DomPdfController extends AppController
         if($this->request->is('post')){
             $data = $this->request->data;
 
-            $html = "
-                        <img src='img/logo.png' width='100px' style='float: left'/>
-                        <hr/>
-                    ";
-            $html .= str_replace('%CLIENTE%', 'José da Silva', $data['texto']);
+            $mpdf = new mPDF();
 
-            $mpdf = new \mPDF();
-            $mpdf->WriteHTML($html);
-            $pdf = $mpdf->Output();
-            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
-            file_put_contents($arquivo,$pdf);
+            $mpdf->WriteHTML('Hallo World');
+            
+            $mpdf->Output('files/exports');
+            
 //            $dompdf = new DOMPDF();
 //            $dompdf->set_option('defaultFont', 'Helvetica');
 //            $html = "
@@ -45,7 +40,7 @@ class DomPdfController extends AppController
 //            $pdf = $dompdf->output();
 //            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
 //            file_put_contents($arquivo,$pdf);
-            $result = ['type' => 'success', 'data' => $arquivo];
+            $result = ['type' => 'success', 'data' => $pdf];
         }
         $this->set(compact('arquivo'));
         $this->set('_serialize', ['arquivo']);
