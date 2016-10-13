@@ -18,22 +18,33 @@ class DomPdfController extends AppController
         if($this->request->is('post')){
             $data = $this->request->data;
 
-            $dompdf = new DOMPDF();
-            $dompdf->set_option('defaultFont', 'Helvetica');
             $html = "
                         <img src='img/logo.png' width='100px' style='float: left'/>
                         <hr/>
                     ";
             $html .= str_replace('%CLIENTE%', 'José da Silva', $data['texto']);
 
-
-            $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4', 'portrait');
-            $dompdf->render();
-
-            $pdf = $dompdf->output();
+            $mpdf = new \mPDF();
+            $mpdf->WriteHTML($html);
+            $pdf = $mpdf->Output();
             $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
             file_put_contents($arquivo,$pdf);
+//            $dompdf = new DOMPDF();
+//            $dompdf->set_option('defaultFont', 'Helvetica');
+//            $html = "
+//                        <img src='img/logo.png' width='100px' style='float: left'/>
+//                        <hr/>
+//                    ";
+//            $html .= str_replace('%CLIENTE%', 'José da Silva', $data['texto']);
+//
+//
+//            $dompdf->loadHtml($html);
+//            $dompdf->setPaper('A4', 'portrait');
+//            $dompdf->render();
+//
+//            $pdf = $dompdf->output();
+//            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
+//            file_put_contents($arquivo,$pdf);
             $result = ['type' => 'success', 'data' => $arquivo];
         }
         $this->set(compact('arquivo'));
