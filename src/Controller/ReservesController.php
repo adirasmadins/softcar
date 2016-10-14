@@ -1,10 +1,9 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
 use App\Lib\Utils;
-use Cake\ORM\TableRegistry;
 use Cake\Core\Configure;
+use Cake\ORM\TableRegistry;
 
 class ReservesController extends AppController
 {
@@ -130,42 +129,21 @@ class ReservesController extends AppController
         $result = ['type' => 'error', 'data' => false];
         if($this->request->is('post')){
             $data = $this->request->data;
-            
+            $Vehicles = TableRegistry::get('Vehicles');
+
             $date_start = Utils::brToDate($data['date_start']);
             $date_end = Utils::brToDate($data['date_end']);
 
-           $result = $this->Reserve->query("SELECT
-                    	vehicle_id,
-                    	date_start,
-                    	date_end
-                    FROM
-                    	reserves
-                    WHERE (date_start BETWEEN {$date_start} AND {$date_end})
-                    OR (date_end BETWEEN {$date_start} AND {$date_end})
-                    OR ({$date_start} BETWEEN date_start AND date_end)
-                    AND STATUS = 1
-                    UNION
-                    	(
-                    		SELECT
-                    			vehicle_id,
-                    			out_date AS date_start,
-                    			return_date AS date_end
-                    		FROM
-                    			locations
-                    		WHERE (out_date BETWEEN {$date_start} AND {$date_end})
-                    		OR (return_date BETWEEN {$date_start} AND {$date_end})
-                    		OR ({$date_start} BETWEEN out_date AND return_date)
-                    	)");
-            
-            
-            debug($result);die();
-            
+            $this->loadModel('Reserves');
+            $teste = $this->Reserves->teste($date_start, $date_end);
+
+            debug($teste);die();
+
             if(!empty($data['idVehicleAllow'])){
                 $result->where([
                     'vehicle_id <>' => (int) $data['idVehicleAllow']
                 ]);
             }
-            $Vehicles = TableRegistry::get('Vehicles');
 
             if(count($result->toArray())){
 
@@ -206,16 +184,16 @@ class ReservesController extends AppController
         $this->set(compact('result'));
         $this->set('_serialize', ['result']);
     }
-    
+
     public function export(){
         $cars = $this->Reserves->find()
             ->select([
                 'ids' => 'DISTINCT vehicle_id'
             ]);
-            
+
         if(count($cars->toArray())){
             $cars = $cars->toArray();
-            
+
             $vehicles_ids = [];
             foreach($cars as $item){
                 array_push($vehicles_ids, $item['ids']);
@@ -231,11 +209,11 @@ class ReservesController extends AppController
             $cars = false;
             $vehicles = ['0' => 'Não há reservas'];
         }
-        
+
         $this->set(compact('vehicles','reserves_list'));
         $this->set('_serialize', ['vehicles','reserves_list']);
     }
-    
+
     public function generateExport($exportConfig = 'default') {
         $result = ['status' => 'error', 'message' => 'Não foi possível gerar o arquivo xls.', 'url' => ''];
         if ($this->request->is('post')) {

@@ -4,6 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\Core\Configure;
 use Cake\Validation\Validator;
 
 /**
@@ -100,5 +101,27 @@ class ReservesTable extends Table
         $rules->add($rules->existsIn(['vehicle_id'], 'Vehicles'));
 
         return $rules;
+    }
+
+    public function teste($date_start, $date_end){
+        $search = [
+            '%DATE_START%',
+            '%DATE_END%'
+        ];
+        $replace = [
+            $date_start,
+            $date_end
+        ];
+
+        $query = str_replace($search, $replace, Configure::read('Queries.Reserves'));
+
+        $host = INFO_ENVIRONMENT;
+        $user = Configure::read('Datasources.default.username');
+        $database = Configure::read('Datasources.default.database');
+debug($_SERVER);die();
+        $db = new \mysqli($host, $user, '', $database);
+        $result = $db->$gostquery($query)->fetch_object();
+
+        return $result;
     }
 }
