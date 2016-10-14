@@ -19,6 +19,7 @@ $(document).ready(function(){
         
         $.post(url, data, function(json){
             if(json.result.type === 'success'){
+                $('.btn-contrato').attr('disabled', false);
                 window.open(webroot + json.result.data, '_blank'); 
                 $('.btn-contrato').html('<i class="fa fa-file-pdf-o"></i>');
             }

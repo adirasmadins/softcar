@@ -130,20 +130,36 @@ class ReservesController extends AppController
         $result = ['type' => 'error', 'data' => false];
         if($this->request->is('post')){
             $data = $this->request->data;
-            $result = $this->Reserves->find()
-                ->hydrate(false)
-                ->select([
-                    'vehicle' => 'vehicle_id'
-                ])
-                ->where([
-                    'date_start BETWEEN :date_start AND :date_end'
-                ])
-                ->orWhere([
-                    'date_end BETWEEN :date_start AND :date_end'
-                ])
-                ->bind(':date_start', Utils::brToDate($data['date_start']), 'date')
-                ->bind(':date_end', Utils::brToDate($data['date_end']),'date');
+            
+            $date_start = Utils::brToDate($data['date_start']);
+            $date_end = Utils::brToDate($data['date_end']);
 
+           $result = $this->Reserve->query("SELECT
+                    	vehicle_id,
+                    	date_start,
+                    	date_end
+                    FROM
+                    	reserves
+                    WHERE (date_start BETWEEN {$date_start} AND {$date_end})
+                    OR (date_end BETWEEN {$date_start} AND {$date_end})
+                    OR ({$date_start} BETWEEN date_start AND date_end)
+                    AND STATUS = 1
+                    UNION
+                    	(
+                    		SELECT
+                    			vehicle_id,
+                    			out_date AS date_start,
+                    			return_date AS date_end
+                    		FROM
+                    			locations
+                    		WHERE (out_date BETWEEN {$date_start} AND {$date_end})
+                    		OR (return_date BETWEEN {$date_start} AND {$date_end})
+                    		OR ({$date_start} BETWEEN out_date AND return_date)
+                    	)");
+            
+            
+            debug($result);die();
+            
             if(!empty($data['idVehicleAllow'])){
                 $result->where([
                     'vehicle_id <>' => (int) $data['idVehicleAllow']

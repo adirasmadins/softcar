@@ -2,8 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 
 class ChartsController extends AppController
 {
@@ -16,31 +14,27 @@ class ChartsController extends AppController
         if($this->request->is('post')){
             $data = $this->request->data;
 
-            $dompdf = new DOMPDF();
-            $dompdf->set_option('defaultFont', 'Helvetica');
+            $mpdf = new \mPDF();
             $html = "
                     <!DOCTYPE html>
                     <html>
-                    <body>
+                    <body style='font-family: Arial'>
 
-                    <center>
-                        <img src='img/logo.png' width='100px' style='float: left'/>
+                    <div style='text-align: center'>
                         <h1>{$data['title']}</h1>
                         <hr/>
                         <img src='{$data['url']}' style='margin-top: 40px'/>
-                    </center>
+                    </div>
 
                     </body>
                     </html>";
 
 
-            $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4', 'portrait');
-            $dompdf->render();
+            $mpdf->WriteHTML($html);
 
-            $pdf = $dompdf->output();
-            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
-            file_put_contents($arquivo,$pdf);
+            $arquivo = 'files/exports/' . $data['file_name'];         
+            $mpdf->Output('files/exports/' . $data['file_name'], 'F');
+            
             $result = ['type' => 'success', 'data' => $arquivo];
         }
         $this->set(compact('arquivo'));

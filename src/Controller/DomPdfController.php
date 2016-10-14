@@ -13,39 +13,21 @@ class DomPdfController extends AppController
         set_time_limit(0);
         ini_set('max_execution_time', 0);
 
-        $result = ['type' => 'error'];
         if($this->request->is('post')){
             $data = $this->request->data;
 
-            $mpdf=new \mPDF('c','A4','','' , 0 , 0 , 0 , 0 , 0 , 0); 
+            $mpdf=new \mPDF('c','A4','','' , 10 , 10 , 10 , 10 , 10 , 10); 
  
             $mpdf->SetDisplayMode('fullpage');
              
-            $mpdf->WriteHTML("dsadasdasdaa");
+            $texto = str_replace('%CLIENTE%', 'José da Silva', $data['texto']); 
+            $mpdf->WriteHTML($texto);
                      
-            $mpdf->Output();
-            exit;
-            
-//            $dompdf = new DOMPDF();
-//            $dompdf->set_option('defaultFont', 'Helvetica');
-//            $html = "
-//                        <img src='img/logo.png' width='100px' style='float: left'/>
-//                        <hr/>
-//                    ";
-//            $html .= str_replace('%CLIENTE%', 'José da Silva', $data['texto']);
-//
-//
-//            $dompdf->loadHtml($html);
-//            $dompdf->setPaper('A4', 'portrait');
-//            $dompdf->render();
-//
-//            $pdf = $dompdf->output();
-//            $arquivo = "files/exports/" . $data['file_name'] . '_' . date('Y-m-d') . '.pdf';
-//            file_put_contents($arquivo,$pdf);
-            $result = ['type' => 'success', 'data' => ''];
+            $arquivo = 'files/exports/' . $data['file_name'];         
+            $mpdf->Output('files/exports/' . $data['file_name'], 'F');
         }
-        $this->set(compact('result'));
-        $this->set('_serialize', ['result']);
+        $this->set(compact('arquivo'));
+        $this->set('_serialize', ['arquivo']);
     }
     
     public function generateContract(){
@@ -63,24 +45,36 @@ class DomPdfController extends AppController
            
             $location = $Locations->get($data['id']);
             
-            $client = Utils::getClientOnlyName($location->client_id);
+            $client = Utils::getAllInformationsClients($location->client_id);
 
-            $dompdf = new DOMPDF();
-            $dompdf->set_option('defaultFont', 'Helvetica');
-            $html = "
-                        <hr/>
-                    ";
-            $html .= str_replace('%CLIENTE%', $client, $contract->texto);
-            $texto = str_replace('LOCADORA', 'Val Locadora de Veículos', $html);
+            $mpdf=new \mPDF('c','A4','','' , 10 , 10 , 10 , 10 , 10 , 10); 
+ 
+            $mpdf->SetDisplayMode('fullpage');
+            
+            $img = '<img src="img/logo.png" width="200px"/><hr/>';  
+            
+            $search = [
+                '%CLIENTE%',
+                'LOCADORA',
+                '%CPFCNPJ%'
+            ];
+            
+            $replace = [
+                $client['name'],
+                'Val Locadora de Veículos',
+                $client['cpf_cnpj']
+            ];
+            
+            $html = $img . str_replace($search, $replace, $contract->texto);
+            
+            $stylesheet = file_get_contents('files/exports/style.css');
 
-
-            $dompdf->loadHtml($texto);
-            $dompdf->setPaper('A4', 'portrait');
-            $dompdf->render();
-
-            $pdf = $dompdf->output();
-            $arquivo = "files/exports/" . $data['file_name'] . '_' . $client . '.pdf';
-            file_put_contents($arquivo,$pdf);
+            $mpdf->WriteHTML($stylesheet,1);
+            $mpdf->WriteHTML($html, 2);
+                     
+            $arquivo = 'files/exports/' . $data['file_name'];         
+            $mpdf->Output('files/exports/' . $data['file_name'], 'F');
+            
             $result = ['type' => 'success', 'data' => $arquivo];
         }
         $this->set(compact('result'));

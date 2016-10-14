@@ -254,6 +254,19 @@ class Utils {
 
         return $result['name'];
     }
+    
+    static function getAllInformationsClients($id){
+        $Clients = TableRegistry::get('Clients');
+
+        $result = $Clients->find()
+            ->hydrate(false)
+            ->where([
+                'id' => $id
+            ])
+            ->first();
+        
+        return $result;    
+    }
 
     static function getStatusReserves($status){
         return $status == 0 ? '<span class="label label-success">Sim</span>' : '<span class="label label-danger">Não</span>';
