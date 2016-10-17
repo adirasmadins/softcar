@@ -1,7 +1,10 @@
 <?php
 namespace App\Model\Table;
 
+use Cake\Network\Session\DatabaseSession;
 use Cake\ORM\Query;
+use Cake\Datasource\ConnectionManager;
+use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Core\Configure;
@@ -103,24 +106,27 @@ class ReservesTable extends Table
         return $rules;
     }
 
-    public function teste($date_start, $date_end){
+    public function queryVerify($date_start, $date_end, $idVehicleAllow){
         $search = [
             '%DATE_START%',
-            '%DATE_END%'
+            '%DATE_END%',
+            '%VEHICLE_ALLOW%'
         ];
         $replace = [
             $date_start,
-            $date_end
+            $date_end,
+            $idVehicleAllow
         ];
 
         $query = str_replace($search, $replace, Configure::read('Queries.Reserves'));
 
-        $host = INFO_ENVIRONMENT;
-        $user = Configure::read('Datasources.default.username');
-        $database = Configure::read('Datasources.default.database');
-debug($_SERVER);die();
-        $db = new \mysqli($host, $user, '', $database);
-        $result = $db->$gostquery($query)->fetch_object();
+
+        $default = 'default';
+        $informations = ConnectionManager::get($default);
+        $database = $informations->config();
+
+        $db = new \mysqli($database['host'], $database['username'], $database['password'], $database['database']);
+        $result = $db->query($query)->fetch_all();
 
         return $result;
     }

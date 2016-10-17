@@ -85,4 +85,12 @@ $(document).ready(function(){
         '#depvat-expiration': 'date',
         '#licensing-expiration': 'date'
     });
+
+    (function() {
+
+        [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+            new CBPFWTabs( el );
+        });
+
+    })();
 });

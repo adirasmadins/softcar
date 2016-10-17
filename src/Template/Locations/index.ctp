@@ -16,7 +16,8 @@ $this->element('Form/header_index',[
         'vehicle_id' => 'Veículo',
         'client_id' => 'Cliente',
         'out_date' => 'Data de Saída',
-        'return_date' => 'Data de Devolução'
+        'return_date' => 'Data de Devolução',
+        'status' => 'Finalizada?'
     ],
     'name' => 'A Locação',
     'entity' => 'Locations',

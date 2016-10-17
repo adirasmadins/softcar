@@ -105,9 +105,8 @@ $(document).ready(function() {
         var select = $('#vehicle-id');
         select.attr('disabled', true);
         var url = webroot + 'reserves/get-vehicles-by-date-and-schedule';
-        $('#select2-vehicle-id-container').text('buscando veículos...');
 
-        formData.idVehicleAllow =  $('#vehicle-id-hidden').val() || $('#client-id').val();
+        formData.idVehicleAllow =  $('#vehicle-id-hidden').val() || select.val();
 
         $.post(url, formData, function(e){
             var options = "";
@@ -115,7 +114,6 @@ $(document).ready(function() {
                 $.each(e.result.data, function(key, value){
                     options += "<option value=" + value.id + ">" + value.model + "</option>";
                 });
-                $('#select2-vehicle-id-container').text('Selecione o Veículo');
                 select.html(null);
                 select.html(options);
                 select.attr('disabled', false);

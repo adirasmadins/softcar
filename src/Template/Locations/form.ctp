@@ -3,10 +3,9 @@
         <?= $this->Form->create($location,['id' => 'formLocations']) ?>
         <div class="box-header hidden-sm hidden-xs">
             <h4 class="panel-head"><?= $situacao ?></h4>
-            <hr/>
-        </div>
-        <div class="box-header hidden-md hidden-lg text-center">
-            <h4><?= $situacao ?></h4>
+            <?php if($location->status == 1): ?>
+                <button type="button" class="btn btn-info info-location">Informações Baixa Locação</button>
+            <?php endif; ?>
             <hr/>
         </div>
         <div class="panel-body">

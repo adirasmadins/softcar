@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
+                        <i class="fa fa-bell-o"></i> <span class="hidden-sm hidden-xs">Notificações</span>
                         <?php if($rates_list || $tickets_list): ?>
                             <span class="label label-warning"><?= count($rates_list) + count($tickets_list) ?></span>
                         <?php endif; ?>
@@ -115,32 +115,25 @@
                 <!-- Tasks: style can be found in dropdown.less -->
                 <li class="dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
-                        <span class="label label-danger">9</span>
+                        <i class="fa fa-bar-chart"></i>
+                        <span class="hidden-sm hidden-xs">Estatísticas<span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Teste</li>
+                        <li class="header">Estatísticas</li>
                         <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li><!-- Task item -->
-                                    <a href="#">
-                                        <h3>
-                                            Teste
-                                            <small class="pull-right">80%</small>
-                                        </h3>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="sr-only">80%</span>
+                            <ul class="menu" style="padding: 10px;">
+                                    <a>
+                                        <h5>
+                                            <i class="fa fa-car"></i> Porcentagem de veículos locados no momento
+                                        </h5>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-yellow" style="width: <?= str_replace(',','.',$percentual) ?>%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="<?= $percentual > 1 ? 'perc-1' : 'perc-0' ?>"><?= $percentual ?>%</span>
                                             </div>
                                         </div>
                                     </a>
                                 </li>
-                                <!-- end task item -->
                             </ul>
-                        </li>
-                        <li class="footer">
-                            <a href="#">View all tasks</a>
                         </li>
                     </ul>
                 </li>
@@ -148,7 +141,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?php $user_first_name = (explode(" ",$user_online['name'])) ?>
-                        <i class="fa fa-user"></i><span class="hidden-xs"><?= $user_first_name[0] ?></span>
+                        <i class="fa fa-user"></i><span class="hidden-xs">Olá, <?= $user_first_name[0] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -175,6 +168,9 @@
             width: 300px;
             font-size: 11px !important;
         }
+    }
+    .menu a{
+        color: #606060 !important;
     }
 </style>
 <script>

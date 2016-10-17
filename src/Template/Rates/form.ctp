@@ -33,57 +33,55 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#ipva" data-toggle="tab" aria-expanded="true">IPVA</a></li>
-                            <li class=""><a href="#dpvat" data-toggle="tab" aria-expanded="false">DPVAT</a></li>
-                            <li class=""><a href="#licenciamento" data-toggle="tab" aria-expanded="false">Licenciamento</a></li>
+                <section class="tabs tabs-style-iconfall">
+                    <nav>
+                        <ul>
+                            <li><a href="#section-iconfall-1" class="icon icon-cog"><span>IPVA</span></a></li>
+                            <li><a href="#section-iconfall-2" class="icon icon-cog"><span>DPVAT</span></a></li>
+                            <li><a href="#section-iconfall-3" class="icon icon-cog"><span>Licenciamento</span></a></li>
                         </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="ipva">
-                                <div class="row">
-                                    <div class="col-md-4 form-group">
-                                        <?= $this->Form->input('ipva_value',['label' => 'Valor IPVA','placeholder' => 'Valor IPVA','class' => 'form-control','type' => 'text']) ?>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <?= $this->Form->input('ipva_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <?= $this->Form->input('ipva_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
-                                    </div>
+                    </nav>
+                    <section class="content-wrap">
+                        <section id="section-iconfall-1">
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <?= $this->Form->input('ipva_value',['label' => 'Valor IPVA','placeholder' => 'Valor IPVA','class' => 'form-control','type' => 'text']) ?>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <?= $this->Form->input('ipva_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <?= $this->Form->input('ipva_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="dpvat">
-                                <div class="row">
-                                    <div class="col-md-4 form-group">
-                                        <?= $this->Form->input('depvat_value',['label' => 'Valor DPVAT','placeholder' => 'Valor DPVAT','class' => 'form-control','type' => 'text']) ?>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <?= $this->Form->input('depvat_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <?= $this->Form->input('depvat_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
-                                    </div>
-                                </div>
+                        </section>
+                        <section id="section-iconfall-2"">
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <?= $this->Form->input('depvat_value',['label' => 'Valor DPVAT','placeholder' => 'Valor DPVAT','class' => 'form-control','type' => 'text']) ?>
                             </div>
-                            <div class="tab-pane" id="licenciamento">
-                                <div class="row">
-                                    <div class="col-md-4 form-group">
-                                        <?= $this->Form->input('licensing_value',['label' => 'Valor Licenciamento','placeholder' => 'Valor Licenciamento','class' => 'form-control','type' => 'text']) ?>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <?= $this->Form->input('licensing_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <?= $this->Form->input('licensing_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
-                                    </div>
-                                </div>
+                            <div class="col-md-4 form-group">
+                                <?= $this->Form->input('depvat_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= $this->Form->input('depvat_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
                             </div>
                         </div>
-                        <!-- /.tab-content -->
-                    </div>
-                </div>
+                    </section>
+                    <section id="section-iconfall-3">
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <?= $this->Form->input('licensing_value',['label' => 'Valor Licenciamento','placeholder' => 'Valor Licenciamento','class' => 'form-control','type' => 'text']) ?>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <?= $this->Form->input('licensing_expiration',['label' => 'Vencimento','placeholder' => 'Vencimento','class' => 'form-control','type' => 'text']) ?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= $this->Form->input('licensing_status', ['label' => 'Status', 'class' => 'form-control', 'options' => ['0' => 'Não Pago', '1' => 'Pago']]) ?>
+                            </div>
+                        </div>
+                    </section>
+                </section>
             </div>
         </div>
         <div class="panel-footer">
@@ -104,15 +102,21 @@
                 ])
             ?>
         </div>
-        <?= $this->Form->end() ?>
     </div>
+</div>
+<?= $this->Form->end() ?>
+</div>
 </div>
 
 <?php
 $this->append('css', $this->Html->css([
-    'formRates'
+    'formRates',
+    '../dist/tabs/tabs',
+    '../dist/tabs/tabstyles'
 ]));
 $this->append('script', $this->Html->script([
+    '../dist/tabs/cbpFWTabs',
+    '../dist/tabs/modernizr.custom',
     'form',
     '../dist/maskMoney/jquery.maskMoney',
     'formRates'

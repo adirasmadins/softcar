@@ -341,6 +341,37 @@ return [
         'defaults' => 'php',
     ],
     'EmailFrom' => 'projsomanoreply@gmail.com',
+    'Queries' => [
+        'Reserves' => "SELECT
+                        Vehicles.id AS id
+                    FROM
+                        vehicles Vehicles
+                    INNER JOIN reserves Reserves ON (
+                        (
+                            (
+                                Reserves.date_start BETWEEN '%DATE_START%'
+                                AND '%DATE_END%'
+                            )
+                            OR (
+                                '%DATE_START%' BETWEEN date_start
+                                AND date_end
+                            )
+                        )
+                        OR (
+                            (
+                                Reserves.date_end BETWEEN '%DATE_START%'
+                                AND '%DATE_END%'
+                            )
+                            OR (
+                                '%DATE_END%' BETWEEN date_start
+                                AND date_end
+                            )
+                        )
+                    )
+                    WHERE
+                        Vehicles.id = (Reserves.vehicle_id)
+                    %VEHICLE_ALLOW%;"
+    ],
     'EntityOptions' => [
         'Tickets' => [
             'export' => [

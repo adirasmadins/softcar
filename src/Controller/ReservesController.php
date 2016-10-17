@@ -134,24 +134,22 @@ class ReservesController extends AppController
             $date_start = Utils::brToDate($data['date_start']);
             $date_end = Utils::brToDate($data['date_end']);
 
-            $this->loadModel('Reserves');
-            $teste = $this->Reserves->teste($date_start, $date_end);
-
-            debug($teste);die();
-
             if(!empty($data['idVehicleAllow'])){
-                $result->where([
-                    'vehicle_id <>' => (int) $data['idVehicleAllow']
-                ]);
+                $idVehicleAllow = ' AND vehicle_id <> ' . $data['idVehicleAllow'];
+            } else {
+                $idVehicleAllow = '';
             }
 
-            if(count($result->toArray())){
+            $this->loadModel('Reserves');
+            $result = $this->Reserves->queryVerify($date_start, $date_end, $idVehicleAllow);
 
-                $result = $result->toArray();
+            if(count($result)){
 
                 $ids = [];
-                foreach($result as $vehicle){
-                    array_push($ids, $vehicle['vehicle']);
+                foreach($result as $key => $vehicle){
+                    foreach($vehicle as $v){
+                        array_push($ids, $v);
+                    }
                 }
 
                 $vehicles_list = $Vehicles->find()

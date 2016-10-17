@@ -71,7 +71,6 @@ class LocationsController extends AppController
         $reserves = $Reserves->find()
             ->hydrate(false)
             ->where([
-                'date_start >=' => date('Y-m-d'),
                 'status' => 1
             ]);
 

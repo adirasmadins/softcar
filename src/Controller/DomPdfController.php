@@ -51,7 +51,7 @@ class DomPdfController extends AppController
  
             $mpdf->SetDisplayMode('fullpage');
             
-            $img = '<img src="img/logo.png" width="200px"/><hr/>';  
+            $img = '<img src="img/logo.png" width="150px"/><hr/>';
             
             $search = [
                 '%CLIENTE%',
@@ -66,15 +66,17 @@ class DomPdfController extends AppController
             ];
             
             $html = $img . str_replace($search, $replace, $contract->texto);
-            
-            $stylesheet = file_get_contents('files/exports/style.css');
+
+            $stylesheet = file_get_contents('css/styleContract.css');
 
             $mpdf->WriteHTML($stylesheet,1);
             $mpdf->WriteHTML($html, 2);
-                     
-            $arquivo = 'files/exports/' . $data['file_name'];         
-            $mpdf->Output('files/exports/' . $data['file_name'], 'F');
-            
+
+            $filename = str_replace(' ', '_', $data['file_name'] . '_' . $client['name'] . '.pdf');
+
+            $arquivo = 'files/exports/' . $filename;
+            $mpdf->Output('files/exports/' . $filename, 'F');
+
             $result = ['type' => 'success', 'data' => $arquivo];
         }
         $this->set(compact('result'));

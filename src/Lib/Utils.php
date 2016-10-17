@@ -271,4 +271,8 @@ class Utils {
     static function getStatusReserves($status){
         return $status == 0 ? '<span class="label label-success">Sim</span>' : '<span class="label label-danger">Não</span>';
     }
+
+    static function getStatusLocations($status){
+        return $status == 0 ? '<span class="label label-warning">Não</span>' : '<span class="label label-success">Sim</span>';
+    }
 }

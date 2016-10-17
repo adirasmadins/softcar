@@ -9,6 +9,13 @@ figure{
     margin-top: -25px !important;
 }
 
+.info-location{
+    float: right;
+    position: absolute;
+    right: 11px;
+    top: 12px;
+}
+
 .btn-visualizacao{
     position: absolute;
     right: 5px;

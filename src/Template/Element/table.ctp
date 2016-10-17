@@ -14,7 +14,7 @@
             <?php foreach($options['data'] as $item): ?>
                 <tr>
                     <?php foreach($options['column'] as $key => $info): ?>
-                        <?php if(($key == 'status') && (($this->request->controller != 'Tickets') && ($this->request->controller != 'Reserves'))): ?>
+                        <?php if(($key == 'status') && (($this->request->controller != 'Tickets') && ($this->request->controller != 'Reserves') && ($this->request->controller != 'Locations'))): ?>
                             <?php $item->$key = \App\Lib\Utils::getStatusReal($item->$key) ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif(($key == 'status') && ($this->request->controller == 'Tickets')): ?>
@@ -22,6 +22,9 @@
                             <td><?= $item->$key ?></td>
                         <?php elseif(($key == 'status') && ($this->request->controller == 'Reserves')): ?>
                             <?php $item->$key = \App\Lib\Utils::getStatusReserves($item->$key); ?>
+                            <td><?= $item->$key ?></td>
+                        <?php elseif(($key == 'status') && ($this->request->controller == 'Locations')): ?>
+                            <?php $item->$key = \App\Lib\Utils::getStatusLocations($item->$key); ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif(($key == 'created') || ($key == 'ipva_expiration') || ($key == 'depvat_expiration') || ($key == 'licensing_expiration') || ($key == 'due_date') || ($key == 'ticket_date') || ($key == 'date_start') || ($key == 'date_end') || ($key == 'out_date') || ($key == 'return_date')): ?>
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>

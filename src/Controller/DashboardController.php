@@ -15,14 +15,30 @@ class DashboardController extends AppController
                 'date_start >=' => date('Y-m-d'),
                 'status' => 1
             ]);
+
         if (count($reservados)){
             $reservados=$reservados->toArray();
 
         } else{
             $reservados=false;
         }
-        $this->set(compact('dashboard', 'reservados'));
-        $this->set('_serialize', ['dashboard', 'reservados']);
+
+        $Locations = TableRegistry::get('Locations');
+        $locados = $Locations->find()
+            ->hydrate(false)
+            ->where([
+                'status' => '0'
+            ]);
+
+        if (count($locados)){
+            $locados=$locados->toArray();
+
+        } else{
+            $locados=false;
+        }
+
+        $this->set(compact('dashboard', 'reservados','locados'));
+        $this->set('_serialize', ['dashboard', 'reservados','locados']);
     }
 }
 

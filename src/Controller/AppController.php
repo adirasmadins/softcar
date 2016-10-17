@@ -210,9 +210,30 @@ class AppController extends Controller
                 }
             }
             /* Fim Verificação Multas */
+
+            /* Verificando porcentagem de veículos locados */
+            $Locations = TableRegistry::get('Locations');
+            $Vehicles = TableRegistry::get('Vehicles');
+            $qtdCarros = $Vehicles->find()
+                ->hydrate(false)
+                ->select([
+                    'qtd' => 'COUNT(*)'
+                ])->first();
+
+            $qtdCarrosLocados = $Locations->find()
+                ->hydrate(false)
+                ->select([
+                    'qtd' => 'COUNT(DISTINCT vehicle_id)'
+                ])
+                ->where([
+                    'status' => 0
+                ])->first();
+
+            $p = ($qtdCarrosLocados['qtd'] / $qtdCarros['qtd'])*100;
+            $percentual = number_format($p, 2,',','.');
         }
 
-        $this->set(compact('NavMenus','user_online', 'rates_list','tickets_list'));
+        $this->set(compact('NavMenus','user_online', 'rates_list','tickets_list','percentual'));
     }
 
     public function beforeRender(Event $event)
