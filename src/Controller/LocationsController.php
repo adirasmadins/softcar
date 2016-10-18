@@ -44,7 +44,7 @@ class LocationsController extends AppController
             $location->return_date = Utils::brToDate($location->return_date);
             $location->location_date = date('Y-m-d');
             $location->status = 0;
-            $location->free_km = $location->free_km == 'on' ? 1 : 0;
+            $location->free_km = $location->free_km ? $location->free_km  : '0';
             $location->start_value = (float) $location->start_value;
             $location->payment_date = null;
             $location->client_id = $location->client_id_hidden;
@@ -52,6 +52,7 @@ class LocationsController extends AppController
             if($location->free_km != 1){
                 $this->updateLastKmVehicle($location->vehicle_id, $location->start_km + $location->allowed_km);
             }
+
             unset($location->client_id_hidden);
             unset($location->vehicle_id_hidden);
 

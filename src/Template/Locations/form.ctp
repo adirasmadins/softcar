@@ -105,7 +105,7 @@
                         </div>
                         <div class="col-md-3">
                             <label style="margin-top: 17px;">
-                                <input type="checkbox" id="free_km" name="free_km" class="form-control" <?= $location->free_km == 1 ? 'checked' : '' ?>>
+                                <input type="checkbox" value="1" id="free_km" name="free_km" class="form-control" <?= $location->free_km == 1 ? 'checked' : '' ?>>
                                 Livre?
                             </label>
                         </div>

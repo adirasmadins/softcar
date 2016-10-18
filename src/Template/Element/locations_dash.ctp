@@ -35,7 +35,25 @@
                                         <td><?= $locacao['return_date']->i18nFormat('dd/MM/yyyy') ?></td>
                                         <td><?= $locacao['free_km'] == 0 ? $locacao['allowed_km'] . 'km permitidos' : 'Sim'?></td>
                                         <td>R$ <?= number_format($locacao['total'], 2, '.', ',')?></td>
-                                        <td><button type="button" data-id="<?= $locacao['id'] ?>" class="btn btn-success btn-sm pull-right"><i class="fa fa-check"></i> Confirmar recebimento locação</button></td>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                data-id="<?= $locacao['id'] ?>"
+                                                data-clientid="<?= \App\Lib\Utils::getClientOnlyName($locacao['client_id']) ?>"
+                                                data-vehicleid="<?= \App\Lib\Utils::getVehicle($locacao['vehicle_id']) ?>"
+                                                data-driver="<?= $locacao['driver_id'] ?>"
+                                                data-total="<?= $locacao['total'] ?>"
+                                                data-allowedkm="<?= $locacao['allowed_km'] ?>"
+                                                data-freekm="<?= $locacao['free_km'] ?>"
+                                                data-startkm="<?= $locacao['start_km'] ?>"
+                                                data-tankcheck="<?= $locacao['tank_check'] ?>"
+                                                data-returndate="<?= $locacao['return_date']->i18nFormat('dd/MM/yyyy') ?>"
+                                                class="btn btn-warning baixar btn-sm pull-right"
+                                            >
+                                                <i class="fa fa-check"></i>
+                                                Confirmar recebimento locação
+                                            </button>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -47,7 +65,7 @@
                 </div>
             </div>
             <div class="box-footer clearfix" style="display: block;">
-                <a href="<?=$this->Url->build('locations/index', true) ?>" class="btn btn-sm btn-info pull-left"><i class="fa fa-globe" aria-hidden="true"></i> Todas as Locações</a>
+                <a href="<?=$this->Url->build('locations/index', true) ?>" class="btn btn-sm btn-success pull-left"><i class="fa fa-globe" aria-hidden="true"></i> Todas as Locações</a>
             </div>
         </div>
     </div>

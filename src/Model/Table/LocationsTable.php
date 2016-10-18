@@ -99,7 +99,7 @@ class LocationsTable extends Table
 
         $validator
             ->numeric('allowed_km')
-            ->requirePresence('allowed_km', 'create')
+//            ->requirePresence('allowed_km', 'create')
             ->notEmpty('allowed_km');
 
         $validator
