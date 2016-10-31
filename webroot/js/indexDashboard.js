@@ -26,6 +26,14 @@ $(document).ready(function(){
             event.preventDefault();
         }
     });
+    
+    function currencyFormat (num) {
+        return num.toFixed(2).replace(",", ".").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+    
+    $(document).on('click', '.fa-edit', function(){
+        $('.total input').focus();
+    });
 
     $(document).on('click', '.baixar', function(){
         var location = {
@@ -49,6 +57,10 @@ $(document).ready(function(){
             $('.td2').text('LIVRE');
             $('.td3').text('-');
         }
+        
+        $('.total input').val(currencyFormat(location.total));
+        $('.verify-tank').text('O veículo saiu com "' + location.tank_check + '"');
+        
 
         $html = location.vehicle + ' locado para ' + location.client + ' com devolução marcada para ' + location.return_date;
         $('.modal-body-locations > h5').html($html);

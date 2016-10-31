@@ -14,12 +14,12 @@
                         <input type="text" class="form-control km-chegada"/>
                     </div>
                     <div class="col-md-8 permitido text-center">
-                        <table class="table table-bordered">
+                        <table class="table table-hover" style="margin-top:-35px">
                             <thead>
                             <tr>
-                                <th>Km de saída</th>
-                                <th>Km Permitida</th>
-                                <th>Km devolução</th>
+                                <th class="text-center">Km de saída</th>
+                                <th class="text-center">Km Permitida</th>
+                                <th class="text-center">Km devolução</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -33,6 +33,24 @@
                         <h5></h5>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="total">
+                        <div class="col-md-6">
+                            TOTAL
+                        </div>
+                        <div class="col-md-6 input-group">
+                            <span class="input-group-addon" id="basic-addon1">R$</span>
+                            <input type="text" class="form-control" aria-describedby="basic-addon1">
+                        </div>
+                        <i class="fa fa-edit"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="verify-tank"></h5>
+                        <textarea rows="3" placeholder="Verificação de tanque no momento da entrega"></textarea>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -41,3 +59,10 @@
         </div>
     </div>
 </div>
+
+<?=
+$this->append('css', $this->Html->css([
+    'modalLocations'
+]));
+?>
+
