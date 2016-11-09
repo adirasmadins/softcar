@@ -28,6 +28,54 @@ $this->element('Form/header_index',[
         <p>Clique aqui para gerar o contrato da locação</p>
     </div>
 
+    <div class="tooltip-info-msg">
+        <p>Clique aqui para ver informações referente a saída e chegada da locação</p>
+    </div>
+
+    <div class="tooltip-info text-center">
+        <div class="table-responsive iniciou">
+          <table class="table table-bordered">
+            <thead>
+              <h5 class="text-center">Iniciou com</h5>
+              <tr>
+                <th>Km</th>
+                <th>Valor</th>
+                <th>Tanque</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive entregou">
+          <table class="table table-bordered">
+            <h5 class="text-center">Entregou com</h5>
+            <thead>
+              <tr>
+                <th>Km</th>
+                <th>Valor</th>
+                <th>Tanque</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h5 class="infos"></h5>
+        <h5 class="calc-in"><i class="fa fa-cog fa-spin"></i> Calculando informações</h5>
+    </div>
+
 <?= $this->element('paginate') ?>
 
 <?php

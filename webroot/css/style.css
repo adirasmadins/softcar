@@ -37,7 +37,9 @@ span.label{
 }
 
 .tooltip-ticket,
-.tooltip-contract{
+.tooltip-contract,
+.tooltip-info-msg,
+.tooltip-info{
     z-index: 999;
     position: absolute;
     display: none;

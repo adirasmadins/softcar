@@ -7,7 +7,7 @@
                 <?php foreach($options['column'] as $key => $coluna): ?>
                     <th><?= $coluna ?></th>
                 <?php endforeach; ?>
-                <th class="text-center" style="width: <?= $controller == 'Vehicles' || $controller == 'Tickets' ? '140px' : '100px' ?>">Ações</th>
+                <th class="text-center" style="width: <?= $controller == 'Vehicles' || $controller == 'Tickets' || $controller == 'Locations' ? '140px' : '100px' ?>">Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -57,21 +57,24 @@
                                 <button type="button" data-id="<?= $item->id ?>" class="btn btn-success btn-pay btn-flat" <?= strpos($item->status, 'Sim') ? 'disabled' : '' ?>><i class="fa fa-check"></i></button>
                             <?php endif; ?>
                             <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-warning btn-flat']) ?>
-                            <?php if($this->request->controller != 'Locations'){ ?>
+                            <?php if($this->request->controller != 'Locations'): ?>
                                 <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-danger btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
-                            <?php } else { ?>
+                            <?php else: ?>
                                 <a href="#" data-id="<?= $item->id ?>" class="btn btn-success btn-flat btn-contrato"><i class="fa fa-file-pdf-o"></i></a>
-                            <?php } ?>
+                                <button data-id="<?= $item->id ?>" class="btn btn-info btn-flat btn-info-location info-<?= $item->id ?>" <?= strpos($item->status, 'Não') ? 'disabled' : '' ?>><i class="fa fa-info-circle"></i></button>
+                            <?php endif; ?>
                         </div>
                         <div class="btn-group-vertical hidden-md hidden-lg hidden-sm">
                             <?php if($this->request->controller == 'Tickets'): ?>
                                 <button type="button" data-id="<?= $item->id ?>" class="btn btn-default btn-pay fa-xs btn-flat" <?= strpos($item->status, 'Sim') ? 'disabled' : '' ?>><i class="fa fa-check"></i></button>
                             <?php endif; ?>
                             <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-default btn-flat fa-xs']) ?>
-                            <?php if($this->request->controller != 'Locations'){ ?>
-                                <?php } else { ?>
+                            <?php if($this->request->controller != 'Locations'): ?>
+                              <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-danger btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
+                            <?php else: ?>
                             <a href="#" data-id="<?= $item->id ?>" class="btn btn-success btn-flat btn-contrato"><i class="fa fa-file-pdf-o"></i></a>
-                            <?php } ?>
+                            <button data-id="<?= $item->id ?>" class="btn btn-info btn-flat btn-info-location" <?= strpos($item->status, 'Não') ? 'disabled' : '' ?>><i class="fa fa-info-circle"></i></button>
+                          <?php endif; ?>
                         </div>
                     </td>
                 </tr>

@@ -26,11 +26,11 @@ $(document).ready(function(){
             event.preventDefault();
         }
     });
-    
+
     function currencyFormat (num) {
         return num.toFixed(2).replace(",", ".").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
-    
+
     $(document).on('click', '.fa-edit', function(){
         $('.total input').focus();
     });
@@ -50,6 +50,8 @@ $(document).ready(function(){
         };
         $('.td1').text(location.start_km);
 
+        $('.location-id-hidden').val(location.id);
+
         if(location.free_km == 0){
             $('.td2').text(location.allowed_km);
             $('.td3').text(parseFloat(location.allowed_km) + parseFloat(location.start_km));
@@ -57,13 +59,25 @@ $(document).ready(function(){
             $('.td2').text('LIVRE');
             $('.td3').text('-');
         }
-        
+
         $('.total input').val(currencyFormat(location.total));
         $('.verify-tank').text('O veículo saiu com "' + location.tank_check + '"');
-        
+
 
         $html = location.vehicle + ' locado para ' + location.client + ' com devolução marcada para ' + location.return_date;
         $('.modal-body-locations > h5').html($html);
         $('#modal-location').modal('show');
+    });
+
+    $(document).on('click', '.confirm-location', function(e){
+      e.preventDefault;
+      var formData = $('#form-location-finished').serializeArray();
+      var url = webroot + 'locations/finish';
+      $.post(url, formData, function(e){
+        if(e.result.type == 'success'){
+          $('#modal-location').modal('hide');
+          location.reload();
+        }
+      },'json');
     });
 });

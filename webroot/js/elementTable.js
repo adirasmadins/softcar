@@ -79,6 +79,63 @@ $(document).ready(function() {
         $('.tooltip-ticket').hide();
     });
 
+    $('.btn-info-location').click(function() {
+      if($('.tooltip-info').is(':visible')){
+        $('.tooltip-info').hide();
+      } else {
+        var position = $(this).offset();
+        var div = $('.tooltip-info');
+        div.css('top', position.top);
+
+        var data = {
+          id: $(this).data('id')
+        };
+
+        $.get(webroot + '/locations/get-all-info-location', data, function(e){
+          $('.calc-in').show();
+          if(e.result.type == 'success'){
+            $('.iniciou td:nth-child(1)').text(e.result.data.location.start_km);
+            $('.iniciou td:nth-child(2)').text('R$ ' + currencyFormat(e.result.data.location.total));
+            $('.iniciou td:nth-child(3)').text(e.result.data.location.tank_check);
+            $('.entregou td:nth-child(1)').text(e.result.data.finished.finish_km);
+            $('.entregou td:nth-child(2)').text('R$ ' + currencyFormat(e.result.data.finished.finish_value));
+            $('.entregou td:nth-child(3)').text(e.result.data.finished.finish_tank);
+            var diff = parseFloat(e.result.data.finished.finish_value) - parseFloat(e.result.data.location.total);
+            var text = diff < 0 ? 'desconto' + ' de R$ ' + currencyFormat(diff) + ' reais' : 'acréscimo' + ' de R$ ' + currencyFormat(diff) + ' reais';
+            text += '<br/>A quilometragem ';
+
+            if(e.result.data.location.free_km == 1){
+              text += 'foi livre';
+            } else {
+              var kmTotal = (parseFloat(e.result.data.location.start_km) + parseFloat(e.result.data.location.allowed_km));
+              if(kmTotal >= e.result.data.finished.finish_km){
+                text += 'ficou dentro do permitido (' + kmTotal + 'km)';
+              } else {
+                var diffKm = parseFloat(e.result.data.finished.finish_km) - kmTotal;
+                text += 'ultrapassou o permitido em ' + diffKm + 'km';
+              }
+            }
+
+            $('.infos').html('Houve um ' + text);
+            $('.calc-in').hide();
+          }
+        },'json');
+
+        div.show();
+      }
+    }).mouseover(function() {
+        var position = $(this).offset();
+        var div = $('.tooltip-info-msg');
+        div.css('top', position.top);
+        div.show();
+    }).mouseout(function() {
+        $('.tooltip-info-msg').hide();
+    });
+
+    function currencyFormat (num) {
+        return num.toFixed(2).replace(",", ".").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+
     $('.btn-contrato').mouseover(function() {
         var position = $(this).offset();
         var div = $('.tooltip-contract');

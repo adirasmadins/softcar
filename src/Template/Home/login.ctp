@@ -28,11 +28,11 @@
     <div class="login-box-body">
         <p class="login-box-msg">Identifique-se para utilizar o sistema</p>
         <div class="form-group has-feedback">
-            <input type="text" class="form-control" id="login" name="login" placeholder="Usuário">
+            <input type="text" class="form-control" id="login" name="login" placeholder="Usuário" autocomplete="off">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback" style="margin-top: 10px">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Senha" autocomplete="off">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row" style="margin-top: 50px">
