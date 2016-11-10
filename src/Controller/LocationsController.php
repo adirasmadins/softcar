@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use App\Lib\Utils;
 use Cake\Database\Schema\Table;
+use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Phinx\Util\Util;
 
@@ -188,6 +189,42 @@ class LocationsController extends AppController
 
         $this->set(compact('vehicles'));
         $this->set('_serialize', ['vehicles']);
+    }
+    
+    public function generateExport($exportConfig = 'default') {
+        $result = ['status' => 'error', 'message' => 'Não foi possível gerar o arquivo xls.', 'url' => ''];
+        if ($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $config = Configure::read('EntityOptions.Locations.export.' . $exportConfig);
+
+            if (!empty($data['vehicle_ids'])) {
+                $config['config']['conditions'][] = ['where' => ['Locations.vehicle_id in' => $data['vehicle_ids']]];
+            }
+
+            if (!empty($data['date_start'])) {
+                list($d, $m, $y) = explode('/', $data['from_date']);
+                $config['config']['conditions'][] = ['where' => ['Locations.out_date >=' => $y . '-' . $m . '-' . $d]];
+            }
+
+            if (!empty($data['date_end'])) {
+                list($d, $m, $y) = explode('/', $data['to_date']);
+                $config['config']['conditions'][] = ['where' => ['Locations.return_date <=' => $y . '-' . $m . '-' . $d]];
+            }
+
+            $config['config']['order'] = 'Locations.out_date DESC';
+
+            $url = $this->XLSXExporter->buildExport('Locations', $config, 'Relatorio_de_Locacoes.xlsx', 'Locations');
+
+            if ($url) {
+                $result = ['status' => 'success', 'message' => 'Arquivo de exportação gerado.', 'url' => $url];
+            } else {
+                $result = ['status' => 'error', 'message' => 'Erro ao exportar o arquivo.'];
+            }
+        }
+
+        $this->set(compact('result'));
+        $this->set('_serialize', ['result']);
     }
 
     public function populateGraph(){

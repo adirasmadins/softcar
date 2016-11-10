@@ -1,32 +1,33 @@
 .total{
-        margin: 15px;
-        background-color: #cecece;
-        height: 50px;
-        line-height: 2;
-        padding: 5px;
-        font-size: 20px;
-    }
-    .total input[type="text"]{
-        font-size: 21px;
-        background-color: #cecece;
-        border: none;
-    }
-    
-    .total .fa{
-        color: #606060;
-        position: absolute;
-        right: 20px;
-           top: 200px;
-        z-index: 9999;
-        cursor: pointer;
-    }
-    
-    .label-danger{
-        position: absolute;
-        bottom: 0;
-    }
-    
-    textarea{
-        width: 100%;
-        padding: 10px;
-    }
+    margin: 15px;
+    background-color: #cecece;
+    height: 50px;
+    line-height: 2;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.total input[type="text"]{
+    font-size: 21px;
+    background-color: #cecece;
+    border: none;
+}
+
+.total .fa{
+    color: #606060;
+    position: absolute;
+    right: 20px;
+       top: 200px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.label-danger{
+    position: absolute;
+    bottom: 0;
+}
+
+textarea{
+    width: 100%;
+    padding: 10px;
+}

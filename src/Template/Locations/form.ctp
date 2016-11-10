@@ -79,11 +79,10 @@
                         <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
                     </div>
                     <div class="div-total">
-                        <h2 class="pull-left">TOTAL</h2>
-                        <h3 class="pull-right total"><?= $location->total ? 'R$ ' . $location->total : 'R$ 0,00'?></h3>
+                        <h2 class="pull-left">TOTAL R$</h2>
                         <input type="hidden" id="start_value" name="start_value" value="">
-                        <input id="total" name="total" type="hidden">
-                        <button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>
+                        <input id="total" name="total" type="text">
+                        <!--<button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>-->
                     </div>
                     <div class="acrescimo-desconto text-center" style="display: none">
                         <h5>Acréscimo / Desconto</h5>
@@ -200,12 +199,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title text-center" id="car-name-modal"></h4>
+                    <a class="btn btn-info pull-right fechar-top" data-dismiss="modal">Fechar</a>
                 </div>
                 <div class="modal-body">
                     <img src="" class="image-responsive thumbnail" style="width: 100%" id="imagem-modal">
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-info" data-dismiss="modal">Fechar</a>
                 </div>
             </div>
         </div>

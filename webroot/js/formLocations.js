@@ -67,7 +67,7 @@ $(document).ready(function(){
             var total = $('.total').text().replace('R$ ','');
             var totalNew = (parseFloat(total.replace('.',',')) + (parseFloat(valor)));
             $('.total').text('R$ ' + currencyFormat(totalNew));
-            $('#total').val(totalNew);
+            $('#total').val(currencyFormat(totalNew));
         }
     };
 
@@ -117,7 +117,7 @@ $(document).ready(function(){
                 var diff  = date_end.diff(date_start, 'days');
 
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
-                $('.total').html('<small class="min-small">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
+                $('.total').html('<small class="min-small hidden-xs">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
                 $('#total').val(total.replace('R$ ',''));
             }
         },'json');

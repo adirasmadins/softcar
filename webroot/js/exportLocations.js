@@ -49,7 +49,7 @@ $(document).ready(function(){
     $('#generateFile').click(function(e){
         e.preventDefault();
         $('#generateFile').html('<i class="fa fa-cog fa-spin"></i> gerando relatório...');
-        var url = webroot + 'tickets/generate-export';
+        var url = webroot + 'locations/generate-export';
         var data = {
             from_date: $('#out-date').val(),
             to_date: $('#return-date').val(),

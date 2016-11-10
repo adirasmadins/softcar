@@ -12,7 +12,6 @@ $(function(){
             var url = webroot + 'home/login';
 
             $.post(url,formData,function(e){
-                console.log(e.result);
                 if(e.result.type == 'error'){
                     swal({
                         title: e.result.title,

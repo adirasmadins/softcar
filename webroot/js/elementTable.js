@@ -30,7 +30,7 @@ $(document).ready(function() {
                 }
                 else {
                     swal({
-                        title: 'Ops!',
+                        title: 'Problema ao excluir',
                         text: 'Esse registro possui vínculo, não é possível excluir!',
                         showCancelButton: true,
                         type: 'error',
@@ -91,7 +91,7 @@ $(document).ready(function() {
           id: $(this).data('id')
         };
 
-        $.get(webroot + '/locations/get-all-info-location', data, function(e){
+        $.get(webroot + 'locations/get-all-info-location', data, function(e){
           $('.calc-in').show();
           if(e.result.type == 'success'){
             $('.iniciou td:nth-child(1)').text(e.result.data.location.start_km);

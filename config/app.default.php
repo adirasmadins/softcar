@@ -487,6 +487,44 @@ return [
                     ]
                 ]
             ]
+        ],
+        'Locations' => [
+            'export' => [
+                'default' => [
+                    'config' => [
+                        'contain' => ['Vehicles'],
+                    ],
+                    'fields' => [
+                        'ID' => 'id',
+                        'Cliente' => [
+                            'field' => 'client_id',
+                            'find_in_entity' => 'Clients',
+                            'conditions' => [
+                                [
+                                    'field' => 'client_id',
+                                    'equals_to' => 'id'
+                                ]
+                            ],
+                            'return' => 'name'
+                        ],
+                        'Veículo' => 'vehicle.model',
+                        'Placa' => 'vehicle.plate',
+                        'Data de Saída' => [
+                            'field' => 'out_date',
+                            'type' => 'date'
+                        ],
+                        'Data de Devolução' => [
+                            'field' => 'return_date',
+                            'type' => 'date'
+                        ],
+                        'Form de Pagamento' => [
+                            'field' => 'form_payment',
+                            'replaces' => ['cartao' => 'Cartão', 'cheque' => 'Cheque', 'dinheiro' => 'Dinheiro'],
+                        ],
+                        'Total' => 'total',
+                    ]
+                ]
+            ]
         ]
     ]
 ];

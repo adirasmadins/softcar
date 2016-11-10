@@ -39,22 +39,22 @@ class HomeController extends AppController
                     } else {
                         $result = [
                             'type' => 'error',
-                            'title' => 'Que pena, deu errado!',
+                            'title' => 'Encontramos um problema ao entrar',
                             'text' => 'Não há nenhuma permissão para seu perfil'
                         ];
                     }
                 } else {
                     $result = [
                         'type' => 'error',
-                        'title' => 'Que pena, deu errado!',
+                        'title' => 'Encontramos um problema ao entrar',
                         'text' => 'Seu usuário está inativo'
                     ];
                 }
             } else {
                 $result = [
                     'type' => 'error',
-                    'title' => 'Que pena, deu errado!',
-                    'text' => 'Houve um problema ao realizar o login'
+                    'title' => 'Encontramos um problema ao entrar',
+                    'text' => 'Email ou senha incorretos'
                 ];
             }
         }

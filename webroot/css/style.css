@@ -36,10 +36,20 @@ span.label{
     color: white;
 }
 
-.tooltip-ticket,
-.tooltip-contract,
-.tooltip-info-msg,
 .tooltip-info{
+    z-index: 999;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    color: #cecece;
+    background-color: #222d32;
+    border-radius: 5px;
+    right: 30px;
+}
+
+.tooltip-ticket,
+.tooltip-info-msg,
+.tooltip-contract{
     z-index: 999;
     position: absolute;
     display: none;
@@ -48,6 +58,10 @@ span.label{
     border: 2px solid #222d32;
     border-radius: 5px;
     right: 30px;
+}
+
+.content-wrapper{
+    min-height: 900px !important;
 }
 
 @media(max-width: 768px){

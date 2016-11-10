@@ -4,6 +4,12 @@ textarea{
     padding: 5px;
 }
 
+.fechar-top{
+    top: 10px;
+    position: absolute;
+    right: 10px;
+}
+
 figure{
     position: relative;
     margin-top: -25px !important;
@@ -28,6 +34,16 @@ figure{
 
 .total{
     margin-right: 40px;
+    margin-top: 8px;
+}
+
+#total{
+    font-size: 24px;
+    right: 10px;
+    padding-left: 10px;
+    border: none;
+    width: 120px;
+    position: absolute;
 }
 
 .sub-img{
@@ -115,6 +131,10 @@ h2,h3{
     }
     .div-total > h2.pull-right{
         font-size: 23px;
+        margin-top: 8px;
+    }
+    .total{
+        font-size: 21px;
         margin-top: 8px;
     }
     .hour{
