@@ -18,7 +18,7 @@ $(document).ready(function() {
         showInputs: false,
         showMeridian: false
     });
-    
+
     $('#disp').click(function(){
         var date_start = $('#date-start').val();
         var date_end = $('#date-end').val();
@@ -46,13 +46,12 @@ $(document).ready(function() {
         $('figure span').hide();
         $('.total').html('R$ 0,00');
     });
-    
+
     $('#date-end').change(function(){
         moment.locale('pt-br');
         var data1 = moment($("#date-start").val(),'DD/MM/YYYY');
         var data2 = moment($(this).val(),'DD/MM/YYYY');
         var diff  = data2.diff(data1, 'days');
-        console.log(diff);
         if(diff < 0){
             $('.disp').hide();
             $('button[type="submit"]').attr('disabled', true);

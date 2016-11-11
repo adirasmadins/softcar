@@ -22,7 +22,9 @@
     cursor: pointer;
 }
 
-.label-danger{
+.label-danger,
+.label-warning,
+.label-success{
     position: absolute;
     bottom: 0;
 }

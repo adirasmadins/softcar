@@ -1,21 +1,19 @@
 $(document).ready(function(){
-    $('.km-chegada').change(function(){
-        if($(this).val() < parseFloat($('.td1').text())){
-            $('.span-status').remove();
-            $('.km-chegada').after('<span class="label label-danger span-status"><i class="fa fa-times"></i> Quilometragem de devolução é menor</span>');
-        } else {
-            $('.span-status').remove();
-        }
-    });
-
     $('.km-chegada').keyup(function(){
         if(($(this).val()) && ($('.td2').text() != 'LIVRE')){
             $('.span-status').remove();
 
-            if(parseFloat($(this).val()) > parseFloat($('.td3').text())){
-                $('.km-chegada').after('<span class="label label-warning span-status">Fora do permitido - passaram ' + (parseFloat($(this).val())-parseFloat($('.td3').text())) + 'km</span>');
-            } else {
-                $('.km-chegada').after('<span class="label label-success span-status">Dentro do permitido</span>');
+            var val = $(this).val();
+
+            if(parseFloat(val) > parseFloat($('.td3').text())){
+                $('.km-chegada').after('<span class="label label-warning span-status"><i class="fa fa-exclamation-circle"></i> Fora do permitido - passaram ' + (parseFloat($(this).val())-parseFloat($('.td3').text())) + 'km</span>');
+                $('.confirm-location').attr('disabled', false);
+            } else if(parseFloat(val) < parseFloat($('.td1').text())){
+              $('.km-chegada').after('<span class="label label-danger span-status"><i class="fa fa-times"></i> Quilometragem de devolução é menor</span>');
+              $('.confirm-location').attr('disabled', true);
+            } else if((parseFloat(val) >= parseFloat($('.td1').text())) && (parseFloat(val) <= parseFloat($('.td3').text()))){
+              $('.km-chegada').after('<span class="label label-success span-status"><i class="fa fa-check"></i> Dentro do permitido</span>');
+              $('.confirm-location').attr('disabled', false);
             }
         }
     });

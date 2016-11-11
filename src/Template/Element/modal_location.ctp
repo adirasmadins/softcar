@@ -13,6 +13,7 @@
                   <form method="get" action="" id="form-location-finished">
                     <div class="col-md-4 col-responsive-span">
                         <input type="hidden" name="location_id" class="location-id-hidden"/>
+                        <input type="hidden" name="vehicle_id" class="vehicle-id-hidden"/>
                         <input type="text" class="form-control km-chegada" name="finish_km"/>
                     </div>
                     <div class="col-md-8 permitido text-center">

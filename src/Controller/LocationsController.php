@@ -190,7 +190,7 @@ class LocationsController extends AppController
         $this->set(compact('vehicles'));
         $this->set('_serialize', ['vehicles']);
     }
-    
+
     public function generateExport($exportConfig = 'default') {
         $result = ['status' => 'error', 'message' => 'Não foi possível gerar o arquivo xls.', 'url' => ''];
         if ($this->request->is('post')) {
@@ -295,7 +295,7 @@ class LocationsController extends AppController
 
       if($this->request->is('post')){
         $data = $this->request->data;
-
+debug($data);die();
         $data['finish_value'] = str_replace(',','', $data['finish_value']);
 
         $LocationFinished = TableRegistry::get('LocationFinished');
