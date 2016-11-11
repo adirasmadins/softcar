@@ -17,7 +17,7 @@
                         <input type="text" class="form-control km-chegada" name="finish_km"/>
                     </div>
                     <div class="col-md-8 permitido text-center">
-                        <table class="table table-hover" style="margin-top:-35px">
+                        <table class="table table-hover table-location" style="margin-top:-35px">
                             <thead>
                             <tr>
                                 <th class="text-center">Km de saída</th>
@@ -38,10 +38,10 @@
                 </div>
                 <div class="row">
                     <div class="total">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-xs-4 col-lg-6 col-sm-6">
                             TOTAL
                         </div>
-                        <div class="col-md-6 input-group">
+                        <div class="col-md-6 col-xs-8 col-lg-6 col-sm-6 input-group">
                             <span class="input-group-addon" id="basic-addon1">R$</span>
                             <input type="text" class="form-control" name="finish_value" aria-describedby="basic-addon1">
                         </div>

@@ -110,7 +110,13 @@ class AppController extends Controller
             }
 
             if (!$hasDash) {
-                $firstPermission = $NavMenus['0']['controller'];
+              foreach($NavMenus as $k => $v):
+                if(is_null($v['controller'])){
+                  $firstPermission = $v['children']['0']['controller'];
+                } else {
+                  $firstPermission = $NavMenus[$k]['controller'];
+                }
+              endforeach;
             }
 
             if (!$hasPermission) {

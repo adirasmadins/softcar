@@ -31,7 +31,8 @@
 </div>
 <?php
 $this->append('css', $this->Html->css([
-    '../dist/summernote/summernote'
+    '../dist/summernote/summernote',
+    'formContract'
 ]));
 $this->append('script', $this->Html->script([
     '../dist/summernote/summernote.min',

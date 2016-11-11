@@ -69,4 +69,7 @@ span.label{
     .box-header{
         text-align: center;
     }
+    .tasks-menu > .dropdown-menu{
+      width: 290px !important;
+    }
 }

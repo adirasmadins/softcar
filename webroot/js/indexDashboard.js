@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $('.km-chegada').keyup(function(){
-        if(($(this).val()) && ($('.td2').text() != 'LIVRE')){
+      var val = $(this).val();
+      if(val){
+        if($('.td2').text() != 'LIVRE'){
             $('.span-status').remove();
-
-            var val = $(this).val();
 
             if(parseFloat(val) > parseFloat($('.td3').text())){
                 $('.km-chegada').after('<span class="label label-warning span-status"><i class="fa fa-exclamation-circle"></i> Fora do permitido - passaram ' + (parseFloat($(this).val())-parseFloat($('.td3').text())) + 'km</span>');
@@ -15,7 +15,16 @@ $(document).ready(function(){
               $('.km-chegada').after('<span class="label label-success span-status"><i class="fa fa-check"></i> Dentro do permitido</span>');
               $('.confirm-location').attr('disabled', false);
             }
+        } else {
+          if(parseFloat(val) < parseFloat($('.td1').text())){
+            $('.km-chegada').after('<span class="label label-danger span-status"><i class="fa fa-times"></i> Quilometragem de devolução é menor</span>');
+            $('.confirm-location').attr('disabled', true);
+          } else {
+            $('.span-status').remove();
+            $('.confirm-location').attr('disabled', false);
+          }
         }
+      }
     });
 
     $(".km-chegada").on("keypress keyup blur",function (event) {
@@ -44,7 +53,8 @@ $(document).ready(function(){
             free_km: $(this).data('freekm'),
             start_km: $(this).data('startkm'),
             tank_check: $(this).data('tankcheck'),
-            return_date: $(this).data('returndate')
+            return_date: $(this).data('returndate'),
+            vehicleidenti: $(this).data('vehicleidenti')
         };
         $('.td1').text(location.start_km);
 
@@ -61,15 +71,16 @@ $(document).ready(function(){
         $('.total input').val(currencyFormat(location.total));
         $('.verify-tank').text('O veículo saiu com "' + location.tank_check + '"');
 
-
         $html = location.vehicle + ' locado para ' + location.client + ' com devolução marcada para ' + location.return_date;
         $('.modal-body-locations > h5').html($html);
         $('#modal-location').modal('show');
+        $('input[name="vehicle_id"]').val(location.vehicleidenti);
     });
 
     $(document).on('click', '.confirm-location', function(e){
       e.preventDefault;
       var formData = $('#form-location-finished').serializeArray();
+      
       var url = webroot + 'locations/finish';
       $.post(url, formData, function(e){
         if(e.result.type == 'success'){

@@ -41,6 +41,7 @@
                                                 data-id="<?= $locacao['id'] ?>"
                                                 data-clientid="<?= \App\Lib\Utils::getClientOnlyName($locacao['client_id']) ?>"
                                                 data-vehicleid="<?= \App\Lib\Utils::getVehicle($locacao['vehicle_id']) ?>"
+                                                data-vehicleidenti="<?= $locacao['vehicle_id'] ?>"
                                                 data-driver="<?= $locacao['driver_id'] ?>"
                                                 data-total="<?= $locacao['total'] ?>"
                                                 data-allowedkm="<?= $locacao['allowed_km'] ?>"

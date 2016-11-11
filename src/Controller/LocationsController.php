@@ -50,9 +50,6 @@ class LocationsController extends AppController
             $location->payment_date = null;
             $location->client_id = $location->client_id_hidden;
             $location->vehicle_id = $location->vehicle_id_hidden;
-            if($location->free_km != 1){
-                $this->updateLastKmVehicle($location->vehicle_id, $location->start_km + $location->allowed_km);
-            }
 
             unset($location->client_id_hidden);
             unset($location->vehicle_id_hidden);
@@ -107,6 +104,7 @@ class LocationsController extends AppController
                 $this->Flash->error(__('Ocorreu um problema ao salvar a Locação'));
             }
         }
+
         $situacao = 'Editar Locação';
 
         $this->Locations->Vehicles->displayField('model');
@@ -134,7 +132,7 @@ class LocationsController extends AppController
         $location->km_inicial = $km_inicial['last_km'];
         $location->vehicle_picture = str_replace('//','/', $this->request->webroot . $urlAndDayPrice->picture);
         $location->day_price_vehicle = $urlAndDayPrice->day_price;
-
+        $location->total = number_format($location->total, 2, '.', ',');
 
         $this->set(compact('location','situacao','clients','drivers','vehicles'));
         $this->set('_serialize', ['location','clients','drivers','vehicles']);
@@ -295,7 +293,9 @@ class LocationsController extends AppController
 
       if($this->request->is('post')){
         $data = $this->request->data;
-debug($data);die();
+
+        $this->updateLastKmVehicle($data['vehicle_id'], $data['finish_km']);
+
         $data['finish_value'] = str_replace(',','', $data['finish_value']);
 
         $LocationFinished = TableRegistry::get('LocationFinished');

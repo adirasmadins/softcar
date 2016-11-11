@@ -19,7 +19,15 @@ $(document).ready(function(){
             }
         },'json');
     };
-    
+
+    $("#total").maskMoney({
+        prefix: '',
+        allowNegative: true,
+        thousands:',',
+        decimal:'.',
+        affixesStay: false
+    });
+
     $('#client-id, #vehicle-id, #driver-id, #form-payment').select2();
 
     $('input[type="radio"]').iCheck({
@@ -66,7 +74,6 @@ $(document).ready(function(){
         if(valor != ''){
             var total = $('.total').text().replace('R$ ','');
             var totalNew = (parseFloat(total.replace('.',',')) + (parseFloat(valor)));
-            $('.total').text('R$ ' + currencyFormat(totalNew));
             $('#total').val(currencyFormat(totalNew));
         }
     };

@@ -3,4 +3,11 @@
         text-align: center;
         margin-bottom: 10px;
     }
+    .table-location{
+        margin-top: 0px !important;
+    }
+    .total .fa{
+      top: 330px;
+      font-size: 14px;
+    }
 }

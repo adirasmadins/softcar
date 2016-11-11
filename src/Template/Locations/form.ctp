@@ -3,19 +3,16 @@
         <?= $this->Form->create($location,['id' => 'formLocations']) ?>
         <div class="box-header hidden-sm hidden-xs">
             <h4 class="panel-head"><?= $situacao ?></h4>
-            <?php if($location->status == 1): ?>
-                <button type="button" class="btn btn-info info-location">Informações Baixa Locação</button>
-            <?php endif; ?>
             <hr/>
         </div>
         <div class="panel-body">
             <input type="hidden" id="id-location" value="<?= $location->id ?>">
             <div class="row">
                 <div class="col-md-3 form-group">
-                    <?= $this->Form->input('out_date',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('out_date',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text', 'disabled' => $this->request->action == 'edit' ? true : false]) ?>
                 </div>
                 <div class="col-md-3 form-group">
-                    <?= $this->Form->input('return_date',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('return_date',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text', 'disabled' => $this->request->action == 'edit' ? true : false]) ?>
                 </div>
                 <div class="col-md-3 form-group">
                     <label>Horário de Saída</label>
@@ -81,8 +78,7 @@
                     <div class="div-total">
                         <h2 class="pull-left">TOTAL R$</h2>
                         <input type="hidden" id="start_value" name="start_value" value="">
-                        <input id="total" name="total" type="text">
-                        <!--<button class="btn btn-default btn-flat acres-desc"><i class="fa fa-edit"></i></button>-->
+                        <?= $this->Form->input('total',['label' => false, 'type' => 'text']); ?>
                     </div>
                     <div class="acrescimo-desconto text-center" style="display: none">
                         <h5>Acréscimo / Desconto</h5>
@@ -219,6 +215,7 @@ $this->append('script', $this->Html->script([
     'form',
     '../dist/lightbox/src/js/lightbox',
     '../dist/moment/moment.js',
+    '../dist/maskMoney/jquery.maskMoney',
     '../dist/timepicker/bootstrap-timepicker.min',
     '../dist/iCheck/icheck',
     'formLocations'
