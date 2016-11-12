@@ -10,4 +10,7 @@
       top: 330px;
       font-size: 14px;
     }
+    .box-title{
+      font-size: 0.9em !important;
+    }
 }

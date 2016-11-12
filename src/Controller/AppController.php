@@ -235,8 +235,12 @@ class AppController extends Controller
                     'status' => 0
                 ])->first();
 
-            $p = ($qtdCarrosLocados['qtd'] / $qtdCarros['qtd'])*100;
-            $percentual = number_format($p, 2,',','.');
+            if($qtdCarros['qtd'] > 0){
+              $p = ($qtdCarrosLocados['qtd'] / $qtdCarros['qtd'])*100;
+              $percentual = number_format($p, 2,',','.');
+            } else {
+              $percentual = '0,00';
+            }
         }
 
         $this->set(compact('NavMenus','user_online', 'rates_list','tickets_list','percentual'));

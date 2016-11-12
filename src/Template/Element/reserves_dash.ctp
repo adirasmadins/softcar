@@ -42,7 +42,8 @@
                 </div>
             </div>
             <div class="box-footer clearfix" style="display: block;">
-                <a href="<?=$this->Url->build('reserves/index', true) ?>" class="btn btn-sm btn-success pull-left"><i class="fa fa-globe" aria-hidden="true"></i> Todas as Reservas</a>
+                <a href="<?=$this->Url->build('/reserves/index', true) ?>" class="btn btn-sm btn-info pull-left"><i class="fa fa-globe" aria-hidden="true"></i> Todas as Reservas</a>
+                <a href="<?=$this->Url->build('/reserves/add', true) ?>" style="margin-left: 10px;" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Cadastrar Reserva</a>
             </div>
         </div>
     </div>

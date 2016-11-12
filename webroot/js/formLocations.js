@@ -89,6 +89,7 @@ $(document).ready(function(){
         };
         $.post(url, data, function(json){
             if(json.result.type == 'success'){
+              console.log(json.result.data);
                 $('#car-name-modal').text(json.result.data.model + ' (' + json.result.data.plate + ')');
                 $('.km-inicial span').text(json.result.data.last_km);
                 $('.km_inicial').val(json.result.data.last_km);

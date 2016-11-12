@@ -7,7 +7,7 @@ $this->append('css', $this->Html->css([
     'indexDashboard'
 ]));
 $this->append('script', $this->Html->script([
+    '../dist/maskMoney/jquery.maskMoney',
     'indexDashboard'
 ]));
 ?>
-

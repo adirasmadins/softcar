@@ -98,9 +98,15 @@ $(document).ready(function() {
             $('.iniciou td:nth-child(2)').text('R$ ' + currencyFormat(e.result.data.location.total));
             $('.iniciou td:nth-child(3)').text(e.result.data.location.tank_check);
             $('.entregou td:nth-child(1)').text(e.result.data.finished.finish_km);
-            $('.entregou td:nth-child(2)').text('R$ ' + currencyFormat(e.result.data.finished.finish_value));
+            if(e.result.data.finished.finish_value > 0){
+              var fv = currencyFormat(e.result.data.finished.finish_value);
+            } else {
+              var fv = 0.00;
+            }
+            $('.entregou td:nth-child(2)').text('R$ ' + fv);
             $('.entregou td:nth-child(3)').text(e.result.data.finished.finish_tank);
-            var diff = parseFloat(e.result.data.finished.finish_value) - parseFloat(e.result.data.location.total);
+            var diff = (e.result.data.finished.finish_value > 0 ? parseFloat(e.result.data.finished.finish_value) : 0.00) - parseFloat(e.result.data.location.total);
+
             var text = diff < 0 ? 'desconto' + ' de R$ ' + currencyFormat(diff) + ' reais' : 'acréscimo' + ' de R$ ' + currencyFormat(diff) + ' reais';
             text += '<br/>A quilometragem ';
 

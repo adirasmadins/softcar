@@ -27,6 +27,14 @@ $(document).ready(function(){
       }
     });
 
+    $("input[name='finish_value']").maskMoney({
+        prefix:'',
+        allowNegative: true,
+        thousands:',',
+        decimal:'.',
+        affixesStay: false
+    });
+
     $(".km-chegada").on("keypress keyup blur",function (event) {
         $(this).val($(this).val().replace(/[^0-9\.]/g,''));
         if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
@@ -80,7 +88,7 @@ $(document).ready(function(){
     $(document).on('click', '.confirm-location', function(e){
       e.preventDefault;
       var formData = $('#form-location-finished').serializeArray();
-      
+
       var url = webroot + 'locations/finish';
       $.post(url, formData, function(e){
         if(e.result.type == 'success'){
