@@ -34,6 +34,7 @@ $(document).ready(function(){
         },'json');
     };
 
+    $('#status').select2();
     $('#vehicle-ids').select2();
     $('#out-date, #return-date').datepicker({
         language: "pt-BR",
@@ -53,7 +54,8 @@ $(document).ready(function(){
         var data = {
             from_date: $('#out-date').val(),
             to_date: $('#return-date').val(),
-            vehicle_ids: $('#vehicle-ids').val()
+            vehicle_ids: $('#vehicle-ids').val(),
+            status: $('#status').val()
         };
 
         $.post(url, data, function (r) {

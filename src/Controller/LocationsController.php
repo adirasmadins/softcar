@@ -210,6 +210,12 @@ class LocationsController extends AppController
                 $config['config']['conditions'][] = ['where' => ['Locations.return_date <=' => $y . '-' . $m . '-' . $d]];
             }
 
+            if (!empty($data['status']) || isset($data['status'])) {
+                if($data['status'] != 'todos'){
+                    $config['config']['conditions'][] = ['where' => ['Locations.status =' => $data['status']]];
+                }
+            }
+
             $config['config']['order'] = 'Locations.out_date DESC';
 
             $url = $this->XLSXExporter->buildExport('Locations', $config, 'Relatorio_de_Locacoes.xlsx', 'Locations');

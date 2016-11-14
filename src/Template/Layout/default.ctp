@@ -3,7 +3,7 @@
 <head>
     <?= $this->Html->charset() ?>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
+    <title>Softcar</title>
     <?php
     /** CSS **/
     $this->prepend('css', $this->Html->css([
