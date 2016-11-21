@@ -97,6 +97,6 @@ $(document).ready(function(){
         },'json');
     });
 
-    $(document).on('change', '#vehicle-ids', populateGrafh);
+    $(document).on('click', '#update-graph', populateGrafh);
     $(window).load(populateGrafh);
 });

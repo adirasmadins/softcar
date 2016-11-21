@@ -107,7 +107,15 @@ $(document).ready(function() {
             $('.entregou td:nth-child(3)').text(e.result.data.finished.finish_tank);
             var diff = (e.result.data.finished.finish_value > 0 ? parseFloat(e.result.data.finished.finish_value) : 0.00) - parseFloat(e.result.data.location.total);
 
-            var text = diff < 0 ? 'desconto' + ' de R$ ' + currencyFormat(diff) + ' reais' : 'acréscimo' + ' de R$ ' + currencyFormat(diff) + ' reais';
+            var text =  '';
+            if(diff == 0){
+              text += 'Não houve descontos ou acréscimos';
+            } else if (diff < 0){
+              text += 'Houve um desconto' + ' de R$ ' + currencyFormat(diff) + ' reais';
+            } else {
+              text += 'Houve um acréscimo' + ' de R$ ' + currencyFormat(diff) + ' reais';
+            }
+
             text += '<br/>A quilometragem ';
 
             if(e.result.data.location.free_km == 1){
@@ -122,7 +130,7 @@ $(document).ready(function() {
               }
             }
 
-            $('.infos').html('Houve um ' + text);
+            $('.infos').html(text);
             $('.calc-in').hide();
           }
         },'json');

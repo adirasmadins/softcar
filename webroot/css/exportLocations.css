@@ -9,6 +9,24 @@
     width: 100%;
 }
 
+.update-graph{
+  position: absolute;
+  right: 15px;
+  outline: none;
+  border: 1px solid #005a87;
+  background-color: transparent;
+  color: #005a87;
+  height: 30px;
+  width: 30px;
+  transition: 400ms;
+}
+
+.update-graph:hover{
+  transform: rotate(180deg);
+  color: white;
+  background-color: #005a87;
+}
+
 @media(max-width: 768px){
     #generatePdf,
     #download,

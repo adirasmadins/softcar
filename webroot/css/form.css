@@ -10,7 +10,6 @@ table > thead{
 .select2-container--default .select2-selection--multiple{
     border-radius: 0px !important;
     min-height: 40px !important;
-    max-height: 100px;
     border-color: #d2d6de !important;
 }
 .select2-selection__choice__remove{
@@ -102,3 +101,8 @@ table > thead{
     color: #878c9f;
 }
 
+@media(max-width: 768px){
+  .select2-container--default .select2-selection--multiple{
+    max-height: auto !important;
+  }
+}

@@ -254,4 +254,20 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+
+    public function verifyDuplicity($type, $entity, $value){
+      $Entity = TableRegistry::get($entity);
+      $result = $Entity->find()
+                ->where([
+                  $type => $value
+                ])
+                ->limit(1)
+                ->first();
+
+      if(count($result)){
+        return true;
+      } else {
+        return false;
+      }
+    }
 }

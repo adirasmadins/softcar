@@ -129,6 +129,7 @@ class ReservesController extends AppController
         $result = ['type' => 'error', 'data' => false];
         if($this->request->is('post')){
             $data = $this->request->data;
+            
             $Vehicles = TableRegistry::get('Vehicles');
 
             $date_start = Utils::brToDate($data['date_start']);

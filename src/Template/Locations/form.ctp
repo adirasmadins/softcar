@@ -87,8 +87,10 @@
                     </div>
                     <input type="hidden" class="km_inicial" name="start_km" value="">
                     <input type="hidden" class="km_final" name="km_final" value="">
-                    <h5 class="km-inicial">KM Inicial: <span><?= $location->km_inicial ? $location->km_inicial : '' ?></span></h5>
-                    <h5 class="km-final">KM Final: <span><?= $location->free_km == 1 ? ' ILIMITADO' : '' ?></span></h5>
+                    <?php if(!$location->id): ?>
+                      <h5 class="km-inicial">KM Inicial: <span><?= $location->km_inicial ? $location->km_inicial : '' ?></span></h5>
+                      <h5 class="km-final">KM Final: <span><?= $location->free_km == 1 ? ' ILIMITADO' : '' ?></span></h5>
+                    <?php endif; ?>
                     <div class="row">
                         <div class="col-md-9" style="margin-top: 10px">
                             <div class="input-group">
@@ -100,7 +102,15 @@
                         </div>
                         <div class="col-md-3">
                             <label style="margin-top: 17px;">
-                                <input type="checkbox" value="1" id="free_km" name="free_km" class="form-control" <?= $location->free_km == 1 ? 'checked' : '' ?>>
+                              <?php if($location->id): ?>
+                                <?php if($location->free_km == 1): ?>
+                                  <input type="checkbox" value="1" id="free_km" name="free_km" class="form-control" checked>
+                                <?php else: ?>
+                                  <input type="checkbox" value="1" id="free_km" name="free_km" class="form-control">
+                                <?php endif; ?>
+                              <?php else: ?>
+                                <input type="checkbox" value="1" id="free_km" name="free_km" class="form-control">
+                              <?php endif; ?>
                                 Livre?
                             </label>
                         </div>
@@ -113,9 +123,9 @@
                 </div>
                 <div class="col-md-6" id="img">
                     <figure>
-                        <a href="#" class="btn btn-visualizacao btn-info btn-xs"><i class="fa fa-info-circle"></i> info</a>
+                        <a href="#" class="btn btn-visualizacao btn-info btn-xs" style="display: <?= $location->id ? 'block' : 'none' ?>"><i class="fa fa-info-circle"></i> info</a>
                         <img src="<?= $location->id ? $location->vehicle_picture : '' ?>" class="thumbnail img-responsive"/>
-                        <span class="sub-img"><?= isset($location->day_price_vehicle) ? '<h3>R$ ' . $location->day_price_vehicle . '<small>(diária)</small></h3>': '' ?></span>
+                        <span class="sub-img" style="display: <?= $location->id ? 'block' : 'none' ?>;"><?= isset($location->day_price_vehicle) ? '<h3>R$ ' . $location->day_price_vehicle . '<small>(diária)</small></h3>': '' ?></span>
                     </figure>
                 </div>
             </div>
@@ -194,11 +204,13 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title text-center" id="car-name-modal"></h4>
+                    <h4 class="modal-title text-center" id="car-name-modal">
+                      <?= \App\Lib\Utils::getAllInformationsVehicles($location->vehicle_id, 'model and plate') ?>
+                    </h4>
                     <a class="btn btn-info pull-right fechar-top" data-dismiss="modal">Fechar</a>
                 </div>
                 <div class="modal-body">
-                    <img src="" class="image-responsive thumbnail" style="width: 100%" id="imagem-modal">
+                    <img src="<?= $this->request->webroot . \App\Lib\Utils::getAllInformationsVehicles($location->vehicle_id, 'picture') ?>" class="image-responsive thumbnail" style="width: 100%" id="imagem-modal">
                 </div>
             </div>
         </div>

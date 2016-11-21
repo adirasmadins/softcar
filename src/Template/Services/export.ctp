@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-6 graph">
         <h4 class="text-center">Gráfico de Serviços/Manutenção por Veículo</h4>
+        <button id="update-graph" class="update-graph"><i class="fa fa-refresh"></i></button>
         <hr/>
     </div>
     <div class="col-md-6">

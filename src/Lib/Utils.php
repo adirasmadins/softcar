@@ -161,10 +161,10 @@ class Utils {
 
         return $file;
     }
-    
+
     static function fazerUploadClients($data, $nome_pasta, $key){
         $file = false;
-        
+
         if (!empty($data['name'])) {
             $partes = explode('.', $data['name']);
             $ext = array_pop($partes);
@@ -238,7 +238,7 @@ class Utils {
 
         return $result['name'] . ' - ' . $result['cpf_cnpj'];
     }
-    
+
     static function getClientOnlyName($id){
         $Clients = TableRegistry::get('Clients');
 
@@ -254,7 +254,7 @@ class Utils {
 
         return $result['name'];
     }
-    
+
     static function getAllInformationsClients($id){
         $Clients = TableRegistry::get('Clients');
 
@@ -264,8 +264,54 @@ class Utils {
                 'id' => $id
             ])
             ->first();
-        
-        return $result;    
+
+        return $result;
+    }
+
+    static function getAllInformationsVehicles($id, $what){
+        $Vehicles = TableRegistry::get('Vehicles');
+
+        $result = false;
+
+        if($what == 'picture'){
+          $result = $Vehicles->find()
+          ->select([
+            'picture' => 'picture'
+          ])
+          ->hydrate(false)
+          ->where([
+              'id' => $id
+          ])
+          ->limit(1)
+          ->first();
+
+          return $result['picture'];
+
+        } else if ($what == 'model and plate'){
+          $result = $Vehicles->find()
+          ->select([
+            'model' => 'model',
+            'plate' => 'plate'
+          ])
+          ->hydrate(false)
+          ->where([
+              'id' => $id
+          ])
+          ->limit(1)
+          ->first();
+
+          return $result['model'] . ' (' . $result['plate'] . ')';
+        } else {
+          $result = $Vehicles->find()
+          ->hydrate(false)
+          ->where([
+              'id' => $id
+          ])
+          ->limit(1)
+          ->first();
+
+          return $result;
+        }
     }
 
     static function getStatusReserves($status){

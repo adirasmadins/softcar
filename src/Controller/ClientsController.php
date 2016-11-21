@@ -51,16 +51,40 @@ class ClientsController extends AppController
             $client->birth_date = Utils::brToDate($client->birth_date);
             $client->validity_cnh = Utils::brToDate($client->validity_cnh);
             $client->first_license = Utils::brToDate($client->first_license);
+            $save = true;
+
             if(strlen($client->cpf_cnpj) < 14){
                 $this->Flash->error(__('O CPF/CNPJ está incorreto!'));
+                $save = false;
             }
 
-            if ($this->Clients->save($client)) {
-                $this->Flash->success(__('Cliente salvo com sucesso'));
+            $verifyCpf = $this->verifyDuplicity('cpf_cnpj', 'Clients', $client->cpf_cnpj);
+            $verifyRg = $this->verifyDuplicity('rg_ie', 'Clients', $client->rg_ie);
+            $verifyCnh = $this->verifyDuplicity('cnh', 'Clients', $client->cnh);
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Ocorreu um problema ao salvar o Cliente'));
+            if($verifyCpf){
+              $this->Flash->error(__('Já existe um cliente com CPF/CNPJ ' . $client->cpf_cnpj));
+              $save = false;
+            }
+
+            if($verifyRg){
+              $this->Flash->error(__('Já existe um cliente com RG/IE ' . $client->rg_ie));
+              $save = false;
+            }
+
+            if($verifyCnh){
+              $this->Flash->error(__('Já existe um cliente com CNH ' . $client->cnh));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Clients->save($client)) {
+                  $this->Flash->success(__('Cliente salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->error(__('Ocorreu um problema ao salvar o Cliente'));
+              }
             }
         }
         $situacao = 'Cadastrar Cliente';
@@ -79,7 +103,7 @@ class ClientsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->data;
-            debug($data);die();
+
             if(!empty($data['client_files'][0]['name'])){
                 foreach($data['client_files'] as $key => $item){
                     $file = Utils::fazerUploadClients($item, 'clients', $key);
@@ -92,21 +116,43 @@ class ClientsController extends AppController
             }
 
             $client = $this->Clients->patchEntity($client, $this->request->data);
-
+            $save = true;
             if(strlen($client->cpf_cnpj) < 14){
                 $this->Flash->error(__('O CPF/CNPJ está incorreto!'));
+                $save = false;
             }
             /* Convertendo data para padrão americano antes de salvar */
             $client->birth_date = Utils::brToDate($client->birth_date);
             $client->validity_cnh = Utils::brToDate($client->validity_cnh);
             $client->first_license = Utils::brToDate($client->first_license);
 
-            if ($this->Clients->save($client)) {
-                $this->Flash->success(__('Cliente salvo com sucesso'));
+            $verifyCpf = $this->verifyDuplicity('cpf_cnpj', 'Clients', $client->cpf_cnpj);
+            $verifyRg = $this->verifyDuplicity('rg_ie', 'Clients', $client->rg_ie);
+            $verifyCnh = $this->verifyDuplicity('cnh', 'Clients', $client->cnh);
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Ocorreu um problema ao salvar o Cliente'));
+            if($verifyCpf){
+              $this->Flash->error(__('Já existe um cliente com CPF/CNPJ ' . $client->cpf_cnpj));
+              $save = false;
+            }
+
+            if($verifyRg){
+              $this->Flash->error(__('Já existe um cliente com RG/IE ' . $client->rg_ie));
+              $save = false;
+            }
+
+            if($verifyCnh){
+              $this->Flash->error(__('Já existe um cliente com CNH ' . $client->cnh));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Clients->save($client)) {
+                  $this->Flash->success(__('Cliente salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->error(__('Ocorreu um problema ao salvar o Cliente'));
+              }
             }
         }
 

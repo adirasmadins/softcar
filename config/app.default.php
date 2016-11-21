@@ -342,37 +342,63 @@ return [
     ],
     'EmailFrom' => 'projsomanoreply@gmail.com',
     'Queries' => [
-        'Reserves' => "SELECT
-                        Vehicles.id AS id
-                    FROM
-                        vehicles Vehicles
-                    INNER JOIN reserves Reserves ON (
-                        (
-                            (
-                                Reserves.date_start BETWEEN '%DATE_START%'
-                                AND '%DATE_END%'
-                            )
-                            OR (
-                                '%DATE_START%' BETWEEN date_start
-                                AND date_end
-                            )
-                        )
-                        OR (
-                            (
-                                Reserves.date_end BETWEEN '%DATE_START%'
-                                AND '%DATE_END%'
-                            )
-                            OR (
-                                '%DATE_END%' BETWEEN date_start
-                                AND date_end
-                            )
-                        )
-                    )
-                    WHERE
+      'Reserves' => "SELECT
+                      Vehicles.id AS id
+                  FROM
+                      vehicles Vehicles
+                  INNER JOIN reserves Reserves ON (
+                      (
+                          (
+                              Reserves.date_start BETWEEN '%DATE_START%'
+                              AND '%DATE_END%'
+                          )
+                          OR (
+                              '%DATE_START%' BETWEEN date_start
+                              AND date_end
+                          )
+                      )
+                      OR (
+                          (
+                              Reserves.date_end BETWEEN '%DATE_START%'
+                              AND '%DATE_END%'
+                          )
+                          OR (
+                              '%DATE_END%' BETWEEN date_start
+                              AND date_end
+                          )
+                      )
+                  )
+                  INNER JOIN locations Locations ON (
+                      (
+                          (
+                              Locations.out_date BETWEEN '%DATE_START%'
+                              AND '%DATE_END%'
+                          )
+                          OR (
+                              '%DATE_START%' BETWEEN out_date
+                              AND return_date
+                          )
+                      )
+                      OR (
+                          (
+                              Locations.return_date BETWEEN '%DATE_START%'
+                              AND '%DATE_END%'
+                          )
+                          OR (
+                              '%DATE_END%' BETWEEN out_date
+                              AND return_date
+                          )
+                      )
+                  )
+                  WHERE
+                      (
                         Vehicles.id = (Reserves.vehicle_id)
-                        AND reserves.status = 1
-                    %VEHICLE_ALLOW%;"
-    ],
+                        OR Vehicles.id = (Locations.vehicle_id)
+                      )
+                      AND reserves.status = 1
+                      AND locations.status = 0
+                  %VEHICLE_ALLOW%;"
+  ],
     'EntityOptions' => [
         'Tickets' => [
             'export' => [
@@ -522,6 +548,10 @@ return [
                             'replaces' => ['cartao' => 'Cartão', 'cheque' => 'Cheque', 'dinheiro' => 'Dinheiro'],
                         ],
                         'Total' => 'total',
+                        'Situação' => [
+                          'field' => 'status',
+                          'replaces' => ['0' => 'Em andamento', '1' => 'Finalizada']
+                        ]
                     ]
                 ]
             ]

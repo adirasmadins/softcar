@@ -84,12 +84,13 @@ $(document).ready(function(){
 
     var vehicleInformations = function(id){
         var url = webroot + 'vehicles/get-vehicle-information';
+
         var data = {
-            id: id
+          id: id
         };
+
         $.post(url, data, function(json){
             if(json.result.type == 'success'){
-              console.log(json.result.data);
                 $('#car-name-modal').text(json.result.data.model + ' (' + json.result.data.plate + ')');
                 $('.km-inicial span').text(json.result.data.last_km);
                 $('.km_inicial').val(json.result.data.last_km);
@@ -105,7 +106,7 @@ $(document).ready(function(){
         figure.css('transition', '1s').css('opacity', '0.1');
 
         var vehicleId = {
-            id: $('#vehicle-id-hidden').val()
+            id: $('#vehicle-id-hidden').val() || $('#vehicle-id').val()
         };
         var url = webroot + 'vehicles/getVehicleInformation';
         var refresh = '<i class="fa fa-refresh fa-spin"></i>';
@@ -113,6 +114,7 @@ $(document).ready(function(){
         $.post(url,vehicleId, function(event){
             if(event.result.type === 'success'){
                 var vehicle = event.result.data;
+                vehicleInformations(vehicle.id);
                 divVehicle.attr('src', (webroot + vehicle.picture).replace('//', '/'));
                 span.html('<h3>' + 'R$ ' + vehicle.day_price + ' <small>(diária)</small></h3>');
                 $('#img').fadeIn('fast');
@@ -147,6 +149,9 @@ $(document).ready(function(){
 
     $(document).on('click', '.btn-calcular', calcular);
     $(document).on('click', '.acres-desc', acresDesc);
+    $(document).on('click', '#vehicle-id', function(e){
+      $('.btn-visualizacao').show();
+    });
     $(document).on('click', '.btn-visualizacao', function(e){
         e.preventDefault();
         $('#modal-image').modal('show');
@@ -159,7 +164,7 @@ $(document).ready(function(){
             $('#' + v).prop('readonly', true);
         });
         $('#client-id').attr('disabled', true);
-
+        $('.sub-img').show();
         $('.modal-footer > button').attr('disabled', true);
         $('.modal-footer > span').show();
         var reserve = $('input[name="reserve"]:checked').val();
@@ -184,12 +189,112 @@ $(document).ready(function(){
                 $('#vehicle-id-hidden').val(event.vehicle_id);
                 infoCar();
                 $('#car-name-modal').text();
-                vehicleInformations(event.vehicle_id);
+                // vehicleInformations(event.vehicle_id);
                 $('#vehicle-id').val(event.vehicle_id);
                 $('.vehicle-input').fadeOut('fast');
                 $('#reserves').modal('hide');
+                $('.btn-visualizacao').show();
             }
         },'json');
+    });
+
+    $(".timepicker").timepicker({
+        showInputs: false,
+        showMeridian: false
+    });
+
+    $('#out-date').datepicker({
+        language: "pt-BR",
+        format: 'dd/mm/yyyy'
+    });
+
+    // var infoCar = function(){
+    //     var divVehicle = $('figure img');
+    //     var span = $('figure span');
+    //     var figure = $('figure');
+    //
+    //    figure.css('transition', '1s').css('opacity', '0.1');
+    //
+    //     var vehicleId = {
+    //         id: $('#vehicle-id').val()
+    //     };
+    //
+    //     var url = webroot + 'vehicles/get-vehicle-information';
+    //     var refresh = '<i class="fa fa-refresh fa-spin"></i>';
+    //
+    //     $('#plate h5').html(refresh);
+    //     $('#renavam h5').html(refresh);
+    //     $.post(url,vehicleId, function(event){
+    //         if(event.result.type === 'success'){
+    //             var vehicle = event.result.data;
+    //             vehicleInformations(vehicle.id);
+    //             $('.btn-visualizacao').show();
+    //             divVehicle.attr('src', (webroot + vehicle.picture).replace('//', '/'));
+    //             span.html('<h3>' + 'R$ ' + vehicle.day_price + ' <small>(diária)</small></h3>');
+    //             $('#img').fadeIn('fast');
+    //             $('figure span').show();
+    //             figure.css('transition', '1s').css('opacity', '1');
+    //
+    //             /* Calculando TOTAL */
+    //             var date_start = moment($('#out-date').val(), 'DD/MM/YYYY');
+    //             var date_end = moment($('#return-date').val(), 'DD/MM/YYYY');
+    //             var diff  = date_end.diff(date_start, 'days');
+    //             var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
+    //             $('.total').html('<small class="min-small">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
+    //             $('#total').val(total.replace('R$ ',''));
+    //         }
+    //     },'json');
+    // };
+
+    $(document).on('change', '#vehicle-id', infoCar);
+
+    var verifyDisponibility = function (outDate, returnDate){
+      var options = "";
+
+      var data = {
+        date_start: outDate,
+        date_end: returnDate
+      };
+      var url = webroot + 'reserves/get-vehicles-by-date-and-schedule';
+
+      $.post(url, data, function(e){
+        if(e.result.type === 'success'){
+            var selected = 'selected="selected"';
+            $.each(e.result.data, function(key, value){
+                if(value.id == $('#vehicle-id-hidden').val()){
+                    $('#select2-vehicle-id-container').text(value.model);
+                    options += "<option value=" + value.id + " selected>" + value.model + "</option>";
+                } else {
+                    options += "<option value=" + value.id + ">" + value.model + "</option>";
+                }
+            });
+
+            $("#vehicle-id").html(null);
+            $("#vehicle-id").html(options);
+            $('#vehicle-id').attr('disabled', false);
+        }
+      },'json');
+    }
+
+    $(document).on('change', '#out-date', function(e){
+      if($('#out-date').val() != ''){
+        if($('#return-date').val() != ''){
+          verifyDisponibility($('#out-date').val(), $('#return-date').val());
+        }
+      }
+    });
+
+    $(document).on('change', '#return-date', function(e){
+      if($('#out-date').val() != ''){
+        if($('#return-date').val() != ''){
+          verifyDisponibility($('#out-date').val(), $('#return-date').val());
+        }
+      }
+    });
+
+    $('#return-date').datepicker({
+        language: "pt-BR",
+        format: 'dd/mm/yyyy'
     });
 
     $('#allowed_km').keyup(function(){

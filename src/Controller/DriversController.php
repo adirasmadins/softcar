@@ -12,30 +12,30 @@ use Cake\ORM\TableRegistry;
  */
 class DriversController extends AppController
 {
+    public $paginate = [
+        'limit' => 7,
+    ];
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Cities', 'States']
-        ];
-        $drivers = $this->paginate($this->Drivers);
+        $data = $this->request->query;
+        $query = $this->Drivers->find();
+        if (isset($data['name']) && !empty($data['name'])) {
+            $query->where([
+                'name LIKE' => '%' . Utils::r_acc($data['name']) . '%'
+            ]);
+        };
+        $drivers = $this->paginate($query);
 
         $this->set(compact('drivers'));
         $this->set('_serialize', ['drivers']);
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Driver id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $driver = $this->Drivers->get($id, [
@@ -126,14 +126,22 @@ class DriversController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $driver = $this->Drivers->get($id);
-        if ($this->Drivers->delete($driver)) {
-            $this->Flash->success(__('The driver has been deleted.'));
-        } else {
-            $this->Flash->error(__('The driver could not be deleted. Please, try again.'));
-        }
+      $this->request->allowMethod(['post', 'delete']);
+      $data = $this->request->data;
+      $driver = $this->Drivers->get($data['id']);
+      $result = ['type' => 'error'];
 
-        return $this->redirect(['action' => 'index']);
+      try{
+          if ($this->Drivers->delete($driver)) {
+              $result = ['type' => 'success','data' => $driver['name']];
+          } else {
+              $result = ['type' => 'error'];
+          }
+      } catch(\PDOException $e){
+          $result = ['type' => 'vinculo', 'message' => $e->getMessage()];
+      }
+
+      $this->set(compact('result'));
+      $this->set('_serialize', ['result']);
     }
 }

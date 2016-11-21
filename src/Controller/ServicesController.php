@@ -118,7 +118,7 @@ class ServicesController extends AppController
 
         if(count($cars->toArray())){
             $cars = $cars->toArray();
-        
+
             $vehicles_ids = [];
         foreach($cars as $item){
             array_push($vehicles_ids, $item['ids']);
@@ -128,7 +128,7 @@ class ServicesController extends AppController
             ->where([
                 'id in' => $vehicles_ids
             ]);
-            
+
             $vehicles = $vehicles->toArray();
         } else {
             $cars = false;
@@ -206,6 +206,14 @@ class ServicesController extends AppController
                 $services_list = $entity->where([
                     'Services.make_date <=' => $y . '-' . $m . '-' . $d
                 ]);
+            }
+
+            if (!empty($data['service_type'])) {
+              if($data['service_type'] == 'r' || $data['service_type'] == 't' || $data['service_type'] == 'o'){
+                $locations_list = $entity->where([
+                    'Services.service_type' => $data['service_type']
+                ]);
+              }
             }
 
             $tickets_list = $entity

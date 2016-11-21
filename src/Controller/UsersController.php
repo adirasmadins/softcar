@@ -47,12 +47,41 @@ class UsersController extends AppController
             /* Convertendo data para padrão americano antes de salvar */
             $user->birth_date = Utils::brToDate($user->birth_date);
 
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('Usuário salvo com sucesso'));
+            $save = true;
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Ocorreu um problema ao salvar o Usuário'));
+            $verifyLogin = $this->verifyDuplicity('login', 'Users', $user->login);
+            $verifyCpf = $this->verifyDuplicity('cpf', 'Users', $user->cpf);
+            $verifyEmail = $this->verifyDuplicity('email', 'Users', $user->email);
+            $verifyRg = $this->verifyDuplicity('rg', 'Users', $user->rg);
+
+            if($verifyRg){
+              $this->Flash->error(__('Já existe um usuário com o RG ' . $user->rg));
+              $save = false;
+            }
+
+            if($verifyLogin){
+              $this->Flash->error(__('Já existe um usuário com o login "' . $user->login . '"'));
+              $save = false;
+            }
+
+            if($verifyEmail){
+              $this->Flash->error(__('Já existe um usuário com o email ' . $user->email));
+              $save = false;
+            }
+
+            if($verifyCpf){
+              $this->Flash->error(__('Já existe um usuário com o CPF ' . $user->cpf));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Users->save($user)) {
+                  $this->Flash->success(__('Usuário salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->warning(__('Ocorreu um problema ao salvar o Usuário'));
+              }
             }
         }
         $situacao = 'Cadastrar Usuário';
@@ -78,12 +107,40 @@ class UsersController extends AppController
             /* Convertendo data para padrão americano antes de salvar */
             $user->birth_date = Utils::brToDate($user->birth_date);
 
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('Usuário salvo com sucesso'));
+            $save = true;
+            $verifyLogin = $this->verifyDuplicity('login', 'Users', $user->login);
+            $verifyCpf = $this->verifyDuplicity('cpf', 'Users', $user->cpf);
+            $verifyEmail = $this->verifyDuplicity('email', 'Users', $user->email);
+            $verifyRg = $this->verifyDuplicity('rg', 'Users', $user->rg);
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Ocorreu um problema ao salvar o Usuário'));
+            if($verifyRg){
+              $this->Flash->error(__('Já existe um usuário com o RG ' . $user->rg));
+              $save = false;
+            }
+
+            if($verifyLogin){
+              $this->Flash->error(__('Já existe um usuário com o login "' . $user->login . '"'));
+              $save = false;
+            }
+
+            if($verifyEmail){
+              $this->Flash->error(__('Já existe um usuário com o email ' . $user->email));
+              $save = false;
+            }
+
+            if($verifyCpf){
+              $this->Flash->error(__('Já existe um usuário com o CPF ' . $user->cpf));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Users->save($user)) {
+                  $this->Flash->success(__('Usuário salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->error(__('Ocorreu um problema ao salvar o Usuário'));
+              }
             }
         }
         $situacao = 'Editar Usuário';

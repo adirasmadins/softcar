@@ -48,12 +48,35 @@ class VehiclesController extends AppController
                 $vehicle->picture = '/' . $file;
             }
 
-            if ($this->Vehicles->save($vehicle)) {
-                $this->Flash->success(__('Veículo salvo com sucesso'));
+            $save = true;
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
+            $verifyPlate = $this->verifyDuplicity('plate', 'Vehicles', $vehicle->plate);
+            $verifyChassi = $this->verifyDuplicity('chassi', 'Vehicles', $vehicle->chassi);
+            $verifyRenavam = $this->verifyDuplicity('renavam', 'Vehicles', $vehicle->renavam);
+
+            if($verifyPlate){
+              $this->Flash->error(__('Já existe um veículo com Placa ' . $vehicle->plate));
+              $save = false;
+            }
+
+            if($verifyChassi){
+              $this->Flash->error(__('Já existe um veículo com Chassi ' . $vehicle->chassi));
+              $save = false;
+            }
+
+            if($verifyRenavam){
+              $this->Flash->error(__('Já existe um veículo com Renavam ' . $vehicle->renavam));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Vehicles->save($vehicle)) {
+                  $this->Flash->success(__('Veículo salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
+              }
             }
         }
         $situacao = 'Cadastrar Veículo';
@@ -86,12 +109,35 @@ class VehiclesController extends AppController
                 $vehicle->picture = $vehicle->current_picture;
             }
 
-            if ($this->Vehicles->save($vehicle)) {
-                $this->Flash->success(__('Veículo salvo com sucesso'));
+            $save = true;
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
+            $verifyPlate = $this->verifyDuplicity('plate', 'Vehicles', $vehicle->plate);
+            $verifyChassi = $this->verifyDuplicity('chassi', 'Vehicles', $vehicle->chassi);
+            $verifyRenavam = $this->verifyDuplicity('renavam', 'Vehicles', $vehicle->renavam);
+
+            if($verifyPlate){
+              $this->Flash->error(__('Já existe um veículo com Placa ' . $vehicle->plate));
+              $save = false;
+            }
+
+            if($verifyChassi){
+              $this->Flash->error(__('Já existe um veículo com Chassi ' . $vehicle->chassi));
+              $save = false;
+            }
+
+            if($verifyRenavam){
+              $this->Flash->error(__('Já existe um veículo com Renavam ' . $vehicle->renavam));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Vehicles->save($vehicle)) {
+                  $this->Flash->success(__('Veículo salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->error(__('Ocorreu um problema ao salvar o Veículo'));
+              }
             }
         }
         $situacao = 'Editar veículo';

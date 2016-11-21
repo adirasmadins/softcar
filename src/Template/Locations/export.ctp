@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-6 graph">
         <h4 class="text-center">Gráfico de Locação por Veículo</h4>
+        <button id="update-graph" class="update-graph"><i class="fa fa-refresh"></i></button>
         <hr/>
     </div>
     <div class="col-md-6">
@@ -20,7 +21,7 @@
                 <?= $this->Form->input('return_date',['label' => 'Data de Devolução','class' => 'form-control','type' => 'text']) ?>
             </div>
             <div class="col-md-4">
-                <?= $this->Form->input('status',['label' => 'Situação','class' => 'form-control','options' => ['0' => 'Em andamento', '1' => 'Finalizadas']]) ?>
+                <?= $this->Form->input('status',['label' => 'Situação','class' => 'form-control','options' => ['0' => 'Em andamento', '1' => 'Finalizadas', 'todos' => 'Todas']]) ?>
             </div>
         </div>
         <hr/>

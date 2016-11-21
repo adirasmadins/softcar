@@ -183,10 +183,10 @@ class TicketsController extends AppController
             ->select([
                 'ids' => 'DISTINCT vehicle_id'
             ]);
-            
+
         if(count($cars->toArray())){
             $cars = $cars->toArray();
-            
+
             $vehicles_ids = [];
             foreach($cars as $item){
                 array_push($vehicles_ids, $item['ids']);
@@ -202,7 +202,7 @@ class TicketsController extends AppController
             $cars = false;
             $vehicles = ['0' => 'Não há veículos com multa'];
         }
-        
+
         $this->set(compact('vehicles','tickets_list'));
         $this->set('_serialize', ['vehicles','tickets_list']);
     }
@@ -232,6 +232,14 @@ class TicketsController extends AppController
                 $tickets_list = $entity->where([
                     'Tickets.ticket_date <=' => $y . '-' . $m . '-' . $d
                 ]);
+            }
+
+            if (!empty($data['status'])) {
+              if($data['status'] == '0' || $data['status'] == '1'){
+                $locations_list = $entity->where([
+                    'Tickets.status' => $data['status']
+                ]);
+              }
             }
 
             $tickets_list = $entity

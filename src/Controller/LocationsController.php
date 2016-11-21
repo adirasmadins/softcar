@@ -48,8 +48,12 @@ class LocationsController extends AppController
             $location->free_km = $location->free_km ? $location->free_km  : '0';
             $location->start_value = (float) $location->start_value;
             $location->payment_date = null;
-            $location->client_id = $location->client_id_hidden;
-            $location->vehicle_id = $location->vehicle_id_hidden;
+            if(!empty($location->client_id_hidden)){
+                $location->client_id = $location->client_id_hidden;
+            }
+            if(!empty($location->vehicle_id_hidden)){
+                $location->vehicle_id = $location->vehicle_id_hidden;
+            }
 
             unset($location->client_id_hidden);
             unset($location->vehicle_id_hidden);
@@ -256,6 +260,14 @@ class LocationsController extends AppController
                 $locations_list = $entity->where([
                     'Locations.return_date <=' => $y . '-' . $m . '-' . $d
                 ]);
+            }
+
+            if (!empty($data['status'])) {
+              if($data['status'] == '0' || $data['status'] == '1'){
+                $locations_list = $entity->where([
+                    'Locations.status' => $data['status']
+                ]);
+              }
             }
 
             $locations_list = $entity
