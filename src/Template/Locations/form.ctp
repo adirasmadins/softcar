@@ -199,18 +199,51 @@
         </div>
     </div>
 
+    <?php $infos = \App\Lib\Utils::getAllInformationsVehicles($location->vehicle_id, 'tudo') ?>
+
     <!-- Modal Imagem -->
     <div class="modal fade bs-example-modal-lg" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title text-center" id="car-name-modal">
-                      <?= \App\Lib\Utils::getAllInformationsVehicles($location->vehicle_id, 'model and plate') ?>
+                      Informações do Veículo
                     </h4>
                     <a class="btn btn-info pull-right fechar-top" data-dismiss="modal">Fechar</a>
                 </div>
                 <div class="modal-body">
-                    <img src="<?= $this->request->webroot . \App\Lib\Utils::getAllInformationsVehicles($location->vehicle_id, 'picture') ?>" class="image-responsive thumbnail" style="width: 100%" id="imagem-modal">
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Modelo</th>
+                                <th>Placa</th>
+                                <th>Marca</th>
+                                <th>Tipo</th>
+                                <th>Diária</th>
+                                <th>Combustível</th>
+                                <th>Cor</th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><?= $infos['model'] ?></td>
+                                <td><?= $infos['plate'] ?></td>
+                                <td><?= $infos['mark'] ?></td>
+                                <td><?= \App\Lib\Utils::getDependInformationVehicle('Types', $infos['type_id']) ?></td>
+                                <td>R$ <?= $infos['day_price'] ?></td>
+                                <td><?= \App\Lib\Utils::getDependInformationVehicle('Fuels', $infos['fuel_id']) ?></td>
+                                <td><?= $infos['color'] ?></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <img src="<?= $this->request->webroot . \App\Lib\Utils::getAllInformationsVehicles($location->vehicle_id, 'picture') ?>" class="image-responsive thumbnail" style="width: 100%" id="imagem-modal">
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>

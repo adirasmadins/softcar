@@ -129,6 +129,7 @@ $(document).ready(function(){
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
                 $('.total').html('<small class="min-small hidden-xs">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
                 $('#total').val(total.replace('R$ ',''));
+                $('.btn-visualizacao').show();
             }
         },'json');
     };
@@ -149,13 +150,25 @@ $(document).ready(function(){
 
     $(document).on('click', '.btn-calcular', calcular);
     $(document).on('click', '.acres-desc', acresDesc);
-    $(document).on('click', '#vehicle-id', function(e){
-      $('.btn-visualizacao').show();
-    });
     $(document).on('click', '.btn-visualizacao', function(e){
         e.preventDefault();
-        $('#modal-image').modal('show');
+
         $('#imagem-modal').attr('src', $('figure img').attr('src'));
+
+        var url = webroot + 'vehicles/get-vehicle-information';
+
+        var data = {
+          id: $('#vehicle-id-hidden') || $('#vehicle-id')
+        };
+console.log(data);
+        $.post(url, data, function(json){
+            if(json.result.type == 'success'){
+                console.log(json);
+            }
+        },'json');
+
+        $('#modal-image tbody td:nth-child(1)').text('dfsa');
+        $('#modal-image').modal('show');
     });
     $(document).on('change', '#client-id', infoClient);
     $(document).on('click', '#carregar', function(){
@@ -207,44 +220,6 @@ $(document).ready(function(){
         language: "pt-BR",
         format: 'dd/mm/yyyy'
     });
-
-    // var infoCar = function(){
-    //     var divVehicle = $('figure img');
-    //     var span = $('figure span');
-    //     var figure = $('figure');
-    //
-    //    figure.css('transition', '1s').css('opacity', '0.1');
-    //
-    //     var vehicleId = {
-    //         id: $('#vehicle-id').val()
-    //     };
-    //
-    //     var url = webroot + 'vehicles/get-vehicle-information';
-    //     var refresh = '<i class="fa fa-refresh fa-spin"></i>';
-    //
-    //     $('#plate h5').html(refresh);
-    //     $('#renavam h5').html(refresh);
-    //     $.post(url,vehicleId, function(event){
-    //         if(event.result.type === 'success'){
-    //             var vehicle = event.result.data;
-    //             vehicleInformations(vehicle.id);
-    //             $('.btn-visualizacao').show();
-    //             divVehicle.attr('src', (webroot + vehicle.picture).replace('//', '/'));
-    //             span.html('<h3>' + 'R$ ' + vehicle.day_price + ' <small>(diária)</small></h3>');
-    //             $('#img').fadeIn('fast');
-    //             $('figure span').show();
-    //             figure.css('transition', '1s').css('opacity', '1');
-    //
-    //             /* Calculando TOTAL */
-    //             var date_start = moment($('#out-date').val(), 'DD/MM/YYYY');
-    //             var date_end = moment($('#return-date').val(), 'DD/MM/YYYY');
-    //             var diff  = date_end.diff(date_start, 'days');
-    //             var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
-    //             $('.total').html('<small class="min-small">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
-    //             $('#total').val(total.replace('R$ ',''));
-    //         }
-    //     },'json');
-    // };
 
     $(document).on('change', '#vehicle-id', infoCar);
 

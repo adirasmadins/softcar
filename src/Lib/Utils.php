@@ -321,4 +321,18 @@ class Utils {
     static function getStatusLocations($status){
         return $status == 0 ? '<span class="label label-warning">Não</span>' : '<span class="label label-success">Sim</span>';
     }
+
+    static function getDependInformationVehicle($entity, $value){
+      $Entity = TableRegistry::get($entity);
+
+      $result = $Entity->find()
+                ->hydrate(false)
+                ->select('name')
+                ->where([
+                  'id' => $value
+                ])
+                ->limit(1)
+                ->first();
+      return $result['name'];
+    }
 }
