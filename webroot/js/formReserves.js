@@ -149,7 +149,7 @@ $(document).ready(function() {
                 var date_end = moment($('#date-end').val(), 'DD/MM/YYYY');
                 var diff  = date_end.diff(date_start, 'days');
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
-                $('.total').html('<small class="min-small">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
+                $('.total').html(total.replace('.',','));
                 $('#total').val(total.replace('R$ ',''));
             }
         },'json');
@@ -186,8 +186,8 @@ $(document).ready(function() {
     $(document).on('change', '#date-start', hide);
     $(document).on('change', '#date-end', hide);
     if($('#vehicle-id-hidden').val() > 0){
-        var date_start = $('#date-start').val();
-        var date_end = $('#date-end').val();
+        var date_start = $('#date-start').val() || $('.date-start').val();
+        var date_end = $('#date-end').val() || $('.date-end').val();
         populateVehicleInEdit(date_start, date_end);
     }
 

@@ -36,21 +36,6 @@ class DriversController extends AppController
         $this->set('_serialize', ['drivers']);
     }
 
-    public function view($id = null)
-    {
-        $driver = $this->Drivers->get($id, [
-            'contain' => ['Cities', 'States', 'Locations']
-        ]);
-
-        $this->set('driver', $driver);
-        $this->set('_serialize', ['driver']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $driver = $this->Drivers->newEntity();
@@ -59,12 +44,29 @@ class DriversController extends AppController
             $driver->birth_date=Utils::brToDate($driver->birth_date);
             $driver->first_license=Utils::brToDate($driver->first_license);
             $driver->validity_cnh=Utils::brToDate($driver->validity_cnh);
-            if ($this->Drivers->save($driver)) {
-                $this->Flash->success(__('The driver has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The driver could not be saved. Please, try again.'));
+            $save = true;
+
+            if(strlen($driver->cpf) < 14){
+                $this->Flash->error(__('O CPF está incorreto!'));
+                $save = false;
+            }
+
+            $verifyCpf = $this->verifyDuplicity('cpf', 'Drivers', $driver->cpf);
+
+            if($verifyCpf){
+              $this->Flash->error(__('Já existe um motorista com CPF ' . $driver->cpf));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Drivers->save($driver)) {
+                  $this->Flash->success(__('Motorista salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->error(__('Ocorreu um problema ao salvar o Motorista'));
+              }
             }
         }
         $situacao='Cadastrar Motorista';
@@ -77,14 +79,6 @@ class DriversController extends AppController
         $this->render('form');
     }
 
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Driver id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $driver = $this->Drivers->get($id, [
@@ -92,24 +86,44 @@ class DriversController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $driver = $this->Drivers->patchEntity($driver, $this->request->data);
-            if ($this->Drivers->save($driver)) {
-                $this->Flash->success(__('The driver has been saved.'));
+            $driver->birth_date=Utils::brToDate($driver->birth_date);
+            $driver->first_license=Utils::brToDate($driver->first_license);
+            $driver->validity_cnh=Utils::brToDate($driver->validity_cnh);
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The driver could not be saved. Please, try again.'));
+            $save = true;
+
+            if(strlen($driver->cpf) < 14){
+                $this->Flash->error(__('O CPF está incorreto!'));
+                $save = false;
+            }
+
+            $verifyCpf = $this->verifyDuplicity('cpf', 'Drivers', $driver->cpf, $driver->id);
+
+            if($verifyCpf){
+              $this->Flash->error(__('Já existe um motorista com CPF ' . $driver->cpf));
+              $save = false;
+            }
+
+            if($save){
+              if ($this->Drivers->save($driver)) {
+                  $this->Flash->success(__('Motorista salvo com sucesso'));
+
+                  return $this->redirect(['action' => 'index']);
+              } else {
+                  $this->Flash->error(__('Ocorreu um problema ao salvar o Motorista'));
+              }
             }
         }
         $cities = $this->Drivers->Cities->find('list');
         $states = $this->Drivers->States->find('list');
         $situacao = 'Editar Motorista';
-        if($driver->birth_date){
+        if(!is_string($driver->birth_date)){
             $driver->birth_date = $driver->birth_date->i18nFormat('dd/MM/yyyy');
         }
-        if($driver->validity_cnh){
+        if(!is_string($driver->validity_cnh)){
             $driver->validity_cnh = $driver->validity_cnh->i18nFormat('dd/MM/yyyy');
         }
-        if($driver->first_license){
+        if(!is_string($driver->first_license)){
             $driver->first_license = $driver->first_license->i18nFormat('dd/MM/yyyy');
         }
         $this->set(compact('driver', 'cities', 'states', 'situacao'));
@@ -117,13 +131,6 @@ class DriversController extends AppController
         $this->render('form');
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Driver id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
       $this->request->allowMethod(['post', 'delete']);

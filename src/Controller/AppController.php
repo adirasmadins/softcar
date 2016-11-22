@@ -255,11 +255,12 @@ class AppController extends Controller
         }
     }
 
-    public function verifyDuplicity($type, $entity, $value){
+    public function verifyDuplicity($type, $entity, $value, $id = false){
       $Entity = TableRegistry::get($entity);
       $result = $Entity->find()
                 ->where([
-                  $type => $value
+                  $type => $value,
+                  'id <>' => $id 
                 ])
                 ->limit(1)
                 ->first();

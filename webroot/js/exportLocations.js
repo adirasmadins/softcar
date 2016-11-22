@@ -9,7 +9,7 @@ $(document).ready(function(){
         var url = webroot + 'locations/populate-graph';
         var formData = $('#formExport').serializeArray();
         var type = $('input[type="radio"]:checked').val();
-
+        
         $.post(url, formData, function(e){
             var labels = [];
             var data = [];

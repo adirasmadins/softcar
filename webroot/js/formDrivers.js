@@ -1,21 +1,27 @@
 $(document).ready(function () {
+
     var formDrivers=new Form();
+
     formDrivers.inputMasks({
         '#phone': 'phone',
-        '#cel-pgir statuhone': 'phone',
+        '#cel-phone': 'phone',
         '#cpf': 'cpf',
         '#rg': 'rg',
         '#cep': 'cep',
         '#first-license': 'date',
         '#validity-cnh': 'date',
         '#birth-date': 'date'
-
     });
+
+    $('#gender').select2();
+    $('#state-id').select2();
+    $('#city-id').select2();
 
     $('#state-id').change(popularCityInAdd);
     if($('#state-id').val() > 0) {
         popularCityInEdit();
     }
+
     function popularCityInAdd(){
         var options = "";
 

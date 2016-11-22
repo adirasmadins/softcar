@@ -91,4 +91,8 @@ h2{
     .hour{
         margin-top: 20px;
     }
+    #disp{
+      display: block;
+      margin: 10px auto;
+    }
 }

@@ -37,8 +37,14 @@ class ReservesController extends AppController
         if ($this->request->is('post')) {
             $reserve = $this->Reserves->patchEntity($reserve, $this->request->data);
 
-            $reserve->date_start = Utils::brToDate($reserve->date_start);
-            $reserve->date_end = Utils::brToDate($reserve->date_end);
+            if(count($reserve->date_start)){
+              $reserve->date_start = Utils::brToDate($reserve->date_start);
+            }
+
+            if(count($reserve->date_end)){
+              $reserve->date_end = Utils::brToDate($reserve->date_end);
+            }
+
             $reserve->reserve_date = date('Y-m-d');
             $reserve->total = str_replace('.', '', number_format(str_replace('R$ ', '', (float) $reserve->total), 2, ',','.'));
             $reserve->status = 1;
@@ -67,8 +73,14 @@ class ReservesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $reserve = $this->Reserves->patchEntity($reserve, $this->request->data);
 
-            $reserve->date_start = Utils::brToDate($reserve->date_start);
-            $reserve->date_end = Utils::brToDate($reserve->date_end);
+            if(count($reserve->date_start)){
+              $reserve->date_start = $reserve->date_start->i18nFormat('YYYY-MM-dd');
+            }
+
+            if(count($reserve->date_end)){
+              $reserve->date_end = $reserve->date_end->i18nFormat('YYYY-MM-dd');
+            }
+
             $reserve->total = str_replace('.', '', number_format(str_replace('R$ ', '', (float) $reserve->total), 2, ',','.'));
             if ($this->Reserves->save($reserve)) {
                 $this->Flash->success(__('Reserva salva com sucesso'));
@@ -94,8 +106,8 @@ class ReservesController extends AppController
 
         $reserve->vehicle_picture = str_replace('//','/', $this->request->webroot . $urlAndDayPrice->picture);
         $reserve->day_price_vehicle = $urlAndDayPrice->day_price;
-        $reserve->date_start = $reserve->date_start->i18nFormat('dd/MM/yyyy');
-        $reserve->date_end = $reserve->date_end->i18nFormat('dd/MM/yyyy');
+        $reserve->date_start = $reserve->date_start->i18nFormat('dd/MM/YYYY');
+        $reserve->date_end = $reserve->date_end->i18nFormat('dd/MM/YYYY');
         $reserve->remove_schedule = $reserve->remove_schedule->i18nFormat('H:i');
         $reserve->devolution_schedule = $reserve->devolution_schedule->i18nFormat('H:i');
 
@@ -129,7 +141,7 @@ class ReservesController extends AppController
         $result = ['type' => 'error', 'data' => false];
         if($this->request->is('post')){
             $data = $this->request->data;
-            
+
             $Vehicles = TableRegistry::get('Vehicles');
 
             $date_start = Utils::brToDate($data['date_start']);

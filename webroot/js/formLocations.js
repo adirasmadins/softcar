@@ -91,7 +91,6 @@ $(document).ready(function(){
 
         $.post(url, data, function(json){
             if(json.result.type == 'success'){
-                $('#car-name-modal').text(json.result.data.model + ' (' + json.result.data.plate + ')');
                 $('.km-inicial span').text(json.result.data.last_km);
                 $('.km_inicial').val(json.result.data.last_km);
             }
@@ -122,8 +121,10 @@ $(document).ready(function(){
                 figure.css('transition', '1s').css('opacity', '1');
 
                 /* Calculando TOTAL */
-                var date_start = moment($('#out-date').val(), 'DD/MM/YYYY');
-                var date_end = moment($('#return-date').val(), 'DD/MM/YYYY');
+                var outD = $('.out-date').val() || $('#out-date').val();
+                var returnD = $('.return-date').val() || $('#return-date').val();
+                var date_start = moment(outD, 'DD/MM/YYYY');
+                var date_end = moment(returnD, 'DD/MM/YYYY');
                 var diff  = date_end.diff(date_start, 'days');
 
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
@@ -158,18 +159,24 @@ $(document).ready(function(){
         var url = webroot + 'vehicles/get-vehicle-information';
 
         var data = {
-          id: $('#vehicle-id-hidden') || $('#vehicle-id')
+          id: $('#vehicle-id-hidden').val() || $('#vehicle-id').val()
         };
-console.log(data);
+
         $.post(url, data, function(json){
             if(json.result.type == 'success'){
-                console.log(json);
+                var vehicle = json.result.data;
+                $('#modal-image tbody td:nth-child(1)').text(vehicle.model);
+                $('#modal-image tbody td:nth-child(2)').text(vehicle.plate);
+                $('#modal-image tbody td:nth-child(3)').text(vehicle.mark);
+                $('#modal-image tbody td:nth-child(4)').text(vehicle.type_name);
+                $('#modal-image tbody td:nth-child(5)').text(vehicle.day_price);
+                $('#modal-image tbody td:nth-child(6)').text(vehicle.fuel_name);
+                $('#modal-image tbody td:nth-child(7)').text(vehicle.color);
             }
         },'json');
-
-        $('#modal-image tbody td:nth-child(1)').text('dfsa');
         $('#modal-image').modal('show');
     });
+
     $(document).on('change', '#client-id', infoClient);
     $(document).on('click', '#carregar', function(){
         var infos = ['out-date','return-date','remove_schedule','devolution_schedule','client-id'];

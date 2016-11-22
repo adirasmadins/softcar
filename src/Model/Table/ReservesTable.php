@@ -120,7 +120,6 @@ class ReservesTable extends Table
 
         $query = str_replace($search, $replace, Configure::read('Queries.Reserves'));
 
-
         $default = 'default';
         $informations = ConnectionManager::get($default);
         $database = $informations->config();

@@ -126,9 +126,9 @@ class ClientsController extends AppController
             $client->validity_cnh = Utils::brToDate($client->validity_cnh);
             $client->first_license = Utils::brToDate($client->first_license);
 
-            $verifyCpf = $this->verifyDuplicity('cpf_cnpj', 'Clients', $client->cpf_cnpj);
-            $verifyRg = $this->verifyDuplicity('rg_ie', 'Clients', $client->rg_ie);
-            $verifyCnh = $this->verifyDuplicity('cnh', 'Clients', $client->cnh);
+            $verifyCpf = $this->verifyDuplicity('cpf_cnpj', 'Clients', $client->cpf_cnpj, $client->id);
+            $verifyRg = $this->verifyDuplicity('rg_ie', 'Clients', $client->rg_ie, $client->id);
+            $verifyCnh = $this->verifyDuplicity('cnh', 'Clients', $client->cnh, $client->id);
 
             if($verifyCpf){
               $this->Flash->error(__('Já existe um cliente com CPF/CNPJ ' . $client->cpf_cnpj));

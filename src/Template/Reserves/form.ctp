@@ -12,10 +12,12 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3 form-group">
-                    <?= $this->Form->input('date_start',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text']) ?>
+                  <input type="hidden" value="<?= $reserve->date_start ?>" class="date-start"/>
+                    <?= $this->Form->input('date_start',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text', 'disabled' => $reserve->id ? true : false]) ?>
                 </div>
                 <div class="col-md-3 form-group">
-                    <?= $this->Form->input('date_end',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text']) ?>
+                  <input type="hidden" value="<?= $reserve->date_start ?>" class="date-end"/>
+                    <?= $this->Form->input('date_end',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text', 'disabled' => $reserve->id ? true : false]) ?>
                 </div>
                 <div class="col-md-3 form-group">
                     <label>Horário de Saída</label>
@@ -24,7 +26,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <input type="text" name="remove_schedule" value="<?= $reserve->remove_schedule ?>" id="remove_schedule" class="form-control timepicker">
+                            <input type="text" name="remove_schedule" value="<?= $reserve->remove_schedule ?>" id="remove_schedule" class="form-control timepicker" <?= $reserve->id ? 'disabled' : '' ?>>
                         </div>
                     </div>
                 </div>
@@ -35,7 +37,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <input type="text" name="devolution_schedule" value="<?= $reserve->devolution_schedule ?>" id="devolution_schedule" class="form-control timepicker">
+                            <input type="text" name="devolution_schedule" value="<?= $reserve->devolution_schedule ?>" id="devolution_schedule" class="form-control timepicker" <?= $reserve->id ? 'disabled' : '' ?>>
                         </div>
                     </div>
                 </div>

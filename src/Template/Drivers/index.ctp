@@ -13,7 +13,8 @@ $this->element('Form/header_index',[
     'column' => [
         'id' => '#ID',
         'name' => 'Nome',
-        'cpf' => 'CPF'
+        'cpf' => 'CPF',
+        'cel_phone' => 'Celular'
     ],
     'name' => 'O motorista',
     'entity' => 'Drivers',

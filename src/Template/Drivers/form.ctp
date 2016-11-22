@@ -24,10 +24,10 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <?= $this->Form->input('cpf_cnpj',['label' => 'CPF','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('cpf',['label' => 'CPF','placeholder' => 'CPF','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('rg_ie',['label' => 'RG','placeholder' => 'RG','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('rg',['label' => 'RG','placeholder' => 'RG','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
                     <?= $this->Form->input('cnh',['label' => 'CNH','placeholder' => 'CNH','class' => 'form-control','type' => 'text']) ?>

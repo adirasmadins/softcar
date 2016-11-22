@@ -9,9 +9,11 @@
             <input type="hidden" id="id-location" value="<?= $location->id ?>">
             <div class="row">
                 <div class="col-md-3 form-group">
+                    <input type="hidden" class="out-date" value="<?= $location->out_date ?>"/>
                     <?= $this->Form->input('out_date',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text', 'disabled' => $this->request->action == 'edit' ? true : false]) ?>
                 </div>
                 <div class="col-md-3 form-group">
+                  <input type="hidden" class="return-date" value="<?= $location->return_date ?>"/>
                     <?= $this->Form->input('return_date',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text', 'disabled' => $this->request->action == 'edit' ? true : false]) ?>
                 </div>
                 <div class="col-md-3 form-group">
@@ -73,7 +75,7 @@
                 <div class="col-md-6 form-group">
                     <input type="hidden" name="vehicle_id_hidden" id="vehicle-id-hidden" value="">
                     <div class="vehicle-input">
-                        <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control','empty' => 'Selecione um veículo']); ?>
+                        <?= $this->Form->input('vehicle_id',['label' => 'Veículo', 'class' => 'form-control']); ?>
                     </div>
                     <div class="div-total">
                         <h2 class="pull-left">TOTAL R$</h2>
@@ -131,13 +133,15 @@
             </div>
         </div>
         <div class="panel-footer">
-            <?= $this->element('Form/button',['options' =>[
-                'text' => 'Salvar',
-                'action' => 'add',
-                'class' => 'btn btn-success',
-                'type' => 'submit',
-                'icon' => 'check'
-            ]]) ?>
+            <?php if(!$location->id): ?>
+              <?= $this->element('Form/button',['options' =>[
+                  'text' => 'Salvar',
+                  'action' => 'add',
+                  'class' => 'btn btn-success',
+                  'type' => 'submit',
+                  'icon' => 'check'
+              ]]) ?>
+            <?php endif; ?>
             <?= $this->Html->Link('<i class="fa fa-undo"></i> Voltar',
                 [
                     'action' => 'index'

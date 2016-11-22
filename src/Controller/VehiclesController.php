@@ -111,9 +111,9 @@ class VehiclesController extends AppController
 
             $save = true;
 
-            $verifyPlate = $this->verifyDuplicity('plate', 'Vehicles', $vehicle->plate);
-            $verifyChassi = $this->verifyDuplicity('chassi', 'Vehicles', $vehicle->chassi);
-            $verifyRenavam = $this->verifyDuplicity('renavam', 'Vehicles', $vehicle->renavam);
+            $verifyPlate = $this->verifyDuplicity('plate', 'Vehicles', $vehicle->plate, $vehicle->id);
+            $verifyChassi = $this->verifyDuplicity('chassi', 'Vehicles', $vehicle->chassi, $vehicle->id);
+            $verifyRenavam = $this->verifyDuplicity('renavam', 'Vehicles', $vehicle->renavam, $vehicle->id);
 
             if($verifyPlate){
               $this->Flash->error(__('Já existe um veículo com Placa ' . $vehicle->plate));
@@ -178,6 +178,10 @@ class VehiclesController extends AppController
             $data = $this->request->data;
 
             $vehicle = $this->Vehicles->get($data['id']);
+
+            $vehicle['type_name'] = Utils::getDependInformationVehicle('Types', $vehicle['type_id']);
+            $vehicle['fuel_name'] = Utils::getDependInformationVehicle('Fuels', $vehicle['fuel_id']);
+
             $result = ['type' => 'success','data' => $vehicle];
         }
         $this->set(compact('result'));

@@ -21,7 +21,7 @@
                 <?= $this->Form->input('return_date',['label' => 'Data de Devolução','class' => 'form-control','type' => 'text']) ?>
             </div>
             <div class="col-md-4">
-                <?= $this->Form->input('status',['label' => 'Situação','class' => 'form-control','options' => ['0' => 'Em andamento', '1' => 'Finalizadas', 'todos' => 'Todas']]) ?>
+                <?= $this->Form->input('status',['label' => 'Situação','class' => 'form-control','options' => ['todos' => 'Todas', '0' => 'Em andamento', '1' => 'Finalizadas']]) ?>
             </div>
         </div>
         <hr/>

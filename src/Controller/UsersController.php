@@ -108,10 +108,10 @@ class UsersController extends AppController
             $user->birth_date = Utils::brToDate($user->birth_date);
 
             $save = true;
-            $verifyLogin = $this->verifyDuplicity('login', 'Users', $user->login);
-            $verifyCpf = $this->verifyDuplicity('cpf', 'Users', $user->cpf);
-            $verifyEmail = $this->verifyDuplicity('email', 'Users', $user->email);
-            $verifyRg = $this->verifyDuplicity('rg', 'Users', $user->rg);
+            $verifyLogin = $this->verifyDuplicity('login', 'Users', $user->login, $user->id);
+            $verifyCpf = $this->verifyDuplicity('cpf', 'Users', $user->cpf, $user->id);
+            $verifyEmail = $this->verifyDuplicity('email', 'Users', $user->email, $user->id);
+            $verifyRg = $this->verifyDuplicity('rg', 'Users', $user->rg, $user->id);
 
             if($verifyRg){
               $this->Flash->error(__('Já existe um usuário com o RG ' . $user->rg));

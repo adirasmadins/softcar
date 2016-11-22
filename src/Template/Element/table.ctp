@@ -7,7 +7,7 @@
                 <?php foreach($options['column'] as $key => $coluna): ?>
                     <th><?= $coluna ?></th>
                 <?php endforeach; ?>
-                <th class="text-center" style="width: <?= $controller == 'Vehicles' || $controller == 'Tickets' || $controller == 'Locations' ? '140px' : '100px' ?>">Ações</th>
+                <th class="text-center" style="width: <?= $controller == 'Vehicles' || $controller == 'Tickets' || $controller == 'Locations' ? '180px' : '100px' ?>">Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
                             <td><?= $item->$key ?></td>
                         <?php endif ?>
                     <?php endforeach; ?>
-                    <td>
+                    <td class="text-center">
                         <div class="btn-group hidden-xs">
                             <?php if($this->request->controller == 'Vehicles'): ?>
                                 <a href="#" data-url="<?= $item->picture ?>" data-model="<?= $item->model ?>" class="btn btn-info btn-flat btn-flash"><i class="fa fa-bolt"></i></a>
@@ -57,9 +57,8 @@
                                 <button type="button" data-id="<?= $item->id ?>" class="btn btn-success btn-pay btn-flat" <?= strpos($item->status, 'Sim') ? 'disabled' : '' ?>><i class="fa fa-check"></i></button>
                             <?php endif; ?>
                             <?= $this->Html->link(__('<i class="fa fa-edit"></i>'),['action' => 'edit', $item->id],['escape' => false,'class' => 'btn btn-warning btn-flat']) ?>
-                            <?php if($this->request->controller != 'Locations'): ?>
                                 <a href="#" data-id="<?= $item->id ?>" id="btn-deletar" class="btn btn-danger btn-flat btn-deletar"><i class="fa fa-trash"></i></a>
-                            <?php else: ?>
+                            <?php if($this->request->controller == 'Locations'): ?>
                                 <a href="#" data-id="<?= $item->id ?>" class="btn btn-success btn-flat btn-contrato"><i class="fa fa-file-pdf-o"></i></a>
                                 <button data-id="<?= $item->id ?>" class="btn btn-info btn-flat btn-info-location info-<?= $item->id ?>" <?= strpos($item->status, 'Não') ? 'disabled' : '' ?>><i class="fa fa-info-circle"></i></button>
                             <?php endif; ?>
