@@ -148,7 +148,7 @@ class ReservesController extends AppController
             $date_end = Utils::brToDate($data['date_end']);
 
             if(!empty($data['idVehicleAllow'])){
-                $idVehicleAllow = ' AND vehicle_id <> ' . $data['idVehicleAllow'];
+                $idVehicleAllow = ' WHERE result.id <> ' . $data['idVehicleAllow'];
             } else {
                 $idVehicleAllow = '';
             }

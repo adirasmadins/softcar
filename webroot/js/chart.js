@@ -11,7 +11,7 @@ function Charts(){
                             label: label,
                             data: data,
                             backgroundColor: backgrounds,
-                            borderWidth: 1,
+                            borderWidth: 2,
                             options: {
                                 responsive: true
                             }

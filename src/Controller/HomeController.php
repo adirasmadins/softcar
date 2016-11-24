@@ -27,8 +27,9 @@ class HomeController extends AppController
                         ->where([
                             'profile_id' => $user['profile_id']
                         ])
+                        ->limit(1)
                         ->first();
-
+                        
                     if(count($permissions)){
                         $result = [
                             'type' => 'success',
@@ -54,7 +55,7 @@ class HomeController extends AppController
                 $result = [
                     'type' => 'error',
                     'title' => 'Encontramos um problema ao entrar',
-                    'text' => 'Email ou senha incorretos'
+                    'text' => 'Usuário ou senha incorretos'
                 ];
             }
         }

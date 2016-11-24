@@ -70,6 +70,10 @@ class AppController extends Controller
                 ->where(['profile_id' => $user_online['profile_id']])
                 ->toArray();
 
+            if(count($profile) == 0){
+              return $this->redirect(['controller' => 'Home', 'action' => 'logout']);
+            }
+
             $modules = [];
             foreach ($profile as $module) {
                 array_push($modules, $module['menu']['controller']);
@@ -86,6 +90,7 @@ class AppController extends Controller
 
             $hasPermission = false;
             $hasDash = false;
+
             foreach ($NavMenus as $key => $item) {
                 if (empty($item['children']) && empty($item['controller'])) {
                     unset($NavMenus[$key]);
@@ -107,6 +112,10 @@ class AppController extends Controller
 
             if ($this->request->action == 'logout' || $this->request->controller == 'Utils' || $this->request->controller == 'Charts' || $this->request->controller == 'DomPdf') {
                 $hasPermission = true;
+            }
+
+            if($this->request->is('ajax')){
+              $hasPermission = true;
             }
 
             if (!$hasDash) {
@@ -260,7 +269,7 @@ class AppController extends Controller
       $result = $Entity->find()
                 ->where([
                   $type => $value,
-                  'id <>' => $id 
+                  'id <>' => $id
                 ])
                 ->limit(1)
                 ->first();
