@@ -182,7 +182,7 @@ $(document).ready(function(){
             }
         },'json');
     }
-    
+
     $('#birth-date').change(function(){
         moment.locale('pt-br');
         var data1 = moment($(this).val(),'DD/MM/YYYY');
@@ -222,7 +222,7 @@ $(document).ready(function(){
             $('button[type="submit"]').attr('disabled', false);
         }
     });
-    
+
     $('#validity-cnh').change(function(){
         moment.locale('pt-br');
         var data1 = moment($(this).val(),'DD/MM/YYYY');
@@ -244,32 +244,13 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-  /*multiple image preview first input*/
 
   $("#client_files").on("change", handleFileSelect);
-
   selDiv = $("#selectedFilesD");
-  $("#myForm").on("submit", handleForm);
-
-  $("body").on("click", ".selFile", removeFile);
-
-  /*end image preview */
-
-  /* Multiple image preview second input*/
-  $("#mobile").on("change", handleFileSelect);
-
-  selDivM = $("#selectFilesM");
-  $("#myForm").on("submit", handleForm);
-
-  $("body").on("click", ".selFile", removeFile);
-
-  console.log($("#selectFilesM").length);
+  $(document).on("click", ".selFile", removeFile);
 });
-/*multiple image preview*/
-
 
 var selDiv = "";
-// var selDivM="";
 var storedFiles = [];
 
 function handleFileSelect(e) {
@@ -296,28 +277,6 @@ function handleFileSelect(e) {
     }
     reader.readAsDataURL(f);
   });
-
-}
-
-function handleForm(e) {
-  e.preventDefault();
-  var data = new FormData();
-
-  for (var i = 0, len = storedFiles.length; i < len; i++) {
-    data.append('files', storedFiles[i]);
-  }
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'handler.cfm', true);
-
-  xhr.onload = function(e) {
-    if (this.status == 200) {
-      console.log(e.currentTarget.responseText);
-      alert(e.currentTarget.responseText + ' items uploaded.');
-    }
-  }
-
-  xhr.send(data);
 }
 
 function removeFile(e) {

@@ -9,11 +9,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <?= $this->Form->input('date_start',['label' => 'Data Inicial','class' => 'form-control','type' => 'text']) ?>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <?= $this->Form->input('date_end',['label' => 'Data Final','class' => 'form-control','type' => 'text']) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $this->Form->input('status',['label' => 'Situação','class' => 'form-control','options' => ['todos' => 'Todas', '0' => 'Finalizadas', '1' => 'Em andamento']]) ?>
             </div>
         </div>
         <hr/>

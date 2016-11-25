@@ -34,7 +34,7 @@
                                         <td><?= $locacao['out_date']->i18nFormat('dd/MM/yyyy') ?></td>
                                         <td><?= $locacao['return_date']->i18nFormat('dd/MM/yyyy') ?></td>
                                         <td><?= $locacao['free_km'] == 0 ? $locacao['allowed_km'] . 'km permitidos' : 'Sim'?></td>
-                                        <td>R$ <?= number_format($locacao['total'], 2, '.', ',')?></td>
+                                        <td>R$ <?= number_format($locacao['total'], 2, ',', '.')?></td>
                                         <td>
                                             <button
                                                 type="button"

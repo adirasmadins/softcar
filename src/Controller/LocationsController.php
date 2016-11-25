@@ -136,7 +136,7 @@ class LocationsController extends AppController
         $location->km_inicial = $km_inicial['last_km'];
         $location->vehicle_picture = str_replace('//','/', $this->request->webroot . $urlAndDayPrice->picture);
         $location->day_price_vehicle = $urlAndDayPrice->day_price;
-        $location->total = number_format($location->total, 2, '.', ',');
+        $location->total = number_format($location->total, 2, ',', '.');
         $location->out_date = $location->out_date->i18nFormat('dd/MM/yyyy');
         $location->return_date = $location->return_date->i18nFormat('dd/MM/yyyy');
 

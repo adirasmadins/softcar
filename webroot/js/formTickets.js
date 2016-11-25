@@ -59,8 +59,8 @@ $(document).ready(function(){
     $("#value").maskMoney({
         prefix:'R$ ',
         allowNegative: true,
-        thousands:',',
-        decimal:'.',
+        thousands:'.',
+        decimal:',',
         affixesStay: false
     });
 
@@ -137,7 +137,7 @@ $(document).ready(function(){
             return true;
         }
     });
-    
+
     $('#cpf-not-registered').change(function(){
         var val = $(this).val();
 
@@ -166,7 +166,7 @@ $(document).ready(function(){
             parent.children('span').remove();
         }
     });
-    
+
     $('#due-date').change(function(){
         moment.locale('pt-br');
         var data1 = moment($("#ticket-date").val(),'DD/MM/YYYY');

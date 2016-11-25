@@ -30,8 +30,7 @@
                             <?php $item->$key = $item->$key->i18nFormat('dd/MM/yyyy'); ?>
                             <td><?= $item->$key ?></td>
                         <?php elseif(($key == 'day_price') || $key == 'value' || $key == 'total'): ?>
-                            <?php $item->$key = 'R$ ' . $item->$key ?>
-                            <td><?= $item->$key ?></td>
+                            <td><?='R$ ' . $item->$key ?> </td>
                         <?php elseif($key == 'client_id'): ?>
                             <?php $item->$key = \App\Lib\Utils::getClientName($item->$key); ?>
                             <td><?= $item->$key ?></td>

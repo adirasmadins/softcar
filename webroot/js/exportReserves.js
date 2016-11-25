@@ -12,7 +12,8 @@ $(document).ready(function(){
         var data = {
             from_date: $('#date-start').val(),
             to_date: $('#date-end').val(),
-            vehicle_ids: $('#vehicle-ids').val()
+            vehicle_ids: $('#vehicle-ids').val(),
+            status: $('#status').val()
         };
 
         $.post(url, data, function (r) {

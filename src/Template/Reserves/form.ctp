@@ -94,13 +94,15 @@
             </div>
         </div>
         <div class="panel-footer">
-            <?= $this->element('Form/button',['options' =>[
-                'text' => 'Salvar',
-                'action' => 'add',
-                'class' => 'btn btn-success',
-                'type' => 'submit',
-                'icon' => 'check'
-            ]]) ?>
+            <?php if(!$reserve->id): ?>
+              <?= $this->element('Form/button',['options' =>[
+                  'text' => 'Salvar',
+                  'action' => 'add',
+                  'class' => 'btn btn-success',
+                  'type' => 'submit',
+                  'icon' => 'check'
+              ]]) ?>
+            <?php endif; ?>
             <?= $this->Html->Link('<i class="fa fa-undo"></i> Voltar',
                 [
                     'action' => 'index'

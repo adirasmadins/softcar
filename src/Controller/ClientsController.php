@@ -163,7 +163,7 @@ class ClientsController extends AppController
         $client->birth_date=$client->birth_date->i18nFormat('dd/MM/yyyy');
         $client->validity_cnh=$client->validity_cnh->i18nFormat('dd/MM/yyyy');
         $client->first_license=$client->first_license->i18nFormat('dd/MM/yyyy');
-
+        
         $this->set(compact('client','situacao','states'));
         $this->set('_serialize', ['client']);
         $this->render('form');

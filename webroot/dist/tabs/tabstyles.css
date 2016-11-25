@@ -54,7 +54,7 @@
 
 .tabs-style-iconbox nav ul li a span {
 	font-weight: 700;
-	font-size: 0.7em;	
+	font-size: 0.7em;
 }
 
 .tabs-style-iconbox nav ul li.tab-current {
@@ -163,7 +163,7 @@
 	font-size: 1em;
 }
 
-.tabs-style-linetriangle nav li.tab-current a:after, 
+.tabs-style-linetriangle nav li.tab-current a:after,
 .tabs-style-linetriangle nav li.tab-current a:before {
 	position: absolute;
 	top: 100%;
@@ -247,7 +247,7 @@
 }
 
 /*****************************/
-/* Falling Icon, from http://vintageproductions.eu/grid/interactivity/ */ 
+/* Falling Icon, from http://vintageproductions.eu/grid/interactivity/ */
 /*****************************/
 
 .tabs-style-iconfall {
@@ -260,14 +260,14 @@
 	padding: 1em 0 2em;
 	color: #74777b;
 	line-height: 1;
-	-webkit-transition: color 0.3s cubic-bezier(0.7,0,0.3,1); 
+	-webkit-transition: color 0.3s cubic-bezier(0.7,0,0.3,1);
 	transition: color 0.3s cubic-bezier(0.7,0,0.3,1);
 }
 
 .tabs-style-iconfall nav a:hover,
 .tabs-style-iconfall nav a:focus,
 .tabs-style-iconfall nav li.tab-current a {
-	color: #3c8dbc;
+	color: #00578a;
 }
 
 .tabs-style-iconfall nav li::before {
@@ -362,7 +362,7 @@
 	padding: 1em 0;
 	color: #74777b;
 	line-height: 1;
-	-webkit-transition: color 0.3s, -webkit-transform 0.3s; 
+	-webkit-transition: color 0.3s, -webkit-transform 0.3s;
 	transition: color 0.3s, transform 0.3s;
 }
 
@@ -467,7 +467,7 @@
 	font-weight: 700;
 	font-size: 0.9em;
 	line-height: 1.1;
-	-webkit-transition: color 0.3s cubic-bezier(0.7,0,0.3,1); 
+	-webkit-transition: color 0.3s cubic-bezier(0.7,0,0.3,1);
 	transition: color 0.3s cubic-bezier(0.7,0,0.3,1);
 }
 
@@ -838,7 +838,7 @@
 
 /*****************************/
 /* Trapezoid, based on http://lea.verou.me/2013/10/slanted-tabs-with-css-3d-transforms/ */
-/*****************************/ 
+/*****************************/
 
 .tabs-style-tzoid {
 	max-width: 1200px;
@@ -956,7 +956,7 @@
 }
 
 .tabs-style-circlefill nav a {
-	-webkit-transition: color 0.3s; 
+	-webkit-transition: color 0.3s;
 	transition: color 0.3s;
 }
 

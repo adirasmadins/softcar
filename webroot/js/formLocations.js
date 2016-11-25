@@ -23,8 +23,8 @@ $(document).ready(function(){
     $("#total").maskMoney({
         prefix: '',
         allowNegative: true,
-        thousands:',',
-        decimal:'.',
+        thousands:'.',
+        decimal:',',
         affixesStay: false
     });
 
@@ -79,7 +79,7 @@ $(document).ready(function(){
     };
 
     function currencyFormat (num) {
-        return num.toFixed(2).replace(",", ".").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+        return num.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
 
     var vehicleInformations = function(id){
@@ -129,6 +129,9 @@ $(document).ready(function(){
 
                 var total = ('R$ ' + (diff * parseFloat(vehicle.day_price.replace(',','.'))).toFixed(2));
                 $('.total').html('<small class="min-small hidden-xs">' + (diff == 1 ? diff + ' dia' : diff + ' dias') + ' x ' + vehicle.day_price  + '</small>' + total.replace('.',','));
+
+                total = total.replace('.',',')
+
                 $('#total').val(total.replace('R$ ',''));
                 $('.btn-visualizacao').show();
             }
@@ -141,7 +144,6 @@ $(document).ready(function(){
             id: id
         };
 
-        console.log(url);
         $.post(url, data, function(e){
             if(e.result.type != 'success'){
                 console.log('ERRO AO MUDAR STATUS DA RESERVA');

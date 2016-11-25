@@ -41,6 +41,7 @@ class TicketsController extends AppController
 
             $ticket->due_date = Utils::brToDate($ticket->due_date);
             $ticket->ticket_date = Utils::brToDate($ticket->ticket_date);
+
             $ticket->status = 0;
             if ($this->Tickets->save($ticket)) {
                 $this->Flash->success(__('Multa salva com sucesso'));
@@ -82,7 +83,7 @@ class TicketsController extends AppController
         $this->Tickets->Vehicles->displayField('model');
         $vehicles = $this->Tickets->Vehicles->find('list');
         $clients = $this->Tickets->Clients->find('list');
-
+        
         if($ticket->due_date){
             $ticket->due_date = $ticket->due_date->i18nFormat('dd/MM/YYYY');
         }

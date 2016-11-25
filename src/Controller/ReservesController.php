@@ -246,6 +246,12 @@ class ReservesController extends AppController
                 $config['config']['conditions'][] = ['where' => ['Reserves.date_end <=' => $y . '-' . $m . '-' . $d]];
             }
 
+            if (!empty($data['status']) || isset($data['status'])) {
+                if($data['status'] != 'todos'){
+                    $config['config']['conditions'][] = ['where' => ['Reserves.status =' => $data['status']]];
+                }
+            }
+
             $config['config']['order'] = 'Reserves.reserve_date DESC';
 
             $url = $this->XLSXExporter->buildExport('Reserves', $config, 'Relatorio_de_Reservas.xlsx', 'Reserves');

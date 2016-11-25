@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <?= $this->Form->hidden('current_picture', ['id' => 'current-picture', 'value' => isset($client->client_files) && !empty($client->client_files) ? $client->client_files : '']) ?>
-                    <input data-device="desktop" type="file" id="client_files" name="client_files[]" multiple>
+                    <input type="file" id="client_files" name="client_files[]" multiple>
                       <div id="selectedFilesD"></div>
                       <br/>
                 </div>

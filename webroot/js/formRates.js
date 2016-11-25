@@ -42,8 +42,8 @@ $(document).ready(function(){
     $("#ipva-value, #depvat-value, #licensing-value").maskMoney({
         prefix:'R$ ',
         allowNegative: true,
-        thousands:',',
-        decimal:'.',
+        thousands:'.',
+        decimal:',',
         affixesStay: false
     });
 
@@ -79,7 +79,7 @@ $(document).ready(function(){
         }
     });
     var formRates = new Form();
-    
+
     formRates.inputMasks({
         '#ipva-expiration': 'date',
         '#depvat-expiration': 'date',
