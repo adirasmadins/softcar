@@ -46,6 +46,29 @@ $(document).ready(function(){
         decimal:',',
         affixesStay: false
     });
+    
+    function disableBtn(){
+        $('.btn-success').attr('disabled',false);
+    }
+    
+    $(document).on('change','#depvat-expiration', disableBtn);
+    $(document).on('change','#licensing-expiration', disableBtn);
+    $(document).on('change','#ipva-expiration', disableBtn);
+    
+    $(document).on('click', '.btn-success', function(){
+        if($('#depvat-expiration').val() == '' || $('#licensing-expiration').val() == '' || $('#ipva-expiration').val() == ''){
+            $('.btn-success').attr('disabled',true);
+            swal({
+                title: 'Data vazia',
+                text: 'Favor preencher os campos de vencimento de tarifa',
+                type: 'info',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
+        } else {
+            $('.btn-success').attr('disabled',false);
+        }
+    });
 
     $('#formRates').validate({
         rules: {

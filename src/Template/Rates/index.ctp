@@ -15,9 +15,9 @@ $this->element('Form/header_index',[
         'id' => '#ID',
         'vehicle_id' => 'Veículo',
         'referent_year' => 'Ano Referente',
-        'ipva_expiration' => 'Venc. IPVA',
-        'depvat_expiration' => 'Venc. DPVAT',
-        'licensing_expiration' => 'Venc. Licenciamento'
+        'ipva_value' => 'Valor IPVA',
+        'depvat_value' => 'Valor DPVAT',
+        'licensing_value' => 'Valor Licenciamento'
     ],
     'name' => 'A Tarifa',
     'entity' => 'Rates',

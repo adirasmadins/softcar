@@ -38,10 +38,24 @@ class RatesController extends AppController
         if ($this->request->is('post')) {
             $rate = $this->Rates->patchEntity($rate, $this->request->data);
 
-            $rate->ipva_expiration = Utils::brToDate($rate->ipva_expiration);
-            $rate->depvat_expiration = Utils::brToDate($rate->depvat_expiration);
-            $rate->licensing_expiration = Utils::brToDate($rate->licensing_expiration);
-
+            if(!isset($rate->ipva_expiration) || is_null($rate->ipva_expiration)){
+                $this->Flash->error(__('Favor preencher a data de vencimento do IPVA'));
+            } else {
+                $rate->ipva_expiration = Utils::brToDate($rate->ipva_expiration);
+            }
+            
+            if(!isset($rate->depvat_expiration) || is_null($rate->ipva_expiration)){
+                $this->Flash->error(__('Favor preencher a data de vencimento do DPVAT'));
+            } else {
+                $rate->depvat_expiration = Utils::brToDate($rate->depvat_expiration);
+            }
+            
+            if(!isset($rate->licensing_expiration) || is_null($rate->ipva_expiration)){
+                $this->Flash->error(__('Favor preencher a data de vencimento do Licenciamento'));
+            } else {
+                $rate->licensing_expiration = Utils::brToDate($rate->licensing_expiration);
+            }
+            
             if ($this->Rates->save($rate)) {
                 $this->Flash->success(__('Tarifa salva com sucesso'));
 
@@ -68,9 +82,23 @@ class RatesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $rate = $this->Rates->patchEntity($rate, $this->request->data);
 
-            $rate->ipva_expiration = Utils::brToDate($rate->ipva_expiration);
-            $rate->depvat_expiration = Utils::brToDate($rate->depvat_expiration);
-            $rate->licensing_expiration = Utils::brToDate($rate->licensing_expiration);
+            if(!isset($rate->ipva_expiration)){
+                $this->Flash->error(__('Favor preencher a data de vencimento do IPVA'));
+            } else {
+                $rate->ipva_expiration = Utils::brToDate($rate->ipva_expiration);
+            }
+            
+            if(!isset($rate->depvat_expiration)){
+                $this->Flash->error(__('Favor preencher a data de vencimento do DPVAT'));
+            } else {
+                $rate->depvat_expiration = Utils::brToDate($rate->depvat_expiration);
+            }
+            
+            if(!isset($rate->licensing_expiration)){
+                $this->Flash->error(__('Favor preencher a data de vencimento do Licenciamento'));
+            } else {
+                $rate->licensing_expiration = Utils::brToDate($rate->licensing_expiration);
+            }
 
             if ($this->Rates->save($rate)) {
                 $this->Flash->success(__('Tarifa salva com sucesso'));
