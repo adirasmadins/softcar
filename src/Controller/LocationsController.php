@@ -41,8 +41,18 @@ class LocationsController extends AppController
 
             $location = $this->Locations->patchEntity($location, $data);
 
-            $location->out_date = Utils::brToDate($location->out_date);
-            $location->return_date = Utils::brToDate($location->return_date);
+            if(!isset($location->return_date) || empty($location->return_date)){
+              $this->Flash->error(__('Data inválida'));
+            } else {
+              $location->return_date = Utils::brToDate($location->return_date);
+            }
+
+            if(!isset($location->out_date) || empty($location->out_date)){
+              $this->Flash->error(__('Data inválida'));
+            } else {
+                $location->out_date = Utils::brToDate($location->out_date);
+            }
+
             $location->location_date = date('Y-m-d');
             $location->status = 0;
             $location->free_km = $location->free_km ? $location->free_km  : '0';
@@ -57,6 +67,8 @@ class LocationsController extends AppController
 
             unset($location->client_id_hidden);
             unset($location->vehicle_id_hidden);
+
+            $location->total = str_replace('.', '', $location->total);
 
             if ($this->Locations->save($location)) {
                 $this->Flash->success(__('Locação salva com sucesso'));
@@ -136,7 +148,7 @@ class LocationsController extends AppController
         $location->km_inicial = $km_inicial['last_km'];
         $location->vehicle_picture = str_replace('//','/', $this->request->webroot . $urlAndDayPrice->picture);
         $location->day_price_vehicle = $urlAndDayPrice->day_price;
-        $location->total = number_format($location->total, 2, ',', '.');
+
         $location->out_date = $location->out_date->i18nFormat('dd/MM/yyyy');
         $location->return_date = $location->return_date->i18nFormat('dd/MM/yyyy');
 
@@ -315,8 +327,8 @@ class LocationsController extends AppController
         $data = $this->request->data;
 
         $this->updateLastKmVehicle($data['vehicle_id'], $data['finish_km']);
-
-        $data['finish_value'] = str_replace(',','', $data['finish_value']);
+        $data['finish_value'] = str_replace('.', '', $data['finish_value']);
+        // $data['finish_value'] = number_format(str_replace('.',',', $data['finish_value']), 2, ',', '.');
 
         $LocationFinished = TableRegistry::get('LocationFinished');
         $New = $LocationFinished->newEntity();

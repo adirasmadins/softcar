@@ -54,11 +54,11 @@ class LocationFinishedTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->numeric('finish_value')
+            // ->numeric('finish_value')
             ->allowEmpty('finish_value');
 
         $validator
-            ->numeric('finish_km')
+            // ->numeric('finish_km')
             ->allowEmpty('finish_km');
 
         $validator

@@ -30,9 +30,9 @@ $(document).ready(function(){
     $("input[name='finish_value']").maskMoney({
         prefix:'',
         allowNegative: true,
-        thousands:',',
-        decimal:'.',
-        affixesStay: false
+        thousands:'.',
+        decimal:',',
+        affixesStay: true
     });
 
     $(".km-chegada").on("keypress keyup blur",function (event) {
@@ -75,8 +75,8 @@ $(document).ready(function(){
             $('.td2').text('LIVRE');
             $('.td3').text('-');
         }
-
-        $('.total input').val(currencyFormat(location.total));
+console.log(location.total);
+        $('.total input').val(location.total);
         $('.verify-tank').text('O veículo saiu com "' + location.tank_check + '"');
 
         $html = location.vehicle + ' locado para ' + location.client + ' com devolução marcada para ' + location.return_date;

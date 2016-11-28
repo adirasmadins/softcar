@@ -8,21 +8,50 @@
     padding: 13px;
 }
 
-#selectedFilesD img,
-#selectFilesM img {
-  max-width: 100px;
-  max-height: 100px;
+#selectedFilesD img{
+  max-width: 180px;
+  max-height: 180px;
   float: left;
-  margin: 10px;
 }
 #userActions input {
   width: auto;
   margin: auto;
 }
-#selectFiles img,
-#selectedFilesM img {
-  max-width: 100px;
-  max-height: 100px;
-  float: left;
-  margin-bottom: 10px;
+
+.img-combo{
+  position: relative;
+  display: inline-block;
+  max-width: 180px;
+  max-height: 180px;
+  margin-top: 10px;
+}
+
+.img-combo:not(:first-child){
+  margin-left : 10px;
+}
+
+.baixar{
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  text-decoration: none;
+  color: #666;
+}
+
+.delete{
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  text-decoration: none;
+  color: #666;
+}
+
+.delete:hover{
+  color: #ccc;
+  animation: trash 300ms alternate;
+}
+
+@keyframes trash{
+  0%{transform: rotate(180deg);}
+      100%{transform: rotate(360deg);}
 }

@@ -29,7 +29,7 @@
                     <?= $this->Form->input('rg_ie',['label' => 'RG','placeholder' => 'RG','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-4 form-group">
-                    <?= $this->Form->input('cnh',['label' => 'CNH','placeholder' => 'CNH','class' => 'form-control','type' => 'text']) ?>
+                    <?= $this->Form->input('cnh',['label' => 'CNH','placeholder' => 'CNH','class' => 'form-control','type' => 'text', 'maxlenght' => 11]) ?>
                 </div>
             </div>
             <div class="row">
@@ -81,12 +81,28 @@
                     <hr/>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
-                    <?= $this->Form->hidden('current_picture', ['id' => 'current-picture', 'value' => isset($client->client_files) && !empty($client->client_files) ? $client->client_files : '']) ?>
-                    <input type="file" id="client_files" name="client_files[]" multiple>
-                      <div id="selectedFilesD"></div>
-                      <br/>
+                    <?php if(!$client->id): ?>
+                      <?= $this->Form->hidden('current_picture', ['id' => 'current-picture', 'value' => isset($client->client_files) && !empty($client->client_files) ? $client->client_files : '']) ?>
+                      <input type="file" id="client_files" name="client_files[]" multiple>
+                    <?php endif; ?>
+                      <div id="selectedFilesD">
+
+                        <?php if($client->id): ?>
+                          <?php if(count($client->client_files)): ?>
+                            <?php foreach($client->client_files as $key => $file): ?>
+                              <div class="img-combo">
+                                <img src="<?= $this->Url->build('/' . $file->url_file, true) ?>" class="thumbnail selFile"/>
+                                <a href="<?= $this->Url->build('/' . $file->url_file, true) ?>" class="baixar" download><i class="fa fa-download"></i></a>
+                              </div>
+                            <?php endforeach; ?>
+                          <?php endif; ?>
+                        <?php endif; ?>
+
+                      </div>
+                    <br/>
                 </div>
             </div>
         </div>

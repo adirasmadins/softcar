@@ -25,7 +25,7 @@ $(document).ready(function(){
         allowNegative: true,
         thousands:'.',
         decimal:',',
-        affixesStay: false
+        affixesStay: true
     });
 
     $('#client-id, #vehicle-id, #driver-id, #form-payment').select2();
@@ -310,5 +310,34 @@ $(document).ready(function(){
 
     $(document).on('submit', function(e){
         updateReserveStatus($('input[name="reserve"]:checked').val());
+    });
+
+    $('#formLocations').validate({
+        rules: {
+            out_date: {
+                required: true
+            },
+            return_date: {
+                required: true
+            },
+            client_id: {
+                required: true
+            },
+            tank_check: {
+                required: true
+            },
+            vehicle_id: {
+                required: true
+            },
+            total: {
+                required: true
+            },
+            form_payment: {
+                required: true
+            }
+        },
+        errorPlacement: function(error,element) {
+            return true;
+        }
     });
 });

@@ -16,7 +16,6 @@ $(document).ready(function(){
         }
     });
 
-
     $('#type-id, #fuel-id').select2();
 
     $('#plate, #chassi').keyup(function(){
@@ -79,6 +78,9 @@ $(document).ready(function(){
                 required: true
             },
             day_price: {
+                required: true
+            },
+            last_km: {
                 required: true
             }
         },

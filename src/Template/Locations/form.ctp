@@ -10,11 +10,11 @@
             <div class="row">
                 <div class="col-md-3 form-group">
                     <input type="hidden" class="out-date" value="<?= $location->out_date ?>"/>
-                    <?= $this->Form->input('out_date',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text', 'disabled' => $this->request->action == 'edit' ? true : false]) ?>
+                    <?= $this->Form->input('out_date',['label' => 'Data de Retirada','placeholder' => 'Data de Retirada','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-3 form-group">
                   <input type="hidden" class="return-date" value="<?= $location->return_date ?>"/>
-                    <?= $this->Form->input('return_date',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text', 'disabled' => $this->request->action == 'edit' ? true : false]) ?>
+                    <?= $this->Form->input('return_date',['label' => 'Data de Devolução','placeholder' => 'Data de Devolução','class' => 'form-control','type' => 'text']) ?>
                 </div>
                 <div class="col-md-3 form-group">
                     <label>Horário de Saída</label>

@@ -55,11 +55,22 @@ $(document).ready(function(){
         language: "pt-BR",
         format: 'dd/mm/yyyy'
     });
+    $('#first-license').datepicker({
+        language: "pt-BR",
+        format: 'dd/mm/yyyy'
+    });
+    $('#birth-date').datepicker({
+        language: "pt-BR",
+        format: 'dd/mm/yyyy'
+    });
 
     /**
      * Expressões regulares
      */
     $('#number').keyup(function (){
+        this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+    $('#cnh').keyup(function (){
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
     $('#name').keyup(function(){
@@ -241,51 +252,49 @@ $(document).ready(function(){
             $('button[type="submit"]').attr('disabled', false);
         }
     });
-});
 
-$(document).ready(function() {
+    $("#client_files").on('change', handleFileSelect);
+    selDiv = $("#selectedFilesD");
+    $(document).on("click", ".delete", removeFile);
 
-  $("#client_files").on("change", handleFileSelect);
-  selDiv = $("#selectedFilesD");
-  $(document).on("click", ".selFile", removeFile);
-});
 
-var selDiv = "";
-var storedFiles = [];
+    var selDiv = "";
+    var storedFiles = [];
 
-function handleFileSelect(e) {
+    function handleFileSelect(e) {
 
-  var files = e.target.files;
-  var filesArr = Array.prototype.slice.call(files);
-  var device = $(e.target).data("device");
-  filesArr.forEach(function(f) {
+      var files = e.target.files;
+      var filesArr = Array.prototype.slice.call(files);
+      var device = $(e.target).data("device");
+      filesArr.forEach(function(f) {
 
-    if (!f.type.match("image.*")) {
-      return;
+        if (!f.type.match("image.*")) {
+          return;
+        }
+        storedFiles.push(f);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var html = "<div class='img-combo'><img src=\"" + e.target.result + "\" data-file='" + f.name + "' class='thumbnail selFile'><a href='javascript:void(0)' data-file='" + f.name + "' class='delete'><i class='fa fa-trash'></i></a></div>";
+
+          if (device == "mobile") {
+            $("#selectedFilesM").append(html);
+          } else {
+            $("#selectedFilesD").append(html);
+          }
+        }
+        reader.readAsDataURL(f);
+      });
     }
-    storedFiles.push(f);
 
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var html = "<div><img src=\"" + e.target.result + "\" data-file='" + f.name + "' class='thumbnail selFile'></div>";
-
-      if (device == "mobile") {
-        $("#selectedFilesM").append(html);
-      } else {
-        $("#selectedFilesD").append(html);
+    function removeFile(e) {
+      var file = $(this).data("file");
+      for (var i = 0; i < storedFiles.length; i++) {
+        if (storedFiles[i].name === file) {
+          storedFiles.splice(i, 1);
+          break;
+        }
       }
+      $(this).parent().remove();
     }
-    reader.readAsDataURL(f);
-  });
-}
-
-function removeFile(e) {
-  var file = $(this).data("file");
-  for (var i = 0; i < storedFiles.length; i++) {
-    if (storedFiles[i].name === file) {
-      storedFiles.splice(i, 1);
-      break;
-    }
-  }
-  $(this).parent().remove();
-}
+});

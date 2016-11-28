@@ -73,7 +73,7 @@ class LocationsTable extends Table
             ->notEmpty('start_value');
 
         $validator
-            ->numeric('total')
+            // ->numeric('total')
             ->allowEmpty('total');
 
         $validator

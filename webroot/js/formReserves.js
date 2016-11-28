@@ -194,4 +194,24 @@ $(document).ready(function() {
     if($('#client-id').val().length > 0){
         infoClient();
     }
+
+    $('#formReserves').validate({
+        rules: {
+            date_start: {
+                required: true,
+            },
+            date_end: {
+                required: true
+            },
+            vehicle_id: {
+                required: true
+            },
+            client_id: {
+                required: true
+            }
+        },
+        errorPlacement: function(error,element) {
+            return true;
+        }
+    });
 });

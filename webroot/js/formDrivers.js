@@ -13,6 +13,19 @@ $(document).ready(function () {
         '#birth-date': 'date'
     });
 
+    $('#birth-date').datepicker({
+        language: "pt-BR",
+        format: 'dd/mm/yyyy'
+    });
+    $('#validity-cnh').datepicker({
+        language: "pt-BR",
+        format: 'dd/mm/yyyy'
+    });
+    $('#first-license').datepicker({
+        language: "pt-BR",
+        format: 'dd/mm/yyyy'
+    });
+
     $('#gender').select2();
     $('#state-id').select2();
     $('#city-id').select2();
@@ -102,6 +115,9 @@ $(document).ready(function () {
             number: {
                 required: true
             },
+            cnh: {
+              required: true
+            },
             neighborhood: {
                 required: true
             },
@@ -130,7 +146,7 @@ $(document).ready(function () {
         if(diff <= 731){
             $('button[type="submit"]').attr('disabled', true);
             swal({
-                title: 'Cliente não possui data mínima',
+                title: 'Motorista não possui data mínima',
                 text: 'É necessário ter pelo menos 2 anos de CNH',
                 type: 'info',
                 showConfirmButton: true,
@@ -150,7 +166,7 @@ $(document).ready(function () {
         if(diff <= 7300){
             $('button[type="submit"]').attr('disabled', true);
             swal({
-                title: 'Cliente não possui idade mínima',
+                title: 'Motorista não possui idade mínima',
                 text: 'É necessário ter pelo menos 20 anos de idade',
                 type: 'info',
                 showConfirmButton: true,

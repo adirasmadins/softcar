@@ -21,7 +21,7 @@
                 <?= $this->Form->input('to_date',['label' => 'Data Final','class' => 'form-control','type' => 'text']) ?>
             </div>
             <div class="col-md-4">
-                <?= $this->Form->input('service_type',['label' => 'Tipo de Serviço','class' => 'form-control','options' => ['r' => 'Revisão', 't' => 'Troca de Óleo', 'o' => 'Outros', 'todos' => 'Todos']]) ?>
+                <?= $this->Form->input('service_type',['label' => 'Tipo de Serviço','class' => 'form-control','options' => ['todos' => 'Todos', 'r' => 'Revisão', 't' => 'Troca de Óleo', 'o' => 'Outros']]) ?>
             </div>
         </div>
         <hr/>
