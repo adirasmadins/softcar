@@ -202,6 +202,7 @@ class UsersController extends AppController
                             ->emailFormat('html')
                             ->to($user->email)
                             ->from(Configure::read('EmailFrom'))
+                            // ->from('gabrielferreira.95@hotmail.com')
                             ->subject('Recuperação de Senha')
                             ->viewVars(['token' => $user->token,'data' => $user])
                             ->send();

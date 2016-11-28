@@ -182,7 +182,7 @@ return [
             'host' => 'smtp.sendgrid.net',
             'port' => 587,
             'timeout' => 30,
-            'username' => 'somaproject',
+            'username' => 'softcar',
             'password' => 'pro14907',
             'client' => null,
             'tls' => null,
@@ -340,7 +340,7 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
-    'EmailFrom' => 'projsomanoreply@gmail.com',
+    'EmailFrom' => 'gabrielferreira.95@hotmail.com',
     'Queries' => [
       'Reserves' => "SELECT
                     	*
