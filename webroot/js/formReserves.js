@@ -194,6 +194,13 @@ $(document).ready(function() {
     if($('#client-id').val().length > 0){
         infoClient();
     }
+    
+    var formReserves = new Form;
+    
+    formReserves.inputMasks({
+        '#date-start': 'date',
+        '#date-end': 'date'
+    });
 
     $('#formReserves').validate({
         rules: {
